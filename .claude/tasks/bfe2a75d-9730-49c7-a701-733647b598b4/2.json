@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Enhance Landing Page (sticky nav, counter, cara kerja, footer)",
+  "description": "Implement sticky nav with blur, mobile hamburger, animated impact counter, cara kerja section, footer, custom toast theme",
+  "activeForm": "Meningkatkan landing page",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

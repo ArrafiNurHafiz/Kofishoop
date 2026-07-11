@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Buat shared components baru (LoadingSpinner, ConfirmDialog, ErrorBoundary, NotFound, validation)",
+  "description": "Create reusable components: LoadingSpinner, ConfirmDialog, ErrorBoundary, NotFound page, and validation helpers",
+  "activeForm": "Membuat shared components",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

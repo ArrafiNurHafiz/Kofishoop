@@ -1,0 +1,9 @@
+{
+  "id": "12",
+  "subject": "Review services — TOPSIS, notifications, gamification",
+  "description": "White box review of services/: topsis.py (numpy algorithm correctness), notifications.py (SSE manager), gamification.py (badge logic)",
+  "activeForm": "Reviewing services",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

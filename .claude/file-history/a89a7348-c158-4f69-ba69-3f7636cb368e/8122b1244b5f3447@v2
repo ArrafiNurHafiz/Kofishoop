@@ -1,0 +1,166 @@
+"use client";
+
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
+import Link from "next/link";
+
+const STATS = [
+  { value: "$140B+", label: "Crypto lost forever" },
+  { value: "Trustless", label: "No intermediaries" },
+  { value: "AI Agent", label: "Auto-execution" },
+] as const;
+
+const STEPS = [
+  {
+    step: "01",
+    title: "Create Your Will",
+    desc: "Connect your wallet, add beneficiaries, set percentages, and configure trigger conditions — all in under 5 minutes.",
+  },
+  {
+    step: "02",
+    title: "AI Agent Monitors",
+    desc: "Our AI agent tracks your heartbeat, guardian votes, and inactivity periods. Nothing happens until the triggers are met.",
+  },
+  {
+    step: "03",
+    title: "Auto Distribution",
+    desc: "When conditions are met, the AI agent executes your will on-chain, distributing assets to your beneficiaries automatically.",
+  },
+] as const;
+
+export default function Home() {
+  const { isConnected } = useAccount();
+
+  return (
+    <div className="flex-1 flex flex-col">
+      {/* Nav */}
+      <header className="sticky top-0 z-50 bg-[#0c0c0c]/80 backdrop-blur-lg border-b border-white/[0.04]">
+        <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 h-14" aria-label="Main navigation">
+          <Link href="/" className="flex items-center gap-2 no-underline group">
+            <span className="text-xl" aria-hidden="true">🕊️</span>
+            <span className="text-lg font-semibold tracking-tight gradient-text">
+              Eterna
+            </span>
+          </Link>
+          <div className="flex items-center gap-3">
+            {isConnected && (
+              <>
+                <Link href="/dashboard" className="text-sm text-[#a1a1aa] hover:text-[#f5f5f5] transition-colors px-3 py-1.5 rounded-md hover:bg-white/[0.04] font-medium">
+                  Dashboard
+                </Link>
+                <Link href="/create" className="text-sm text-[#a1a1aa] hover:text-[#f5f5f5] transition-colors px-3 py-1.5 rounded-md hover:bg-white/[0.04] font-medium">
+                  Create Will
+                </Link>
+              </>
+            )}
+            <ConnectButton />
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero */}
+      <main className="flex-1">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
+          <div className="animate-fade-in">
+            {/* Icon */}
+            <div className="mb-10">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-accent-muted border border-[rgba(212,168,83,0.15)]">
+                <span className="text-3xl" aria-hidden="true">🕊️</span>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-5 gap-12 md:gap-16">
+              {/* Left — headline */}
+              <div className="md:col-span-3">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight">
+                  Your Digital Legacy,<br />
+                  <span className="gradient-text">Secured Forever</span>
+                </h1>
+              </div>
+
+              {/* Right — description and CTA */}
+              <div className="md:col-span-2 md:pt-2">
+                <p className="text-base md:text-lg text-[#a1a1aa] leading-relaxed mb-8">
+                  Over <span className="text-[#f5f5f5] font-medium">$140B in crypto</span> is lost forever because
+                  owners passed away without a plan. Eterna is an AI agent that automatically
+                  distributes your digital assets to loved ones — trustlessly, transparently, and on your terms.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  {isConnected ? (
+                    <>
+                      <Link href="/create" className="btn-primary text-base px-6 py-3">
+                        Create Your Digital Will
+                      </Link>
+                      <Link href="/dashboard" className="btn-secondary text-base px-6 py-3">
+                        View Dashboard
+                      </Link>
+                    </>
+                  ) : (
+                    <div>
+                      <ConnectButton.Custom>
+                        {({ openConnectModal }) => (
+                          <button onClick={openConnectModal} className="btn-primary text-base px-6 py-3">
+                            Connect Wallet
+                          </button>
+                        )}
+                      </ConnectButton.Custom>
+                      <p className="text-sm text-[#52525b] mt-3">
+                        Connect your wallet to create a digital will
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Stats — asymmetric row */}
+            <div className="mt-16 md:mt-20 flex flex-wrap gap-x-12 gap-y-3">
+              {STATS.map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-2xl font-bold text-[#f5f5f5] tabular-nums">{stat.value}</div>
+                  <div className="text-sm text-[#52525b] mt-0.5">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section className="border-t border-white/[0.04]">
+          <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">How It Works</h2>
+            <p className="text-[#a1a1aa] mb-12 max-w-lg">
+              Three steps to secure your digital legacy.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-5">
+              {STEPS.map((item) => (
+                <div key={item.step} className="card card-glow flex flex-col">
+                  <div className="text-3xl font-bold tracking-tight gradient-text mb-4 tabular-nums">
+                    {item.step}
+                  </div>
+                  <h3 className="text-lg font-semibold text-[#f5f5f5] mb-2">{item.title}</h3>
+                  <p className="text-sm text-[#a1a1aa] leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-white/[0.04] py-6">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-sm text-[#52525b]">
+            Built for the future of digital inheritance
+          </p>
+          <nav className="flex gap-4 text-sm text-[#52525b]" aria-label="Legal links">
+            <a href="#" className="hover:text-[#a1a1aa] transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[#a1a1aa] transition-colors">Terms of Service</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  );
+}

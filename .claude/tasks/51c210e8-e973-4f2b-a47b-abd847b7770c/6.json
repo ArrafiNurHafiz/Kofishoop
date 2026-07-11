@@ -1,0 +1,9 @@
+{
+  "id": "6",
+  "subject": "Implement utils (logger, upload)",
+  "description": "Buat utils/logger.py (structlog), utils/upload.py (file upload handler)",
+  "activeForm": "Implementing utilities",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

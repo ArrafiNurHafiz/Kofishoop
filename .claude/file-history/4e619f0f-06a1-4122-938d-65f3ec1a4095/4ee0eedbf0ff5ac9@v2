@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Poi extends Model
+{
+    protected $fillable = [
+        'category_id', 'name', 'description', 'latitude', 'longitude', 'address',
+        'price_range', 'tags', 'operating_hours', 'photo_url', 'source_type',
+        'transit_friendliness_score', 'data_source_id',
+        'phone', 'whatsapp', 'website',
+        'google_place_id', 'google_maps_url',
+        'rating', 'review_count', 'business_status',
+        'photos', 'facilities', 'payment_methods',
+        'opening_hours_details', 'social_media',
+        'menu_url', 'popularity', 'is_verified',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'latitude' => 'decimal:7',
+            'longitude' => 'decimal:7',
+            'tags' => 'array',
+            'rating' => 'decimal:1',
+            'photos' => 'array',
+            'facilities' => 'array',
+            'payment_methods' => 'array',
+            'opening_hours_details' => 'array',
+            'social_media' => 'array',
+            'is_verified' => 'boolean',
+        ];
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function dataSource(): BelongsTo
+    {
+        return $this->belongsTo(DataSource::class);
+    }
+
+    public function transitStops(): BelongsToMany
+    {
+        return $this->belongsToMany(TransitStop::class, 'poi_transit_stops')
+            ->using(PoiTransitStop::class)
+            ->withPivot('distance_meters', 'walking_minutes');
+    }
+
+    public function surveyActivities(): HasMany
+    {
+        return $this->hasMany(SurveyActivity::class);
+    }
+
+    public function itineraryItems(): HasMany
+    {
+        return $this->hasMany(ItineraryItem::class);
+    }
+}

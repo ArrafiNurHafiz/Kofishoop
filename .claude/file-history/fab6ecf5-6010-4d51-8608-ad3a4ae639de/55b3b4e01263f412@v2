@@ -1,0 +1,11 @@
+# CLAUDE.md — Project Instructions
+
+## Aturan Skill Otomatis
+Saat user memberikan perintah yang relevan dengan skill yang tersedia, langsung gunakan `Skill` tool untuk menginvoke skill tersebut tanpa menunggu perintah eksplisit menggunakan nama skill.
+
+Contoh:
+- User: "analisis data penjualan.csv" → otomatis `/analisis`
+- User: "review kode ini" → otomatis `/code-review`
+- User: "research tentang topik X" → otomatis `/deep-research`
+- User: "verifikasi perubahan ini" → otomatis `/verify`
+- User: "buat chart dari data ini" → otomatis `/dataviz`

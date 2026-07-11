@@ -1,0 +1,8 @@
+{
+  "id": "4",
+  "subject": "Map source-to-test coverage gaps",
+  "description": "Cross-reference functions/classes in source vs tests to find untested code",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

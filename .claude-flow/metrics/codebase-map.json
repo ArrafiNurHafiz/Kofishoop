@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-07-11T02:05:28.702Z",
+  "projectRoot": "/home/arrafi",
+  "structure": {
+    "hasPackageJson": true,
+    "hasTsConfig": false,
+    "hasClaudeConfig": true,
+    "hasClaudeFlow": true
+  },
+  "scannedAt": 1783735528702
+}

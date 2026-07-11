@@ -1,0 +1,9 @@
+{
+  "id": "23",
+  "subject": "Perbaiki T2: Emergency endpoint auth + validasi",
+  "description": "Tambahkan auth guard dan Pydantic schema untuk POST /api/recipient/emergency",
+  "activeForm": "Memperbaiki emergency endpoint",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

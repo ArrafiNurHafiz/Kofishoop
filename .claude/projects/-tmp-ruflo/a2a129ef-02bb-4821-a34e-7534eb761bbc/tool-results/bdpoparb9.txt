@@ -1,0 +1,311 @@
+v3/src/task-execution/application/WorkflowEngine.ts:8:import { EventEmitter } from 'events';
+v3/src/task-execution/application/WorkflowEngine.ts:27:  eventBus?: EventEmitter;
+v3/src/task-execution/application/WorkflowEngine.ts:46:  private eventBus: EventEmitter;
+v3/src/task-execution/application/WorkflowEngine.ts:54:    this.eventBus = options.eventBus || new EventEmitter();
+v3/src/shared/types/index.ts:7:import { EventEmitter } from 'events';
+v3/src/shared/types/index.ts:171:  eventBus?: EventEmitter;
+v3/src/infrastructure/plugins/PluginManager.ts:8:import { EventEmitter } from 'events';
+v3/src/infrastructure/plugins/PluginManager.ts:18:  eventBus?: EventEmitter;
+v3/src/infrastructure/plugins/PluginManager.ts:25:  private eventBus: EventEmitter;
+v3/src/infrastructure/plugins/PluginManager.ts:32:    this.eventBus = options.eventBus || new EventEmitter();
+v3/src/coordination/application/SwarmCoordinator.ts:8:import { EventEmitter } from 'events';
+v3/src/coordination/application/SwarmCoordinator.ts:32:  eventBus?: EventEmitter;
+v3/src/coordination/application/SwarmCoordinator.ts:40:  private eventBus: EventEmitter;
+v3/src/coordination/application/SwarmCoordinator.ts:49:    this.eventBus = options.eventBus || new EventEmitter();
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:20:import { EventEmitter } from 'events';
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:247:export class TeammateBridge extends EventEmitter {
+v3/plugins/prime-radiant/src/interfaces.ts:660:export interface IPrimeRadiantEventEmitter {
+v3/plugins/prime-radiant/src/index.ts:147:  IPrimeRadiantEventEmitter,
+v3/plugins/gastown-bridge/src/index.ts:19:import { EventEmitter } from 'events';
+v3/plugins/gastown-bridge/src/index.ts:684:export class GasTownBridgePlugin extends EventEmitter implements IPlugin {
+v3/plugins/gastown-bridge/src/convoy/observer.ts:18:import { EventEmitter } from 'events';
+v3/plugins/gastown-bridge/src/convoy/observer.ts:229:export class ConvoyObserver extends EventEmitter {
+v3/plugins/gastown-bridge/src/memory/monitor.ts:19:import { EventEmitter } from 'events';
+v3/plugins/gastown-bridge/src/memory/monitor.ts:139:export class MemoryMonitor extends EventEmitter {
+v3/plugins/gastown-bridge/src/convoy/tracker.ts:18:import { EventEmitter } from 'events';
+v3/plugins/gastown-bridge/src/convoy/tracker.ts:175:export class ConvoyTracker extends EventEmitter {
+v3/plugins/gastown-bridge/src/formula/executor.ts:15:import { EventEmitter } from 'events';
+v3/plugins/gastown-bridge/src/formula/executor.ts:635:export class FormulaExecutor extends EventEmitter {
+v3/mcp/server.ts:18:import { EventEmitter } from 'events';
+v3/mcp/server.ts:83:export class MCPServer extends EventEmitter implements IMCPServer {
+v3/mcp/transport/websocket.ts:15:import { EventEmitter } from 'events';
+v3/mcp/transport/websocket.ts:67:export class WebSocketTransport extends EventEmitter implements ITransport {
+v3/mcp/transport/connection-pool.ts:16:import { EventEmitter } from 'events';
+v3/mcp/transport/connection-pool.ts:103:export class ConnectionPool<T> extends EventEmitter {
+v3/mcp/tool-registry.ts:17:import { EventEmitter } from 'events';
+v3/mcp/tool-registry.ts:59:export class ToolRegistry extends EventEmitter {
+v3/mcp/session-manager.ts:17:import { EventEmitter } from 'events';
+v3/mcp/session-manager.ts:55:export class SessionManager extends EventEmitter {
+v3/mcp/connection-pool.ts:16:import { EventEmitter } from 'events';
+v3/mcp/connection-pool.ts:103:export class ConnectionPool extends EventEmitter implements IConnectionPool {
+v3/mcp/transport/stdio.ts:14:import { EventEmitter } from 'events';
+v3/mcp/transport/stdio.ts:42:export class StdioTransport extends EventEmitter implements ITransport {
+v3/mcp/transport/http.ts:15:import { EventEmitter } from 'events';
+v3/mcp/transport/http.ts:54:export class HttpTransport extends EventEmitter implements ITransport {
+v3/__tests__/integration/workflow-integration.test.ts:8:import { EventEmitter } from 'events';
+v3/__tests__/integration/workflow-integration.test.ts:17:  let eventBus: EventEmitter;
+v3/__tests__/integration/workflow-integration.test.ts:22:    eventBus = new EventEmitter();
+v3/__tests__/integration/swarm-integration.test.ts:6:import { EventEmitter } from 'events';
+v3/__tests__/integration/swarm-integration.test.ts:11:  let eventBus: EventEmitter;
+v3/__tests__/integration/swarm-integration.test.ts:14:    eventBus = new EventEmitter();
+v3/__tests__/integration/plugin-integration.test.ts:5:import { EventEmitter } from 'events';
+v3/__tests__/integration/plugin-integration.test.ts:10:  let eventBus: EventEmitter;
+v3/__tests__/integration/plugin-integration.test.ts:13:    eventBus = new EventEmitter();
+v3/@claude-flow/swarm/src/unified-coordinator.ts:19:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/unified-coordinator.ts:136:export class UnifiedSwarmCoordinator extends EventEmitter implements IUnifiedSwarmCoordinator {
+v3/@claude-flow/swarm/src/types.ts:6:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/attention-coordinator.ts:20:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/attention-coordinator.ts:180:export class AttentionCoordinator extends EventEmitter {
+v3/@claude-flow/swarm/src/agent-pool.ts:6:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/agent-pool.ts:26:export class AgentPool extends EventEmitter implements IAgentPool {
+v3/@claude-flow/swarm/src/workers/worker-dispatch.ts:26:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/workers/worker-dispatch.ts:334:export class WorkerDispatchService extends EventEmitter {
+v3/@claude-flow/swarm/src/topology-manager.ts:6:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/topology-manager.ts:17:export class TopologyManager extends EventEmitter implements ITopologyManager {
+v3/@claude-flow/swarm/src/federation-hub.ts:27:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/federation-hub.ts:194:export class FederationHub extends EventEmitter {
+v3/@claude-flow/swarm/src/workers/worker-dispatch.js:25:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/workers/worker-dispatch.js:211:export class WorkerDispatchService extends EventEmitter {
+v3/@claude-flow/swarm/src/queen-coordinator.ts:24:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/queen-coordinator.ts:500:export class QueenCoordinator extends EventEmitter {
+v3/@claude-flow/swarm/src/consensus/index.ts:6:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/consensus/index.ts:24:// single-process EventEmitter messaging in the consensus protocols.
+v3/@claude-flow/swarm/src/consensus/index.ts:54:export class ConsensusEngine extends EventEmitter implements IConsensusEngine {
+v3/@claude-flow/swarm/src/federation-hub.js:26:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/federation-hub.js:44:export class FederationHub extends EventEmitter {
+v3/@claude-flow/swarm/src/workers/worker-dispatch.d.ts:25:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/workers/worker-dispatch.d.ts:127:export declare class WorkerDispatchService extends EventEmitter {
+v3/@claude-flow/swarm/src/consensus/gossip.ts:6:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/consensus/gossip.ts:90:export class GossipConsensus extends EventEmitter {
+v3/@claude-flow/shared/src/mcp/session-manager.ts:17:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/mcp/session-manager.ts:55:export class SessionManager extends EventEmitter {
+v3/@claude-flow/shared/src/mcp/transport/stdio.ts:14:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/mcp/transport/stdio.ts:42:export class StdioTransport extends EventEmitter implements ITransport {
+v3/@claude-flow/shared/src/resilience/circuit-breaker.ts:9:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/resilience/circuit-breaker.ts:110:export class CircuitBreaker extends EventEmitter {
+v3/@claude-flow/shared/src/events/rvf-event-log.ts:18:import { EventEmitter } from 'node:events';
+v3/@claude-flow/shared/src/events/rvf-event-log.ts:63:export class RvfEventLog extends EventEmitter {
+v3/@claude-flow/shared/src/events/event-store.ts:18:import { EventEmitter } from 'node:events';
+v3/@claude-flow/shared/src/events/event-store.ts:112:export class EventStore extends EventEmitter {
+v3/@claude-flow/shared/src/mcp/server.ts:18:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/mcp/server.ts:83:export class MCPServer extends EventEmitter implements IMCPServer {
+v3/@claude-flow/shared/src/events/projections.ts:15:import { EventEmitter } from 'node:events';
+v3/@claude-flow/shared/src/events/projections.ts:24:export abstract class Projection extends EventEmitter {
+v3/@claude-flow/swarm/src/consensus/transport.ts:5: * local `EventEmitter` for *everything* — both observability events
+v3/@claude-flow/swarm/src/consensus/transport.ts:24: * Observability events stay on the consensus class's own EventEmitter —
+v3/@claude-flow/swarm/src/consensus/raft.ts:6:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/consensus/raft.ts:50:export class RaftConsensus extends EventEmitter {
+v3/@claude-flow/swarm/src/consensus/byzantine.ts:6:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/consensus/byzantine.ts:53:export class ByzantineConsensus extends EventEmitter {
+v3/@claude-flow/swarm/src/message-bus.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/message-bus.ts:223:export class MessageBus extends EventEmitter implements IMessageBus {
+v3/@claude-flow/swarm/src/federation-hub.d.ts:26:import { EventEmitter } from 'events';
+v3/@claude-flow/swarm/src/federation-hub.d.ts:145:export declare class FederationHub extends EventEmitter {
+v3/@claude-flow/shared/src/services/v3-progress.service.ts:17:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/services/v3-progress.service.ts:103:export class V3ProgressService extends EventEmitter {
+v3/@claude-flow/shared/src/mcp/tool-registry.ts:17:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/mcp/tool-registry.ts:55:export class ToolRegistry extends EventEmitter {
+v3/@claude-flow/shared/src/mcp/connection-pool.ts:16:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/mcp/connection-pool.ts:103:export class ConnectionPool extends EventEmitter implements IConnectionPool {
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:15:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:62:export class WebSocketTransport extends EventEmitter implements ITransport {
+v3/@claude-flow/shared/src/resilience/bulkhead.ts:9:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/resilience/bulkhead.ts:84:export class Bulkhead extends EventEmitter {
+v3/@claude-flow/shared/src/mcp/transport/http.ts:15:import { EventEmitter } from 'events';
+v3/@claude-flow/shared/src/mcp/transport/http.ts:53:export class HttpTransport extends EventEmitter implements ITransport {
+v3/@claude-flow/plugins/src/registry/plugin-registry.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/registry/plugin-registry.ts:68:  private emitter = new EventEmitter();
+v3/@claude-flow/plugins/src/registry/plugin-registry.ts:151:export class PluginRegistry extends EventEmitter {
+v3/@claude-flow/plugins/src/providers/index.ts:8:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/providers/index.ts:110:export class ProviderRegistry extends EventEmitter {
+v3/@claude-flow/plugins/src/integrations/ruvector/types.ts:1484:export interface RuVectorEventEmitter {
+v3/@claude-flow/plugins/src/integrations/ruvector/types.ts:1737:export interface IRuVectorClient extends RuVectorEventEmitter {
+v3/@claude-flow/plugins/src/hooks/index.ts:8:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/hooks/index.ts:54:export class HookRegistry extends EventEmitter {
+v3/@claude-flow/providers/src/provider-manager.ts:13:import { EventEmitter } from 'events';
+v3/@claude-flow/providers/src/provider-manager.ts:61:export class ProviderManager extends EventEmitter {
+v3/@claude-flow/plugins/src/workers/index.ts:8:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/workers/index.ts:99:export class WorkerInstance extends EventEmitter implements IWorkerInstance {
+v3/@claude-flow/plugins/src/workers/index.ts:320:export class WorkerPool extends EventEmitter implements IWorkerPool {
+v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:16:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:166:class ConnectionManager extends EventEmitter {
+v3/@claude-flow/plugins/src/registry/enhanced-plugin-registry.ts:13:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/registry/enhanced-plugin-registry.ts:159:  private emitter = new EventEmitter();
+v3/@claude-flow/plugins/src/registry/enhanced-plugin-registry.ts:223:export class EnhancedPluginRegistry extends EventEmitter {
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:16:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:129:export class AgenticFlowBridge extends EventEmitter {
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:512:export class AgentDBBridge extends EventEmitter {
+v3/@claude-flow/providers/src/types.ts:10:import { EventEmitter } from 'events';
+v3/@claude-flow/providers/src/types.ts:305:export interface ILLMProvider extends EventEmitter {
+v3/@claude-flow/providers/src/base-provider.ts:13:import { EventEmitter } from 'events';
+v3/@claude-flow/providers/src/base-provider.ts:122:export abstract class BaseProvider extends EventEmitter implements ILLMProvider {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:12:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:203:export class RuVectorStream extends EventEmitter {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:826:export class RuVectorTransaction extends EventEmitter {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1322:export class BatchProcessor extends EventEmitter {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1568:// PoolEventEmitter Class
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1578: * const poolEvents = new PoolEventEmitter(pool);
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1589:export class PoolEventEmitter extends EventEmitter {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1718: * Create a new PoolEventEmitter instance.
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1720:export function createPoolEventEmitter(pool: Pool): PoolEventEmitter {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1721:  return new PoolEventEmitter(pool);
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1732:  PoolEventEmitter,
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1736:  createPoolEventEmitter,
+v3/@claude-flow/plugins/src/integrations/ruvector/index.ts:69:  RuVectorEventEmitter,
+v3/@claude-flow/plugins/src/integrations/ruvector/index.ts:199:  PoolEventEmitter,
+v3/@claude-flow/plugins/src/integrations/ruvector/index.ts:205:  createPoolEventEmitter,
+v3/@claude-flow/plugins/src/core/base-plugin.ts:8:import { EventEmitter } from 'events';
+v3/@claude-flow/plugins/src/core/base-plugin.ts:72:export abstract class BasePlugin extends EventEmitter implements IPlugin {
+v3/@claude-flow/memory/src/sqljs-backend.ts:10:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/sqljs-backend.ts:82:export class SqlJsBackend extends EventEmitter implements IMemoryBackend {
+v3/@claude-flow/memory/src/migration.ts:10:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/migration.ts:67:export class MemoryMigrator extends EventEmitter {
+v3/@claude-flow/memory/src/learning-bridge.ts:12:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/learning-bridge.ts:110:export class LearningBridge extends EventEmitter {
+v3/@claude-flow/memory/src/sqlite-backend.ts:11:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/sqlite-backend.ts:81:export class SQLiteBackend extends EventEmitter implements IMemoryBackend {
+v3/@claude-flow/memory/src/memory-graph.ts:11:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/memory-graph.ts:75:export class MemoryGraph extends EventEmitter {
+v3/@claude-flow/memory/src/index.ts:232:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/index.ts:305:export class UnifiedMemoryService extends EventEmitter implements IMemoryBackend {
+v3/@claude-flow/memory/src/hybrid-backend.ts:11:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/hybrid-backend.ts:154:export class HybridBackend extends EventEmitter implements IMemoryBackend {
+v3/@claude-flow/memory/src/hnsw-index.ts:15:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/hnsw-index.ts:217:export class HNSWIndex extends EventEmitter {
+v3/@claude-flow/memory/src/cache-manager.ts:10:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/cache-manager.ts:40:export class CacheManager<T = MemoryEntry> extends EventEmitter {
+v3/@claude-flow/memory/src/cache-manager.ts:422:export class TieredCacheManager<T = MemoryEntry> extends EventEmitter {
+v3/@claude-flow/memory/src/controller-registry.ts:13:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/controller-registry.ts:227:export class ControllerRegistry extends EventEmitter {
+v3/@claude-flow/memory/src/auto-memory-bridge.ts:16:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/auto-memory-bridge.ts:207:export class AutoMemoryBridge extends EventEmitter {
+v3/@claude-flow/memory/src/agentdb-backend.ts:13:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/agentdb-backend.ts:131:export class AgentDBBackend extends EventEmitter implements IMemoryBackend {
+v3/@claude-flow/memory/src/agentdb-adapter.ts:10:import { EventEmitter } from 'node:events';
+v3/@claude-flow/memory/src/agentdb-adapter.ts:97:export class AgentDBAdapter extends EventEmitter implements IMemoryBackend {
+v3/@claude-flow/mcp/src/task-manager.ts:8:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/task-manager.ts:36:export class TaskManager extends EventEmitter {
+v3/@claude-flow/mcp/src/sampling.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/sampling.ts:63:export class SamplingManager extends EventEmitter {
+v3/@claude-flow/mcp/src/oauth.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/oauth.ts:98:export class OAuthManager extends EventEmitter {
+v3/@claude-flow/mcp/src/transport/stdio.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/transport/stdio.ts:27:export class StdioTransport extends EventEmitter implements ITransport {
+v3/@claude-flow/mcp/src/session-manager.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/session-manager.ts:31:export class SessionManager extends EventEmitter {
+v3/@claude-flow/mcp/src/tool-registry.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/tool-registry.ts:35:export class ToolRegistry extends EventEmitter {
+v3/@claude-flow/mcp/src/resource-registry.ts:8:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/resource-registry.ts:43:export class ResourceRegistry extends EventEmitter {
+v3/@claude-flow/mcp/src/server.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/server.ts:67:export class MCPServer extends EventEmitter implements IMCPServer {
+v3/@claude-flow/mcp/src/rate-limiter.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/rate-limiter.ts:40:export class RateLimiter extends EventEmitter {
+v3/@claude-flow/mcp/src/prompt-registry.ts:8:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/prompt-registry.ts:35:export class PromptRegistry extends EventEmitter {
+v3/@claude-flow/mcp/src/connection-pool.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/connection-pool.ts:68:export class ConnectionPool extends EventEmitter implements IConnectionPool {
+v3/@claude-flow/mcp/src/transport/websocket.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/transport/websocket.ts:45:export class WebSocketTransport extends EventEmitter implements ITransport {
+v3/@claude-flow/integration/src/worker-pool.ts:20:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/worker-pool.ts:172:export class WorkerPool extends EventEmitter {
+v3/@claude-flow/integration/src/sdk-bridge.ts:18:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/sdk-bridge.ts:70:export class SDKBridge extends EventEmitter {
+v3/@claude-flow/integration/src/agentic-flow-agent.ts:23:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/agentic-flow-agent.ts:249:export class AgenticFlowAgent extends EventEmitter implements IAgent {
+v3/@claude-flow/mcp/src/transport/http.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/mcp/src/transport/http.ts:39:export class HttpTransport extends EventEmitter implements ITransport {
+v3/@claude-flow/integration/src/sona-adapter.ts:17:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/sona-adapter.ts:108:export class SONAAdapter extends EventEmitter {
+v3/@claude-flow/integration/src/agentic-flow-bridge.ts:14:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/agentic-flow-bridge.ts:82:export class AgenticFlowBridge extends EventEmitter {
+v3/@claude-flow/hooks/src/swarm/index.ts:10:import { EventEmitter } from 'node:events';
+v3/@claude-flow/hooks/src/swarm/index.ts:137:export class SwarmCommunication extends EventEmitter {
+v3/@claude-flow/hooks/src/executor/index.ts:43:  setEventEmitter(emitter: { emit: (event: string, data: unknown) => void }): void {
+v3/@claude-flow/embeddings/src/rvf-embedding-service.ts:24:import { EventEmitter } from 'events';
+v3/@claude-flow/embeddings/src/rvf-embedding-service.ts:127: * Extends EventEmitter and implements IEmbeddingService for drop-in
+v3/@claude-flow/embeddings/src/rvf-embedding-service.ts:130:export class RvfEmbeddingService extends EventEmitter implements IEmbeddingService {
+v3/@claude-flow/cli/dist/src/mcp-server.js:19:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/mcp-server.js:50:export class MCPServerManager extends EventEmitter {
+v3/@claude-flow/embeddings/src/embedding-service.ts:15:import { EventEmitter } from 'events';
+v3/@claude-flow/embeddings/src/embedding-service.ts:105:abstract class BaseEmbeddingService extends EventEmitter implements IEmbeddingService {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:7:import { EventEmitter } from 'events';
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:54:export class DualModeOrchestrator extends EventEmitter {
+v3/@claude-flow/cli/dist/src/mcp-server.d.ts:19:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/mcp-server.d.ts:56:export declare class MCPServerManager extends EventEmitter {
+v3/@claude-flow/integration/src/worker-base.ts:20:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/worker-base.ts:219:export abstract class WorkerBase extends EventEmitter {
+v3/@claude-flow/integration/src/token-optimizer.ts:15:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/token-optimizer.ts:51:export class TokenOptimizer extends EventEmitter {
+v3/@claude-flow/integration/src/swarm-adapter.ts:22:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/swarm-adapter.ts:272:export class SwarmAdapter extends EventEmitter {
+v3/@claude-flow/integration/src/multi-model-router.ts:31:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/multi-model-router.ts:445:export class MultiModelRouter extends EventEmitter {
+v3/@claude-flow/integration/src/provider-adapter.ts:22:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/provider-adapter.ts:311:export class ProviderAdapter extends EventEmitter {
+v3/@claude-flow/integration/src/feature-flags.ts:12:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/feature-flags.ts:124:export class FeatureFlagManager extends EventEmitter {
+v3/@claude-flow/integration/src/attention-coordinator.ts:22:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/attention-coordinator.ts:132:export class AttentionCoordinator extends EventEmitter {
+v3/@claude-flow/integration/src/agent-adapter.ts:20:import { EventEmitter } from 'events';
+v3/@claude-flow/integration/src/agent-adapter.ts:120:export class AgentAdapter extends EventEmitter {
+v3/@claude-flow/hooks/src/reasoningbank/index.ts:16:import { EventEmitter } from 'node:events';
+v3/@claude-flow/hooks/src/reasoningbank/index.ts:189:export class ReasoningBank extends EventEmitter {
+v3/@claude-flow/hooks/src/workers/index.ts:8:import { EventEmitter } from 'events';
+v3/@claude-flow/hooks/src/workers/index.ts:429:export class WorkerManager extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/worker-queue.d.ts:19:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/worker-queue.d.ts:100:export declare class WorkerQueue extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:19:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:159:export class WorkerQueue extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.d.ts:13:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/worker-daemon.d.ts:66:export declare class WorkerDaemon extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:18:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:47:export class ContainerWorkerPool extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/claim-service.js:15:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/claim-service.js:38:export class ClaimService extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.d.ts:21:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.d.ts:201:export declare class HeadlessWorkerExecutor extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.d.ts:18:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.d.ts:95:export declare class ContainerWorkerPool extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/claim-service.d.ts:15:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/claim-service.d.ts:133:export declare class ClaimService extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:13:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:88:export class WorkerDaemon extends EventEmitter {
+v3/@claude-flow/cli/dist/src/commands/migrate.js:640:                    { change: 'Event system changed', from: 'EventEmitter', to: 'Event sourcing' },
+v3/@claude-flow/cli/src/services/worker-daemon.ts:14:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/src/services/worker-daemon.ts:185:export class WorkerDaemon extends EventEmitter {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:22:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:362:export class HeadlessWorkerExecutor extends EventEmitter {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:23:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:599:export class HeadlessWorkerExecutor extends EventEmitter {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:19:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:145:export class ContainerWorkerPool extends EventEmitter {
+v3/@claude-flow/claims/tests/events.test.ts:202:interface EventEmitterConfig {
+v3/@claude-flow/claims/tests/events.test.ts:210:const DEFAULT_EVENT_CONFIG: EventEmitterConfig = {
+v3/@claude-flow/claims/tests/events.test.ts:218:class ClaimEventEmitter {
+v3/@claude-flow/claims/tests/events.test.ts:228:    private readonly config: EventEmitterConfig = DEFAULT_EVENT_CONFIG
+v3/@claude-flow/claims/tests/events.test.ts:537:describe('ClaimEventEmitter', () => {
+v3/@claude-flow/claims/tests/events.test.ts:538:  let emitter: ClaimEventEmitter;
+v3/@claude-flow/claims/tests/events.test.ts:581:    emitter = new ClaimEventEmitter(
+v3/@claude-flow/claims/tests/events.test.ts:989:      const batchConfig: EventEmitterConfig = {
+v3/@claude-flow/claims/tests/events.test.ts:995:      emitter = new ClaimEventEmitter(
+v3/@claude-flow/claims/tests/events.test.ts:1062:      const batchConfig: EventEmitterConfig = {
+v3/@claude-flow/claims/tests/events.test.ts:1068:      emitter = new ClaimEventEmitter(
+v3/@claude-flow/claims/src/application/load-balancer.ts:25:import { EventEmitter } from 'node:events';
+v3/@claude-flow/claims/src/application/load-balancer.ts:345:export class LoadBalancer extends EventEmitter implements ILoadBalancer {
+v3/@claude-flow/cli/src/mcp-server.ts:20:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/src/mcp-server.ts:87:export class MCPServerManager extends EventEmitter {
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:21:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:86:class HeadlessWorkerExecutor extends EventEmitter {
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:333:interface MockChildProcess extends EventEmitter {
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:334:  stdout: EventEmitter | null;
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:335:  stderr: EventEmitter | null;
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:341:  const stdout = new EventEmitter();
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:342:  const stderr = new EventEmitter();
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:344:  const proc = new EventEmitter() as MockChildProcess;
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:372:      expect(exec).toBeInstanceOf(EventEmitter);
+v3/@claude-flow/cli/src/services/worker-queue.ts:20:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/src/services/worker-queue.ts:273:export class WorkerQueue extends EventEmitter {
+v3/@claude-flow/cli/src/services/claim-service.ts:16:import { EventEmitter } from 'events';
+v3/@claude-flow/cli/src/services/claim-service.ts:208:export class ClaimService extends EventEmitter {
+v3/@claude-flow/cli/src/commands/migrate.ts:671:          { change: 'Event system changed', from: 'EventEmitter', to: 'Event sourcing' },

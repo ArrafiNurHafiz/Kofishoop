@@ -1,0 +1,220 @@
+/tmp/ruflo/v3/crates/ruflo-federation-peer/src/bin.rs:31:             rebuild with `--features native` to drive the real QUIC + AIMDS backend.",
+/tmp/ruflo/v3/@claude-flow/browser/package-lock.json:1354:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/@claude-flow/browser/package-lock.json:1381:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/@claude-flow/browser/package-lock.json:5689:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/@claude-flow/browser/package-lock.json:9359:    "node_modules/prebuild-install": {
+/tmp/ruflo/v3/@claude-flow/browser/package-lock.json:9361:      "resolved": "https://registry.npmjs.org/prebuild-install/-/prebuild-install-7.1.3.tgz",
+/tmp/ruflo/v3/@claude-flow/browser/package-lock.json:9381:        "prebuild-install": "bin.js"
+/tmp/ruflo/v3/@claude-flow/browser/package-lock.json:10009:        "prebuild-install": "^7.1.1",
+/tmp/ruflo/v3/@claude-flow/claims/src/infrastructure/federated-event-store.ts:318:      // approach: rebuild from local events for this aggregate.
+/tmp/ruflo/v3/docs/adr/ADR-166-mcp-bridge-unauthenticated-rce-remediation.md:273:**R4 — Persistence may already exist.** If an instance was exploited pre-patch, a beacon/`NODE_OPTIONS` preload may persist across a plain image pull. Phase 0c (rebuild from clean image + rotate keys + audit stores) is mandatory, not optional.
+/tmp/ruflo/v3/docs/adr/ADR-167-gaia-submission-integrity-exploit-audit.md:118:  `sha256(gitCommit + ':ruflo-witness/v1')`. `verify.mjs` recomputes the hash,
+/tmp/ruflo/v3/docs/adr/ADR-175-page-agent-browser-intent-layer.md:49:- **Reimplement NL intent over Playwright directly** — rebuild page-agent's DOM-text reasoning ourselves. Rejected: page-agent is a proven MIT implementation; reimplementing is cost with no differentiation.
+/tmp/ruflo/v3/docs/adr/ADR-102-plugin-hook-cli-flag-regression-ci-guard.md:14:- `@claude-flow/memory` had a static `import 'better-sqlite3'` whose evaluation succeeded under the test runner's Node 20 + `pnpm install` (prebuilds present). It would only fail when a user ran `npm install` on Node 26 (no prebuilds) — which CI never did.
+/tmp/ruflo/v3/docs/adr/ADR-102-plugin-hook-cli-flag-regression-ci-guard.md:154:| `smoke-install-no-bsqlite` | ✓ | ✓ | — | Tests `npm install --omit=optional` round-trip behaviour. The smoke script uses bash; Windows runners have git-bash but the regression class (native build failure on Node 26 without prebuilds) is OS-independent. Linux + macOS coverage is sufficient signal for the JS code path. |
+/tmp/ruflo/v3/docs/adr/ADR-102-plugin-hook-cli-flag-regression-ci-guard.md:199:- The harness runs the actual CLI binary, so it surfaces issues like missing dependencies, broken postinstall scripts, and prebuild gaps that pure-vitest tests would miss.
+/tmp/ruflo/v3/docs/adr/ADR-176-proven-self-benchmarking-harness-loop.md:165:**Acceptance test (clean-room replay).** `scripts/replay-generation.mjs` (a CI gate): from a clean install, replay one PROMOTED generation from its receipt alone — every embedded hash recomputes bit-identically and re-running `accept/v1+sig` on independently-recomputed inputs reproduces `promoted=true`, with **network access trapped** (offline). A promotion is reproducible without trusting any service log.
+/tmp/ruflo/v3/docs/adr/ADR-117-neural-trader-managed-agent-backtests.md:25:  1. `managed_agent_create({ packages: { npm: ["neural-trader"], apt: ["build-essential"] }, initScript: "npm install -g neural-trader >/dev/null 2>&1 || true; node -e \"require('neural-trader')\" >/dev/null 2>&1", system: "<neural-trader operator prompt>", name: "nt-cloud", networking: "unrestricted" })` → a container with `neural-trader` pre-installed at start (so the agent doesn't reinstall mid-run; `apt: build-essential` only if there's no prebuilt NAPI binary for the container arch — neural-trader ships prebuilds, so usually omit it).
+/tmp/ruflo/v3/docs/adr/ADR-122-browser-beyond-sota.md:70:The bolded rows are the wedges: every named SOTA system is "N", ruflo has the primitives in place to be "Y", and nothing else can ship these without rebuilding their core.
+/tmp/ruflo/v3/docs/adr/ADR-123-sublinear-integration.md:15:Traditional AI systems recompute everything. RuFlo only computes what changed enough to matter, only at the depth the runtime can afford, and only over the relationships that are still load-bearing.
+/tmp/ruflo/v3/docs/adr/ADR-123-sublinear-integration.md:145:LangGraph and Letta are locked into their own runtimes; switching means rebuilding the memory layer ([Letta vs LangChain Memory comparison](https://vectorize.io/articles/letta-vs-langchain-memory)). HippoRAG ships PPR but only one (full-vector) and only over one graph. None of the surveyed systems ship cryptographic provenance for *any* memory artifact, let alone graph-reasoning artifacts.
+/tmp/ruflo/v3/docs/adr/ADR-123-sublinear-integration.md:307:`sublinear/page-rank-entry` is the workhorse — eight of eleven wedges call it. Its memoization key is `(graphHash, graphTimestamp, nodeId, alpha, epsilon, seedNodes?, maxComplexityClass?)`; TTL is configurable per `graphId` (default 60 s for fast-mutating graphs like span causality, 24 h for slow-mutating graphs like file-import). `sublinear/solve-on-change` is the streaming workhorse — for event-driven plugins (federation trust deltas, span streams, append-only causal break events) it replaces the recompute-from-scratch path with `O(nnz(delta) · log N)` deltas, sidestepping the `prev_solution` initial-guess trap that Neumann historically had (fixed in upstream 1.7.0).
+/tmp/ruflo/v3/docs/adr/ADR-123-sublinear-integration.md:534:Promote signed PR artifacts to a federation-distributable object. A federation peer can request a precomputed PR vector by `(graphId, nodeId, alpha, epsilon)` and receive a `SignedPageRankArtifact` from any peer in its trust set.
+/tmp/ruflo/v3/docs/adr/ADR-126-neural-trader-substrate-integration.md:13:1. **ADR-125 / `@claude-flow/memory@3.0.0-alpha.18`** (PRs #2062 + #2063) shipped the canonical `MemoryService`, real `HybridBackend` default, **persistent HNSW** (`.hnsw` sidecar snapshots that survive restart), **`MemoryConsolidator`** (`sweepExpired` / `dedup` / `compactHnsw` / auto-run timer), **graceful retrieval degradation** with FTS5 keyword fallback, and **hybrid RRF+MMR search**. Today every neural-trader process restart rebuilds the HNSW index from scratch; the four trading namespaces (`trading-{strategies,backtests,risk,analysis}`) have no expiry policy and grow unboundedly; `semanticSearch` hard-throws when the embedder is unavailable, taking down the `market-analyst` regime-comparison workflow.
+/tmp/ruflo/v3/docs/adr/ADR-126-neural-trader-substrate-integration.md:27:| Cold-start HNSW rebuild | `agents/trading-strategist.md:108` + `market-analyst.md:48` | every restart rebuilds index from scratch | ADR-125 Phase 3 — persistent HNSW |
+/tmp/ruflo/v3/docs/adr/ADR-150-metaharness-integration-surfaces.md:243:`scripts/train-bundled-krr.mjs` rebuilds the artifact. The blocker is
+/tmp/ruflo/v3/docs/adr/ADR-164.1-budget-tracker-atomicity.md:319:      RETURN { ok: true, warned: 'COMMIT_AFTER_EXPIRY', finalRemaining: <recomputed> };
+/tmp/ruflo/v3/@claude-flow/guidance/docs/adrs/ADR-G018-truth-anchor-system.md:31:- `verify(id)` recomputes and compares the signature
+/tmp/ruflo/v3/@claude-flow/guidance/docs/adrs/ADR-G019-first-class-uncertainty.md:30:- `recomputeConfidence()`: point = supportingWeight / totalWeight, spread = 0.3 / sqrt(evidenceCount)
+/tmp/ruflo/v3/@claude-flow/guidance/docs/adrs/ADR-G019-first-class-uncertainty.md:31:- `addEvidence()` recomputes confidence and re-derives status automatically
+/tmp/ruflo/v3/@claude-flow/guidance/docs/adrs/ADR-G025-wasm-kernel.md:94:- Requires Rust toolchain + wasm-pack for rebuilding
+/tmp/ruflo/v3/@claude-flow/guidance/docs/adrs/ADR-G026-review-remediation.md:27:6. **O(n) `shift()` eviction** in `ThreatDetector.addSignal()` and `CollusionDetector.recordInteraction()`. Both used `Array.shift()` for single-element eviction on every insertion once at capacity. In V8, `shift()` is O(n) because it reindexes all remaining elements.
+/tmp/ruflo/v3/@claude-flow/guidance/docs/guides/knowledge-management.md:66:// belief.status: 'probable' (recomputed from all evidence)
+/tmp/ruflo/v3/@claude-flow/guidance/scripts/bench-phase-1.mjs:11: *   3. retriever.ts:449-460 cosineSimilarity   — recomputes norms (vectors are unit-normalised)
+/tmp/ruflo/v3/@claude-flow/hooks/README.md:128:hooks-daemon rebuild-index
+/tmp/ruflo/v3/@claude-flow/hooks/bin/hooks-daemon.js:173:    case 'rebuild-index': {
+/tmp/ruflo/v3/@claude-flow/hooks/bin/hooks-daemon.js:175:      // In real implementation, this would rebuild the vector index
+/tmp/ruflo/v3/@claude-flow/hooks/bin/hooks-daemon.js:176:      console.log('Index rebuild completed.');
+/tmp/ruflo/v3/@claude-flow/hooks/bin/hooks-daemon.js:190:  hooks-daemon rebuild-index       Rebuild HNSW index
+/tmp/ruflo/v3/@claude-flow/guidance/src/adversarial.ts:488:    // Build graph once and pass to all detectors (avoids 3x rebuild)
+/tmp/ruflo/v3/@claude-flow/guidance/src/analyzer.ts:1678:      id: 'structure-build-awareness',
+/tmp/ruflo/v3/@claude-flow/guidance/src/persistence.ts:163:    await this.rebuildIndex(kept);
+/tmp/ruflo/v3/@claude-flow/guidance/src/persistence.ts:170:   * Rewrites the NDJSON file and rebuilds the index.
+/tmp/ruflo/v3/@claude-flow/guidance/src/persistence.ts:178:    await this.rebuildIndex(events);
+/tmp/ruflo/v3/@claude-flow/guidance/src/persistence.ts:346:  private async rebuildIndex(events: RunEvent[]): Promise<void> {
+/tmp/ruflo/v3/@claude-flow/guidance/src/temporal.ts:254:   * The returned assertion has its status recomputed against the current time.
+/tmp/ruflo/v3/@claude-flow/guidance/src/uncertainty.ts:187: * inference chain links, and time-based decay. The ledger recomputes confidence
+/tmp/ruflo/v3/@claude-flow/guidance/src/uncertainty.ts:255:   * then recomputes the belief's confidence and status.
+/tmp/ruflo/v3/@claude-flow/guidance/src/uncertainty.ts:271:    this.recomputeConfidence(belief);
+/tmp/ruflo/v3/@claude-flow/guidance/src/uncertainty.ts:353:   * @param beliefId - The belief to recompute
+/tmp/ruflo/v3/@claude-flow/guidance/src/uncertainty.ts:360:    this.recomputeConfidence(belief);
+/tmp/ruflo/v3/@claude-flow/guidance/src/uncertainty.ts:609:  private recomputeConfidence(belief: Belief): void {
+/tmp/ruflo/v3/@claude-flow/cli/package-lock.json:658:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/@claude-flow/cli/package-lock.json:666:        "prebuild": "^13.0.1",
+/tmp/ruflo/v3/@claude-flow/cli/package-lock.json:678:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/@claude-flow/cli/package-lock.json:686:        "prebuild": "^13.0.1",
+/tmp/ruflo/v3/@claude-flow/cli/scripts/benchmark-cross-repo.mjs:33:    labels: ['sql injection', 'reindex'] },
+/tmp/ruflo/v3/@claude-flow/cli/scripts/evolve-proof-round.mjs:85:console.log(`recomputed decision matches: ${verify.decisionMatches}`);
+/tmp/ruflo/v3/@claude-flow/cli/scripts/mint-champion.mjs:101:// ── Retrieval cache (async precompute → sync evalFn) ─────────────────────────
+/tmp/ruflo/v3/@claude-flow/cli/scripts/replay-generation.mjs:10: * Proves: (1) each embedded hash recomputes bit-identically, (2) re-running the
+/tmp/ruflo/v3/@claude-flow/cli/scripts/replay-generation.mjs:11: * versioned rule on independently-recomputed inputs reproduces promoted=true,
+/tmp/ruflo/v3/@claude-flow/cli/scripts/replay-generation.mjs:46:// (1) hashes recompute bit-identically
+/tmp/ruflo/v3/@claude-flow/cli/scripts/replay-generation.mjs:63:  console.log(`${same ? '✓' : '✗'} ${label}: ${same ? 'identical' : `MISMATCH\n    recomputed ${got}\n    recorded   ${want}`}`);
+/tmp/ruflo/v3/@claude-flow/cli/scripts/replay-generation.mjs:66:// (2) re-run accept/v1+sig on independently-recomputed inputs → promoted=true
+/tmp/ruflo/v3/@claude-flow/cli/src/appliance/rvfa-signing.ts:243:function rebuildRvfa(
+/tmp/ruflo/v3/@claude-flow/cli/src/appliance/rvfa-signing.ts:311:    // Embed signature in header and rebuild
+/tmp/ruflo/v3/@claude-flow/cli/src/appliance/rvfa-signing.ts:313:    const rebuilt = rebuildRvfa(buf, header, sectionData, footer);
+/tmp/ruflo/v3/@claude-flow/memory/README.md:18:- **Persistent HNSW.** Closing a service snapshots its HNSW index to a sidecar (`<dbPath>.hnsw` + `<dbPath>.meta.json`). Reopening on the same path restores in milliseconds rather than rebuilding from scratch — search-ready cold start.
+/tmp/ruflo/v3/@claude-flow/memory/README.md:19:- **`MemoryConsolidator`.** A background service that evicts expired entries from indexes *and* HNSW, deduplicates by content hash, and rebuilds the HNSW index when it gets fragmented. Auto-runs on a configurable timer (default 6 hours) so memory stays bounded.
+/tmp/ruflo/v3/@claude-flow/memory/README.md:148:// memory.search() is immediately fast — no rebuild
+/tmp/ruflo/v3/@claude-flow/memory/README.md:232:// search works immediately — no rebuild
+/tmp/ruflo/v3/@claude-flow/memory/README.md:535:- **Prune-before-build** - Avoids O(n^2) index rebuild loop
+/tmp/ruflo/v3/implementation/adrs/ADR-007-EVENT-SOURCING.md:134:- [x] Can rebuild state from events
+/tmp/ruflo/v3/implementation/adrs/ADR-017-ruvector-integration.md:1121:- Analysis results recomputed repeatedly
+/tmp/ruflo/v3/@claude-flow/memory/benchmarks/results/scripts/run-baseline.mjs:5: * Pre-builds the package (`npm run build`) then exercises the canonical
+/tmp/ruflo/v3/@claude-flow/memory/package.json:16:    "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
+/tmp/ruflo/v3/implementation/adrs/ADR-027-ruvector-postgresql-integration.md:612:              'rebuild_hnsw', 'analyze', 'vacuum',
+/tmp/ruflo/v3/implementation/adrs/ADR-039-cognitive-kernel-plugin.md:271:| Attention steering | <5ms for reallocation | ~50ms (context rebuild) | 10x |
+/tmp/ruflo/v3/implementation/adrs/ADR-039-cognitive-kernel-plugin.md:273:| Memory consolidation | <100ms batch | ~1s (full reindex) | 10x |
+/tmp/ruflo/v3/implementation/adrs/ADR-048-auto-memory-integration.md:512:- [x] `pruneSectionsToFit()` prune-before-build (eliminates O(n^2))
+/tmp/ruflo/v3/@claude-flow/memory/scripts/smoke-no-bsqlite.mjs:6: * (e.g. `npm install` on Node 26 without prebuilds) by installing this package
+/tmp/ruflo/v3/@claude-flow/memory/src/agentdb-adapter.ts:1056:      recommendations.push('Consider rebuilding index or increasing ef');
+/tmp/ruflo/v3/implementation/adrs/ADR-050-intelligence-loop.md:29:| `consolidate()` | session-end | <500ms | Process insights, rebuild edges, recompute PageRank |
+/tmp/ruflo/v3/implementation/adrs/ADR-050-intelligence-loop.md:95:| session-end | 28ms | +300ms (recompute) | 328ms |
+/tmp/ruflo/v3/@claude-flow/memory/src/auto-memory-bridge.ts:499:    // Prune sections before building the index to avoid O(n^2) rebuild loop
+/tmp/ruflo/v3/@claude-flow/memory/src/consolidator.ts:9: * - `compactHnsw()` — rebuild the HNSW index from current `entries`.
+/tmp/ruflo/v3/implementation/adrs/ADR-058-self-contained-ruflo-rvf-appliance.md:545:- **Updatable**: Hot-patch sections without rebuilding entire appliance
+/tmp/ruflo/v3/implementation/adrs/ADR-064-stub-remediation-v3522.md:28:| **P1** | Memory delete HNSW cleanup | SQL row deleted, vector remains | Delete embedding row + rebuild search index |
+/tmp/ruflo/v3/implementation/adrs/ADR-064-stub-remediation-v3522.md:75:3. Mark HNSW index as dirty for rebuild on next search
+/tmp/ruflo/v3/implementation/adrs/ADR-077-diskann-vector-backend.md:89:- Native disk persistence — no rebuild needed between sessions
+/tmp/ruflo/v3/implementation/adrs/v3-adrs.md:702:- [ ] Can rebuild state from events
+/tmp/ruflo/v3/implementation/hooks/STATUSLINE-DAEMONS.md:192:- **Index rebuilding**: Optimize HNSW index
+/tmp/ruflo/v3/implementation/hooks/STATUSLINE-DAEMONS.md:483:node .claude/helpers/hooks-daemon.mjs rebuild-index
+/tmp/ruflo/v3/@claude-flow/memory/src/hnsw-index.ts:456:  async rebuild(
+/tmp/ruflo/v3/@claude-flow/memory/src/hnsw-index.ts:533:   * Used by {@link MemoryConsolidator.compactHnsw} to rebuild the index with
+/tmp/ruflo/v3/@claude-flow/memory/src/rvf-learning-store.ts:5: * binary-header JSON-lines file format for fast append and rebuild.
+/tmp/ruflo/v3/@claude-flow/memory/src/rvf-learning-store.ts:97: * read line-by-line to rebuild state.
+/tmp/ruflo/v3/implementation/migration/MIGRATION-GUIDE.md:332:npm rebuild sql.js
+/tmp/ruflo/v3/implementation/research/better-sqlite3-usage-inventory.md:26:  - Auto-rebuild on NODE_MODULE_VERSION mismatch
+/tmp/ruflo/v3/implementation/research/better-sqlite3-usage-inventory.md:36:let rebuildAttempted = false;
+/tmp/ruflo/v3/implementation/research/better-sqlite3-usage-inventory.md:468:- **Usage**: Test and rebuild better-sqlite3 on macOS ARM64
+/tmp/ruflo/v3/implementation/research/better-sqlite3-usage-inventory.md:526:- [ ] macOS ARM64 (better-sqlite3 with rebuild)
+/tmp/ruflo/v3/implementation/research/windows-sqlite-sqljs-migration.md:57:- Auto-rebuild on NODE_MODULE_VERSION mismatch
+/tmp/ruflo/v3/implementation/research/windows-sqlite-sqljs-migration.md:87:- Postinstall scripts: Auto-rebuild attempts (scripts/install-arm64.js)
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/embeddings.ts:552:    { name: 'action', short: 'a', type: 'string', description: 'Action: build, rebuild, status, optimize', default: 'status' },
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/embeddings.ts:560:    { command: 'claude-flow embeddings index -a rebuild -c project', description: 'Rebuild (label as `project`)' },
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/embeddings.ts:646:      if (action === 'build' || action === 'rebuild') {
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/embeddings.ts:649:        // earlier code REQUIRED `-c` for build/rebuild AND its examples
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/embeddings.ts:659:        // Force rebuild if requested
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/embeddings.ts:660:        const index = await getHNSWIndex({ forceRebuild: action === 'rebuild' });
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/research.d.ts:49:    private rebuildClusters;
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/research.js:60:            await this.rebuildClusters(patterns);
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/research.js:194:    async rebuildClusters(patterns) {
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/research.ts:83:      await this.rebuildClusters(patterns);
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/research.ts:251:  private async rebuildClusters(patterns: Pattern[]): Promise<void> {
+/tmp/ruflo/v3/@claude-flow/neural/src/pattern-learner.ts:238:      this.rebuildClusters();
+/tmp/ruflo/v3/@claude-flow/neural/src/pattern-learner.ts:389:      this.rebuildClusters();
+/tmp/ruflo/v3/@claude-flow/neural/src/pattern-learner.ts:731:  private rebuildClusters(): void {
+/tmp/ruflo/v3/@claude-flow/neural/src/pattern-learner.ts:813:      this.rebuildClusters();
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/memory.ts:323:      description: 'Build/rebuild HNSW index before searching (enables 150x-12,500x speedup)',
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/memory.ts:355:    // Build/rebuild HNSW index if requested
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/memory.ts:1123:      name: 'rebuild-index',
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/memory.ts:1140:    const rebuildIndex = ctx.flags.rebuildIndex as boolean ?? true;
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/memory.ts:1184:        rebuildIndex,
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/attention/memory-efficiency.bench.ts:497:          const attnWeights = recomputeAttention(q, k);
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/ruvector/optimize.ts:71:      name: 'reindex',
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/ruvector/optimize.ts:125:    { command: 'claude-flow ruvector optimize --reindex', description: 'Rebuild all indexes' },
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/ruvector/optimize.ts:131:    const runReindex = ctx.flags.reindex as boolean;
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/ruvector/optimize.ts:351:              recommendation: 'Consider rebuilding with higher ef_construction for better recall',
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/ruvector/optimize.ts:363:              recommendation: 'Consider rebuilding with higher m for better connectivity',
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/ruvector/optimize.ts:389:              recommendation: 'Consider rebuilding with optimal lists parameter',
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/ruvector/optimize.ts:552:        `  claude-flow ruvector optimize --reindex  # Rebuild indexes`,
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/verify.ts:5: * recomputes SHA-256 of every cited file in the user's installed
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/verify.ts:160:  const recomputedHash = createHash('sha256').update(manifestCanonical).digest('hex');
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/verify.ts:161:  const manifestHashOk = recomputedHash === witness.integrity.manifestHash;
+/tmp/ruflo/v3/@claude-flow/plugin-agent-federation/src/application/federation-coordinator.ts:491:      // mesh runtime (config rebuild will also exclude it).
+/tmp/ruflo/v3/@claude-flow/cli/src/init/helpers-generator.ts:601:    "          msg += ', PageRank recomputed';",
+/tmp/ruflo/v3/package-lock.json:4178:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/package-lock.json:5302:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/package-lock.json:6434:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/package-lock.json:9437:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/package-lock.json:20406:        "prebuild-install": "^7.1.1"
+/tmp/ruflo/v3/package-lock.json:28840:    "node_modules/prebuild-install": {
+/tmp/ruflo/v3/package-lock.json:28842:      "resolved": "https://registry.npmjs.org/prebuild-install/-/prebuild-install-7.1.3.tgz",
+/tmp/ruflo/v3/package-lock.json:28860:        "prebuild-install": "bin.js"
+/tmp/ruflo/v3/package-lock.json:30242:        "prebuild-install": "^7.1.1",
+/tmp/ruflo/v3/@claude-flow/plugin-agent-federation/src/domain/services/wg-mesh-service.ts:290:   * peer's `[Peer]` block is dropped on next config rebuild and an
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/agenticow-tools.ts:295:    description: 'agenticow — discard all edits since the most recent checkpoint on an .rvf memory file. Reuses a fresh COW child derived from the checkpoint. Use when a Darwin tick or agent experiment regressed and you want to revert memory state without re-running. Deleting+rebuilding the .rvf is wrong because rebuild cost is O(N) and the data after the bad point is lost; rollback is O(edits-since-checkpoint) and the earlier history stays intact via the lineage manifest.',
+/tmp/ruflo/v3/@claude-flow/plugins/examples/ruvector/attention-patterns.ts:312:      // Without cache: recompute all K, V
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/embeddings-tools.ts:916:        force: { type: 'boolean', description: 'Force rebuild even if index exists' },
+/tmp/ruflo/v3/plugins/cognitive-kernel/README.md:212:| Attention steering | <5ms for reallocation | 10x faster than context rebuild |
+/tmp/ruflo/v3/plugins/cognitive-kernel/README.md:214:| Memory consolidation | <100ms batch | 10x faster than full reindex |
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/performance-tools.ts:562:          optimizations.push({ action: 'recommend-hnsw-rebuild', applied: false, recommendation: 'Rebuild HNSW index to reclaim fragmented memory' });
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/session-tools.ts:519:    description: 'Import a session JSON file (produced by session_export) into the local session store and optionally activate it. Use when native Read is wrong because the file is a structured session record that must be re-registered (new id, stats recomputed) rather than just read. For reading the file, native Read is fine. Pair with session_export on the source.',
+/tmp/ruflo/v3/plugins/gastown-bridge/scripts/build-wasm.sh:143:            --precompute \
+/tmp/ruflo/v3/plugins/gastown-bridge/scripts/build-wasm.sh:144:            --precompute-propagate \
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:412:  last_rebuild_at INTEGER,
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:553:        // Metadata load failed, will rebuild
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:776: * Clear the HNSW index (for rebuilding)
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:783: * Invalidate the in-memory HNSW cache so the next search rebuilds from DB.
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:787:export function rebuildSearchIndex(): void {
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:1360: *      rebuild.
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:1361: *   4. VERIFIES the rebuild (integrity_check == ok AND recovered
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:1365: *      renames the verified rebuild into place and drops stale -wal/-shm.
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:1465:    // Back up the corrupt DB, then atomically swap in the verified rebuild.
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:1544:        // Auto-fix: rebuild the corrupt DB (backup + verify + atomic swap), then
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:1545:        // provision vector_indexes on the clean rebuild. This is what makes any
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:1576:        last_rebuild_at INTEGER,
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:3283:        rebuildSearchIndex();
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:3378:    // The next search will rebuild the HNSW index from the remaining DB rows.
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:3382:      // Invalidate the HNSW index so it rebuilds from DB on next search.
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:3385:      rebuildSearchIndex();
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:3421:  rebuildSearchIndex,
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/rabitq-index.ts:11: *  3. rebuild() — called when entry count drifts >20% from last build
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/rabitq-index.ts:33:const REBUILD_DRIFT_THRESHOLD = 0.2; // rebuild when count drifts >20%
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/rabitq-index.ts:64: * Build or rebuild the RaBitQ index from SQLite embeddings.
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/rabitq-index.ts:284: * Check if the RaBitQ index needs rebuilding.
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/ARCHITECTURE.md:310:| `rv_index_rebuild` | Rebuild index | `rv_index_rebuild(index_name) -> void` |
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/attention-mechanisms.ts:258:    // Generate random features (simplified - in practice these would be precomputed)
+/tmp/ruflo/v3/pnpm-lock.yaml:7782:      prebuild-install: 7.1.3
+/tmp/ruflo/v3/pnpm-lock.yaml:7790:      prebuild-install: 7.1.3
+/tmp/ruflo/v3/pnpm-lock.yaml:11467:  /prebuild-install@7.1.3:
+/tmp/ruflo/v3/pnpm-lock.yaml:12206:      prebuild-install: 7.1.3
+/tmp/ruflo/v3/pnpm-lock.yaml:12446:      prebuild-install: 7.1.3
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/quantization.ts:990:    // Precompute inter-centroid distances for each subvector
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/quantization.ts:1564:-- Precomputed distance lookup (for specific queries)
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:581:        const reindexed = options.whereParams.map(() => `$${paramIndex++}`);
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:919:  async rebuildIndex(indexName: string): Promise<void> {
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:1738:  async rebuildIndex(indexName: string): Promise<void> {
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:1740:    await this.vectorOps!.rebuildIndex(indexName);
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/self-learning.ts:256:  readonly recommendation: 'keep' | 'drop' | 'rebuild' | 'tune';
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/types.ts:927:  'ruvector.reindex': ReindexOp;
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/types.ts:1063:  /** Last rebuild timestamp */
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/types.ts:1755:  rebuildIndex(indexName: string): Promise<void>;
+/tmp/ruflo/v3/@claude-flow/cli/src/ruvector/neural-router.ts:497:  // Pre-build per-candidate views ONCE so predictAll() doesn't re-allocate
+/tmp/ruflo/v3/@claude-flow/cli/src/ruvector/neural-router.ts:560:      // candidates were precomputed. Hot path is one .route() call.
+/tmp/ruflo/v3/@claude-flow/cli/src/ruvector/neural-router.ts:916:  // through the FastGRNN candidate-embedding rebuild dance.
+/tmp/ruflo/v3/@claude-flow/cli/src/ruvector/task-embedder.ts:8: * own @xenova/transformers MiniLM pipeline and recomputed embeddings on every
+/tmp/ruflo/v3/@claude-flow/codex/README.md:1021:npx claude-flow memory optimize --rebuild-index
+/tmp/ruflo/v3/@claude-flow/cli/src/services/checkpoint-gate.ts:10: * the checkpoint. Rollback is O(edits-since-checkpoint), NOT an O(N) rebuild,
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:275:  recomputed: { baselineHeldOut: number; candidateHeldOut: number; canaryRollbackRate: number; decision: AcceptResult };
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:279:  causalConsistent: boolean;   // promotion/regression record present + benchmark delta matches recompute
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:286: * the embedded holdout + manifests, recompute the held-out means + canary rate
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:288: * confirm the recomputed decision equals the recorded one. Also confirms the
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:305:  // held-out means + significance ARE independently recomputed from the holdout,
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:311:  // Re-run the SAME versioned rule on independently-recomputed inputs.
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:322:  if (!decisionMatches) mismatches.push('recomputed decision != recorded decision');
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:329:  // that matches the recompute) and no regression; a reject carries the inverse.
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:345:    recomputed: { baselineHeldOut, candidateHeldOut, canaryRollbackRate, decision },
+/tmp/ruflo/v3/@claude-flow/cli/src/services/evolve-proof.ts:347:    explanation: `independently recomputed from the bundle (no service logs) → ${why}`,
+/tmp/ruflo/v3/@claude-flow/cli/src/services/harness-flywheel.ts:137:    // Precompute retrieval for baseline + all candidates over every task (async
+/tmp/ruflo/v3/@claude-flow/security/src/plugins/integrity-verifier.ts:177:    const recomputed = hashManifest(signed.manifest);
+/tmp/ruflo/v3/@claude-flow/security/src/plugins/integrity-verifier.ts:178:    if (recomputed !== signed.manifestHash) {
+/tmp/ruflo/v3/@claude-flow/security/src/plugins/integrity-verifier.ts:184:        detail: `expected ${signed.manifestHash}, got ${recomputed}`,
+/tmp/ruflo/v3/@claude-flow/shared/docs/EVENTS_README.md:40:- **Replay**: Iterate through all events for rebuilding state
+/tmp/ruflo/v3/@claude-flow/shared/src/core/interfaces/memory.interface.ts:166:   * Build or rebuild index
+/tmp/ruflo/v3/@claude-flow/shared/src/events/rvf-event-log.ts:99:  /** Create / open the log file and rebuild in-memory indexes. */
+/tmp/ruflo/v3/@claude-flow/testing/src/fixtures/memory-fixtures.ts:735:  rebuildIndex: Mock<() => Promise<void>>;
+/tmp/ruflo/v3/@claude-flow/testing/src/fixtures/memory-fixtures.ts:748:    rebuildIndex: vi.fn().mockResolvedValue(undefined),
+/tmp/ruflo/v3/@claude-flow/testing/src/mocks/mock-services.ts:69:  rebuildIndex = vi.fn(async () => {
+/tmp/ruflo/v3/@claude-flow/testing/src/mocks/mock-services.ts:70:    // Simulate index rebuild

@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Analyze project structure and discover source code",
+  "description": "Explore the repository to understand the project structure, language, framework, and find all source files and test files.",
+  "activeForm": "Exploring project structure",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

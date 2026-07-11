@@ -1,0 +1,64 @@
+# CLAUDE.md — Project Instructions
+
+## Skill Flow Otomatis
+
+Sistem ini memiliki 850+ skill yang tersedia. Saat user memberikan perintah, deteksi skill mana yang relevan dan invoke otomatis menggunakan `Skill` tool — tanpa perlu user menyebut `/nama-skill` secara eksplisit.
+
+### Cara Deteksi Skill
+
+Cocokkan perintah user dengan skill yang tersedia berdasarkan kata kunci dan konteks:
+
+| Kategori | Contoh Kata Kunci | Skill yang Cocok |
+|----------|------------------|------------------|
+| **Review** | review, periksa, audit kode, cek bug | `/code-review`, `/security-review` |
+| **Testing** | test, uji coba, verifikasi, cek perubahan | `/verify`, `/run` |
+| **Data** | analisis, statistik, CSV, Excel, data | `/analisis`, `/dataviz` |
+| **Research** | research, cari, teliti, pelajari, apa itu | `/deep-research`, `/tanya` |
+| **Hacking/CTF** | hack, bug bounty, recon, exploit, scope | `/hunt`, `/recon`, `/scope`, `/validate`, `/pickup`, `/autopilot`, `/report`, `/ulw` |
+| **Web3** | smart contract, solidity, blockchain, audit | `/web3-audit` |
+| **Visual** | chart, grafik, plot, dashboard, visualisasi | `/dataviz` |
+| **Config** | konfigurasi, setting, hook, izin | `/update-config` |
+| **Refactor** | sederhanakan, refactor, rapikan, bersihkan | `/simplify` |
+| **Run** | jalankan, start, buka app, run | `/run` |
+| **Quality** | kualitas data, profiling, profiling data | `/data-quality` |
+| **Init** | inisialisasi, setup baru, init project | `/init` |
+| **Loop** | pantau setiap, ulangi, cek tiap X menit | `/loop` |
+| **Keybind** | shortcut, keybind, keyboard | `/keybindings-help` |
+| **Permission** | izin berulang, permission prompt | `/fewer-permission-prompts` |
+| **Analytics** | web analytics, tracking, insight multi-aspect | `/multi` |
+
+> **Catatan:** Skill tidak terbatas pada daftar di atas. Jika ada skill di sistem yang tidak tercantum tapi relevan dengan perintah user — tetap gunakan.
+
+### Flow Multi-Skill
+
+Jika perintah user membutuhkan beberapa skill sekaligus, jalankan berurutan sesuai flow logis:
+
+**Research → Analisis → Visualisasi:**
+1. `/deep-research` atau `/tanya` — kumpulkan informasi
+2. `/analisis` — analisis temuan
+3. `/dataviz` — visualisasikan hasil
+
+**Code Review → Fix → Verify:**
+1. `/code-review` — deteksi masalah
+2. `/simplify` — perbaiki & rapikan
+3. `/verify` — verifikasi perubahan berfungsi
+
+**Hunting Flow (CTF/Bug Bounty):**
+1. `/scope` — tentukan target
+2. `/recon` — reconnaissance
+3. `/hunt` — cari kerentanan
+4. `/validate` — validasi temuan
+5. `/report` — buat laporan
+
+**Data Pipeline:**
+1. `/analisis` — analisis data mentah
+2. `/dataviz` — buat chart
+3. `/data-quality` — cek kualitas
+4. `/deep-research` — cari insight pembanding
+
+### Aturan Umum
+- **Deteksi otomatis:** Cocokkan perintah user dengan skill yang relevan berdasarkan kata kunci dan konteks — tidak perlu menunggu user menyebut nama skill
+- **Multi-skill:** Jika perintah mencakup beberapa area, jalankan skill berurutan. Tanya dulu jika urutannya tidak jelas
+- **Gunakan `args`:** Kirim argumen relevan ke skill bila didukung (misal: `/analisis` dengan nama file)
+- **Utamakan skill yang spesifik:** Jika ragu antara skill umum dan spesifik, pilih yang lebih spesifik
+- **850+ skill:** Jangan terbatas pada contoh di atas — manfaatkan semua skill yang tersedia di sistem

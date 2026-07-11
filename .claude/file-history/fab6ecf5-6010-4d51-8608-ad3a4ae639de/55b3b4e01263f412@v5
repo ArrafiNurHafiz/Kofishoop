@@ -1,0 +1,62 @@
+# CLAUDE.md — Project Instructions
+
+## OpenCode Skills (385+ tersedia di ~/.config/opencode/skills/)
+
+Saya bisa mengakses dan menerapkan **semua skill OpenCode** yang terinstal di sistem ini. Karena saya tidak bisa invoke via `Skill` tool (itu untuk Claude Code native skills), saya akan baca SKILL.md dari masing-masing skill lalu terapkan manual sesuai instruksinya.
+
+### Cara Kerja
+1. User minta sesuatu → deteksi skill OpenCode yang relevan
+2. Saya baca file `SKILL.md` dari skill tersebut
+3. Saya terapkan instruksinya secara manual
+
+### Contoh — Skill Ponytail (6 varian)
+
+| Skill | Fungsi |
+|-------|--------|
+| **ponytail** | Lazy mode — solusi paling sederhana, YAGNI, stdlib first, minimal code. Level: lite / full (default) / ultra |
+| **ponytail-review** | Review over-engineering: cari yang bisa dihapus, stdlib, native, yagni, shrink |
+| **ponytail-audit** | Audit seluruh codebase untuk over-engineering (repo-wide) |
+| **ponytail-debt** | Kumpulkan semua `ponytail:` comments jadi debt ledger |
+| **ponytail-gain** | Tampilkan scoreboard dampak ponytail (lines of code saved) |
+| **ponytail-help** | Reference card semua mode ponytail |
+
+### Contoh Lain (sebagian kecil dari 385+)
+
+| Kategori | Skill |
+|----------|-------|
+| **Security** | `bug-bounty`, `web2-recon`, `web2-vuln-classes`, `security-pen-testing`, `mobile-pentest`, `credential-attack`, `red-team`, `threat-detection` |
+| **Code Review** | `code-reviewer`, `pr-review-expert`, `adversarial-reviewer`, `requesting-code-review`, `receiving-code-review` |
+| **Frontend** | `react-review`, `vue-review`, `design-taste-frontend`, `ui-design-system`, `high-end-visual-design`, `landing-page-generator` |
+| **Backend** | `api-design-reviewer`, `database-designer`, `docker-development`, `kubernetes-operator`, `terraform-patterns` |
+| **Data** | `statistical-analyst`, `product-analytics`, `campaign-analytics`, `data-quality-auditor` |
+| **Product** | `product-manager-toolkit`, `product-discovery`, `product-strategist`, `saas-metrics-coach` |
+| **Testing** | `playwright-pro`, `webapp-testing`, `api-test-suite-builder`, `test-driven-development` |
+| **AI/ML** | `senior-ml-engineer`, `senior-data-scientist`, `prompt-engineer-toolkit`, `rag-architect` |
+| **DevOps** | `ci-cd-pipeline-builder`, `incident-commander`, `observability-designer`, `slo-architect` |
+| **Business** | `ceo-advisor`, `cto-advisor`, `cfo-advisor`, `marketing-strategy-pmm`, `pricing-strategist` |
+| **Compliance** | `gdpr-audit-prep`, `soc2-audit-prep`, `iso27001-audit-prep`, `eu-ai-act-specialist` |
+| **Writing** | `copywriting`, `content-strategy`, `academic-writing`, `report-writing`, `patent` |
+
+### Alur Deteksi
+
+| User bilang | Skill OpenCode yang dibaca & diterapkan |
+|-------------|----------------------------------------|
+| "lazy mode", "sederhanakan", "YAGNI" | `ponytail` (baca SKILL.md → terapkan ladder) |
+| "review over-engineering" | `ponytail-review` |
+| "audit codebase" | `ponytail-audit` |
+| "analisis data ini" | `statistical-analyst` atau `data-quality-auditor` |
+| "review keamanan" | `security-pen-testing` atau `bug-bounty` |
+| "buat test" | `test-driven-development` atau `playwright-pro` |
+| "design review" | `design-taste-frontend` atau `ui-design-system` |
+| "arsitektur" | `senior-architect` atau `migration-architect` |
+
+### Cara Saya Menggunakan Skill OpenCode
+
+1. **Deteksi** — Cocokkan perintah user dengan skill yang relevan (dari 385+ yang ada)
+2. **Baca** — Saya baca `SKILL.md` dari skill tersebut di `~/.config/opencode/skills/<skill>/`
+3. **Terapkan** — Saya ikuti instruksi di SKILL.md secara manual dalam merespon
+
+### Catatan
+- Tidak perlu khawatir milih skill yang salah — saya baca SKILL.md dulu sebelum terapkan
+- Kalau ragu antara beberapa skill, saya bisa tanya atau baca semuanya
+- Daftar di atas hanya contoh — masih ada ~350+ skill lain yang siap pakai

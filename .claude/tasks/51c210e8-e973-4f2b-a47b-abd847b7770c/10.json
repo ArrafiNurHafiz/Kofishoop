@@ -1,0 +1,9 @@
+{
+  "id": "10",
+  "subject": "Review server/database.py & models.py — data layer",
+  "description": "White box review of database.py (engine, session, init, dispose) and models.py (SQLModel mappings, schema matching)",
+  "activeForm": "Reviewing data layer",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

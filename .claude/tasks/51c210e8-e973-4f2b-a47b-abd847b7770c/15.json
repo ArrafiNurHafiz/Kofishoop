@@ -1,0 +1,9 @@
+{
+  "id": "15",
+  "subject": "Refactor auth.py — public session getter, clean types",
+  "description": "Use public get_session_maker(), fix require_role return type, clean up imports",
+  "activeForm": "Refactoring auth.py",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

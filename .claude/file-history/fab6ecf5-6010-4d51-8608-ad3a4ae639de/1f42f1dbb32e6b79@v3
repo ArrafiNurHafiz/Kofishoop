@@ -1,0 +1,30 @@
+<?php
+/**
+ * index.php (Controller)
+ * Memproses form dan menampilkan view
+ */
+
+require_once 'functions.php';
+
+// Inisialisasi variabel untuk hasil
+$hasil = null;
+$namaKaryawan = '';
+$golongan = '';
+$hari = 0;
+
+// Proses form jika disubmit
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $namaKaryawan = $_POST['nama'] ?? '';
+    $golongan      = $_POST['golongan'] ?? '';
+    $hari          = (int) ($_POST['hari'] ?? 0);
+
+    // Validasi sederhana
+    if (!empty($namaKaryawan) && isset($tarifGaji[$golongan]) && $hari > 0) {
+        $hasil = hitungGaji($golongan, $hari);
+    } else {
+        $error = 'Harap isi semua data dengan benar.';
+    }
+}
+
+// Tampilkan view
+require 'views/struk.php';

@@ -1,0 +1,9 @@
+{
+  "id": "21",
+  "subject": "Full feature audit and fix for production demo",
+  "description": "Comprehensive check: run all tests, test every API endpoint, verify all user flows (register, login, donations, claims, reviews, admin), check frontend compilation, fix all bugs found",
+  "activeForm": "Running full feature audit",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

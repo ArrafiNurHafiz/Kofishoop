@@ -1,0 +1,9 @@
+{
+  "id": "20",
+  "subject": "Restructure all project files into logical groups",
+  "description": "Create new directory structure and move files into proper groups: backend/, frontend/, docs/, config/, scripts/, data/, assets/",
+  "activeForm": "Restructuring project",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

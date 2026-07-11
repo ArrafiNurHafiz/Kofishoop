@@ -1,0 +1,156 @@
+/* ========================================
+   KOPISOP — Additional Scroll Animations
+   ======================================== */
+
+/* Hero entrance stagger */
+.hero-badge {
+    opacity: 0;
+    animation: fadeSlideDown 0.8s ease-out 0.3s forwards;
+}
+.hero-title {
+    opacity: 0;
+    animation: fadeSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+}
+.hero-tagline {
+    opacity: 0;
+    animation: fadeSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s forwards;
+}
+.hero-desc {
+    opacity: 0;
+    animation: fadeSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s forwards;
+}
+.hero-actions {
+    opacity: 0;
+    animation: fadeSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.1s forwards;
+}
+
+.hero-decoration {
+    opacity: 0;
+    animation: fadeSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
+}
+
+@keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Parallax section backgrounds with motion */
+.section-alt {
+    background-attachment: fixed;
+    transition: background-position 0.1s ease-out;
+}
+
+/* Counter animation on numbers */
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover tilt effect for service cards */
+.service-card {
+    perspective: 800px;
+}
+
+/* Info cards slide-in */
+.info-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.info-card:hover {
+    transform: translateX(8px) scale(1.02);
+}
+
+/* Footer social bounce */
+.footer-social a {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.footer-social a:hover {
+    transform: translateY(-4px) scale(1.15);
+}
+
+/* Magnetic button effect */
+.btn-primary, .btn-outline {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 25px rgba(107, 66, 38, 0.35);
+}
+.btn-outline:hover {
+    transform: translateY(-3px) scale(1.04);
+}
+
+/* Section title underline animation */
+.section-divider {
+    position: relative;
+    overflow: hidden;
+}
+.section-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: shimmer 2s ease-in-out infinite;
+}
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Gallery item hover depth */
+.gallery-item {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    perspective: 600px;
+}
+.gallery-item:hover {
+    transform: scale(1.04) translateY(-4px);
+    box-shadow: 0 16px 40px rgba(44, 24, 16, 0.2);
+    z-index: 10;
+}
+
+/* Nav link magnetic hover */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Carousel dot animation */
+.carousel-dot {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.carousel-dot.active {
+    transform: scale(1.3);
+    box-shadow: 0 0 8px rgba(107, 66, 38, 0.3);
+}
+
+/* Toast slide-in */
+.form-toast.show {
+    animation: toastSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes toastSlideIn {
+    from { opacity: 0; transform: translateY(-10px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Lightbox fade + scale */
+.lightbox.active .lightbox-content {
+    animation: lightboxIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes lightboxIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Smooth scroll reveal improvement */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+    will-change: opacity, transform;
+}

@@ -1,0 +1,2 @@
+- [Project Context](00-project-context.md) — NutriShare project overview
+- [OpenCode Config](01-open-code-config.md) — OpenCode configuration migrated to Claude Code

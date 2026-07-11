@@ -1,0 +1,9 @@
+{
+  "id": "22",
+  "subject": "Perbaiki T1: Rate limiting (slowapi)",
+  "description": "Tambahkan slowapi rate limiting untuk endpoint login, register, dan API publik",
+  "activeForm": "Memperbaiki rate limiting",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

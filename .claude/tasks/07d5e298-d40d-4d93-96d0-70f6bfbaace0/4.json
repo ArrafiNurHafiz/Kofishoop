@@ -1,0 +1,8 @@
+{
+  "id": "4",
+  "subject": "Add animated background grid component",
+  "description": "Create AnimatedBackground.tsx with subtle animated grid/dot pattern",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

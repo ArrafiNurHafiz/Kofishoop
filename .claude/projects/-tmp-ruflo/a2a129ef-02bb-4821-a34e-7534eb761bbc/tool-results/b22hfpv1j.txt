@@ -1,0 +1,1529 @@
+v3/src/coordination/application/SwarmCoordinator.ts:81:  async spawnAgent(config: AgentConfig): Promise<Agent> {
+v3/src/coordination/application/SwarmCoordinator.ts:98:    // Emit spawn event
+v3/src/coordination/application/SwarmCoordinator.ts:99:    this.eventBus.emit('agent:spawned', { agentId: agent.id, type: agent.type });
+v3/src/coordination/application/SwarmCoordinator.ts:104:        id: `agent-spawn-${agent.id}`,
+v3/src/coordination/application/SwarmCoordinator.ts:106:        content: `Agent ${agent.id} spawned`,
+v3/src/coordination/application/SwarmCoordinator.ts:109:        metadata: { eventType: 'agent-spawn', agentId: agent.id, agentType: agent.type }
+v3/src/coordination/application/SwarmCoordinator.ts:350:        await this.spawnAgent({
+v3/plugins/teammate-plugin/src/types.ts:70:  | 'spawnTeam'
+v3/plugins/teammate-plugin/src/types.ts:103:  spawnBackend: SpawnBackend;
+v3/plugins/teammate-plugin/src/types.ts:137:  spawnedAt: Date;
+v3/plugins/teammate-plugin/src/types.ts:448:  'team:spawned': { team: string; config: TeamConfig };
+v3/plugins/teammate-plugin/src/types.ts:457:  'teammate:spawned': { teammate: TeammateInfo; agentInput: AgentInput };
+v3/plugins/teammate-plugin/src/types.ts:580:  spawnPerMinute: number;
+v3/plugins/teammate-plugin/src/types.ts:596:  spawnPerMinute: RATE_LIMIT_DEFAULTS.SPAWN_PER_MINUTE,
+v3/plugins/teammate-plugin/src/types.ts:627:  spawnLatency: number[];
+v3/plugins/teammate-plugin/src/types.ts:649:    spawnsPerMinute: number;
+v3/plugins/teammate-plugin/src/mcp-tools.ts:76:    name: 'teammate_spawn_team',
+v3/plugins/teammate-plugin/src/mcp-tools.ts:123:    name: 'teammate_spawn',
+v3/plugins/teammate-plugin/src/mcp-tools.ts:281:          description: 'Number of teammates to spawn (default: number of steps)',
+v3/plugins/teammate-plugin/src/mcp-tools.ts:303:          description: 'Permissions to delegate (e.g., ["approve_plan", "spawn_teammate"])',
+v3/plugins/teammate-plugin/src/mcp-tools.ts:549:      case 'teammate_spawn_team': {
+v3/plugins/teammate-plugin/src/mcp-tools.ts:560:        const teamState = await bridge.spawnTeam(config);
+v3/plugins/teammate-plugin/src/mcp-tools.ts:569:      case 'teammate_spawn': {
+v3/plugins/teammate-plugin/src/mcp-tools.ts:579:        const spawnConfig: TeammateSpawnConfig = {
+v3/plugins/teammate-plugin/src/mcp-tools.ts:590:        const teammate = await bridge.spawnTeammate(spawnConfig);
+v3/plugins/teammate-plugin/src/mcp-tools.ts:591:        const agentInput = bridge.buildAgentInput(spawnConfig);
+v3/plugins/teammate-plugin/src/mcp-tools.ts:597:            instruction: 'Pass agentInput to Claude Code Task tool to spawn the teammate',
+v3/plugins/teammate-plugin/src/utils/metrics-collector.ts:39:      spawnLatency: [],
+v3/plugins/teammate-plugin/src/utils/metrics-collector.ts:84:  recordLatency(metric: 'spawnLatency' | 'messageLatency' | 'planApprovalLatency', ms: number): void {
+v3/plugins/teammate-plugin/src/utils/metrics-collector.ts:102:        spawnsPerMinute: elapsed > 0 ? (this.metrics.teammatesSpawned / elapsed) * 60 : 0,
+v3/plugins/teammate-plugin/src/utils/metrics-collector.ts:113:  getPercentile(metric: 'spawnLatency' | 'messageLatency' | 'planApprovalLatency', percentile: number): number {
+v3/plugins/teammate-plugin/src/utils/metrics-collector.ts:123:  getAverageLatency(metric: 'spawnLatency' | 'messageLatency' | 'planApprovalLatency'): number {
+v3/index.ts:488: * await swarm.spawnAllAgents();
+v3/src/infrastructure/mcp/tools/AgentTools.ts:29:        name: 'agent_spawn',
+v3/src/infrastructure/mcp/tools/AgentTools.ts:80:        case 'agent_spawn':
+v3/src/infrastructure/mcp/tools/AgentTools.ts:81:          return await this.spawnAgent(params as AgentConfig);
+v3/src/infrastructure/mcp/tools/AgentTools.ts:103:  private async spawnAgent(config: AgentConfig): Promise<MCPToolResult> {
+v3/src/infrastructure/mcp/tools/AgentTools.ts:118:    const agent = await this.coordinator.spawnAgent(config);
+v3/plugins/teammate-plugin/tests/utils.test.ts:45:      // Default spawnPerMinute is 10
+v3/plugins/teammate-plugin/tests/utils.test.ts:47:        expect(rateLimiter.checkLimit('spawnPerMinute')).toBe(true);
+v3/plugins/teammate-plugin/tests/utils.test.ts:54:        rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:58:      expect(rateLimiter.checkLimit('spawnPerMinute')).toBe(false);
+v3/plugins/teammate-plugin/tests/utils.test.ts:62:      // Use up spawn limit
+v3/plugins/teammate-plugin/tests/utils.test.ts:64:        rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:73:      const testConfig = { ...DEFAULT_RATE_LIMIT_CONFIG, spawnPerMinute: 1 };
+v3/plugins/teammate-plugin/tests/utils.test.ts:77:      shortLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:78:      expect(shortLimiter.checkLimit('spawnPerMinute')).toBe(false);
+v3/plugins/teammate-plugin/tests/utils.test.ts:81:      shortLimiter.reset('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:82:      expect(shortLimiter.checkLimit('spawnPerMinute')).toBe(true);
+v3/plugins/teammate-plugin/tests/utils.test.ts:88:      expect(rateLimiter.getState('spawnPerMinute')).toBeUndefined();
+v3/plugins/teammate-plugin/tests/utils.test.ts:92:      rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:94:      const state = rateLimiter.getState('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:102:        rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:105:      const state = rateLimiter.getState('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:113:      expect(rateLimiter.getRemaining('spawnPerMinute')).toBe(10);
+v3/plugins/teammate-plugin/tests/utils.test.ts:117:      rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:118:      rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:119:      rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:121:      expect(rateLimiter.getRemaining('spawnPerMinute')).toBe(7);
+v3/plugins/teammate-plugin/tests/utils.test.ts:126:        rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:129:      expect(rateLimiter.getRemaining('spawnPerMinute')).toBe(0);
+v3/plugins/teammate-plugin/tests/utils.test.ts:135:      rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:138:      rateLimiter.reset('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:140:      expect(rateLimiter.getState('spawnPerMinute')).toBeUndefined();
+v3/plugins/teammate-plugin/tests/utils.test.ts:145:      rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:150:      expect(rateLimiter.getState('spawnPerMinute')).toBeUndefined();
+v3/plugins/teammate-plugin/tests/utils.test.ts:157:      rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:158:      expect(rateLimiter.isBlocked('spawnPerMinute')).toBe(false);
+v3/plugins/teammate-plugin/tests/utils.test.ts:163:        rateLimiter.checkLimit('spawnPerMinute');
+v3/plugins/teammate-plugin/tests/utils.test.ts:165:      expect(rateLimiter.isBlocked('spawnPerMinute')).toBe(true);
+v3/plugins/teammate-plugin/tests/utils.test.ts:439:      metrics.recordLatency('spawnLatency', 100);
+v3/plugins/teammate-plugin/tests/utils.test.ts:440:      metrics.recordLatency('spawnLatency', 200);
+v3/plugins/teammate-plugin/tests/utils.test.ts:441:      metrics.recordLatency('spawnLatency', 150);
+v3/plugins/teammate-plugin/tests/utils.test.ts:444:      expect(snapshot.metrics.spawnLatency).toHaveLength(3);
+v3/plugins/teammate-plugin/tests/utils.test.ts:466:      expect(metrics.getPercentile('spawnLatency', 50)).toBe(0);
+v3/plugins/teammate-plugin/tests/utils.test.ts:472:      metrics.recordLatency('spawnLatency', 100);
+v3/plugins/teammate-plugin/tests/utils.test.ts:473:      metrics.recordLatency('spawnLatency', 200);
+v3/plugins/teammate-plugin/tests/utils.test.ts:474:      metrics.recordLatency('spawnLatency', 300);
+v3/plugins/teammate-plugin/tests/utils.test.ts:476:      expect(metrics.getAverageLatency('spawnLatency')).toBe(200);
+v3/plugins/teammate-plugin/tests/utils.test.ts:480:      expect(metrics.getAverageLatency('spawnLatency')).toBe(0);
+v3/plugins/teammate-plugin/tests/utils.test.ts:504:      metrics.recordLatency('spawnLatency', 100);
+v3/plugins/teammate-plugin/tests/utils.test.ts:510:      expect(snapshot.metrics.spawnLatency).toHaveLength(0);
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:8: * - Team management (spawn, discover, join/leave)
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:21:import { execSync } from 'child_process';
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:333:      const output = execSync('claude --version 2>/dev/null', {
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:411:    operation: 'spawnLatency' | 'messageLatency' | 'planApprovalLatency',
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:687:  async spawnTeam(config: Partial<TeamConfig> & { name: string }): Promise<TeamState> {
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:696:      spawnBackend: 'auto',
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:761:    this.emit('team:spawned', { team: fullConfig.name, config: fullConfig });
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:829:          spawnedAt: new Date(t.spawnedAt),
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:885:        spawnedAt: new Date(),
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:928:      spawnedAt: new Date(),
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:958:  async spawnTeammate(config: TeammateSpawnConfig): Promise<TeammateInfo> {
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:962:    if (!this.rateLimiter.checkLimit('spawnPerMinute')) {
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:965:        'Spawn rate limit exceeded. Please wait before spawning more teammates.',
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:1003:      spawnedAt: new Date(),
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:1030:    const spawnLatency = Date.now() - startTime;
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:1031:    this.metrics.recordLatency('spawnLatency', spawnLatency);
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:1045:    this.emit('teammate:spawned', { teammate: teammateInfo, agentInput });
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:2065:      execSync('which tmux', { encoding: 'utf-8' });
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:2367:      return execSync('git rev-parse --abbrev-ref HEAD 2>/dev/null', {
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:2377:      return execSync('git config --get remote.origin.url 2>/dev/null', {
+v3/plugins/gastown-bridge/tsup.config.ts:70:      'child_process',
+v3/src/shared/types/index.ts:351:  type: 'agent:spawned' | 'agent:terminated' | 'agent:message';
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:17:// Mock child_process before importing
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:18:vi.mock('child_process', () => ({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:19:  execSync: vi.fn((cmd: string) => {
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:34:  spawn: vi.fn(),
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:119:  describe('spawnTeam', () => {
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:121:      const team = await bridge.spawnTeam({ name: 'test-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:131:      const team = await bridge.spawnTeam({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:141:      await bridge.spawnTeam({ name: 'env-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:146:    it('should emit team:spawned event', async () => {
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:148:      bridge.on('team:spawned', eventSpy);
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:150:      await bridge.spawnTeam({ name: 'event-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:170:      await bridge.spawnTeam({ name: 'team-1' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:171:      await bridge.spawnTeam({ name: 'team-2' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:192:    await bridge.spawnTeam({ name: 'spawn-test-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:199:  it('should spawn a teammate and return TeammateInfo', async () => {
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:200:    const teammate = await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:204:      teamName: 'spawn-test-team',
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:214:    await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:218:      teamName: 'spawn-test-team',
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:221:    const team = bridge.getTeamState('spawn-test-team');
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:232:      teamName: 'spawn-test-team',
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:241:    expect(agentInput.team_name).toBe('spawn-test-team');
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:258:    await bridge.spawnTeam({ name: 'msg-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:259:    await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:265:    await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:332:    await bridge.spawnTeam({ name: 'plan-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:333:    await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:339:    await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:427:    await bridge.spawnTeam({ name: 'delegate-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:428:    await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:434:    await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:455:      ['approve_plan', 'spawn_teammate']
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:506:    await bridge.spawnTeam({ name: 'context-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:577:    await bridge.spawnTeam({ name: 'error-team' });
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:578:    await bridge.spawnTeammate({
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:610:    await bridge.spawnTeam({ name: 'cleanup-team' });
+v3/plugins/teammate-plugin/src/index.ts:19: * const team = await bridge.spawnTeam({
+v3/plugins/teammate-plugin/src/index.ts:26: * const teammate = await bridge.spawnTeammate({
+v3/plugins/gastown-bridge/src/bridges/bd-bridge.ts:18:import { execFile, spawn, ChildProcess } from 'child_process';
+v3/plugins/gastown-bridge/src/bridges/bd-bridge.ts:561:    const childProcess = spawn(this.config.bdPath, validatedArgs, {
+v3/plugins/gastown-bridge/tests/bridges.test.ts:11:// Mock child_process
+v3/plugins/gastown-bridge/tests/bridges.test.ts:23:vi.mock('child_process', () => ({
+v3/plugins/gastown-bridge/src/bridges/gt-bridge.ts:17:import { execFile } from 'child_process';
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:340:        while ((match = pattern.exec(content)) !== null) {
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:5: * Handles Queen coordinator registration, worker spawning, consensus,
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:137: * Manages Queen registration, worker spawning, and BFT execution.
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:143:  private spawnedWorkers: Map<string, string> = new Map(); // workerId -> agentType
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:209:  async spawnQEWorker(agentType: string, context: string): Promise<string> {
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:227:          spawnedAt: Date.now(),
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:231:      this.spawnedWorkers.set(workerId, agentType);
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:232:      this.logger.debug(`QE worker spawned: ${workerId}`);
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:236:      this.logger.error(`Failed to spawn QE worker: ${agentType}`, error);
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:237:      throw new QEHiveError('Failed to spawn worker', error as Error);
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:465:      // Remove all spawned workers
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:466:      for (const [workerId] of this.spawnedWorkers) {
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:474:      this.spawnedWorkers.clear();
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:5: * Handles agent spawning, task orchestration, workflow execution,
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:9: * - AgentService: Agent spawning and lifecycle
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:39:  spawn(config: AgentSpawnConfig): Promise<SpawnedAgent>;
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:58:  status: 'spawning' | 'ready' | 'busy' | 'error' | 'terminated';
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:177: * Manages agent spawning, task orchestration, and workflows.
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:204:  async spawnTestExecutor(
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:213:      const spawnedAgent = await this.agents.spawn({
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:233:        spawnedAgent,
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:243:      this.logger.error('Failed to spawn test executor', error);
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:244:      throw new QECoreError('Failed to spawn test executor', error as Error);
+v3/mcp/server-entry.ts:119:  npx tsx v3/mcp/server-entry.ts --tools agent/spawn,swarm/init
+v3/mcp/tools/v2-compat-tools.js:10: * - agent_spawn -> agent/spawn
+v3/mcp/tools/v2-compat-tools.js:25:import { spawnAgentTool, listAgentsTool, agentStatusTool } from './agent-tools.js';
+v3/mcp/tools/v2-compat-tools.js:147: * agent_spawn - V2 compatible agent spawning
+v3/mcp/tools/v2-compat-tools.js:150:    name: 'agent_spawn',
+v3/mcp/tools/v2-compat-tools.js:151:    description: 'Spawn a new agent in the swarm (V2 compatible). Deprecated: Use agent/spawn instead.',
+v3/mcp/tools/v2-compat-tools.js:162:        return spawnAgentTool.handler({
+v3/mcp/tools/v2-compat-tools.js:170:    tags: ['v2', 'agent', 'spawn'],
+v3/mcp/tools/v2-compat-tools.js:562:        'agent_spawn': 'agent/spawn',
+v3/mcp/tools/swarm-tools.js:215:            // so we spawn or terminate agents to reach the target)
+v3/mcp/tools/swarm-tools.js:225:                    await coordinator.spawnAgent({
+v3/mcp/tools/session-tools.js:313:                    await coordinator.spawnAgent({
+v3/mcp/tools/federation-tools.js:6: * - federation/spawn-ephemeral - Spawn ephemeral agent
+v3/mcp/tools/federation-tools.js:22:const spawnEphemeralSchema = z.object({
+v3/mcp/tools/federation-tools.js:49:    status: z.enum(['spawning', 'active', 'completing', 'terminated']).optional()
+v3/mcp/tools/federation-tools.js:126:    return hub.spawnEphemeralAgent({
+v3/mcp/tools/federation-tools.js:250:export const spawnEphemeralTool = {
+v3/mcp/tools/federation-tools.js:251:    name: 'federation/spawn-ephemeral',
+v3/mcp/tools/federation-tools.js:296:        const validated = spawnEphemeralSchema.parse(input);
+v3/mcp/tools/federation-tools.js:300:    tags: ['federation', 'ephemeral', 'spawn', 'agent'],
+v3/mcp/tools/federation-tools.js:340:                enum: ['spawning', 'active', 'completing', 'terminated'],
+v3/mcp/tools/federation-tools.js:490:    spawnEphemeralTool,
+v3/plugins/gastown-bridge/src/index.ts:1040:      const { exec } = await import('child_process');
+v3/mcp/tools/agent-tools.ts:5: * - agent/spawn - Spawn a new agent
+v3/mcp/tools/agent-tools.ts:69:const spawnAgentSchema = z.object({
+v3/mcp/tools/agent-tools.ts:70:  agentType: agentTypeSchema.describe('Type of agent to spawn'),
+v3/mcp/tools/agent-tools.ts:154:  input: z.infer<typeof spawnAgentSchema>,
+v3/mcp/tools/agent-tools.ts:167:      await coordinator.spawnAgent({
+v3/mcp/tools/agent-tools.ts:183:      console.error('Failed to spawn agent via coordinator:', sanitizeErrorForLogging(error));
+v3/mcp/tools/agent-tools.ts:360: * agent/spawn tool
+v3/mcp/tools/agent-tools.ts:362:export const spawnAgentTool: MCPTool = {
+v3/mcp/tools/agent-tools.ts:363:  name: 'agent/spawn',
+v3/mcp/tools/agent-tools.ts:370:        description: 'Type of agent to spawn (e.g., coder, reviewer, tester, researcher, planner)',
+v3/mcp/tools/agent-tools.ts:396:    const validated = spawnAgentSchema.parse(input);
+v3/mcp/tools/agent-tools.ts:400:  tags: ['agent', 'lifecycle', 'spawn'],
+v3/mcp/tools/agent-tools.ts:522:  spawnAgentTool,
+v3/plugins/code-intelligence/src/mcp-tools.ts:805:  while ((m = IMPORT_RX.exec(content)) !== null) {
+v3/plugins/code-intelligence/src/bridges/gnn-bridge.ts:523:    while ((m = importRx.exec(content)) !== null) {
+v3/plugins/agentic-qe/src/interfaces.ts:553: * Agent handle for managing spawned agents
+v3/plugins/agentic-qe/src/interfaces.ts:566:  status: 'spawning' | 'ready' | 'busy' | 'error' | 'terminated';
+v3/plugins/agentic-qe/src/interfaces.ts:753:  spawnTestExecutor(testSuite: TestSuite, config: ExecutorConfig): Promise<AgentHandle>;
+v3/plugins/agentic-qe/src/interfaces.ts:888:  spawnQEWorker(agentType: string, context: string): Promise<string>;
+v3/mcp/tools/federation-tools.ts:6: * - federation/spawn-ephemeral - Spawn ephemeral agent
+v3/mcp/tools/federation-tools.ts:33:const spawnEphemeralSchema = z.object({
+v3/mcp/tools/federation-tools.ts:62:  status: z.enum(['spawning', 'active', 'completing', 'terminated']).optional()
+v3/mcp/tools/federation-tools.ts:181:  input: z.infer<typeof spawnEphemeralSchema>,
+v3/mcp/tools/federation-tools.ts:185:  return hub.spawnEphemeralAgent({
+v3/mcp/tools/federation-tools.ts:359:export const spawnEphemeralTool: MCPTool = {
+v3/mcp/tools/federation-tools.ts:360:  name: 'federation/spawn-ephemeral',
+v3/mcp/tools/federation-tools.ts:405:    const validated = spawnEphemeralSchema.parse(input);
+v3/mcp/tools/federation-tools.ts:409:  tags: ['federation', 'ephemeral', 'spawn', 'agent'],
+v3/mcp/tools/federation-tools.ts:451:        enum: ['spawning', 'active', 'completing', 'terminated'],
+v3/mcp/tools/federation-tools.ts:607:  spawnEphemeralTool,
+v3/mcp/tools/v2-compat-tools.ts:10: * - agent_spawn -> agent/spawn
+v3/mcp/tools/v2-compat-tools.ts:28:import { spawnAgentTool, listAgentsTool, agentStatusTool } from './agent-tools.js';
+v3/mcp/tools/v2-compat-tools.ts:159: * agent_spawn - V2 compatible agent spawning
+v3/mcp/tools/v2-compat-tools.ts:162:  name: 'agent_spawn',
+v3/mcp/tools/v2-compat-tools.ts:163:  description: 'Spawn a new agent in the swarm (V2 compatible). Deprecated: Use agent/spawn instead.',
+v3/mcp/tools/v2-compat-tools.ts:174:    return spawnAgentTool.handler({
+v3/mcp/tools/v2-compat-tools.ts:182:  tags: ['v2', 'agent', 'spawn'],
+v3/mcp/tools/v2-compat-tools.ts:602:    'agent_spawn': 'agent/spawn',
+v3/mcp/tools/swarm-tools.ts:318:      // so we spawn or terminate agents to reach the target)
+v3/mcp/tools/swarm-tools.ts:331:          await coordinator.spawnAgent({
+v3/mcp/tools/session-tools.ts:451:          await coordinator.spawnAgent({
+v3/mcp/tools/index.js:10: * - Agent Tools: agent/spawn, agent/list, agent/terminate, agent/status
+v3/mcp/tools/index.js:38:export { spawnAgentTool, listAgentsTool, terminateAgentTool, agentStatusTool, agentTools, } from './agent-tools.js';
+v3/mcp/tools/index.js:58:export { federationStatusTool, spawnEphemeralTool, terminateEphemeralTool, listEphemeralTool, registerSwarmTool, broadcastTool, proposeTool, voteTool, federationTools, } from './federation-tools.js';
+v3/mcp/tools/index.js:131: * @param name - Tool name (e.g., 'agent/spawn')
+v3/mcp/tools/index.js:138: * const spawnTool = getToolByName('agent/spawn');
+v3/mcp/tools/index.js:139: * if (spawnTool) {
+v3/mcp/tools/index.js:140: *   await spawnTool.handler({ agentType: 'coder' });
+v3/mcp/tools/agent-tools.js:5: * - agent/spawn - Spawn a new agent
+v3/mcp/tools/agent-tools.js:55:const spawnAgentSchema = z.object({
+v3/mcp/tools/agent-tools.js:56:    agentType: agentTypeSchema.describe('Type of agent to spawn'),
+v3/mcp/tools/agent-tools.js:93:            await coordinator.spawnAgent({
+v3/mcp/tools/agent-tools.js:109:            console.error('Failed to spawn agent via coordinator:', sanitizeErrorForLogging(error));
+v3/mcp/tools/agent-tools.js:257: * agent/spawn tool
+v3/mcp/tools/agent-tools.js:259:export const spawnAgentTool = {
+v3/mcp/tools/agent-tools.js:260:    name: 'agent/spawn',
+v3/mcp/tools/agent-tools.js:267:                description: 'Type of agent to spawn (e.g., coder, reviewer, tester, researcher, planner)',
+v3/mcp/tools/agent-tools.js:293:        const validated = spawnAgentSchema.parse(input);
+v3/mcp/tools/agent-tools.js:297:    tags: ['agent', 'lifecycle', 'spawn'],
+v3/mcp/tools/agent-tools.js:414:    spawnAgentTool,
+v3/@claude-flow/testing/src/mocks/mock-mcp-client.ts:651:    name: 'agent_spawn',
+v3/@claude-flow/testing/src/helpers/test-application.ts:27:  spawn(config: AgentConfig): Promise<Agent>;
+v3/@claude-flow/testing/src/helpers/test-application.ts:231:    this.agentLifecycle.spawn.mockImplementation(async (config: AgentConfig) => ({
+v3/@claude-flow/testing/src/helpers/mock-factory.ts:112:  spawn(config: AgentConfig): Promise<AgentSpawnResult>;
+v3/@claude-flow/testing/src/helpers/mock-factory.ts:131: * Agent spawn result interface
+v3/@claude-flow/testing/src/helpers/mock-factory.ts:404:  mock.spawn.mockImplementation(async (config: AgentConfig) => {
+v3/@claude-flow/testing/src/fixtures/mcp-fixtures.ts:251:    name: 'agent_spawn',
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:68:  spawnAgent(agentId: AgentId): Promise<AgentState>;
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:69:  spawnAllAgents(): Promise<Map<AgentId, AgentState>>;
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:70:  spawnAgentsByDomain(domain: AgentDomain): Promise<AgentState[]>;
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:198:  async spawnAgent(agentId: AgentId): Promise<AgentState> {
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:200:    return this.agentRegistry.spawn(agentId);
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:203:  async spawnAllAgents(): Promise<Map<AgentId, AgentState>> {
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:213:        const state = await this.spawnAgent(agent.id);
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:216:        console.error(`[SwarmHub] Failed to spawn agent ${agent.id}: ${err}`);
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:223:  async spawnAgentsByDomain(domain: AgentDomain): Promise<AgentState[]> {
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:231:        const state = await this.spawnAgent(agent.id);
+v3/@claude-flow/swarm/src/coordination/swarm-hub.ts:234:        console.error(`[SwarmHub] Failed to spawn agent ${agent.id}: ${err}`);
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:40:  spawn(agentId: AgentId): Promise<AgentState>;
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:127:  async spawn(agentId: AgentId): Promise<AgentState> {
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:134:      throw new Error(`Agent ${agentId} is already spawned`);
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:193:      throw new Error(`Agent ${agentId} is not spawned`);
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:210:      throw new Error(`Agent ${agentId} is not spawned`);
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:224:      throw new Error(`Agent ${agentId} is not spawned`);
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:336:      this.eventBus.subscribe('agent:spawned', handler),
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1455:  async spawnFullHierarchy(): Promise<Map<number, { agentId: string; domain: AgentDomain }>> {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1480:    this.emitEvent('hierarchy.spawned', {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1569:   * Compatible with agentic-flow@alpha's agent spawn API
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1571:   * @param options - Agent spawn options
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1574:  async spawnAgent(options: {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1585:    spawned: boolean;
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1642:      spawned: true,
+v3/@claude-flow/shared/src/events.ts:290:  return createEvent('agent:spawned', 'swarm', { agentId, role });
+v3/@claude-flow/swarm/src/types.ts:368:  | 'hierarchy.spawned';
+v3/@claude-flow/swarm/src/federation-hub.ts:8: * - Ephemeral agent spawning (short-lived, task-specific)
+v3/@claude-flow/swarm/src/federation-hub.ts:15: * - Agent spawn: <50ms
+v3/@claude-flow/swarm/src/federation-hub.ts:76:  status: 'spawning' | 'active' | 'completing' | 'terminated';
+v3/@claude-flow/swarm/src/federation-hub.ts:110:  status: 'spawned' | 'queued' | 'failed';
+v3/@claude-flow/swarm/src/federation-hub.ts:164:  | 'agent_spawned'
+v3/@claude-flow/swarm/src/federation-hub.ts:234:    this.agentsByStatus.set('spawning', new Set());
+v3/@claude-flow/swarm/src/federation-hub.ts:335:    // Terminate all active ephemeral agents using index - O(k) where k = active + spawning
+v3/@claude-flow/swarm/src/federation-hub.ts:337:    const spawningIds = this.getAgentIdsByStatus('spawning');
+v3/@claude-flow/swarm/src/federation-hub.ts:338:    const toTerminate = [...activeIds, ...spawningIds];
+v3/@claude-flow/swarm/src/federation-hub.ts:424:  async spawnEphemeralAgent(options: SpawnEphemeralOptions): Promise<SpawnResult> {
+v3/@claude-flow/swarm/src/federation-hub.ts:471:      status: 'spawning',
+v3/@claude-flow/swarm/src/federation-hub.ts:481:    // Async spawn with status transition (spawning -> active)
+v3/@claude-flow/swarm/src/federation-hub.ts:484:      if (a && a.status === 'spawning') {
+v3/@claude-flow/swarm/src/federation-hub.ts:485:        this.updateAgentStatusIndex(a, 'spawning');
+v3/@claude-flow/swarm/src/federation-hub.ts:487:        this.emitEvent('agent_spawned', targetSwarmId, agentId);
+v3/@claude-flow/swarm/src/federation-hub.ts:498:        status: result ? 'spawned' : 'failed',
+v3/@claude-flow/swarm/src/federation-hub.ts:508:      status: 'spawned',
+v3/@claude-flow/swarm/src/federation-hub.ts:590:      a => a.status === 'active' || a.status === 'spawning'
+v3/@claude-flow/swarm/src/federation-hub.ts:820:    // Count only active and spawning agents
+v3/@claude-flow/swarm/src/federation-hub.ts:824:      if (agent && (agent.status === 'active' || agent.status === 'spawning')) {
+v3/@claude-flow/swarm/src/federation-hub.js:8: * - Ephemeral agent spawning (short-lived, task-specific)
+v3/@claude-flow/swarm/src/federation-hub.js:15: * - Agent spawn: <50ms
+v3/@claude-flow/swarm/src/federation-hub.js:73:        this.agentsByStatus.set('spawning', new Set());
+v3/@claude-flow/swarm/src/federation-hub.js:154:        // Terminate all active ephemeral agents using index - O(k) where k = active + spawning
+v3/@claude-flow/swarm/src/federation-hub.js:156:        const spawningIds = this.getAgentIdsByStatus('spawning');
+v3/@claude-flow/swarm/src/federation-hub.js:157:        const toTerminate = [...activeIds, ...spawningIds];
+v3/@claude-flow/swarm/src/federation-hub.js:232:    async spawnEphemeralAgent(options) {
+v3/@claude-flow/swarm/src/federation-hub.js:274:            status: 'spawning',
+v3/@claude-flow/swarm/src/federation-hub.js:282:        // Simulate spawn (in real implementation, this would call the swarm coordinator)
+v3/@claude-flow/swarm/src/federation-hub.js:285:            if (a && a.status === 'spawning') {
+v3/@claude-flow/swarm/src/federation-hub.js:286:                this.updateAgentStatusIndex(a, 'spawning');
+v3/@claude-flow/swarm/src/federation-hub.js:288:                this.emitEvent('agent_spawned', targetSwarmId, agentId);
+v3/@claude-flow/swarm/src/federation-hub.js:298:                status: result ? 'spawned' : 'failed',
+v3/@claude-flow/swarm/src/federation-hub.js:307:            status: 'spawned',
+v3/@claude-flow/swarm/src/federation-hub.js:378:        return this.getAgents(swarmId).filter(a => a.status === 'active' || a.status === 'spawning');
+v3/@claude-flow/swarm/src/federation-hub.js:563:        // Count only active and spawning agents
+v3/@claude-flow/swarm/src/federation-hub.js:567:            if (agent && (agent.status === 'active' || agent.status === 'spawning')) {
+v3/@claude-flow/swarm/src/workers/worker-dispatch.ts:406:    const spawnTime = performance.now() - startTime;
+v3/@claude-flow/swarm/src/workers/worker-dispatch.ts:407:    if (spawnTime > 50) {
+v3/@claude-flow/swarm/src/workers/worker-dispatch.ts:408:      console.warn(`Worker spawn exceeded 50ms target: ${spawnTime.toFixed(2)}ms`);
+v3/@claude-flow/swarm/src/workers/worker-dispatch.js:267:        const spawnTime = performance.now() - startTime;
+v3/@claude-flow/swarm/src/workers/worker-dispatch.js:268:        if (spawnTime > 50) {
+v3/@claude-flow/swarm/src/workers/worker-dispatch.js:269:            console.warn(`Worker spawn exceeded 50ms target: ${spawnTime.toFixed(2)}ms`);
+v3/@claude-flow/swarm/src/shared/types.ts:256:  | 'agent:spawned'
+v3/@claude-flow/swarm/src/shared/events.ts:208:  return createSwarmEvent('agent:spawned', agentId, { agentId, state });
+v3/@claude-flow/swarm/src/application/services/swarm-application-service.ts:14:import { SpawnAgentCommandHandler, SpawnAgentInput, TerminateAgentCommandHandler } from '../commands/spawn-agent.command.js';
+v3/@claude-flow/swarm/src/application/services/swarm-application-service.ts:32:  private readonly spawnHandler: SpawnAgentCommandHandler;
+v3/@claude-flow/swarm/src/application/services/swarm-application-service.ts:43:    this.spawnHandler = new SpawnAgentCommandHandler(agentRepository);
+v3/@claude-flow/swarm/src/application/services/swarm-application-service.ts:56:  async spawnAgent(input: SpawnAgentInput): Promise<Agent> {
+v3/@claude-flow/swarm/src/application/services/swarm-application-service.ts:57:    const result = await this.spawnHandler.execute(input);
+v3/@claude-flow/shared/src/hooks/types.ts:37:  PreAgentSpawn = 'hook:pre-agent-spawn',
+v3/@claude-flow/shared/src/hooks/types.ts:38:  PostAgentSpawn = 'hook:post-agent-spawn',
+v3/@claude-flow/shared/src/core/orchestrator/index.ts:52:    spawnTimeout: 30000,
+v3/@claude-flow/shared/src/core/config/defaults.ts:123:    spawnTimeout: 30000, // 30 seconds
+v3/@claude-flow/security/src/safe-executor.ts:20:import { execFile, spawn, ChildProcess } from 'child_process';
+v3/@claude-flow/security/src/safe-executor.ts:151: * This class replaces unsafe exec() and spawn({shell: true}) calls
+v3/@claude-flow/security/src/safe-executor.ts:393:    const childProcess = spawn(command, args, {
+v3/@claude-flow/shared/src/hooks/session-hooks.ts:38:  spawnedAgents?: Array<{
+v3/@claude-flow/shared/src/hooks/session-hooks.ts:109:  /** Agents spawned */
+v3/@claude-flow/shared/src/hooks/session-hooks.ts:259:    // Track agent spawns
+v3/@claude-flow/shared/src/hooks/session-hooks.ts:316:      spawnedAgents: context.metadata?.spawnedAgents as SessionState['spawnedAgents'],
+v3/@claude-flow/shared/src/hooks/session-hooks.ts:385:    const agentsRestored = state.spawnedAgents?.length || 0;
+v3/@claude-flow/shared/src/hooks/session-hooks.ts:453:   * Track agent spawn
+v3/@claude-flow/shared/src/events/domain-events.ts:5: * - Agent lifecycle events (spawned, started, stopped, failed)
+v3/@claude-flow/shared/src/events/domain-events.ts:59:  type: 'agent:spawned';
+v3/@claude-flow/shared/src/events/domain-events.ts:387:  return createDomainEvent('agent:spawned', agentId, 'agent', {
+v3/@claude-flow/shared/src/core/interfaces/coordinator.interface.ts:342:  spawnAgent(config: IAgentConfig): Promise<IAgent>;
+v3/@claude-flow/plugins/src/workers/index.ts:24:  SPAWNED: 'worker:spawned',
+v3/@claude-flow/plugins/src/workers/index.ts:297:  spawn(definition: WorkerDefinition): Promise<IWorkerInstance>;
+v3/@claude-flow/plugins/src/workers/index.ts:363:  async spawn(definition: WorkerDefinition): Promise<IWorkerInstance> {
+v3/@claude-flow/plugins/src/types/index.ts:284:  AgentSpawned = 'hook:agent-spawned',
+v3/@claude-flow/plugins/examples/plugin-creator/index.ts:432:    'hook:agent-spawned': 'AgentSpawned',
+v3/mcp/tools/index.ts:10: * - Agent Tools: agent/spawn, agent/list, agent/terminate, agent/status
+v3/mcp/tools/index.ts:44:  spawnAgentTool,
+v3/mcp/tools/index.ts:140:  spawnEphemeralTool,
+v3/mcp/tools/index.ts:248: * @param name - Tool name (e.g., 'agent/spawn')
+v3/mcp/tools/index.ts:255: * const spawnTool = getToolByName('agent/spawn');
+v3/mcp/tools/index.ts:256: * if (spawnTool) {
+v3/mcp/tools/index.ts:257: *   await spawnTool.handler({ agentType: 'coder' });
+v3/@claude-flow/security/src/CVE-REMEDIATION.ts:97:    description: 'spawn() and exec() calls with shell:true enable command injection',
+v3/@claude-flow/security/src/CVE-REMEDIATION.ts:99:      'Multiple spawn() locations across codebase',
+v3/@claude-flow/plugins/src/integrations/ruvector/self-learning.ts:877:    while ((joinMatch = joinRegex.exec(sql)) !== null) {
+v3/@claude-flow/plugins/src/integrations/ruvector/self-learning.ts:902:    while ((distanceMatch = distanceRegex.exec(sql)) !== null) {
+v3/@claude-flow/plugins/src/integrations/ruvector/self-learning.ts:1364:    while ((joinMatch = joinRegex.exec(sql)) !== null) {
+v3/@claude-flow/plugins/src/collections/collection-manager.ts:31:  | 'subprocess'   // Can spawn processes
+v3/@claude-flow/plugin-agent-federation/src/application/policy-engine.ts:12:  | 'federation:spawn';
+v3/@claude-flow/plugin-agent-federation/src/application/policy-engine.ts:39:    'trust-change', 'topology-change', 'agent-spawn',
+v3/@claude-flow/plugin-agent-federation/src/application/policy-engine.ts:56:  'agent-spawn': ['federation:spawn'],
+v3/@claude-flow/plugin-agent-federation/src/application/policy-engine.ts:69:  // both the write capability (state mutation) AND spawn-lifecycle authority
+v3/@claude-flow/plugin-agent-federation/src/application/policy-engine.ts:70:  // (handoff is a sibling of agent-spawn — both reshape who owns work).
+v3/@claude-flow/plugin-agent-federation/src/application/policy-engine.ts:72:  'agent-handoff': ['federation:write', 'federation:spawn'],
+v3/@claude-flow/plugin-agent-federation/src/application/policy-engine.ts:232:      case 'agent-spawn':
+v3/@claude-flow/plugin-agent-federation/src/application/policy-engine.ts:233:        return 'remote-spawn';
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:11:import { spawn, ChildProcess } from 'child_process';
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:19: * Measure CLI cold start time by spawning a new process
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:25:    const child: ChildProcess = spawn(command, args, {
+v3/@claude-flow/plugin-agent-federation/src/mcp-tools.ts:355:          messageType: { type: 'string', description: 'Consensus message type (trust-change, topology-change, agent-spawn)' },
+v3/@claude-flow/testing/src/v2-compat/report-generator.ts:199:  lines.push('| dispatch_agent | agent/spawn |');
+v3/@claude-flow/testing/src/v2-compat/report-generator.ts:200:  lines.push('| agents/spawn | agent/spawn |');
+v3/@claude-flow/testing/src/v2-compat/report-generator.ts:315:  lines.push('}); // Automatically translated to agent/spawn');
+v3/@claude-flow/testing/src/v2-compat/report-generator.ts:318:  lines.push("const agent = await mcp.callTool('agent/spawn', {");
+v3/@claude-flow/testing/src/v2-compat/report-generator.ts:340:  lines.push("const agent = await hive.spawn('coder');");
+v3/@claude-flow/plugin-agent-federation/src/domain/services/pii-pipeline-service.ts:127:      while ((match = regex.exec(text)) !== null) {
+v3/@claude-flow/plugin-agent-federation/src/domain/entities/trust-level.ts:26:  [TrustLevel.PRIVILEGED]: ['discovery', 'status', 'ping', 'send', 'receive', 'query-redacted', 'share-context', 'collaborative-task', 'full-memory', 'remote-spawn'],
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:118:  { name: 'agent spawn', aliases: ['a spawn'], flags: ['--type', '--id', '--config'], description: 'Spawn new agent', v3Equivalent: 'agent spawn' },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:153:  { name: 'dispatch_agent', parameters: { type: { type: 'string', required: true }, name: { type: 'string', required: false } }, returnType: 'AgentInfo', v3Equivalent: 'agent/spawn' },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:154:  { name: 'agents/spawn', parameters: { type: { type: 'string', required: true }, config: { type: 'object', required: false } }, returnType: 'AgentInfo', v3Equivalent: 'agent/spawn' },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:158:  { name: 'agent/create', parameters: { type: { type: 'string', required: true } }, returnType: 'AgentInfo', v3Equivalent: 'agent/spawn' },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:166:  { name: 'mcp__ruv-swarm__agent_spawn', parameters: { type: { type: 'string', required: true } }, returnType: 'AgentInfo', v3Equivalent: 'agent/spawn' },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:223:  { name: 'agent-spawn', trigger: 'on:agent:spawn', parameters: ['agentConfig'], returnType: 'HookResult', v3Equivalent: 'agent-spawn' },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:280:      { name: 'spawn', signature: '(type: string, config?: AgentConfig): Promise<Agent>' },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:311:      { name: 'spawn', signature: '(config: AgentConfig): Promise<Agent>' },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:382:      'dispatch_agent': 'agent/spawn',
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:383:      'agents/spawn': 'agent/spawn',
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:387:      'agent/create': 'agent/spawn',
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:393:      'mcp__ruv-swarm__agent_spawn': 'agent/spawn',
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:405:      'agent/spawn', 'agent/list', 'agent/terminate', 'agent/status',
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:416:      'agent spawn', 'agent list', 'agent terminate', 'agent status',
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:455:            'UnifiedSwarmCoordinator': { methods: ['initialize', 'spawn', 'addAgent', 'removeAgent', 'broadcast', 'consensus', 'getStatus', 'shutdown'] },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:457:            'AgentLifecycleService': { methods: ['spawn', 'terminate', 'list', 'getInfo', 'getStatus'] },
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:822:      recommendations.push('Update tool calls to use new naming convention (e.g., agent/spawn)');
+v3/@claude-flow/testing/src/v2-compat/compatibility-validator.ts:1049:  lines.push("await mcp.callTool('agent/spawn', { agentType: 'coder' });");
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:68:      { name: 'spawn', signature: '(agentType: string, config?: AgentConfig): Promise<Agent>', v2Signature: '(type: string, config?: AgentConfig): Promise<Agent>', compatible: true },
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:105:      { name: 'spawn', signature: '(config: AgentConfig): Promise<Agent>', compatible: true },
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:272:    it('should have compatible spawn signature', () => {
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:273:      const signature = mockRegistry.getMethodSignature('HiveMind', 'spawn');
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:391:    it('should have compatible spawn signature', () => {
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:392:      const signature = mockRegistry.getMethodSignature('AgentManager', 'spawn');
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:538:    it('should support V2 agent spawn pattern', () => {
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:539:      // V2 pattern: const agent = await manager.spawn({ type: 'coder' });
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:540:      // V3 equivalent: const agent = await lifecycle.spawn({ agentType: 'coder' });
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:543:      expect(classInfo?.methods.some(m => m.name === 'spawn')).toBe(true);
+v3/@claude-flow/testing/src/v2-compat/api-compat.test.ts:585:    expect(allMethods).toContain('spawn');
+v3/@claude-flow/testing/src/regression/performance-baseline.ts:297:    eventBus.subscribe('agent:spawned', () => { count++; });
+v3/@claude-flow/testing/src/regression/api-contract.ts:94:    name: 'agent/spawn',
+v3/@claude-flow/testing/src/regression/api-contract.ts:100:        agentType: { type: 'string', description: 'Type of agent to spawn' },
+v3/@claude-flow/testing/src/regression/api-contract.ts:120:      { code: -32000, message: 'Agent spawn failed', description: 'Failed to spawn agent' },
+v3/@claude-flow/testing/src/fixtures/agent-fixtures.ts:95: * Agent spawn result interface
+v3/@claude-flow/testing/src/fixtures/agent-fixtures.ts:567: * Factory function to create spawn result
+v3/@claude-flow/swarm/src/application/index.ts:15:} from './commands/spawn-agent.command.js';
+v3/@claude-flow/shared/src/types.ts:254:  | 'agent:spawned'
+v3/@claude-flow/performance/benchmarks/startup/mcp-server-init.bench.ts:89:    'swarm_init', 'swarm_status', 'agent_spawn', 'agent_list',
+v3/@claude-flow/shared/src/hooks/safety/git-commit.ts:469:      const match = pattern.exec(branchName);
+v3/@claude-flow/shared/src/events/state-reconstructor.ts:205:      case 'agent:spawned':
+v3/@claude-flow/shared/src/events/projections.ts:72:  spawnedAt: number;
+v3/@claude-flow/shared/src/events/projections.ts:118:      case 'agent:spawned':
+v3/@claude-flow/shared/src/events/projections.ts:161:      spawnedAt: event.timestamp,
+v3/@claude-flow/shared/src/events/projections.ts:167:    this.emit('agent:spawned', { agentId });
+v3/@claude-flow/shared/src/events/event-store.test.ts:45:      expect(events[0].type).toBe('agent:spawned');
+v3/@claude-flow/shared/src/events/event-store.test.ts:88:      expect(events[0].type).toBe('agent:spawned');
+v3/@claude-flow/shared/src/events/event-store.test.ts:120:      const events = await eventStore.query({ eventTypes: ['agent:spawned'] });
+v3/@claude-flow/shared/src/events/event-store.test.ts:122:      expect(events.every((e) => e.type === 'agent:spawned')).toBe(true);
+v3/@claude-flow/shared/src/events/event-store.test.ts:220:      expect(stats.eventsByType['agent:spawned']).toBe(2);
+v3/@claude-flow/shared/src/core/interfaces/event.interface.ts:150:  AGENT_SPAWNED: 'agent:spawned',
+v3/@claude-flow/shared/src/core/config/schema.ts:151:    spawnTimeout: z.number().int().positive().default(30000),
+v3/@claude-flow/security/src/tool-output-guardrail.ts:274:      while ((match = re.exec(scanned)) !== null) {
+v3/@claude-flow/memory/benchmarks/hnsw-indexing.bench.ts:539:          this.fd = fs.openSync(filePath, 'r+');
+v3/@claude-flow/integration/src/agent-adapter.ts:573:      'initializing': 'spawning',
+v3/@claude-flow/mcp/.claude/helpers/statusline.js:11:const { execSync } = require('child_process');
+v3/@claude-flow/mcp/.claude/helpers/statusline.js:53:    name = execSync('git config user.name 2>/dev/null || echo "user"', { encoding: 'utf-8' }).trim();
+v3/@claude-flow/mcp/.claude/helpers/statusline.js:54:    gitBranch = execSync('git branch --show-current 2>/dev/null || echo ""', { encoding: 'utf-8' }).trim();
+v3/@claude-flow/mcp/.claude/helpers/statusline.js:175:    const ps = execSync('ps aux 2>/dev/null | grep -c agentic-flow || echo "0"', { encoding: 'utf-8' });
+v3/@claude-flow/mcp/.claude/helpers/statusline.js:195:    const mem = execSync('ps aux | grep -E "(node|agentic|claude)" | grep -v grep | awk \'{sum += \$6} END {print int(sum/1024)}\'', { encoding: 'utf-8' });
+v3/@claude-flow/mcp/.claude/helpers/statusline.js:213:    const agents = execSync('ps aux 2>/dev/null | grep -c "claude-flow.*agent" || echo "0"', { encoding: 'utf-8' });
+v3/@claude-flow/integration/src/worker-pool.ts:8: * - Dynamic worker spawning and termination
+v3/@claude-flow/integration/src/worker-pool.ts:132: * Worker spawn options
+v3/@claude-flow/integration/src/worker-pool.ts:159: * pool.spawn({
+v3/@claude-flow/integration/src/worker-pool.ts:309:  spawn(
+v3/@claude-flow/integration/src/worker-pool.ts:364:    this.emit('worker-spawned', {
+v3/@claude-flow/integration/src/worker-pool.ts:756:    const worker = this.spawn({
+v3/@claude-flow/integration/src/worker-pool.ts:850:      // Terminate and respawn
+v3/@claude-flow/integration/src/worker-pool.ts:854:      const newWorker = this.spawn(config, { initialize: true });
+v3/@claude-flow/integration/src/worker-pool.ts:893: * Generic worker implementation for pool spawning
+v3/@claude-flow/integration/src/worker-base.ts:241:  status: AgentStatus = 'spawning';
+v3/@claude-flow/testing/src/index.ts:22: *     const agent = await app.agentLifecycle.spawn(agentConfigs.queenCoordinator);
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:23:  'dispatch_agent': 'agent/spawn',
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:24:  'agents/spawn': 'agent/spawn',
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:28:  'agent/create': 'agent/spawn',
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:36:  'mcp__ruv-swarm__agent_spawn': 'agent/spawn',
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:68:    'agent/spawn', 'agent/list', 'agent/terminate', 'agent/status',
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:87:        'agent/spawn': { id: 'agent-1', type: params.agentType || params.type, status: 'active' },
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:109:      if (toolName === 'dispatch_agent' || toolName === 'agents/spawn') {
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:177:    it('should translate dispatch_agent to agent/spawn', () => {
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:180:      expect(v3Name).toBe('agent/spawn');
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:183:    it('should translate agents/spawn to agent/spawn', () => {
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:184:      const v3Name = mockMCP.translateToolName('agents/spawn');
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:186:      expect(v3Name).toBe('agent/spawn');
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:210:    it('should handle mcp__ruv-swarm__agent_spawn', async () => {
+v3/@claude-flow/testing/src/v2-compat/mcp-compat.test.ts:211:      const result = await mockMCP.callTool('mcp__ruv-swarm__agent_spawn', { type: 'coder' });
+v3/@claude-flow/testing/src/v2-compat/hooks-compat.test.ts:251:    it('should trigger agent-spawn hook with config', async () => {
+v3/@claude-flow/testing/src/v2-compat/hooks-compat.test.ts:252:      const result = await mockHooks.trigger('agent-spawn', {
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:33:    'agent spawn', 'agent list', 'agent terminate', 'agent status',
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:46:        'hive-mind spawn': 'agent spawn',
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:156:    it('should support agent spawn with --type flag', async () => {
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:157:      const result = await mockCLI.execute('agent spawn', ['--type', 'coder']);
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:162:    it('should support agent spawn with --id flag', async () => {
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:163:      const result = await mockCLI.execute('agent spawn', ['--id', 'my-agent']);
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:186:    it('should support alias "a spawn" for "agent spawn"', async () => {
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:188:      const result = await mockCLI.execute('agent spawn', ['--type', 'coder']);
+v3/@claude-flow/testing/src/v2-compat/cli-compat.test.ts:442:      const commonAliases = ['i', 's', 'st', 'c', 'a spawn', 'a ls'];
+v3/@claude-flow/testing/src/regression/security-regression.ts:77:    altPattern: /child_process.*exec.*\+|spawn.*shell:\s*true/gi,
+v3/@claude-flow/testing/src/regression/integration-regression.ts:219:        eventBus.subscribe('agent:spawned', (event) => {
+v3/@claude-flow/testing/src/regression/integration-regression.ts:220:          if (event.type === 'agent:spawned') {
+v3/@claude-flow/testing/src/regression/integration-regression.ts:248:        eventBus.subscribe('agent:spawned', () => { count++; });
+v3/@claude-flow/testing/src/regression/integration-regression.ts:249:        eventBus.subscribe('agent:spawned', () => { count++; });
+v3/@claude-flow/testing/src/regression/integration-regression.ts:250:        eventBus.subscribe('agent:spawned', () => { count++; });
+v3/@claude-flow/hooks/src/executor/index.ts:367:   * Execute hooks for agent-spawn event
+v3/@claude-flow/testing/src/fixtures/configurations.ts:340:      enabled: ['swarm_init', 'agent_spawn', 'task_orchestrate', 'memory_usage'],
+v3/@claude-flow/integration/src/agentic-flow-agent.ts:28:export type AgentStatus = 'spawning' | 'active' | 'idle' | 'busy' | 'error' | 'terminated';
+v3/@claude-flow/integration/src/agentic-flow-agent.ts:258:  status: AgentStatus = 'spawning';
+v3/@claude-flow/shared/src/types/agent.types.ts:9: * Agent profile - extended configuration for spawning
+v3/@claude-flow/shared/src/types/agent.types.ts:35: * Agent spawn options
+v3/@claude-flow/shared/src/types/agent.types.ts:46: * Agent spawn result
+v3/@claude-flow/shared/src/types/agent.types.ts:114:  'agent:spawned': {
+v3/@claude-flow/hooks/src/types.ts:41:  AgentSpawn = 'agent-spawn',
+v3/@claude-flow/hooks/src/workers/index.ts:1173:    const { exec } = await import('child_process');
+v3/@claude-flow/hooks/src/statusline/index.ts:19:import { execSync } from 'child_process';
+v3/@claude-flow/hooks/src/statusline/index.ts:466:      const ps = execSync('ps aux 2>/dev/null || echo ""', { encoding: 'utf-8' });
+v3/@claude-flow/hooks/src/statusline/index.ts:543:      const ps = execSync('ps aux 2>/dev/null | grep -E "(node|agentic|claude)" | grep -v grep | awk \'{sum += $6} END {print int(sum/1024)}\'', { encoding: 'utf-8' });
+v3/@claude-flow/hooks/src/statusline/index.ts:547:      const agents = execSync('ps aux 2>/dev/null | grep -E "Task|subagent|agent_spawn" | grep -v grep | wc -l', { encoding: 'utf-8' });
+v3/@claude-flow/hooks/src/statusline/index.ts:610:      name = execSync('gh api user --jq \'.login\' 2>/dev/null || git config user.name 2>/dev/null || echo "user"', { encoding: 'utf-8' }).trim();
+v3/@claude-flow/hooks/src/statusline/index.ts:613:        name = execSync('git config user.name 2>/dev/null || echo "user"', { encoding: 'utf-8' }).trim();
+v3/@claude-flow/hooks/src/statusline/index.ts:620:      gitBranch = execSync('git branch --show-current 2>/dev/null || echo ""', { encoding: 'utf-8' }).trim();
+v3/@claude-flow/hooks/src/reasoningbank/index.ts:977:      const { execFileSync } = await import('child_process');
+v3/@claude-flow/guidance/src/ruvbot-integration.ts:613: * - `agent:spawn`    -> ManifestValidator
+v3/@claude-flow/guidance/src/ruvbot-integration.ts:687:    this.wireEvent('agent:spawn', this.handleAgentSpawn.bind(this));
+v3/@claude-flow/guidance/src/ruvbot-integration.ts:817:   * Handle `agent:spawn` events: validate agent manifest.
+v3/@claude-flow/guidance/src/ruvbot-integration.ts:824:    this.logEvent('agent:spawn', { agentId, hasManifest: !!manifest });
+v3/@claude-flow/guidance/src/adversarial.ts:230:      regex: /delegate.*to.*(unknown|external|untrusted)|spawn.*agent.*with.*(elevated|admin|root)/i,
+v3/@claude-flow/embeddings/src/embedding-service.ts:850:  const { exec } = await import('child_process');
+v3/@claude-flow/deployment/src/validator.ts:6:import { execSync } from 'child_process';
+v3/@claude-flow/deployment/src/validator.ts:287:      const output = execSync(cmd, {
+v3/@claude-flow/guidance/tests/analyzer.test.ts:671:When user says "spawn swarm", Claude Code MUST in ONE message:
+v3/@claude-flow/guidance/tests/analyzer.test.ts:673:2. IMMEDIATELY call Task tool to spawn REAL working agents
+v3/@claude-flow/guidance/tests/analyzer.test.ts:681:ALWAYS check for [AGENT_BOOSTER_AVAILABLE] before spawning agents.
+v3/@claude-flow/guidance/tests/analyzer.test.ts:727:npx claude-flow agent spawn -t coder
+v3/@claude-flow/guidance/tests/analyzer.test.ts:850:Claude Code MUST automatically spawn agents.
+v3/@claude-flow/guidance/tests/analyzer.test.ts:2007:      return { stdout: 'const cmd = `node ${userInput}`; exec(cmd);', stderr: '', exitCode: 0 };
+v3/@claude-flow/codex/src/initializer.ts:321:      const { execSync } = await import('child_process');
+v3/@claude-flow/codex/src/initializer.ts:325:        execSync('which codex', { stdio: 'pipe' });
+v3/@claude-flow/codex/src/initializer.ts:335:        const list = execSync('codex mcp list 2>&1', { encoding: 'utf-8' });
+v3/@claude-flow/codex/src/initializer.ts:345:        execSync('codex mcp add ruflo -- npx ruflo mcp start', {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:6:import { spawn, ChildProcess } from 'child_process';
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:102:  async spawnWorker(config: WorkerConfig): Promise<void> {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:170:      const proc = spawn(command, args, {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:271:        this.spawnWorker(worker).catch(err => {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:355:      const proc = spawn(command, args, { cwd, stdio: ['pipe', 'pipe', 'pipe'] });
+v3/@claude-flow/guidance/src/manifest-validator.ts:279:    // Task spawning
+v3/@claude-flow/guidance/src/headless.ts:141: * Default command executor using child_process
+v3/@claude-flow/guidance/src/headless.ts:145:    const { execFile } = await import('node:child_process');
+v3/@claude-flow/deployment/src/release-manager.ts:6:import { execSync, execFileSync } from 'child_process';
+v3/@claude-flow/deployment/src/release-manager.ts:355:      const output = execSync(cmd, {
+v3/@claude-flow/codex/tests/dual-mode.test.ts:6: * No real workers are spawned — only pure logic is exercised.
+v3/@claude-flow/codex/src/loop/index.ts:1:import { spawn } from 'node:child_process';
+v3/@claude-flow/codex/src/loop/index.ts:228:    const child = spawn(command, {
+v3/@claude-flow/codex/src/loop/index.ts:241:    const child = spawn(command, args, {
+v3/@claude-flow/codex/src/loop/index.ts:252:  child: ReturnType<typeof spawn>,
+v3/@claude-flow/codex/src/dual-mode/cli.ts:187:      const { spawn } = await import('child_process');
+v3/@claude-flow/codex/src/dual-mode/cli.ts:189:      const proc = spawn('npx', [
+v3/@claude-flow/shared/src/hooks/safety/bash-safety.ts:478:      const match = pattern.exec(command);
+v3/@claude-flow/shared/src/events/example-usage.ts:57:  await eventStore.append(createSwarmScaledEvent(0, 5, 'Initial agent spawn'));
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:3: * Decomposed from orchestrator.ts - Agent spawn/terminate
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:73:  spawnTimeout: number;
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:92:  async spawn(config: IAgentConfig): Promise<IAgent> {
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:109:      status: 'spawning',
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:136:  async spawnBatch(configs: IAgentConfig[]): Promise<Map<string, IAgent>> {
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:145:    const spawnPromises = configs.map(async config => {
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:147:        const agent = await this.spawn(config);
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:154:    const settled = await Promise.allSettled(spawnPromises);
+v3/@claude-flow/shared/src/core/orchestrator/lifecycle-manager.ts:197:    return this.spawn(config);
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:11:import { spawn } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:16:function spawnAsync(cmd, args, opts) {
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:21:        const child = spawn(cmd, args, {
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:86:     * configure env vars, optionally decrypt API-key vault, and spawn.
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:115:            return spawnAsync(this.header.boot.entrypoint || 'node', [entryFile, ...args], {
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:128:        const dockerCheck = await spawnAsync('docker', ['info'], { verbose: false });
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:154:            const build = await spawnAsync('docker', ['build', '-t', imageName, '.'], {
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:160:            return spawnAsync('docker', ['run', '--rm', ...envFlags, imageName], { verbose: options.verbose });
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:193:            return spawnAsync('node', [join(workDir, 'verify.js')], {
+v3/@claude-flow/shared/src/core/interfaces/agent.interface.ts:9:export type AgentStatus = 'spawning' | 'active' | 'idle' | 'busy' | 'error' | 'terminated';
+v3/@claude-flow/shared/src/core/interfaces/agent.interface.ts:36: * Agent configuration for spawning
+v3/@claude-flow/shared/src/core/interfaces/agent.interface.ts:175:  spawn(config: IAgentConfig): Promise<IAgent>;
+v3/@claude-flow/shared/src/core/interfaces/agent.interface.ts:180:  spawnBatch(configs: IAgentConfig[]): Promise<Map<string, IAgent>>;
+v3/@claude-flow/security/src/input-validator.ts:196:  'agent.spawn',
+v3/@claude-flow/security/src/input-validator.ts:262: * Agent spawn request schema
+v3/@claude-flow/cli/dist/src/update/executor.js:5:import { execFileSync } from 'child_process';
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:6: * - Agent spawning
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:77:  readonly status: 'spawning' | 'active' | 'busy' | 'idle' | 'terminated';
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:80:  readonly spawnedAt: Date;
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:110:  AGENT_SPAWNED: 'agentic:agent-spawned',
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:127: * Provides a unified interface for swarm coordination, agent spawning, and task orchestration.
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:215:  async spawnAgent(options: AgentSpawnOptions): Promise<SpawnedAgent> {
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:236:      spawnedAt: new Date(),
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:246:    this.config.logger?.info(`Agent spawned: ${id} (${options.type})`);
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:452:   * Convert plugin worker to agent spawn options.
+v3/@claude-flow/cli/dist/src/config/proven-config.js:87:    const m = /(\d+)(?:\.(\d+))?(?:\.(\d+))?/.exec(v);
+v3/@claude-flow/cli/dist/src/config/proven-config.js:104:    const m = /^(>=|<=|>|<|=)?\s*(.+)$/.exec(r);
+v3/@claude-flow/cli/dist/src/services/distill-tuning.js:397:            db.exec(`DELETE FROM ${t}`);
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:30: * `reflectFailures` spawn `claude`, and only when `maxBudgetUsd > 0`. The
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:31: * `spawnClaude` implementation is injectable so tests never touch the real CLI.
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:35:import { spawn } from 'child_process';
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:82:// ── Default spawner (real CLI) ───────────────────────────────────────────────
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:84: * Default `claude -p` spawner. Pipes the prompt via stdin (never as an argv
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:92:        child = spawn('claude', argv, {
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:150:    spawnClaude;
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:157:        this.spawnClaude = opts.spawnClaude ?? defaultSpawnClaude;
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:229:     * context), spawn `claude -p` there with the role via --append-system-prompt,
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:238:            const res = await this.spawnClaude(argv, stdinPrompt, cwd, { timeoutMs: this.timeoutMs });
+v3/@claude-flow/cli/dist/src/update/validator.js:27:            'Agent spawning now requires type parameter',
+v3/@claude-flow/cli/dist/src/business-pods/bbs-budget-tracker.js:98:        // Ensure schema is present. exec() is a no-op for tables that already
+v3/@claude-flow/cli/dist/src/business-pods/bbs-budget-tracker.js:100:        this.db.exec(SCHEMA_SQL);
+v3/@claude-flow/cli/dist/src/plugins/manager.js:8:import { execFile } from 'child_process';
+v3/@claude-flow/cli/dist/src/plugins/manager.js:13:// to spawn `.cmd`/`.bat` files directly and throws `spawn EINVAL` — the only
+v3/@claude-flow/cli/dist/src/services/memory-distillation.js:119:        db.exec(`CREATE TABLE IF NOT EXISTS distill_state (
+v3/@claude-flow/cli/dist/src/services/swarm-memory-branches.js:17: *     → each agent forks a 162-byte COW branch (nativeAnn:true) at spawn
+v3/@claude-flow/cli/dist/src/services/swarm-memory-branches.js:24: * The current `agent_spawn` MCP path (src/mcp-tools/agent-tools.ts) stores an
+v3/@claude-flow/cli/dist/src/services/swarm-memory-branches.js:120:        // Idempotent — a retried spawn must not double-fork.
+v3/@claude-flow/cli/dist/src/commands/eject.js:31:import { spawnSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/commands/eject.js:51:    const r = spawnSync('npx', ['-y', 'metaharness@latest', '--from-existing', process.cwd(), '--name', name, '--target', targetDir, '--yes'], {
+v3/@claude-flow/cli/dist/src/commands/eject.js:61:    if (r.error && /ENOENT|spawn/.test(String(r.error.message || ''))) {
+v3/@claude-flow/cli/dist/src/services/harness-hosts.js:13:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/services/distill-oracle.js:37:import { spawn } from 'child_process';
+v3/@claude-flow/cli/dist/src/services/distill-oracle.js:243:        child = spawn(cmd, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });
+v3/@claude-flow/cli/dist/src/services/distill-oracle.js:276:    const run = (command) => exec('sh', ['-c', command], { timeoutMs });
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:19:import { spawn, exec } from 'child_process';
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:407:            const child = spawn('docker', args, {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:449:     * #2371: the old command spawned `npx claude-flow@v3alpha daemon trigger`,
+v3/@claude-flow/cli/dist/src/services/daemon-autostart.js:9: *     the spawned `daemon start` independently enforces single-instance via its
+v3/@claude-flow/cli/dist/src/services/daemon-autostart.js:10: *     own lock + checkExistingDaemon() — so a race spawns at most one survivor,
+v3/@claude-flow/cli/dist/src/services/daemon-autostart.js:18: * module only decides WHETHER to spawn, never reimplements the daemon.
+v3/@claude-flow/cli/dist/src/services/daemon-autostart.js:22:import { spawn } from 'child_process';
+v3/@claude-flow/cli/dist/src/services/daemon-autostart.js:49:    const child = spawn(process.execPath, [cliBin, 'daemon', 'start', '--quiet'], {
+v3/@claude-flow/cli/dist/src/services/daemon-autostart.js:72:        (opts.spawnFn ?? defaultSpawn)(projectRoot);
+v3/@claude-flow/cli/dist/src/services/claim-service.js:18:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:13: *                    command a GPU host would run. $0 dry-run — never spawns.
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:20: * HARD HONESTY RULE (do not overclaim): weight-eft's own `train` never spawns
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:36:import { spawnSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:170: * PURE — no spawning, no filesystem, deterministic. This is the seam the
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:216: *   - No `ssh` binary / host unreachable / any spawn error → structured
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:219: * `spawn` is injected for testing so CI never touches a live host.
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:229:    const spawn = args.spawn ?? defaultSpawn;
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:236:            const r = spawn(s.argv[0], s.argv.slice(1));
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:271:            const r = spawn(s.argv[0], s.argv.slice(1));
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:284:/** Default spawn — synchronous child_process, imported lazily so this module
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:285: *  stays importable in any environment. Never throws (spawnSync surfaces
+v3/@claude-flow/cli/dist/src/services/weight-eft.js:289:        const r = spawnSync(cmd, argv, { encoding: 'utf8', timeout: 30 * 60 * 1000 });
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:643:     * #1853: ignore self-PID matches. The detached-spawn path in
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:852:     * each interval worker spawns a headless `claude --print` sweep, so a daemon
+v3/@claude-flow/cli/dist/src/services/memory-backup.js:80:            const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/completions.js:18:const AGENT_SUBCOMMANDS = ['spawn', 'terminate', 'status', 'list', 'pool', 'health', 'update'];
+v3/@claude-flow/cli/dist/src/commands/completions.js:24:const HIVE_MIND_SUBCOMMANDS = ['init', 'spawn', 'status', 'task', 'join', 'leave', 'consensus', 'broadcast', 'memory', 'optimize-memory', 'shutdown'];
+v3/@claude-flow/cli/dist/src/commands/completions.js:183:                        'spawn:Create new agent'
+v3/@claude-flow/cli/dist/src/commands/completions.js:219:                        'spawn:Spawn worker agents'
+v3/@claude-flow/plugin-agent-federation/src/domain/entities/federation-envelope.ts:9:  | 'agent-spawn'
+v3/@claude-flow/plugin-agent-federation/src/domain/entities/federation-envelope.ts:121:  'agent-spawn',
+v3/@claude-flow/cli/dist/src/commands/claims.js:37:        defaultClaims: ['swarm:create', 'swarm:status', 'agent:spawn', 'agent:list', 'memory:read', 'memory:write', 'task:create'],
+v3/@claude-flow/cli/dist/src/commands/claims.js:175:                defaultClaims: ['swarm:create', 'swarm:status', 'agent:spawn', 'agent:list', 'memory:read', 'memory:write', 'task:create'],
+v3/@claude-flow/cli/dist/src/commands/claims.js:271:        { command: 'claude-flow claims grant -c agent:spawn -r developer', description: 'Grant to role' },
+v3/@claude-flow/cli/dist/src/commands/claims.js:590:        { command: 'claude-flow claims grant -c agent:spawn -r developer', description: 'Grant claim' },
+v3/@claude-flow/cli/dist/src/commands/claims.js:610:            'agent:*   - Agent operations (spawn, terminate)',
+v3/@claude-flow/cli/dist/src/commands/neural.js:1443:                    'eval(', 'Function(', 'exec(', 'spawn(',
+v3/@claude-flow/cli/dist/src/commands/neural.js:1444:                    'child_process', 'rm -rf', 'sudo',
+v3/@claude-flow/cli/dist/src/commands/neural.js:1776:                output.writeln(JSON.stringify({ error: msg, hint: 'Set CLAUDE_FLOW_ROUTER_TRAJECTORY=1 and run any agent_spawn → executeAgentTask flow to accumulate rows.' }, null, 2));
+v3/@claude-flow/cli/dist/src/commands/neural.js:1861:            output.writeln(output.dim('  Empty trajectory file. Enable recording with `export CLAUDE_FLOW_ROUTER_TRAJECTORY=1` and run agent_spawn flows.'));
+v3/@claude-flow/cli/dist/src/commands/neural.js:3456:                output.writeln(JSON.stringify({ error: msg, hint: 'State is created on first routing decision. Run any agent_spawn flow with CLAUDE_FLOW_ROUTER_NEURAL=1.' }, null, 2));
+v3/@claude-flow/cli/dist/src/commands/neural.js:3459:                output.writeln(output.dim('  State is created on first routing decision. Run any agent_spawn flow.'));
+v3/@claude-flow/cli/dist/src/commands/neural.js:3993:// "reduce escalation". weight-eft's own `train` never spawns; `resolved` in the
+v3/@claude-flow/cli/dist/src/commands/neural.js:4085:    description: 'Print the two-stage (SFT → on-policy DPO) GPU training plan + the exact `ruvllm microlora` commands a GPU host would run. $0 dry-run — NEVER spawns a tune.',
+v3/@claude-flow/cli/dist/src/commands/neural.js:4290:        output.writeln(output.dim('Ships audited training DATA + a cost audit + a GPU plan. It does NOT train a model or reduce escalation (weight-eft train never spawns; resolved is a proxy).'));
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:6: * Measures the time to spawn agents including initialization,
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:21:  spawnTime: number;
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:62:async function spawnAgentV2(type: string): Promise<Agent> {
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:73:    spawnTime: performance.now(),
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:94:async function spawnAgentV3(type: string): Promise<Agent> {
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:105:    spawnTime: performance.now(),
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:120:async function spawnAgentsParallel(types: string[]): Promise<Agent[]> {
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:121:  return Promise.all(types.map((type) => spawnAgentV3(type)));
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:127:async function spawnAgentsSequential(types: string[]): Promise<Agent[]> {
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:130:    agents.push(await spawnAgentV2(type));
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:153:  const agents = await spawnAgentsParallel(types);
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:178:    'single-agent-spawn-v2',
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:180:      await spawnAgentV2('coder');
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:189:    'single-agent-spawn-v3',
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:191:      await spawnAgentV3('coder');
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:197:  const singleTarget = meetsTarget('agent-spawn', singleV3Result.mean);
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:200:  // Calculate single spawn speedup
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:208:      await spawnAgentsSequential(['coder', 'tester', 'researcher', 'coordinator', 'reviewer']);
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:219:      await spawnAgentsParallel(['coder', 'tester', 'researcher', 'coordinator', 'reviewer']);
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:235:      await spawnAgentsParallel(types);
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:274:      const agent = await spawnAgentV3('coder');
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:284:  const agents = await spawnAgentsParallel(Array(20).fill('coder'));
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:314:   * Agent pooling: Pre-spawn and reuse agents
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:317:    description: 'Maintain a pool of pre-spawned agents for instant acquisition',
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:329:          return this.spawn(type); // Fallback
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:334:            this.available.push(await this.spawn('generic'));
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:342:   * Parallel spawning: Spawn multiple agents concurrently
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:348:      async function spawnSwarm(types: string[]): Promise<Agent[]> {
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:349:        return Promise.all(types.map(type => spawnAgent(type)));
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:383:      async function spawnInWorker(type: string): Promise<Agent> {
+v3/@claude-flow/cli/dist/src/commands/ruvector/import.js:306:                // Execute via child_process (CRIT-02: use execFileSync to prevent command injection)
+v3/@claude-flow/cli/dist/src/commands/ruvector/import.js:307:                const { execFileSync } = await import('child_process');
+v3/@claude-flow/performance/src/framework/benchmark.ts:528:  'agent-spawn': 200,           // <200ms (4x faster)
+v3/@claude-flow/performance/benchmarks/startup/cli-warm-start.bench.ts:250:      // Reuse workers instead of spawning new ones
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:21:import { spawn, execSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:413:            const output = execSync('claude --version', {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:883:            // #2098B / #2093 — `claude --print` can spawn grandchildren (MCP
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:890:            const child = spawn('claude', ['--print'], {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:901:                // stdin already closed (e.g. spawn failed) — `error` handler below
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:1038:        while ((codeMatch = codeBlockRegex.exec(output)) !== null) {
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:36: * the commands/metaharness.ts dispatcher uses, then spawns it with
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:50:import { spawn } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:127:        const p = spawn('node', [scriptPath, ...argv], {
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:141:            const m = /\{[\s\S]*\}/.exec(stdout);
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:160:                exitCode: 127, stdout, json: { degraded: true, reason: 'spawn-failed' },
+v3/@claude-flow/cli/dist/src/commands/metaharness.js:5: * `plugins/ruflo-metaharness/scripts/<name>.mjs` via spawnSync. This is
+v3/@claude-flow/cli/dist/src/commands/metaharness.js:31: * here we only spawn the local Node script (which then handles
+v3/@claude-flow/cli/dist/src/commands/metaharness.js:37:import { spawnSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/commands/metaharness.js:110:    const r = spawnSync('node', [scriptPath, ...extraArgs], {
+v3/@claude-flow/cli/dist/src/commands/autopilot.js:14: * tick returns a continuation prompt, and the spawned agent (plus agentic-flow
+v3/@claude-flow/cli/dist/src/mcp-tools/wasm-agent-tools.js:590:        description: 'Reset a WASM agent — clears messages and turn count so it can be reused across tasks. Use when native Task is wrong because the agent lives in a sandboxed WASM runtime that must be explicitly reset rather than simply re-spawned.',
+v3/@claude-flow/cli/dist/src/mcp-tools/coordination-tools.js:640:            // an honest stub-status with a note pointing callers at agent_spawn
+v3/@claude-flow/cli/dist/src/mcp-tools/coordination-tools.js:670:                _note: 'coordination_orchestrate currently records the orchestration request but does not execute it. For real multi-agent execution use agent_spawn + the Task tool, or hive-mind_spawn for queen-led coordination. Real executor tracked in issue #2140.',
+v3/@claude-flow/cli/dist/src/memory/graph-edge-writer.js:103:        db.exec(`
+v3/@claude-flow/cli/dist/src/memory/rabitq-index.js:84:            const result = db.exec(`
+v3/@claude-flow/cli/dist/src/commands/analyze.js:22:import { execSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/commands/analyze.js:289:                    securityIssues.push('exec()');
+v3/@claude-flow/cli/dist/src/commands/analyze.js:1155:    while ((match = funcPattern.exec(code)) !== null) {
+v3/@claude-flow/cli/dist/src/commands/analyze.js:1164:    while ((match = classPattern.exec(code)) !== null) {
+v3/@claude-flow/cli/dist/src/commands/analyze.js:1170:    while ((match = importPattern.exec(code)) !== null) {
+v3/@claude-flow/cli/dist/src/commands/analyze.js:1174:    while ((match = requirePattern.exec(code)) !== null) {
+v3/@claude-flow/cli/dist/src/commands/analyze.js:1179:    while ((match = exportPattern.exec(code)) !== null) {
+v3/@claude-flow/cli/dist/src/commands/analyze.js:1305:                    const auditRaw = execSync('npm audit --json 2>/dev/null', { encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024 });
+v3/@claude-flow/cli/dist/src/commands/doctor.js:12:import { execSync, exec } from 'child_process';
+v3/@claude-flow/cli/dist/src/commands/doctor.js:127: * ms, hooks fire per tool-use), each spawning a cold Node process + npm
+v3/@claude-flow/cli/dist/src/commands/doctor.js:861:        execSync('npm install -g @anthropic-ai/claude-code', {
+v3/@claude-flow/cli/dist/src/commands/embeddings.js:411:            const statsQuery = db.exec(`
+v3/@claude-flow/cli/dist/src/commands/embeddings.js:424:            const indexQuery = db.exec(`SELECT name, dimensions, hnsw_m FROM vector_indexes`);
+v3/@claude-flow/cli/dist/src/commands/embeddings.js:1254:                    const result = db.exec('SELECT COUNT(*) as count FROM embeddings');
+v3/@claude-flow/cli/dist/src/commands/security.js:8:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/commands/security.js:39:            const { execSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/security.js:48:                            auditResult = execSync('npm audit --json', {
+v3/@claude-flow/cli/dist/src/commands/security.js:146:                    { pattern: /child_process.*exec[^S]/g, type: 'Command Injection', severity: 'high', desc: 'Possible command injection' },
+v3/@claude-flow/cli/dist/src/commands/security.js:228:                        execSync('npm audit fix', { cwd: path.resolve(target), encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] });
+v3/@claude-flow/cli/dist/src/commands/security.js:269:            auditJson = execSync('npm audit --json 2>/dev/null', {
+v3/@claude-flow/cli/dist/src/commands/security.js:376:            { pattern: /\bexecSync\s*\(/g, category: 'Tampering', severity: 'high', description: 'execSync() usage — command injection risk' },
+v3/@claude-flow/cli/dist/src/commands/security.js:377:            { pattern: /\bexec\s*\(\s*[^)]*\$\{/g, category: 'Tampering', severity: 'high', description: 'exec() with template literal — injection risk' },
+v3/@claude-flow/cli/dist/src/commands/security.js:378:            { pattern: /child_process.*\bexec\b/g, category: 'Tampering', severity: 'medium', description: 'child_process exec import — review for injection' },
+v3/@claude-flow/cli/dist/src/commands/security.js:399:                const tracked = execSync('git ls-files --cached', { cwd: rootDir, encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] });
+v3/@claude-flow/cli/dist/src/commands/security.js:736:                                const match = sp.pattern.exec(line);
+v3/@claude-flow/cli/dist/src/commands/daemon.js:7:import { fork } from 'child_process';
+v3/@claude-flow/cli/dist/src/commands/daemon.js:113:        // dedup is process-atomic. Lock holder gets to spawn; competing callers
+v3/@claude-flow/cli/dist/src/commands/daemon.js:123:        // Fix: hold the lock across the entire spawn lifecycle (dedup check →
+v3/@claude-flow/cli/dist/src/commands/daemon.js:137:                lockFd = fs.openSync(lockFile, fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_WRONLY);
+v3/@claude-flow/cli/dist/src/commands/daemon.js:142:                    // Another `daemon start` is mid-spawn. Wait up to 5s for it to
+v3/@claude-flow/cli/dist/src/commands/daemon.js:144:                    // mid-spawn, fall through and reset; killStaleDaemons + a fresh
+v3/@claude-flow/cli/dist/src/commands/daemon.js:158:                    // proceed without a held lock. Worst case we double-spawn ONCE
+v3/@claude-flow/cli/dist/src/commands/daemon.js:449:    // Platform-aware spawn flags. We use child_process.fork() because the daemon
+v3/@claude-flow/cli/dist/src/commands/daemon.js:450:    // child is itself a Node script — fork() spawns Node directly and skips the
+v3/@claude-flow/cli/dist/src/commands/daemon.js:467:        // pass stdio explicitly. Passing fs.openSync() FDs causes the child to die
+v3/@claude-flow/cli/dist/src/commands/daemon.js:522:    // Get PID from spawned process directly (no shell echo needed)
+v3/@claude-flow/cli/dist/src/commands/daemon.js:658:        const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/daemon.js:701: * Title column (last field) — Node-spawned daemon processes carry
+v3/@claude-flow/cli/dist/src/commands/daemon.js:708:        const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/daemon.js:798:        const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/daemon.js:1218:                    const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/daemon.js:1273:                const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/daemon.js:1300:                const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/daemon.js:1319:                const { execFileSync } = await import('child_process');
+v3/@claude-flow/guidance/src/gates.ts:165:      const match = pattern.exec(command);
+v3/@claude-flow/cli/dist/src/ruvector/output-verifier.js:54:    while ((m = re.exec(output)) !== null) {
+v3/@claude-flow/cli/dist/src/commands/process.js:386:            choices: ['list', 'spawn', 'kill', 'scale'],
+v3/@claude-flow/cli/dist/src/commands/process.js:409:        { command: 'claude-flow process workers --action spawn --type task --count 3', description: 'Spawn task workers' },
+v3/@claude-flow/cli/dist/src/commands/process.js:438:            case 'spawn':
+v3/@claude-flow/cli/dist/src/commands/process.js:689:        console.log('  claude-flow process workers --action spawn --type task --count 3');
+v3/@claude-flow/codex/tests/generators.test.ts:236:      expect(result).toContain('agent_spawn');
+v3/@claude-flow/codex/src/migrations/index.ts:252:    const match = sectionRegex.exec(line);
+v3/@claude-flow/codex/src/migrations/index.ts:297:  while ((match = slashRegex.exec(content)) !== null) {
+v3/@claude-flow/codex/src/migrations/index.ts:317:  while ((match = dollarRegex.exec(content)) !== null) {
+v3/@claude-flow/codex/src/migrations/index.ts:358:  while ((match = codeBlockRegex.exec(content)) !== null) {
+v3/@claude-flow/codex/src/migrations/index.ts:381:      while ((match = mcpAddRegex.exec(block.content)) !== null) {
+v3/@claude-flow/codex/src/migrations/index.ts:419:      while ((match = mcpCallRegex.exec(block.content)) !== null) {
+v3/@claude-flow/cli/dist/src/index.js:158:                // Single-instance (only spawns when none is alive; the spawned daemon
+v3/@claude-flow/cli/dist/src/index.js:186:                    // `hive-mind spawn --help` render spawn's own options/examples
+v3/@claude-flow/cli/dist/src/index.js:390:        this.output.writeln(`  ${this.name} agent spawn -t coder              # Spawn a coder agent`);
+v3/@claude-flow/cli/dist/src/index.js:403:     * #1791.4 — accepts a FULL command path (e.g. ['hive-mind', 'spawn']) and
+v3/@claude-flow/cli/dist/src/index.js:423:        // Walk into subcommands following the path so `hive-mind spawn --help`
+v3/@claude-flow/cli/dist/src/index.js:424:        // renders spawn's help, not hive-mind's parent help. We use a non-null
+v3/@claude-flow/cli/dist/src/mcp-server.js:20:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/mcp-server.js:76:                // For stdio transport, spawn the server process
+v3/@claude-flow/cli/src/mcp-client.ts:43:import { execFileSync } from 'node:child_process';
+v3/@claude-flow/cli/src/mcp-client.ts:196: * @param toolName - Name of the MCP tool (e.g., 'agent_spawn', 'swarm_init')
+v3/@claude-flow/cli/src/mcp-client.ts:205: * const result = await callMCPTool('agent_spawn', {
+v3/@claude-flow/cli/src/config-adapter.ts:22:      timeout: systemConfig.orchestrator?.lifecycle?.spawnTimeout ?? 300000,
+v3/@claude-flow/cli/src/config-adapter.ts:79:        spawnTimeout: v3Config.agents.timeout,
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-judge.js:30:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-judge.js:159:        const out = execSync('gcloud secrets versions access latest --secret=ANTHROPIC_API_KEY 2>/dev/null', { encoding: 'utf-8', timeout: 10_000 }).trim();
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-decomposer.js:36:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-decomposer.js:70:        const out = execSync('gcloud secrets versions access latest --secret=ANTHROPIC_API_KEY 2>/dev/null', { encoding: 'utf-8', timeout: 10_000 }).trim();
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-critic.js:35:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-critic.js:61:        return execSync('gcloud secrets versions access latest --secret=ANTHROPIC_API_KEY', { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] }).trim();
+v3/@claude-flow/cli/src/services/weight-eft.ts:13: *                    command a GPU host would run. $0 dry-run — never spawns.
+v3/@claude-flow/cli/src/services/weight-eft.ts:20: * HARD HONESTY RULE (do not overclaim): weight-eft's own `train` never spawns
+v3/@claude-flow/cli/src/services/weight-eft.ts:37:import { spawnSync } from 'node:child_process';
+v3/@claude-flow/cli/src/services/weight-eft.ts:358: * PURE — no spawning, no filesystem, deterministic. This is the seam the
+v3/@claude-flow/cli/src/services/weight-eft.ts:404:/** Minimal spawn result shape (subset of child_process.SpawnSyncReturns). */
+v3/@claude-flow/cli/src/services/weight-eft.ts:426: *   - No `ssh` binary / host unreachable / any spawn error → structured
+v3/@claude-flow/cli/src/services/weight-eft.ts:429: * `spawn` is injected for testing so CI never touches a live host.
+v3/@claude-flow/cli/src/services/weight-eft.ts:432:  args: RemoteTrainArgs & { execute?: boolean; yes?: boolean; preflight?: boolean; spawn?: SpawnFn },
+v3/@claude-flow/cli/src/services/weight-eft.ts:441:  const spawn: SpawnFn = args.spawn ?? defaultSpawn;
+v3/@claude-flow/cli/src/services/weight-eft.ts:449:      const r = spawn(s.argv[0], s.argv.slice(1));
+v3/@claude-flow/cli/src/services/weight-eft.ts:484:      const r = spawn(s.argv[0], s.argv.slice(1));
+v3/@claude-flow/cli/src/services/weight-eft.ts:496:/** Default spawn — synchronous child_process, imported lazily so this module
+v3/@claude-flow/cli/src/services/weight-eft.ts:497: *  stays importable in any environment. Never throws (spawnSync surfaces
+v3/@claude-flow/cli/src/services/weight-eft.ts:501:    const r = spawnSync(cmd, argv, { encoding: 'utf8', timeout: 30 * 60 * 1000 });
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-convergence.js:125:    const match = FINAL_ANSWER_RE.exec(text);
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:22:import { spawn, execSync, type ChildProcess } from 'child_process';
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:656:      const output = execSync('claude --version', {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1195:      // #2098B / #2093 — `claude --print` can spawn grandchildren (MCP
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1202:      const child = spawn('claude', ['--print'], {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1212:        // stdin already closed (e.g. spawn failed) — `error` handler below
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1359:    while ((codeMatch = codeBlockRegex.exec(output)) !== null) {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:20:import { spawn, exec, type ChildProcess } from 'child_process';
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:584:      const child = spawn('docker', args, {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:636:   * #2371: the old command spawned `npx claude-flow@v3alpha daemon trigger`,
+v3/@claude-flow/cli/src/memory/rabitq-index.ts:127:      const result = db.exec(`
+v3/@claude-flow/cli/src/mcp-tools/wasm-agent-tools.ts:535:    description: 'Reset a WASM agent — clears messages and turn count so it can be reused across tasks. Use when native Task is wrong because the agent lives in a sandboxed WASM runtime that must be explicitly reset rather than simply re-spawned.',
+v3/@claude-flow/cli/src/mcp-tools/system-tools.ts:674:    // separate server process to spawn from inside an MCP call. If this tool
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/file_read.js:30:import { execFileSync } from 'node:child_process';
+v3/@claude-flow/mcp/.claude/helpers/github-safe.js:12:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/src/mcp-tools/neural-tools.ts:393:    description: 'Train a neural model Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/src/mcp-tools/neural-tools.ts:510:    description: 'Make predictions using a neural model Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/src/mcp-tools/neural-tools.ts:611:    description: 'Get or manage neural patterns Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/src/mcp-tools/neural-tools.ts:907:    description: 'Compress neural model or embeddings Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/src/mcp-tools/neural-tools.ts:1022:    description: 'Get neural system status Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/src/mcp-tools/neural-tools.ts:1092:    description: 'Optimize neural model performance Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/src/mcp-tools/guidance-tools.ts:68:    tools: ['agent_spawn', 'agent_list', 'agent_status', 'agent_stop', 'agent_metrics', 'agent_pool', 'agent_health', 'agent_logs'],
+v3/@claude-flow/cli/src/mcp-tools/guidance-tools.ts:69:    commands: ['agent spawn', 'agent list', 'agent status', 'agent stop', 'agent metrics', 'agent pool', 'agent health', 'agent logs'],
+v3/@claude-flow/cli/src/mcp-tools/guidance-tools.ts:77:    tools: ['swarm_init', 'swarm_status', 'swarm_spawn', 'swarm_terminate', 'swarm_topology', 'swarm_metrics'],
+v3/@claude-flow/cli/src/mcp-tools/guidance-tools.ts:78:    commands: ['swarm init', 'swarm status', 'swarm spawn', 'swarm terminate'],
+v3/@claude-flow/cli/src/mcp-tools/guidance-tools.ts:120:    commands: ['hive-mind init', 'hive-mind status', 'hive-mind consensus', 'hive-mind sessions', 'hive-mind spawn', 'hive-mind stop'],
+v3/@claude-flow/cli/src/mcp-tools/guidance-tools.ts:627:          { cmd: 'npx ruflo@latest agent spawn -t coder --name my-coder', desc: 'Spawn a specific agent' },
+v3/@claude-flow/cli/dist/src/plugins/store/discovery.js:463:                hooks: ['agent:spawn', 'agent:complete'],
+v3/@claude-flow/cli/dist/src/plugins/store/discovery.js:464:                commands: ['agents custom list', 'agents custom spawn'],
+v3/@claude-flow/cli/dist/src/plugins/store/discovery.js:1069:                hooks: ['teammate:spawn', 'teammate:message', 'teammate:plan', 'teammate:delegate'],
+v3/@claude-flow/cli/dist/src/plugins/store/discovery.js:1070:                commands: ['teammate spawn', 'teammate team', 'teammate message', 'teammate plan'],
+v3/@claude-flow/cli/src/mcp-tools/coordination-tools.ts:730:      // an honest stub-status with a note pointing callers at agent_spawn
+v3/@claude-flow/cli/src/mcp-tools/coordination-tools.ts:764:        _note: 'coordination_orchestrate currently records the orchestration request but does not execute it. For real multi-agent execution use agent_spawn + the Task tool, or hive-mind_spawn for queen-led coordination. Real executor tracked in issue #2140.',
+v3/@claude-flow/cli/dist/src/transfer/storage/gcs.js:11:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/src/mcp-tools/browser-tools.ts:27:  const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/mcp-tools/auto-install.ts:8:import { spawnSync } from 'child_process';
+v3/@claude-flow/cli/src/mcp-tools/auto-install.ts:64:    // Use spawn with array args to prevent shell injection
+v3/@claude-flow/cli/src/mcp-tools/auto-install.ts:66:    const result = spawnSync('npm', args, {
+v3/@claude-flow/cli/src/mcp-tools/agent-execute-core.ts:7: * keeps the wire from agent_spawn → ProviderManager (real) in one
+v3/@claude-flow/guidance/src/analyzer.ts:616:    const { execFile } = await import('node:child_process');
+v3/@claude-flow/embeddings/src/persistent-cache.ts:295:    const result = this.db.exec('SELECT COUNT(*) as count FROM embeddings');
+v3/@claude-flow/embeddings/src/persistent-cache.ts:339:      const result = this.db.exec('SELECT COUNT(*) as count FROM embeddings');
+v3/@claude-flow/deployment/src/publisher.ts:6:import { execSync, execFileSync } from 'child_process';
+v3/@claude-flow/deployment/src/publisher.ts:231:      const output = execSync(cmd, {
+v3/@claude-flow/codex/src/validators/index.ts:895:  while ((match = linkPattern.exec(content)) !== null) {
+v3/@claude-flow/codex/src/validators/index.ts:1008:  while ((match = serverRegex.exec(content)) !== null) {
+v3/@claude-flow/codex/src/validators/index.ts:1054:  while ((match = profileRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/dist/src/mcp-client.js:40:import { execFileSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/mcp-client.js:186: * @param toolName - Name of the MCP tool (e.g., 'agent_spawn', 'swarm_init')
+v3/@claude-flow/cli/dist/src/mcp-client.js:195: * const result = await callMCPTool('agent_spawn', {
+v3/@claude-flow/cli/dist/src/config-adapter.js:17:            timeout: systemConfig.orchestrator?.lifecycle?.spawnTimeout ?? 300000,
+v3/@claude-flow/cli/dist/src/config-adapter.js:68:                spawnTimeout: v3Config.agents.timeout,
+v3/@claude-flow/cli/dist/src/appliance/rvfa-builder.js:10:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/appliance/rvfa-builder.js:130:            nodeVersion = execSync('node --version', { encoding: 'utf-8' }).trim();
+v3/@claude-flow/cli/dist/src/appliance/rvfa-builder.js:143:            const raw = execSync('npm pack ruflo@latest --dry-run --json 2>/dev/null', { encoding: 'utf-8', timeout: 15_000 });
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:6: * PR: Fix #955 - Implement --claude flag for hive-mind spawn command
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:11:import { spawn as childSpawn, execSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:84:   mcp__ruflo__agent_spawn            - Spawn additional workers
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:137:• Do NOT use Claude native Task/Agent tools for swarm coordination — use mcp__ruflo__agent_spawn, mcp__ruflo__task_assign, etc.
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:139:• All agent spawning, task assignment, memory, and coordination MUST go through mcp__ruflo__* tools
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:155: * Ported from v2.7.47 spawnClaudeCodeInstances function
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:157:async function spawnClaudeCodeInstance(swarmId, swarmName, objective, workers, flags) {
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:191:            execSync('which claude', { stdio: 'ignore' });
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:204:            // #1748 Issue 2 — pass --mcp-config so the spawned worker actually has
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:211:            // If none found, we still spawn but warn — that's the pre-fix behavior
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:241:                output.printWarning('No .mcp.json or ~/.claude.json found — spawned worker will not have mcp__ruflo__* tools (#1748 Issue 2). Pass --mcp-config <path> or run "ruflo init" to generate one.');
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:471:            output.writeln(output.dim('  Use "claude-flow hive-mind spawn" to add workers'));
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:472:            output.writeln(output.dim('  Use "claude-flow hive-mind spawn --claude" to launch Claude Code'));
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:488:const spawnCommand = {
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:489:    name: 'spawn',
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:495:            description: 'Number of workers to spawn',
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:560:            description: 'Path to .mcp.json for the spawned worker (auto-detects ./.mcp.json or ~/.claude.json if omitted) — fixes #1748 Issue 2',
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:565:        { command: 'claude-flow hive-mind spawn -n 5', description: 'Spawn 5 workers' },
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:566:        { command: 'claude-flow hive-mind spawn -n 3 -r specialist', description: 'Spawn 3 specialists' },
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:567:        { command: 'claude-flow hive-mind spawn -t coder -p my-coder', description: 'Spawn coder with custom prefix' },
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:568:        { command: 'claude-flow hive-mind spawn --claude -o "Build a REST API"', description: 'Launch Claude Code with objective' },
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:569:        { command: 'claude-flow hive-mind spawn -n 5 --claude -o "Research AI patterns"', description: 'Spawn workers and launch Claude Code' }
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:581:            const result = await callMCPTool('hive-mind_spawn', {
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:589:                output.printError(result.error || 'Failed to spawn workers');
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:614:            output.printSuccess(`Spawned ${result.spawned} agent(s)`);
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:648:                const claudeResult = await spawnClaudeCodeInstance(swarmId, swarmName, objective, workers, ctx.flags);
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:650:                    return { success: false, exitCode: 1, data: { spawn: result, claude: claudeResult } };
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:652:                return { success: true, data: { spawn: result, claude: claudeResult } };
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:738:                output.printInfo('No workers in hive. Use "claude-flow hive-mind spawn" to add workers.');
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:850:            // spawn, status, broadcast, consensus, memory, shutdown, leave). The
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:1210:    subcommands: [initCommand, spawnCommand, statusCommand, taskCommand, joinCommand, leaveCommand, consensusCommand, broadcastCommand, memorySubCommand, optimizeMemoryCommand, shutdownCommand],
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:1214:        { command: 'claude-flow hive-mind spawn -n 5', description: 'Spawn workers' },
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:1215:        { command: 'claude-flow hive-mind spawn --claude -o "Build a feature"', description: 'Launch Claude Code with hive mind' },
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:1227:            `${output.highlight('spawn')}           - Spawn worker agents (use --claude to launch Claude Code)`,
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:1251:        output.writeln(output.dim('  claude-flow hive-mind spawn -n 5 --claude -o "Your objective here"'));
+v3/@claude-flow/cli/dist/src/commands/migrate.js:631:                    { change: 'Agent command renamed', from: 'spawn <type>', to: 'agent spawn -t <type>' },
+v3/@claude-flow/cli/src/init/executor.ts:334:  const gitRootResolver = "var c=require('child_process'),p=require('path'),u=require('url'),r;"
+v3/@claude-flow/cli/src/init/executor.ts:335:    + "try{r=c.execSync('git rev-parse --show-toplevel',{encoding:'utf8'}).trim()}"
+v3/@claude-flow/cli/src/init/executor.ts:391:  // statusline form. Pre-#2337 init wrote this to settings.json; it spawns
+v3/@claude-flow/cli/src/init/executor.ts:398:    `node -e "var c=require('child_process'),p=require('path'),r;try{r=c.execSync('git rev-parse --show-toplevel',{encoding:'utf8'}).trim()}catch(e){r=process.cwd()}var s=p.join(r,'.claude/helpers/statusline.cjs');process.argv.splice(1,0,s);require(s)"`;
+v3/@claude-flow/cli/src/init/executor.ts:419:  // on every PreToolUse/PostToolUse/UserPromptSubmit, each spawning ~130 MB
+v3/@claude-flow/cli/src/init/executor.ts:445:          const m = BROKEN_HOOK_RE.exec(h.command);
+v3/@claude-flow/cli/src/init/executor.ts:1838:npx @claude-flow/cli@latest agent spawn -t coder --name my-coder
+v3/@claude-flow/cli/src/init/executor.ts:1988:npx @claude-flow/cli@latest hive-mind spawn --count 5 --type worker
+v3/@claude-flow/cli/src/init/executor.ts:2058:npx ruflo@latest agent spawn -t coder
+v3/@claude-flow/cli/src/init/executor.ts:2136:      'Key tools: memory_store, memory_search, hooks_route, swarm_init, agent_spawn.',
+v3/@claude-flow/cli/src/init/claudemd-generator.ts:69:- After spawning: STOP, tell user what's running, wait for results
+v3/@claude-flow/cli/src/init/claudemd-generator.ts:132:| **Agents** | \`agent_spawn\`, \`agent_list\`, \`agent_status\` |
+v3/@claude-flow/cli/src/init/claudemd-generator.ts:135:| **Hive-Mind** | \`hive-mind_init\`, \`hive-mind_consensus\`, \`hive-mind_spawn\` |
+v3/@claude-flow/cli/src/init/claudemd-generator.ts:189:> The background \`daemon\` is optional. It runs interval workers that each spawn
+v3/@claude-flow/cli/src/config/proven-config.ts:130:  const m = /(\d+)(?:\.(\d+))?(?:\.(\d+))?/.exec(v);
+v3/@claude-flow/cli/src/config/proven-config.ts:148:  const m = /^(>=|<=|>|<|=)?\s*(.+)$/.exec(r);
+v3/@claude-flow/cli/dist/src/commands/hooks.js:1423:            name: 'auto-spawn',
+v3/@claude-flow/cli/dist/src/commands/hooks.js:1425:            description: 'Auto-spawn suggested agents',
+v3/@claude-flow/cli/dist/src/commands/hooks.js:1432:        { command: 'claude-flow hooks pre-task -i task-456 -d "Implement feature" --auto-spawn', description: 'With auto-spawn' }
+v3/@claude-flow/cli/dist/src/commands/hooks.js:1576:            // ADR-147 P2: nested-subagent spawn-tree capture
+v3/@claude-flow/cli/dist/src/commands/hooks.js:1606:                // ADR-147 P2: forward spawn-tree lineage if caller supplied it
+v3/@claude-flow/cli/dist/src/commands/hooks.js:1722:            description: 'Restore spawned agents',
+v3/@claude-flow/cli/dist/src/commands/hooks.js:2231:            output.writeln(output.dim(`  Worker spawn: ${result.performanceTargets.workerSpawn}`));
+v3/@claude-flow/cli/dist/src/commands/hooks.js:3360:        const { execSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/hooks.js:3452:                const ps = execSync(psCmd, { encoding: 'utf-8', timeout: 3000 });
+v3/@claude-flow/cli/dist/src/commands/hooks.js:3541:                name = execSync(nameCmd, { encoding: 'utf-8' }).trim();
+v3/@claude-flow/cli/dist/src/commands/hooks.js:3542:                gitBranch = execSync(branchCmd, { encoding: 'utf-8' }).trim();
+v3/@claude-flow/cli/src/commands/metaharness.ts:5: * `plugins/ruflo-metaharness/scripts/<name>.mjs` via spawnSync. This is
+v3/@claude-flow/cli/src/commands/metaharness.ts:31: * here we only spawn the local Node script (which then handles
+v3/@claude-flow/cli/src/commands/metaharness.ts:39:import { spawnSync } from 'child_process';
+v3/@claude-flow/cli/src/commands/metaharness.ts:115:  const r = spawnSync('node', [scriptPath, ...extraArgs], {
+v3/@claude-flow/cli/dist/src/commands/mcp.js:385:                { name: 'agent_spawn', category: 'agent', description: 'Spawn a new agent', enabled: true },
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:24:import { spawn } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:74:        const p = spawn('node', [scriptPath, ...args], {
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:89:            const m = /\{[\s\S]*\}/.exec(stdout);
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:109:                json: { degraded: true, reason: 'spawn-failed' },
+v3/@claude-flow/cli/src/commands/mcp.ts:435:        { name: 'agent_spawn', category: 'agent', description: 'Spawn a new agent', enabled: true },
+v3/@claude-flow/cli/dist/src/mcp-tools/guidance-tools.js:50:        tools: ['agent_spawn', 'agent_list', 'agent_status', 'agent_stop', 'agent_metrics', 'agent_pool', 'agent_health', 'agent_logs'],
+v3/@claude-flow/cli/dist/src/mcp-tools/guidance-tools.js:51:        commands: ['agent spawn', 'agent list', 'agent status', 'agent stop', 'agent metrics', 'agent pool', 'agent health', 'agent logs'],
+v3/@claude-flow/cli/dist/src/mcp-tools/guidance-tools.js:59:        tools: ['swarm_init', 'swarm_status', 'swarm_spawn', 'swarm_terminate', 'swarm_topology', 'swarm_metrics'],
+v3/@claude-flow/cli/dist/src/mcp-tools/guidance-tools.js:60:        commands: ['swarm init', 'swarm status', 'swarm spawn', 'swarm terminate'],
+v3/@claude-flow/cli/dist/src/mcp-tools/guidance-tools.js:102:        commands: ['hive-mind init', 'hive-mind status', 'hive-mind consensus', 'hive-mind sessions', 'hive-mind spawn', 'hive-mind stop'],
+v3/@claude-flow/cli/dist/src/mcp-tools/guidance-tools.js:587:                    { cmd: 'npx ruflo@latest agent spawn -t coder --name my-coder', desc: 'Spawn a specific agent' },
+v3/@claude-flow/cli/dist/src/mcp-tools/browser-session-tools.js:17: *     is spawned directly with `node`; otherwise we fall back to
+v3/@claude-flow/cli/dist/src/mcp-tools/browser-session-tools.js:32:    const { execFile } = await import('node:child_process');
+v3/@claude-flow/cli/dist/src/mcp-tools/terminal-tools.js:11:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/mcp-tools/terminal-tools.js:77:            // env is merged into execSync's process env on every command; reject
+v3/@claude-flow/cli/dist/src/mcp-tools/terminal-tools.js:157:                output = execSync(command, {
+v3/@claude-flow/cli/src/commands/hooks.ts:1764:      name: 'auto-spawn',
+v3/@claude-flow/cli/src/commands/hooks.ts:1766:      description: 'Auto-spawn suggested agents',
+v3/@claude-flow/cli/src/commands/hooks.ts:1773:    { command: 'claude-flow hooks pre-task -i task-456 -d "Implement feature" --auto-spawn', description: 'With auto-spawn' }
+v3/@claude-flow/cli/src/commands/hooks.ts:1943:      // ADR-147 P2: nested-subagent spawn-tree capture
+v3/@claude-flow/cli/src/commands/hooks.ts:1984:        // ADR-147 P2: forward spawn-tree lineage if caller supplied it
+v3/@claude-flow/cli/src/commands/hooks.ts:2120:      description: 'Restore spawned agents',
+v3/@claude-flow/cli/src/commands/hooks.ts:2690:      output.writeln(output.dim(`  Worker spawn: ${result.performanceTargets.workerSpawn}`));
+v3/@claude-flow/cli/src/commands/hooks.ts:4073:    const { execSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/hooks.ts:4170:        const ps = execSync(psCmd, { encoding: 'utf-8', timeout: 3000 });
+v3/@claude-flow/cli/src/commands/hooks.ts:4261:        name = execSync(nameCmd, { encoding: 'utf-8' }).trim();
+v3/@claude-flow/cli/src/commands/hooks.ts:4262:        gitBranch = execSync(branchCmd, { encoding: 'utf-8' }).trim();
+v3/@claude-flow/cli/src/commands/embeddings.ts:472:      const statsQuery = db.exec(`
+v3/@claude-flow/cli/src/commands/embeddings.ts:486:      const indexQuery = db.exec(`SELECT name, dimensions, hnsw_m FROM vector_indexes`);
+v3/@claude-flow/cli/src/commands/embeddings.ts:1402:          const result = db.exec('SELECT COUNT(*) as count FROM embeddings');
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:51: * Cached per-process so repeated lookups are cheap; reset only by spawning
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:543:                const result = sqlDb.exec(`
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:976:        const tableInfo = db.exec("PRAGMA table_info(memory_entries)");
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1060:                const countResult = legacyDb.exec('SELECT COUNT(*) FROM memory_entries');
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1065:                    const versionResult = legacyDb.exec("SELECT value FROM metadata WHERE key='schema_version'");
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1212:            src.exec('BEGIN IMMEDIATE');
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1236:                dst.exec(t.sql);
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1263:                dst.exec(o.sql);
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1270:            src.exec('ROLLBACK');
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1314:            src?.exec('ROLLBACK');
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1401:            db.exec(`CREATE TABLE IF NOT EXISTS vector_indexes (
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1663:        const tables = db.exec("SELECT name FROM sqlite_master WHERE type='table'");
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1669:            const versionResult = db.exec("SELECT value FROM metadata WHERE key='schema_version'");
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:1671:            const backendResult = db.exec("SELECT value FROM metadata WHERE key='backend'");
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:2109:        const tables = db.exec("SELECT name FROM sqlite_master WHERE type='table'");
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:2147:            const result = db.exec(`SELECT content FROM memory_entries WHERE id = ?`, [testId]);
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:2217:            const indexResult = db.exec(`SELECT name, dimensions, hnsw_m, hnsw_ef_construction FROM vector_indexes`);
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:2797:            const countResult = db.exec(`SELECT COUNT(*) FROM memory_entries WHERE status = 'active'`);
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:2823:        const countResult = db.exec(`SELECT COUNT(*) FROM memory_entries WHERE status = 'active'`);
+v3/@claude-flow/cli/src/commands/daemon.ts:9:import { spawn, execFile, fork } from 'child_process';
+v3/@claude-flow/cli/src/commands/daemon.ts:118:    // dedup is process-atomic. Lock holder gets to spawn; competing callers
+v3/@claude-flow/cli/src/commands/daemon.ts:128:    // Fix: hold the lock across the entire spawn lifecycle (dedup check →
+v3/@claude-flow/cli/src/commands/daemon.ts:139:        lockFd = fs.openSync(lockFile, fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_WRONLY);
+v3/@claude-flow/cli/src/commands/daemon.ts:143:          // Another `daemon start` is mid-spawn. Wait up to 5s for it to
+v3/@claude-flow/cli/src/commands/daemon.ts:145:          // mid-spawn, fall through and reset; killStaleDaemons + a fresh
+v3/@claude-flow/cli/src/commands/daemon.ts:159:          // proceed without a held lock. Worst case we double-spawn ONCE
+v3/@claude-flow/cli/src/commands/daemon.ts:461:  // Platform-aware spawn flags. We use child_process.fork() because the daemon
+v3/@claude-flow/cli/src/commands/daemon.ts:462:  // child is itself a Node script — fork() spawns Node directly and skips the
+v3/@claude-flow/cli/src/commands/daemon.ts:479:    // pass stdio explicitly. Passing fs.openSync() FDs causes the child to die
+v3/@claude-flow/cli/src/commands/daemon.ts:536:  // Get PID from spawned process directly (no shell echo needed)
+v3/@claude-flow/cli/src/commands/daemon.ts:689:    const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/daemon.ts:728: * Title column (last field) — Node-spawned daemon processes carry
+v3/@claude-flow/cli/src/commands/daemon.ts:735:    const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/daemon.ts:824:    const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/daemon.ts:1282:          const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/daemon.ts:1334:        const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/daemon.ts:1361:        const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/daemon.ts:1375:        const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/memory/memory-bridge.js:508:            db.exec(`CREATE TABLE IF NOT EXISTS memory_entries (
+v3/@claude-flow/cli/dist/src/memory/memory-bridge.js:529:            db.exec(`CREATE INDEX IF NOT EXISTS idx_bridge_ns ON memory_entries(namespace)`);
+v3/@claude-flow/cli/dist/src/memory/memory-bridge.js:530:            db.exec(`CREATE INDEX IF NOT EXISTS idx_bridge_key ON memory_entries(key)`);
+v3/@claude-flow/cli/dist/src/memory/memory-bridge.js:531:            db.exec(`CREATE INDEX IF NOT EXISTS idx_bridge_status ON memory_entries(status)`);
+v3/@claude-flow/cli/dist/src/memory/memory-bridge.js:1507:                        // ADR-147 P2: forward spawn-tree lineage if present
+v3/@claude-flow/cli/src/commands/claims.ts:50:    defaultClaims: ['swarm:create', 'swarm:status', 'agent:spawn', 'agent:list', 'memory:read', 'memory:write', 'task:create'],
+v3/@claude-flow/cli/src/commands/claims.ts:208:        defaultClaims: ['swarm:create', 'swarm:status', 'agent:spawn', 'agent:list', 'memory:read', 'memory:write', 'task:create'],
+v3/@claude-flow/cli/src/commands/claims.ts:307:    { command: 'claude-flow claims grant -c agent:spawn -r developer', description: 'Grant to role' },
+v3/@claude-flow/cli/src/commands/claims.ts:647:    { command: 'claude-flow claims grant -c agent:spawn -r developer', description: 'Grant claim' },
+v3/@claude-flow/cli/src/commands/claims.ts:667:      'agent:*   - Agent operations (spawn, terminate)',
+v3/@claude-flow/cli/src/business-pods/bbs-budget-tracker.ts:40:  exec(sql: string): void;
+v3/@claude-flow/cli/src/business-pods/bbs-budget-tracker.ts:163:    // Ensure schema is present. exec() is a no-op for tables that already
+v3/@claude-flow/cli/src/business-pods/bbs-budget-tracker.ts:165:    this.db.exec(SCHEMA_SQL);
+v3/@claude-flow/cli/dist/src/ruvector/graph-analyzer.js:101:    while ((match = esImportRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/dist/src/ruvector/graph-analyzer.js:106:    while ((match = sideEffectRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/dist/src/ruvector/graph-analyzer.js:111:    while ((match = requireRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/dist/src/ruvector/graph-analyzer.js:116:    while ((match = dynamicImportRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/dist/src/ruvector/graph-analyzer.js:121:    while ((match = reExportRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/dist/src/ruvector/graph-analyzer.js:134:    while ((match = namedExportRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/dist/src/ruvector/graph-analyzer.js:139:    while ((match = exportListRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/src/benchmarks/gaia-judge.ts:31:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/benchmarks/gaia-judge.ts:213:    const out = execSync(
+v3/@claude-flow/cli/dist/src/ruvector/diff-classifier.js:4:import { execFileSync, execFile } from 'node:child_process';
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:12:import { spawn } from 'node:child_process';
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:38:function spawnAsync(
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:46:    const child = spawn(cmd, args, {
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:117:   * configure env vars, optionally decrypt API-key vault, and spawn.
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:149:      return spawnAsync(this.header.boot.entrypoint || 'node', [entryFile, ...args], {
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:162:    const dockerCheck = await spawnAsync('docker', ['info'], { verbose: false });
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:191:      const build = await spawnAsync('docker', ['build', '-t', imageName, '.'], {
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:198:      return spawnAsync('docker', ['run', '--rm', ...envFlags, imageName], { verbose: options.verbose });
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:233:      return spawnAsync('node', [join(workDir, 'verify.js')], {
+v3/@claude-flow/cli/dist/src/commands/swarm.js:526:        output.writeln(output.dim('  - hive-mind spawn --claude (autonomous)'));
+v3/@claude-flow/cli/dist/src/commands/swarm.js:712:            // If MCP unavailable, fall back to 0 (will spawn all requested agents)
+v3/@claude-flow/cli/dist/src/commands/swarm.js:799:        output.writeln(output.dim('Note: Use Claude Code Task tool or hive-mind spawn --claude to'));
+v3/@claude-flow/cli/dist/src/commands/start.js:169:            `${output.highlight('claude-flow agent spawn -t coder')} - Spawn an agent`,
+v3/@claude-flow/cli/dist/src/mcp-tools/agentdb-tools.js:1082:                        // `db.exec(sql, params)` (sql.js style) is a runner with no result
+v3/@claude-flow/cli/dist/src/mcp-tools/agentdb-tools.js:1112:                    // better-sqlite3 API — `db.exec(sql, params)` (sql.js) silently
+v3/@claude-flow/cli/dist/src/mcp-tools/agentdb-tools.js:1355:            // `db.exec(sql, params)` throws "datatype mismatch" here.
+v3/@claude-flow/cli/dist/src/mcp-tools/browser-tools.js:19:    const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/mcp-tools/github-tools.js:11:import { execFileSync, execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/mcp-tools/github-tools.js:60:        return execSync(cmd, { encoding: 'utf-8', timeout: 15000, cwd: cwd || getProjectCwd(), stdio: ['pipe', 'pipe', 'pipe'] }).trim();
+v3/@claude-flow/cli/dist/src/mcp-tools/system-tools.js:642:        // separate server process to spawn from inside an MCP call. If this tool
+v3/@claude-flow/cli/.claude/helpers/statusline.js:14:const { execSync, execFileSync } = require('child_process');
+v3/@claude-flow/cli/.claude/helpers/statusline.js:83:  // audit_1776853149979: previously used execSync with a shell string for git
+v3/@claude-flow/cli/.claude/helpers/statusline.js:211:    const ps = execSync('ps aux 2>/dev/null | grep -c agentic-flow || echo "0"', { encoding: 'utf-8' });
+v3/@claude-flow/cli/.claude/helpers/statusline.js:231:    const mem = execSync('ps aux | grep -E "(node|agentic|claude)" | grep -v grep | awk \'{sum += \$6} END {print int(sum/1024)}\'', { encoding: 'utf-8' });
+v3/@claude-flow/cli/.claude/helpers/statusline.js:249:    const agents = execSync('ps aux 2>/dev/null | grep -c "claude-flow.*agent" || echo "0"', { encoding: 'utf-8' });
+v3/@claude-flow/cli/dist/src/mcp-tools/hooks-tools.js:844:    description: 'Get a 3-tier routing recommendation for a task: Tier 1 (deterministic codemod, ~0ms / $0 — for var-to-const, remove-console, add-logging), Tier 2 (Haiku — simple), Tier 3 (Sonnet/Opus — complex). Use this BEFORE spawning an agent to avoid sending simple transforms to Sonnet. Native tools have no equivalent — Claude Code does not introspect its own model-selection cost. Returns the recommended model + a `[CODEMOD_AVAILABLE]` literal when a deterministic codemod can fully apply the edit (then call hooks_codemod). Use when native Bash hooks (via Claude Code\'s settings.json) are wrong because you need Ruflo-side state — pattern persistence, neural training signals, model-routing learning, cost tracking, audit chain. For one-off shell commands, plain Bash hooks are fine.',
+v3/@claude-flow/cli/dist/src/mcp-tools/hooks-tools.js:1242:            // ADR-147 P2: nested-subagent spawn-tree capture
+v3/@claude-flow/cli/dist/src/mcp-tools/hooks-tools.js:1264:        // ADR-147 P2: validate spawn-tree lineage if provided
+v3/@claude-flow/cli/dist/src/mcp-tools/hooks-tools.js:1291:                // ADR-147 P2: forward spawn-tree lineage so it lands in feedback + memory
+v3/@claude-flow/cli/dist/src/mcp-tools/hooks-tools.js:2059:            restoreAgents: { type: 'boolean', description: 'Restore spawned agents' },
+v3/@claude-flow/cli/dist/src/mcp-tools/hooks-tools.js:4652:    description: 'Agent Teams hook — fired when a teammate agent finishes its turn; reports whether a pending task can be auto-assigned. Use when native Task is wrong because you have a persistent multi-agent team with a shared task list and want idle workers picked up automatically rather than re-spawning subagents. For a one-shot Task, native Task is fine. (Auto-assignment is delegated to the task-queue consumer — this acknowledges the event today.)',
+v3/@claude-flow/cli/.claude/helpers/github-safe.js:13: *   - Strict error handling: all execSync calls inside try/catch; cleanup in
+v3/@claude-flow/cli/.claude/helpers/github-safe.js:22:import { execSync, execFileSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:16:// #1916: hive-mind_spawn writes its workers to `.claude-flow/agents.json`
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:19:// hive-spawned worker is resolvable instead of returning `not_found`.
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:50:// #1916: read hive-mind-spawned workers from `.claude-flow/agents.json`.
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:71: * plus hive-mind-spawned workers. On an id collision the canonical record
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:207:        name: 'agent_spawn',
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:213:                agentType: { type: 'string', description: 'Type of agent to spawn' },
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:215:                // #2085 — accept swarmId so spawned agents register in the
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:268:            // swarm_status reports the new agent. Without this, agent_spawn
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:286:                    // Idempotent — don't duplicate if agent_spawn is retried.
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:303:            // startup path. Non-fatal: a branch failure never blocks the spawn —
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:340:                    '(2) Claude Code Task tool — spawns a real subagent; ' +
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:358:        // agent_spawn registered metadata but nothing dispatched work to a
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:366:        description: 'Run a task on a previously-spawned agent_spawn record via the Anthropic Messages API with that agent\'s configured model. Use when native Task tool is wrong because (a) you need the spawned agent\'s persistent config (model, instructions, cost-tracking attribution) to apply to this turn, (b) the result needs to feed back into the agent\'s lifecycle (taskCount, lastResult, swarm-coordinated state), or (c) you want explicit model routing via the spawn record\'s `model` field instead of inheriting. For one-shot Claude prompts without a tracked agent, native Task is fine. Requires ANTHROPIC_API_KEY in env.',
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:371:                agentId: { type: 'string', description: 'ID of the spawned agent' },
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:399:        description: 'Remove a Ruflo-tracked agent from the registry and free its swarm slot. Use when you need to (a) clean up a spawned agent so its cost-tracking row finalizes, (b) reclaim a swarm-topology slot for another agent, or (c) end a stuck agent without restarting the whole swarm. For one-shot Task tool invocations that already self-terminate, this tool is not needed. Pair with agent_list first to confirm the agentId.',
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:466:            const agent = loadAllAgents()[agentId]; // #1916: includes hive-mind-spawned workers
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:488:        description: 'List every Ruflo-tracked agent in the registry with its type, model, status, and taskCount. Use when native Task tool is wrong because you need to see the swarm-wide agent inventory across turns (which agents exist, their roles, their cost-tracking handles) rather than spawn a new one-shot Task. Filter by status/domain/agentType if needed. For starting a fresh single-shot subagent, native Task is fine.',
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:509:            let agents = Object.values(loadAllAgents()); // #1916: includes hive-mind-spawned workers
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:542:        description: 'Manage a fixed-size warm pool of pre-spawned agents to skip cold-start cost on bursty workloads. Use when native Task is wrong because (a) you have a queue of similar tasks and want to amortize spawn latency, (b) cost-tracking wants stable agentIds across requests, or (c) swarm topology requires a known agent count at all times. For one-shot work, just call agent_spawn or native Task. Pool sizes and warm/idle thresholds are set per-pool.',
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:734:        description: 'Mutate a tracked agent\'s config (model, instructions, status, health) without re-spawning. Use when native Task tool is wrong because the agent already has accumulated state (taskCount, swarm membership, cost-tracking attribution) and you only need to tweak one field — for example, promoting an idle agent to running on a new task, or rotating its model from haiku to sonnet mid-loop. For a brand-new subagent, agent_spawn (or native Task) is the right call.',
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:800:        description: 'Return recorded activity-log entries for a tracked agent (idle/running history, last task result). Use when native Task tool is wrong because you need the agent\'s log across turns (what it did, last error/result, swarm context) rather than a one-shot Task transcript. For a Task you just ran, native Task output is fine. Pair with agent_list to find the agentId. (Hive-mind-spawned workers are resolved here too.) Today this returns the last task result as a synthetic entry — full per-agent activity logs land with hive worker execution wiring (ruvnet/ruflo#1916).',
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-tools.js:817:            const agent = loadAllAgents()[agentId]; // #1916: includes hive-mind-spawned workers
+v3/@claude-flow/cli/dist/src/mcp-tools/swarm-tools.js:81:// #2085 — exported so `agent-tools.ts agent_spawn` can push into
+v3/@claude-flow/cli/dist/src/mcp-tools/swarm-tools.js:115:        description: 'Initialize a swarm with persistent state tracking Use when native Task tool is wrong because you need multi-agent coordination — topology (hierarchical/mesh/star), consensus (raft/byzantine/gossip/crdt/quorum), shared memory namespace, or anti-drift gates. For independent one-shot subagents, native Task is fine; spawn each separately.',
+v3/@claude-flow/cli/dist/src/mcp-tools/swarm-tools.js:188:        description: 'Get swarm status from persistent state Use when native Task tool is wrong because you need multi-agent coordination — topology (hierarchical/mesh/star), consensus (raft/byzantine/gossip/crdt/quorum), shared memory namespace, or anti-drift gates. For independent one-shot subagents, native Task is fine; spawn each separately.',
+v3/@claude-flow/cli/dist/src/mcp-tools/swarm-tools.js:247:        description: 'Shutdown a swarm and update persistent state Use when native Task tool is wrong because you need multi-agent coordination — topology (hierarchical/mesh/star), consensus (raft/byzantine/gossip/crdt/quorum), shared memory namespace, or anti-drift gates. For independent one-shot subagents, native Task is fine; spawn each separately.',
+v3/@claude-flow/cli/dist/src/mcp-tools/swarm-tools.js:305:        description: 'Check swarm health status with real state inspection Use when native Task tool is wrong because you need multi-agent coordination — topology (hierarchical/mesh/star), consensus (raft/byzantine/gossip/crdt/quorum), shared memory namespace, or anti-drift gates. For independent one-shot subagents, native Task is fine; spawn each separately.',
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-execute-core.js:7: * keeps the wire from agent_spawn → ProviderManager (real) in one
+v3/@claude-flow/claims/src/application/load-balancer.ts:685:        `${overloaded.length} overloaded agents but no underloaded agents available. Consider spawning more agents.`
+v3/@claude-flow/browser/tests/browser-service.test.ts:8:// Mock execSync for agent-browser CLI
+v3/@claude-flow/browser/tests/browser-service.test.ts:9:vi.mock('child_process', () => ({
+v3/@claude-flow/browser/tests/browser-service.test.ts:10:  execSync: vi.fn(() => JSON.stringify({ success: true, data: { test: 'value' } })),
+v3/@claude-flow/browser/tests/browser-service.test.ts:11:  spawn: vi.fn(),
+v3/@claude-flow/browser/src/mcp-tools/browser-tools.ts:633:  /\bchild_process\b/,     // Command execution
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:6:import { spawn, execSync, execFileSync } from 'child_process';
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:112:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:116:    return this.exec(['back']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:120:    return this.exec(['forward']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:124:    return this.exec(['reload']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:128:    return this.exec(['close']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:140:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:144:    return this.exec(['dblclick', target]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:148:    return this.exec(['fill', input.target, input.value]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:154:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:160:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:164:    return this.exec(['hover', target]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:168:    return this.exec(['focus', target]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:172:    return this.exec(['select', target, value]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:176:    return this.exec(['check', target]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:180:    return this.exec(['uncheck', target]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:186:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:190:    return this.exec(['scrollintoview', target]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:194:    return this.exec(['drag', source, target]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:198:    return this.exec(['upload', target, ...files]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:209:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:281:    return this.exec(['pdf', path]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:290:      return this.exec(['wait', input.selector]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:293:      return this.exec(['wait', String(input.timeout)]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:300:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:306:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:310:    return this.exec(['wait', '--text', text]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:314:    return this.exec(['wait', '--url', pattern]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:318:    return this.exec(['wait', '--load', state]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:322:    return this.exec(['wait', '--fn', fn]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:338:    return this.exec(['mouse', 'move', String(x), String(y)]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:342:    return this.exec(['mouse', 'down', button]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:346:    return this.exec(['mouse', 'up', button]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:350:    return this.exec(['mouse', 'wheel', String(deltaY), String(deltaX)]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:358:    return this.exec(['set', 'viewport', String(width), String(height)]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:362:    return this.exec(['set', 'device', device]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:366:    return this.exec(['set', 'geo', String(lat), String(lng)]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:370:    return this.exec(['set', 'offline', enabled ? 'on' : 'off']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:374:    return this.exec(['set', 'headers', JSON.stringify(headers)]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:378:    return this.exec(['set', 'credentials', username, password]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:382:    return this.exec(['set', 'media', scheme]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:390:    return this.exec(['cookies']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:394:    return this.exec(['cookies', 'set', name, value]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:398:    return this.exec(['cookies', 'clear']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:404:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:408:    return this.exec(['storage', 'local', 'set', key, value]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:412:    return this.exec(['storage', 'local', 'clear']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:418:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:422:    return this.exec(['storage', 'session', 'set', key, value]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:426:    return this.exec(['storage', 'session', 'clear']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:439:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:445:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:451:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:459:    return this.exec(['tab']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:465:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:469:    return this.exec(['tab', String(index)]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:475:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:479:    return this.exec(['window', 'new']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:487:    return this.exec(['frame', selector]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:491:    return this.exec(['frame', 'main']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:501:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:505:    return this.exec(['dialog', 'dismiss']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:515:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:521:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:525:    return this.exec(['console']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:529:    return this.exec(['console', '--clear']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:533:    return this.exec(['errors']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:537:    return this.exec(['errors', '--clear']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:541:    return this.exec(['highlight', selector]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:545:    return this.exec(['state', 'save', path]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:549:    return this.exec(['state', 'load', path]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:560:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:564:    return this.exec(['find', 'text', text, action]);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:570:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:576:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:582:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:588:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:594:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:600:    return this.exec(args);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:608:    return this.exec(['session', 'list']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:612:    return this.exec(['session']);
+v3/@claude-flow/browser/src/infrastructure/agent-browser-adapter.ts:628:    return this.exec(['connect', String(port)]);
+bin/cli.js:2:import { spawn } from 'node:child_process';
+bin/cli.js:10:const cp = spawn(tsx, [entry, ...process.argv.slice(2)], {
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-causal-memory.js:111:    const fileStream = fs.createReadStream(storePath, { encoding: 'utf8' });
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-agent.js:44:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-agent.js:108:        const out = execSync('gcloud secrets versions access latest --secret=ANTHROPIC_API_KEY 2>/dev/null', { encoding: 'utf-8', timeout: 10_000 }).trim();
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-agent.js:177:    const match = /^\[IMAGE_BASE64:(\{.*\})\]$/.exec(marker.trim());
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-agent.js:268:            const match = FINAL_ANSWER_RE.exec(textBlock.text);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:19:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:40:        const out = execSync('gcloud secrets versions access latest --secret=huggingface-token 2>/dev/null', { encoding: 'utf-8', timeout: 10_000 }).trim();
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-hardness/features.js:121:        const m = RE_ENTITY.exec(text);
+v3/@claude-flow/cli/dist/src/ruvector/lora-adapter.js:565:                const match = /^lora-checkpoint-(\d+)\.json$/.exec(f);
+v3/@claude-flow/cli/src/index.ts:177:        // Single-instance (only spawns when none is alive; the spawned daemon
+v3/@claude-flow/cli/src/index.ts:205:          // `hive-mind spawn --help` render spawn's own options/examples
+v3/@claude-flow/cli/src/index.ts:433:    this.output.writeln(`  ${this.name} agent spawn -t coder              # Spawn a coder agent`);
+v3/@claude-flow/cli/src/index.ts:448:   * #1791.4 — accepts a FULL command path (e.g. ['hive-mind', 'spawn']) and
+v3/@claude-flow/cli/src/index.ts:472:    // Walk into subcommands following the path so `hive-mind spawn --help`
+v3/@claude-flow/cli/src/index.ts:473:    // renders spawn's help, not hive-mind's parent help. We use a non-null
+v3/@claude-flow/cli/src/update/validator.ts:43:      'Agent spawning now requires type parameter',
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/grounded_query.js:55:        const { execSync } = await import('node:child_process');
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/grounded_query.js:56:        const key = execSync('gcloud secrets versions access latest --secret=GOOGLE_AI_API_KEY --project=ruv-dev 2>/dev/null', { encoding: 'utf-8', timeout: 5_000 }).trim();
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:110:    while ((match = resultBlockRe.exec(html)) !== null && results.length < maxResults) {
+v3/@claude-flow/cli/src/services/memory-backup.ts:95:      const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:1326:const { spawnSync, execSync } = require('child_process');
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:1333:    const r = execSync(
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:1343:  const result = spawnSync(bin, args, {
+v3/@claude-flow/cli/src/services/distill-oracle.ts:38:import { spawn } from 'child_process';
+v3/@claude-flow/cli/src/services/distill-oracle.ts:412:      child = spawn(cmd, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });
+v3/@claude-flow/cli/src/services/distill-oracle.ts:438:  const run = (command: string) => exec('sh', ['-c', command], { timeoutMs });
+v3/@claude-flow/cli/src/services/claim-service.ts:19:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/src/ruvector/graph-analyzer.ts:225:  while ((match = esImportRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/src/ruvector/graph-analyzer.ts:231:  while ((match = sideEffectRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/src/ruvector/graph-analyzer.ts:237:  while ((match = requireRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/src/ruvector/graph-analyzer.ts:243:  while ((match = dynamicImportRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/src/ruvector/graph-analyzer.ts:249:  while ((match = reExportRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/src/ruvector/graph-analyzer.ts:265:  while ((match = namedExportRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/src/ruvector/graph-analyzer.ts:271:  while ((match = exportListRegex.exec(content)) !== null) {
+v3/@claude-flow/cli/dist/src/transfer/models/seraphine.js:46:        action: 'spawn coder agent',
+v3/@claude-flow/cli/dist/src/transfer/models/seraphine.js:58:        action: 'spawn tester agent',
+v3/@claude-flow/cli/dist/src/transfer/models/seraphine.js:70:        action: 'spawn reviewer agent',
+v3/@claude-flow/cli/dist/src/transfer/models/seraphine.js:82:        action: 'spawn researcher agent',
+v3/@claude-flow/cli/dist/src/transfer/models/seraphine.js:94:        action: 'spawn architect agent',
+v3/@claude-flow/cli/dist/src/transfer/models/seraphine.js:119:        action: 'spawn security-architect agent',
+v3/@claude-flow/cli/dist/src/transfer/models/seraphine.js:131:        action: 'spawn performance-engineer agent',
+v3/@claude-flow/cli/src/plugins/store/discovery.ts:511:        hooks: ['agent:spawn', 'agent:complete'],
+v3/@claude-flow/cli/src/plugins/store/discovery.ts:512:        commands: ['agents custom list', 'agents custom spawn'],
+v3/@claude-flow/cli/src/plugins/store/discovery.ts:1117:        hooks: ['teammate:spawn', 'teammate:message', 'teammate:plan', 'teammate:delegate'],
+v3/@claude-flow/cli/src/plugins/store/discovery.ts:1118:        commands: ['teammate spawn', 'teammate team', 'teammate message', 'teammate plan'],
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:52: * Cached per-process so repeated lookups are cheap; reset only by spawning
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:581:        const result = sqlDb.exec(`
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1134:    const tableInfo = db.exec("PRAGMA table_info(memory_entries)");
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1236:        const countResult = legacyDb.exec('SELECT COUNT(*) FROM memory_entries');
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1242:          const versionResult = legacyDb.exec("SELECT value FROM metadata WHERE key='schema_version'");
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1401:      src.exec('BEGIN IMMEDIATE');
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1421:      try { dst.exec(t.sql); } catch { /* skip an untranslatable table def */ }
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1443:      try { dst.exec(o.sql); } catch { /* an index over corrupt data — non-fatal */ }
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1447:    try { src.exec('ROLLBACK'); } catch { /* ignore */ }
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1476:    try { src?.exec('ROLLBACK'); } catch { /* */ }
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1565:      db.exec(`CREATE TABLE IF NOT EXISTS vector_indexes (
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1878:    const tables = db.exec("SELECT name FROM sqlite_master WHERE type='table'");
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1885:      const versionResult = db.exec("SELECT value FROM metadata WHERE key='schema_version'");
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:1888:      const backendResult = db.exec("SELECT value FROM metadata WHERE key='backend'");
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:2433:    const tables = db.exec("SELECT name FROM sqlite_master WHERE type='table'");
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:2475:      const result = db.exec(`SELECT content FROM memory_entries WHERE id = ?`, [testId]);
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:2550:      const indexResult = db.exec(`SELECT name, dimensions, hnsw_m, hnsw_ef_construction FROM vector_indexes`);
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:3338:      const countResult = db.exec(`SELECT COUNT(*) FROM memory_entries WHERE status = 'active'`);
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:3367:    const countResult = db.exec(`SELECT COUNT(*) FROM memory_entries WHERE status = 'active'`);
+v3/@claude-flow/cli/dist/src/commands/workflow.js:52:            description: 'Maximum agents to spawn',
+v3/@claude-flow/cli/dist/src/commands/agent.js:3: * Agent management commands for spawning, listing, and controlling agents
+v3/@claude-flow/cli/dist/src/commands/agent.js:61:// Agent spawn subcommand
+v3/@claude-flow/cli/dist/src/commands/agent.js:62:const spawnCommand = {
+v3/@claude-flow/cli/dist/src/commands/agent.js:63:    name: 'spawn',
+v3/@claude-flow/cli/dist/src/commands/agent.js:69:            description: 'Agent type to spawn',
+v3/@claude-flow/cli/dist/src/commands/agent.js:111:        { command: 'claude-flow agent spawn --type coder --name bot-1', description: 'Spawn a coder agent' },
+v3/@claude-flow/cli/dist/src/commands/agent.js:112:        { command: 'claude-flow agent spawn -t researcher --task "Research React 19"', description: 'Spawn researcher with task' }
+v3/@claude-flow/cli/dist/src/commands/agent.js:134:            // Call MCP tool to spawn agent
+v3/@claude-flow/cli/dist/src/commands/agent.js:135:            const result = await callMCPTool('agent_spawn', {
+v3/@claude-flow/cli/dist/src/commands/agent.js:167:            output.printSuccess(`Agent ${agentName} spawned successfully`);
+v3/@claude-flow/cli/dist/src/commands/agent.js:177:                output.printError(`Failed to spawn agent: ${error.message}`);
+v3/@claude-flow/cli/dist/src/commands/agent.js:498:                note: totalAgents === 0 ? 'No agents spawned yet. Use: agent spawn -t coder' : undefined
+v3/@claude-flow/cli/dist/src/commands/agent.js:861:    subcommands: [spawnCommand, listCommand, statusCommand, stopCommand, metricsCommand, poolCommand, healthCommand, logsCommand, ...wasmSubcommands],
+v3/@claude-flow/cli/dist/src/commands/agent.js:864:        { command: 'claude-flow agent spawn -t coder', description: 'Spawn a coder agent' },
+v3/@claude-flow/cli/dist/src/commands/agent.js:877:            `${output.highlight('spawn')}         - Spawn a new agent`,
+v3/@claude-flow/cli/dist/src/mcp-tools/auto-install.js:7:import { spawnSync } from 'child_process';
+v3/@claude-flow/cli/dist/src/mcp-tools/auto-install.js:37:        // Use spawn with array args to prevent shell injection
+v3/@claude-flow/cli/dist/src/mcp-tools/auto-install.js:39:        const result = spawnSync('npm', args, {
+v3/@claude-flow/cli/dist/src/commands/init.js:39:                const { execSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/init.js:40:                const globalPath = execSync('npm root -g', { encoding: 'utf-8' }).trim();
+v3/@claude-flow/cli/dist/src/commands/init.js:331:            const { execSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/init.js:336:                    execSync('npx @claude-flow/cli@latest memory init 2>/dev/null', {
+v3/@claude-flow/cli/dist/src/commands/init.js:350:            // which made execSync return as soon as the shell forked, BEFORE the
+v3/@claude-flow/cli/dist/src/commands/init.js:355:            // spawned its own daemon. One incident accumulated 39 zombie daemons
+v3/@claude-flow/cli/dist/src/commands/init.js:363:            // so execSync without `&` waits for the dedup-relevant PID-file
+v3/@claude-flow/cli/dist/src/commands/init.js:369:                    execSync('npx @claude-flow/cli@latest daemon start 2>/dev/null', {
+v3/@claude-flow/cli/dist/src/commands/init.js:377:                    // Daemon dedup hit (already running) OR spawn timed out.
+v3/@claude-flow/cli/dist/src/commands/init.js:387:                    execSync('npx @claude-flow/cli@latest swarm init --topology hierarchical 2>/dev/null', {
+v3/@claude-flow/cli/dist/src/commands/init.js:407:            const { execFileSync: execFileInit } = await import('child_process');
+v3/@claude-flow/cli/dist/src/commands/init.js:645:                const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:124:// Import agent store helpers for spawn functionality
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:145:        name: 'hive-mind_spawn',
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:146:        description: 'Spawn workers and automatically join them to the hive-mind (combines agent/spawn + hive-mind/join) Use when native Task is wrong because you need queen-led collective intelligence — Byzantine-FT consensus, broadcast across many worker agents, shared memory with bounded conflict. For a single subagent, native Task is fine. Pair with swarm_init first to set topology.',
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:151:                count: { type: 'number', description: 'Number of workers to spawn (default: 1)', default: 1 },
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:153:                agentType: { type: 'string', description: 'Agent type for spawned workers', default: 'worker' },
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:177:            const spawnedWorkers = [];
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:180:                // Create agent record (like agent/spawn)
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:195:                spawnedWorkers.push({
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:205:                spawned: count,
+v3/@claude-flow/cli/dist/src/mcp-tools/hive-mind-tools.js:206:                workers: spawnedWorkers,
+v3/@claude-flow/cli/dist/src/mcp-tools/neural-tools.js:339:        description: 'Train a neural model Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/dist/src/mcp-tools/neural-tools.js:457:        description: 'Make predictions using a neural model Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/dist/src/mcp-tools/neural-tools.js:558:        description: 'Get or manage neural patterns Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/dist/src/mcp-tools/neural-tools.js:849:        description: 'Compress neural model or embeddings Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/dist/src/mcp-tools/neural-tools.js:966:        description: 'Get neural system status Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/dist/src/mcp-tools/neural-tools.js:1037:        description: 'Optimize neural model performance Use when nothing native trains on your workflow — Claude Code has no learning loop. Use to train SONA/MoE/EWC patterns from successful task outcomes; query via neural_predict before spawning agents. Off-path for one-shot work.',
+v3/@claude-flow/cli/src/mcp-tools/terminal-tools.ts:16:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/mcp-tools/terminal-tools.ts:106:      // env is merged into execSync's process env on every command; reject
+v3/@claude-flow/cli/src/mcp-tools/terminal-tools.ts:192:        output = execSync(command, {
+v3/@claude-flow/cli/src/transfer/models/seraphine.ts:59:    action: 'spawn coder agent',
+v3/@claude-flow/cli/src/transfer/models/seraphine.ts:71:    action: 'spawn tester agent',
+v3/@claude-flow/cli/src/transfer/models/seraphine.ts:83:    action: 'spawn reviewer agent',
+v3/@claude-flow/cli/src/transfer/models/seraphine.ts:95:    action: 'spawn researcher agent',
+v3/@claude-flow/cli/src/transfer/models/seraphine.ts:107:    action: 'spawn architect agent',
+v3/@claude-flow/cli/src/transfer/models/seraphine.ts:132:    action: 'spawn security-architect agent',
+v3/@claude-flow/cli/src/transfer/models/seraphine.ts:144:    action: 'spawn performance-engineer agent',
+v3/@claude-flow/cli/src/mcp-tools/hooks-tools.ts:972:  description: 'Get a 3-tier routing recommendation for a task: Tier 1 (deterministic codemod, ~0ms / $0 — for var-to-const, remove-console, add-logging), Tier 2 (Haiku — simple), Tier 3 (Sonnet/Opus — complex). Use this BEFORE spawning an agent to avoid sending simple transforms to Sonnet. Native tools have no equivalent — Claude Code does not introspect its own model-selection cost. Returns the recommended model + a `[CODEMOD_AVAILABLE]` literal when a deterministic codemod can fully apply the edit (then call hooks_codemod). Use when native Bash hooks (via Claude Code\'s settings.json) are wrong because you need Ruflo-side state — pattern persistence, neural training signals, model-routing learning, cost tracking, audit chain. For one-off shell commands, plain Bash hooks are fine.',
+v3/@claude-flow/cli/src/mcp-tools/hooks-tools.ts:1371:      // ADR-147 P2: nested-subagent spawn-tree capture
+v3/@claude-flow/cli/src/mcp-tools/hooks-tools.ts:1387:    // ADR-147 P2: validate spawn-tree lineage if provided
+v3/@claude-flow/cli/src/mcp-tools/hooks-tools.ts:1414:        // ADR-147 P2: forward spawn-tree lineage so it lands in feedback + memory
+v3/@claude-flow/cli/src/mcp-tools/hooks-tools.ts:2193:      restoreAgents: { type: 'boolean', description: 'Restore spawned agents' },
+v3/@claude-flow/cli/src/mcp-tools/hooks-tools.ts:4859:  description: 'Agent Teams hook — fired when a teammate agent finishes its turn; reports whether a pending task can be auto-assigned. Use when native Task is wrong because you have a persistent multi-agent team with a shared task list and want idle workers picked up automatically rather than re-spawning subagents. For a one-shot Task, native Task is fine. (Auto-assignment is delegated to the task-queue consumer — this acknowledges the event today.)',
+v3/@claude-flow/cli/src/services/swarm-memory-branches.ts:17: *     → each agent forks a 162-byte COW branch (nativeAnn:true) at spawn
+v3/@claude-flow/cli/src/services/swarm-memory-branches.ts:24: * The current `agent_spawn` MCP path (src/mcp-tools/agent-tools.ts) stores an
+v3/@claude-flow/cli/src/services/swarm-memory-branches.ts:185:    // Idempotent — a retried spawn must not double-fork.
+v3/@claude-flow/cli/dist/src/init/claudemd-generator.js:64:- After spawning: STOP, tell user what's running, wait for results
+v3/@claude-flow/cli/dist/src/init/claudemd-generator.js:125:| **Agents** | \`agent_spawn\`, \`agent_list\`, \`agent_status\` |
+v3/@claude-flow/cli/dist/src/init/claudemd-generator.js:128:| **Hive-Mind** | \`hive-mind_init\`, \`hive-mind_consensus\`, \`hive-mind_spawn\` |
+v3/@claude-flow/cli/dist/src/init/claudemd-generator.js:179:> The background \`daemon\` is optional. It runs interval workers that each spawn
+v3/@claude-flow/cli/src/services/memory-distillation.ts:162:    db.exec(`CREATE TABLE IF NOT EXISTS distill_state (
+v3/@claude-flow/cli/dist/src/init/statusline-generator.js:6: * - Single combined git execSync call (not 8+ separate ones)
+v3/@claude-flow/cli/dist/src/init/statusline-generator.js:48:const { execSync } = require('child_process');
+v3/@claude-flow/cli/dist/src/init/statusline-generator.js:151:    const raw = execSync(
+v3/@claude-flow/cli/dist/src/init/statusline-generator.js:352:// Safe execSync with strict timeout (returns empty string on failure)
+v3/@claude-flow/cli/dist/src/init/statusline-generator.js:355:    return execSync(cmd, {
+v3/@claude-flow/cli/dist/src/init/settings-generator.js:411:    // SubagentStart — status update when a sub-agent is spawned
+v3/@claude-flow/cli/src/mcp-server.ts:21:import { spawn, ChildProcess, execFileSync } from 'child_process';
+v3/@claude-flow/cli/src/mcp-server.ts:118:        // For stdio transport, spawn the server process
+v3/@claude-flow/cli/src/services/distill-tuning.ts:573:    if (tableExists(t)) db.exec(`DELETE FROM ${t}`);
+v3/@claude-flow/cli/src/init/helpers-generator.ts:1347:const { spawnSync, execSync } = require('child_process');
+v3/@claude-flow/cli/src/init/helpers-generator.ts:1354:    const r = execSync(
+v3/@claude-flow/cli/src/init/helpers-generator.ts:1364:  const result = spawnSync(bin, args, {
+v3/@claude-flow/cli/src/update/executor.ts:6:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/src/ruvector/diff-classifier.ts:5:import { execFileSync, execFile } from 'node:child_process';
+v3/@claude-flow/cli/src/plugins/manager.ts:9:import { execFile } from 'child_process';
+v3/@claude-flow/cli/src/plugins/manager.ts:16:// to spawn `.cmd`/`.bat` files directly and throws `spawn EINVAL` — the only
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:25:import { spawn } from 'node:child_process';
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:83:    const p = spawn('node', [scriptPath, ...args], {
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:95:      const m = /\{[\s\S]*\}/.exec(stdout);
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:110:        json: { degraded: true, reason: 'spawn-failed' },
+v3/@claude-flow/cli/src/mcp-tools/swarm-tools.ts:113:// #2085 — exported so `agent-tools.ts agent_spawn` can push into
+v3/@claude-flow/cli/src/mcp-tools/swarm-tools.ts:147:    description: 'Initialize a swarm with persistent state tracking Use when native Task tool is wrong because you need multi-agent coordination — topology (hierarchical/mesh/star), consensus (raft/byzantine/gossip/crdt/quorum), shared memory namespace, or anti-drift gates. For independent one-shot subagents, native Task is fine; spawn each separately.',
+v3/@claude-flow/cli/src/mcp-tools/swarm-tools.ts:224:    description: 'Get swarm status from persistent state Use when native Task tool is wrong because you need multi-agent coordination — topology (hierarchical/mesh/star), consensus (raft/byzantine/gossip/crdt/quorum), shared memory namespace, or anti-drift gates. For independent one-shot subagents, native Task is fine; spawn each separately.',
+v3/@claude-flow/cli/src/mcp-tools/swarm-tools.ts:287:    description: 'Shutdown a swarm and update persistent state Use when native Task tool is wrong because you need multi-agent coordination — topology (hierarchical/mesh/star), consensus (raft/byzantine/gossip/crdt/quorum), shared memory namespace, or anti-drift gates. For independent one-shot subagents, native Task is fine; spawn each separately.',
+v3/@claude-flow/cli/src/mcp-tools/swarm-tools.ts:349:    description: 'Check swarm health status with real state inspection Use when native Task tool is wrong because you need multi-agent coordination — topology (hierarchical/mesh/star), consensus (raft/byzantine/gossip/crdt/quorum), shared memory namespace, or anti-drift gates. For independent one-shot subagents, native Task is fine; spawn each separately.',
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:36: * the commands/metaharness.ts dispatcher uses, then spawns it with
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:52:import { spawn } from 'node:child_process';
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:135:    const p = spawn('node', [scriptPath, ...argv], {
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:146:      const m = /\{[\s\S]*\}/.exec(stdout);
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:160:        exitCode: 127, stdout, json: { degraded: true, reason: 'spawn-failed' },
+v3/@claude-flow/cli/src/mcp-tools/github-tools.ts:12:import { execFileSync, execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/mcp-tools/github-tools.ts:88:    return execSync(cmd, { encoding: 'utf-8', timeout: 15000, cwd: cwd || getProjectCwd(), stdio: ['pipe', 'pipe', 'pipe'] }).trim();
+v3/@claude-flow/cli/src/mcp-tools/browser-session-tools.ts:17: *     is spawned directly with `node`; otherwise we fall back to
+v3/@claude-flow/cli/src/mcp-tools/browser-session-tools.ts:43:  const { execFile } = await import('node:child_process');
+v3/@claude-flow/cli/src/mcp-tools/agentdb-tools.ts:1051:            // `db.exec(sql, params)` (sql.js style) is a runner with no result
+v3/@claude-flow/cli/src/mcp-tools/agentdb-tools.ts:1082:          // better-sqlite3 API — `db.exec(sql, params)` (sql.js) silently
+v3/@claude-flow/cli/src/mcp-tools/agentdb-tools.ts:1347:      // `db.exec(sql, params)` throws "datatype mismatch" here.
+v3/@claude-flow/cli/src/init/statusline-generator.ts:6: * - Single combined git execSync call (not 8+ separate ones)
+v3/@claude-flow/cli/src/init/statusline-generator.ts:52:const { execSync } = require('child_process');
+v3/@claude-flow/cli/src/init/statusline-generator.ts:155:    const raw = execSync(
+v3/@claude-flow/cli/src/init/statusline-generator.ts:356:// Safe execSync with strict timeout (returns empty string on failure)
+v3/@claude-flow/cli/src/init/statusline-generator.ts:359:    return execSync(cmd, {
+v3/@claude-flow/cli/src/commands/workflow.ts:56:      description: 'Maximum agents to spawn',
+v3/@claude-flow/cli/src/commands/start.ts:208:      `${output.highlight('claude-flow agent spawn -t coder')} - Spawn an agent`,
+v3/@claude-flow/cli/src/init/settings-generator.ts:441:  // SubagentStart — status update when a sub-agent is spawned
+v3/@claude-flow/cli/src/commands/neural.ts:1674:          'eval(', 'Function(', 'exec(', 'spawn(',
+v3/@claude-flow/cli/src/commands/neural.ts:1675:          'child_process', 'rm -rf', 'sudo',
+v3/@claude-flow/cli/src/commands/neural.ts:2048:        output.writeln(JSON.stringify({ error: msg, hint: 'Set CLAUDE_FLOW_ROUTER_TRAJECTORY=1 and run any agent_spawn → executeAgentTask flow to accumulate rows.' }, null, 2));
+v3/@claude-flow/cli/src/commands/neural.ts:2131:      output.writeln(output.dim('  Empty trajectory file. Enable recording with `export CLAUDE_FLOW_ROUTER_TRAJECTORY=1` and run agent_spawn flows.'));
+v3/@claude-flow/cli/src/commands/neural.ts:3805:      if (fmt === 'json') output.writeln(JSON.stringify({ error: msg, hint: 'State is created on first routing decision. Run any agent_spawn flow with CLAUDE_FLOW_ROUTER_NEURAL=1.' }, null, 2));
+v3/@claude-flow/cli/src/commands/neural.ts:3808:        output.writeln(output.dim('  State is created on first routing decision. Run any agent_spawn flow.'));
+v3/@claude-flow/cli/src/commands/neural.ts:4376:// "reduce escalation". weight-eft's own `train` never spawns; `resolved` in the
+v3/@claude-flow/cli/src/commands/neural.ts:4471:  description: 'Print the two-stage (SFT → on-policy DPO) GPU training plan + the exact `ruvllm microlora` commands a GPU host would run. $0 dry-run — NEVER spawns a tune.',
+v3/@claude-flow/cli/src/commands/neural.ts:4656:    output.writeln(output.dim('Ships audited training DATA + a cost audit + a GPU plan. It does NOT train a model or reduce escalation (weight-eft train never spawns; resolved is a proxy).'));
+v3/@claude-flow/cli/src/transfer/storage/gcs.ts:12:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/src/commands/init.ts:66:        const { execSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/init.ts:67:        const globalPath = execSync('npm root -g', { encoding: 'utf-8' }).trim();
+v3/@claude-flow/cli/src/commands/init.ts:403:      const { execSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/init.ts:409:          execSync('npx @claude-flow/cli@latest memory init 2>/dev/null', {
+v3/@claude-flow/cli/src/commands/init.ts:423:      // which made execSync return as soon as the shell forked, BEFORE the
+v3/@claude-flow/cli/src/commands/init.ts:428:      // spawned its own daemon. One incident accumulated 39 zombie daemons
+v3/@claude-flow/cli/src/commands/init.ts:436:      // so execSync without `&` waits for the dedup-relevant PID-file
+v3/@claude-flow/cli/src/commands/init.ts:442:          execSync('npx @claude-flow/cli@latest daemon start 2>/dev/null', {
+v3/@claude-flow/cli/src/commands/init.ts:449:          // Daemon dedup hit (already running) OR spawn timed out.
+v3/@claude-flow/cli/src/commands/init.ts:460:          execSync('npx @claude-flow/cli@latest swarm init --topology hierarchical 2>/dev/null', {
+v3/@claude-flow/cli/src/commands/init.ts:483:      const { execFileSync: execFileInit } = await import('child_process');
+v3/@claude-flow/cli/src/commands/init.ts:743:        const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/eject.ts:33:import { spawnSync } from 'child_process';
+v3/@claude-flow/cli/src/commands/eject.ts:58:  const r = spawnSync(
+v3/@claude-flow/cli/src/commands/eject.ts:72:  if (r.error && /ENOENT|spawn/.test(String(r.error.message || ''))) {
+v3/@claude-flow/cli/src/services/worker-daemon.ts:777:   * #1853: ignore self-PID matches. The detached-spawn path in
+v3/@claude-flow/cli/src/services/worker-daemon.ts:978:   * each interval worker spawns a headless `claude --print` sweep, so a daemon
+v3/@claude-flow/cli/src/commands/completions.ts:23:const AGENT_SUBCOMMANDS = ['spawn', 'terminate', 'status', 'list', 'pool', 'health', 'update'];
+v3/@claude-flow/cli/src/commands/completions.ts:32:const HIVE_MIND_SUBCOMMANDS = ['init', 'spawn', 'status', 'task', 'join', 'leave', 'consensus', 'broadcast', 'memory', 'optimize-memory', 'shutdown'];
+v3/@claude-flow/cli/src/commands/completions.ts:194:                        'spawn:Create new agent'
+v3/@claude-flow/cli/src/commands/completions.ts:230:                        'spawn:Spawn worker agents'
+v3/@claude-flow/cli/src/commands/doctor.ts:14:import { execSync, exec } from 'child_process';
+v3/@claude-flow/cli/src/commands/doctor.ts:146: * ms, hooks fire per tool-use), each spawning a cold Node process + npm
+v3/@claude-flow/cli/src/commands/doctor.ts:919:    execSync('npm install -g @anthropic-ai/claude-code', {
+v3/@claude-flow/cli/src/commands/autopilot.ts:21: * tick returns a continuation prompt, and the spawned agent (plus agentic-flow
+v3/@claude-flow/cli/src/commands/analyze.ts:24:import { execSync } from 'child_process';
+v3/@claude-flow/cli/src/commands/analyze.ts:356:        if (/\bexec\s*\(/.test(content)) securityIssues.push('exec()');
+v3/@claude-flow/cli/src/commands/analyze.ts:1337:  while ((match = funcPattern.exec(code)) !== null) {
+v3/@claude-flow/cli/src/commands/analyze.ts:1347:  while ((match = classPattern.exec(code)) !== null) {
+v3/@claude-flow/cli/src/commands/analyze.ts:1354:  while ((match = importPattern.exec(code)) !== null) {
+v3/@claude-flow/cli/src/commands/analyze.ts:1358:  while ((match = requirePattern.exec(code)) !== null) {
+v3/@claude-flow/cli/src/commands/analyze.ts:1364:  while ((match = exportPattern.exec(code)) !== null) {
+v3/@claude-flow/cli/src/commands/analyze.ts:1506:          const auditRaw = execSync('npm audit --json 2>/dev/null', { encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024 });
+v3/@claude-flow/cli/src/services/harness-hosts.ts:13:import { execFileSync } from 'child_process';
+v3/@claude-flow/cli/src/commands/agent.ts:3: * Agent management commands for spawning, listing, and controlling agents
+v3/@claude-flow/cli/src/commands/agent.ts:69:// Agent spawn subcommand
+v3/@claude-flow/cli/src/commands/agent.ts:70:const spawnCommand: Command = {
+v3/@claude-flow/cli/src/commands/agent.ts:71:  name: 'spawn',
+v3/@claude-flow/cli/src/commands/agent.ts:77:      description: 'Agent type to spawn',
+v3/@claude-flow/cli/src/commands/agent.ts:119:    { command: 'claude-flow agent spawn --type coder --name bot-1', description: 'Spawn a coder agent' },
+v3/@claude-flow/cli/src/commands/agent.ts:120:    { command: 'claude-flow agent spawn -t researcher --task "Research React 19"', description: 'Spawn researcher with task' }
+v3/@claude-flow/cli/src/commands/agent.ts:147:      // Call MCP tool to spawn agent
+v3/@claude-flow/cli/src/commands/agent.ts:153:      }>('agent_spawn', {
+v3/@claude-flow/cli/src/commands/agent.ts:187:      output.printSuccess(`Agent ${agentName} spawned successfully`);
+v3/@claude-flow/cli/src/commands/agent.ts:199:        output.printError(`Failed to spawn agent: ${error.message}`);
+v3/@claude-flow/cli/src/commands/agent.ts:571:        note: totalAgents === 0 ? 'No agents spawned yet. Use: agent spawn -t coder' : undefined
+v3/@claude-flow/cli/src/commands/agent.ts:998:  subcommands: [spawnCommand, listCommand, statusCommand, stopCommand, metricsCommand, poolCommand, healthCommand, logsCommand, ...wasmSubcommands],
+v3/@claude-flow/cli/src/commands/agent.ts:1001:    { command: 'claude-flow agent spawn -t coder', description: 'Spawn a coder agent' },
+v3/@claude-flow/cli/src/commands/agent.ts:1014:      `${output.highlight('spawn')}         - Spawn a new agent`,
+v3/@claude-flow/cli/src/services/fable-harness.ts:30: * `reflectFailures` spawn `claude`, and only when `maxBudgetUsd > 0`. The
+v3/@claude-flow/cli/src/services/fable-harness.ts:31: * `spawnClaude` implementation is injectable so tests never touch the real CLI.
+v3/@claude-flow/cli/src/services/fable-harness.ts:36:import { spawn } from 'child_process';
+v3/@claude-flow/cli/src/services/fable-harness.ts:105:/** Result of a raw claude spawn. */
+v3/@claude-flow/cli/src/services/fable-harness.ts:115: * Injectable spawner. Receives the argv (after `claude`), the prompt to pipe to
+v3/@claude-flow/cli/src/services/fable-harness.ts:134:   * spawn (safe default).
+v3/@claude-flow/cli/src/services/fable-harness.ts:139:  /** Injected spawner for tests; defaults to the real `claude` CLI. */
+v3/@claude-flow/cli/src/services/fable-harness.ts:140:  spawnClaude?: ClaudeSpawnFn;
+v3/@claude-flow/cli/src/services/fable-harness.ts:162:// ── Default spawner (real CLI) ───────────────────────────────────────────────
+v3/@claude-flow/cli/src/services/fable-harness.ts:165: * Default `claude -p` spawner. Pipes the prompt via stdin (never as an argv
+v3/@claude-flow/cli/src/services/fable-harness.ts:174:      child = spawn('claude', argv, {
+v3/@claude-flow/cli/src/services/fable-harness.ts:229:  private readonly spawnClaude: ClaudeSpawnFn;
+v3/@claude-flow/cli/src/services/fable-harness.ts:237:    this.spawnClaude = opts.spawnClaude ?? defaultSpawnClaude;
+v3/@claude-flow/cli/src/services/fable-harness.ts:307:   * context), spawn `claude -p` there with the role via --append-system-prompt,
+v3/@claude-flow/cli/src/services/fable-harness.ts:316:      const res = await this.spawnClaude(argv, stdinPrompt, cwd, { timeoutMs: this.timeoutMs });
+v3/@claude-flow/cli/src/services/daemon-autostart.ts:9: *     the spawned `daemon start` independently enforces single-instance via its
+v3/@claude-flow/cli/src/services/daemon-autostart.ts:10: *     own lock + checkExistingDaemon() — so a race spawns at most one survivor,
+v3/@claude-flow/cli/src/services/daemon-autostart.ts:18: * module only decides WHETHER to spawn, never reimplements the daemon.
+v3/@claude-flow/cli/src/services/daemon-autostart.ts:22:import { spawn } from 'child_process';
+v3/@claude-flow/cli/src/services/daemon-autostart.ts:51:  const child = spawn(process.execPath, [cliBin, 'daemon', 'start', '--quiet'], {
+v3/@claude-flow/cli/src/services/daemon-autostart.ts:66:  opts: { spawnFn?: SpawnDaemonFn; isAlive?: (root: string) => boolean } = {},
+v3/@claude-flow/cli/src/services/daemon-autostart.ts:76:    (opts.spawnFn ?? defaultSpawn)(projectRoot);
+v3/@claude-flow/cli/src/ruvector/output-verifier.ts:106:  while ((m = re.exec(output)) !== null) {
+v3/@claude-flow/cli/src/ruvector/lora-adapter.ts:708:        const match = /^lora-checkpoint-(\d+)\.json$/.exec(f);
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:141:  while ((match = resultBlockRe.exec(html)) !== null && results.length < maxResults) {
+v3/@claude-flow/cli/src/benchmarks/gaia-hardness/features.ts:152:    const m = RE_ENTITY.exec(text);
+v3/@claude-flow/cli/src/memory/memory-bridge.ts:523:      db.exec(`CREATE TABLE IF NOT EXISTS memory_entries (
+v3/@claude-flow/cli/src/memory/memory-bridge.ts:544:      db.exec(`CREATE INDEX IF NOT EXISTS idx_bridge_ns ON memory_entries(namespace)`);
+v3/@claude-flow/cli/src/memory/memory-bridge.ts:545:      db.exec(`CREATE INDEX IF NOT EXISTS idx_bridge_key ON memory_entries(key)`);
+v3/@claude-flow/cli/src/memory/memory-bridge.ts:546:      db.exec(`CREATE INDEX IF NOT EXISTS idx_bridge_status ON memory_entries(status)`);
+v3/@claude-flow/cli/src/memory/memory-bridge.ts:1733:  // ADR-147 P2: nested-subagent spawn tree capture.
+v3/@claude-flow/cli/src/memory/memory-bridge.ts:1755:            // ADR-147 P2: forward spawn-tree lineage if present
+v3/@claude-flow/cli/dist/src/init/executor.js:278:    const gitRootResolver = "var c=require('child_process'),p=require('path'),u=require('url'),r;"
+v3/@claude-flow/cli/dist/src/init/executor.js:279:        + "try{r=c.execSync('git rev-parse --show-toplevel',{encoding:'utf8'}).trim()}"
+v3/@claude-flow/cli/dist/src/init/executor.js:331:    // statusline form. Pre-#2337 init wrote this to settings.json; it spawns
+v3/@claude-flow/cli/dist/src/init/executor.js:337:    const NEW_STATUSLINE_CMD = `node -e "var c=require('child_process'),p=require('path'),r;try{r=c.execSync('git rev-parse --show-toplevel',{encoding:'utf8'}).trim()}catch(e){r=process.cwd()}var s=p.join(r,'.claude/helpers/statusline.cjs');process.argv.splice(1,0,s);require(s)"`;
+v3/@claude-flow/cli/dist/src/init/executor.js:357:    // on every PreToolUse/PostToolUse/UserPromptSubmit, each spawning ~130 MB
+v3/@claude-flow/cli/dist/src/init/executor.js:386:                    const m = BROKEN_HOOK_RE.exec(h.command);
+v3/@claude-flow/cli/dist/src/init/executor.js:1686:npx @claude-flow/cli@latest agent spawn -t coder --name my-coder
+v3/@claude-flow/cli/dist/src/init/executor.js:1836:npx @claude-flow/cli@latest hive-mind spawn --count 5 --type worker
+v3/@claude-flow/cli/dist/src/init/executor.js:1906:npx ruflo@latest agent spawn -t coder
+v3/@claude-flow/cli/dist/src/init/executor.js:1976:            'Key tools: memory_store, memory_search, hooks_route, swarm_init, agent_spawn.',
+v3/@claude-flow/cli/src/memory/graph-edge-writer.ts:109:    db.exec(`
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:204:// Import agent store helpers for spawn functionality
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:227:    name: 'hive-mind_spawn',
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:228:    description: 'Spawn workers and automatically join them to the hive-mind (combines agent/spawn + hive-mind/join) Use when native Task is wrong because you need queen-led collective intelligence — Byzantine-FT consensus, broadcast across many worker agents, shared memory with bounded conflict. For a single subagent, native Task is fine. Pair with swarm_init first to set topology.',
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:233:        count: { type: 'number', description: 'Number of workers to spawn (default: 1)', default: 1 },
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:235:        agentType: { type: 'string', description: 'Agent type for spawned workers', default: 'worker' },
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:255:      const spawnedWorkers: Array<{ agentId: string; role: string; joinedAt: string }> = [];
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:260:        // Create agent record (like agent/spawn)
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:277:        spawnedWorkers.push({
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:289:        spawned: count,
+v3/@claude-flow/cli/src/mcp-tools/hive-mind-tools.ts:290:        workers: spawnedWorkers,
+v3/@claude-flow/cli-core/src/mcp-tools/validate-input.ts:137: * straight into execSync's environment for every subsequent command in the
+v3/@claude-flow/cli-core/src/mcp-tools/hooks-defs.ts:26:      'Get a 3-tier routing recommendation for a task: Tier 1 (Agent Booster, 0ms / $0 — for var-to-const, add-types, etc.), Tier 2 (Haiku — simple), Tier 3 (Sonnet/Opus — complex). Use this BEFORE spawning an agent to avoid sending simple transforms to Sonnet. Native tools have no equivalent — Claude Code does not introspect its own model-selection cost. Returns the recommended model + a `[AGENT_BOOSTER_AVAILABLE]` literal when the WASM bypass applies.',
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:18:// #1916: hive-mind_spawn writes its workers to `.claude-flow/agents.json`
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:21:// hive-spawned worker is resolvable instead of returning `not_found`.
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:47:   * (agenticow), set only when the agent was spawned with `memoryBase`. On
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:93:// #1916: read hive-mind-spawned workers from `.claude-flow/agents.json`.
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:115: * plus hive-mind-spawned workers. On an id collision the canonical record
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:277:    name: 'agent_spawn',
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:283:        agentType: { type: 'string', description: 'Type of agent to spawn' },
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:285:        // #2085 — accept swarmId so spawned agents register in the
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:349:      // swarm_status reports the new agent. Without this, agent_spawn
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:369:          // Idempotent — don't duplicate if agent_spawn is retried.
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:386:      // startup path. Non-fatal: a branch failure never blocks the spawn —
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:423:          '(2) Claude Code Task tool — spawns a real subagent; ' +
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:442:    // agent_spawn registered metadata but nothing dispatched work to a
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:450:    description: 'Run a task on a previously-spawned agent_spawn record via the Anthropic Messages API with that agent\'s configured model. Use when native Task tool is wrong because (a) you need the spawned agent\'s persistent config (model, instructions, cost-tracking attribution) to apply to this turn, (b) the result needs to feed back into the agent\'s lifecycle (taskCount, lastResult, swarm-coordinated state), or (c) you want explicit model routing via the spawn record\'s `model` field instead of inheriting. For one-shot Claude prompts without a tracked agent, native Task is fine. Requires ANTHROPIC_API_KEY in env.',
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:455:        agentId: { type: 'string', description: 'ID of the spawned agent' },
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:482:    description: 'Remove a Ruflo-tracked agent from the registry and free its swarm slot. Use when you need to (a) clean up a spawned agent so its cost-tracking row finalizes, (b) reclaim a swarm-topology slot for another agent, or (c) end a stuck agent without restarting the whole swarm. For one-shot Task tool invocations that already self-terminate, this tool is not needed. Pair with agent_list first to confirm the agentId.',
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:552:      const agent = loadAllAgents()[agentId]; // #1916: includes hive-mind-spawned workers
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:576:    description: 'List every Ruflo-tracked agent in the registry with its type, model, status, and taskCount. Use when native Task tool is wrong because you need to see the swarm-wide agent inventory across turns (which agents exist, their roles, their cost-tracking handles) rather than spawn a new one-shot Task. Filter by status/domain/agentType if needed. For starting a fresh single-shot subagent, native Task is fine.',
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:596:      let agents = Object.values(loadAllAgents()); // #1916: includes hive-mind-spawned workers
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:631:    description: 'Manage a fixed-size warm pool of pre-spawned agents to skip cold-start cost on bursty workloads. Use when native Task is wrong because (a) you have a queue of similar tasks and want to amortize spawn latency, (b) cost-tracking wants stable agentIds across requests, or (c) swarm topology requires a known agent count at all times. For one-shot work, just call agent_spawn or native Task. Pool sizes and warm/idle thresholds are set per-pool.',
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:831:    description: 'Mutate a tracked agent\'s config (model, instructions, status, health) without re-spawning. Use when native Task tool is wrong because the agent already has accumulated state (taskCount, swarm membership, cost-tracking attribution) and you only need to tweak one field — for example, promoting an idle agent to running on a new task, or rotating its model from haiku to sonnet mid-loop. For a brand-new subagent, agent_spawn (or native Task) is the right call.',
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:896:    description: 'Return recorded activity-log entries for a tracked agent (idle/running history, last task result). Use when native Task tool is wrong because you need the agent\'s log across turns (what it did, last error/result, swarm context) rather than a one-shot Task transcript. For a Task you just ran, native Task output is fine. Pair with agent_list to find the agentId. (Hive-mind-spawned workers are resolved here too.) Today this returns the last task result as a synthetic entry — full per-agent activity logs land with hive worker execution wiring (ruvnet/ruflo#1916).',
+v3/@claude-flow/cli/src/mcp-tools/agent-tools.ts:913:      const agent = loadAllAgents()[agentId]; // #1916: includes hive-mind-spawned workers
+v3/@claude-flow/cli/src/commands/swarm.ts:546:    output.writeln(output.dim('  - hive-mind spawn --claude (autonomous)'));
+v3/@claude-flow/cli/src/commands/swarm.ts:759:      // If MCP unavailable, fall back to 0 (will spawn all requested agents)
+v3/@claude-flow/cli/src/commands/swarm.ts:850:    output.writeln(output.dim('Note: Use Claude Code Task tool or hive-mind spawn --claude to'));
+v3/@claude-flow/cli/src/commands/process.ts:414:      choices: ['list', 'spawn', 'kill', 'scale'],
+v3/@claude-flow/cli/src/commands/process.ts:437:    { command: 'claude-flow process workers --action spawn --type task --count 3', description: 'Spawn task workers' },
+v3/@claude-flow/cli/src/commands/process.ts:469:      case 'spawn':
+v3/@claude-flow/cli/src/commands/process.ts:733:    console.log('  claude-flow process workers --action spawn --type task --count 3');
+v3/@claude-flow/cli/src/commands/security.ts:10:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/commands/security.ts:46:      const { execSync } = await import('child_process');
+v3/@claude-flow/cli/src/commands/security.ts:56:              auditResult = execSync('npm audit --json', {
+v3/@claude-flow/cli/src/commands/security.ts:148:          { pattern: /child_process.*exec[^S]/g, type: 'Command Injection', severity: 'high', desc: 'Possible command injection' },
+v3/@claude-flow/cli/src/commands/security.ts:229:            execSync('npm audit fix', { cwd: path.resolve(target), encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] });
+v3/@claude-flow/cli/src/commands/security.ts:271:      auditJson = execSync('npm audit --json 2>/dev/null', {
+v3/@claude-flow/cli/src/commands/security.ts:389:      { pattern: /\bexecSync\s*\(/g, category: 'Tampering', severity: 'high', description: 'execSync() usage — command injection risk' },
+v3/@claude-flow/cli/src/commands/security.ts:390:      { pattern: /\bexec\s*\(\s*[^)]*\$\{/g, category: 'Tampering', severity: 'high', description: 'exec() with template literal — injection risk' },
+v3/@claude-flow/cli/src/commands/security.ts:391:      { pattern: /child_process.*\bexec\b/g, category: 'Tampering', severity: 'medium', description: 'child_process exec import — review for injection' },
+v3/@claude-flow/cli/src/commands/security.ts:417:        const tracked = execSync('git ls-files --cached', { cwd: rootDir, encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] });
+v3/@claude-flow/cli/src/commands/security.ts:759:                const match = sp.pattern.exec(line);
+v3/@claude-flow/cli/src/commands/migrate.ts:662:          { change: 'Agent command renamed', from: 'spawn <type>', to: 'agent spawn -t <type>' },
+v3/@claude-flow/cli/src/benchmarks/gaia-causal-memory.ts:192:  const fileStream = fs.createReadStream(storePath, { encoding: 'utf8' });
+v3/@claude-flow/cli/src/commands/ruvector/import.ts:357:        // Execute via child_process (CRIT-02: use execFileSync to prevent command injection)
+v3/@claude-flow/cli/src/commands/ruvector/import.ts:358:        const { execFileSync } = await import('child_process');
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:20:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:77:    const out = execSync(
+v3/@claude-flow/cli/src/benchmarks/gaia-decomposer.ts:37:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/benchmarks/gaia-decomposer.ts:140:    const out = execSync(
+v3/@claude-flow/cli/src/benchmarks/gaia-convergence.ts:174:  const match = FINAL_ANSWER_RE.exec(text);
+v3/@claude-flow/cli/src/benchmarks/gaia-agent.ts:45:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/benchmarks/gaia-agent.ts:197:    const out = execSync(
+v3/@claude-flow/cli/src/benchmarks/gaia-agent.ts:290:  const match = /^\[IMAGE_BASE64:(\{.*\})\]$/.exec(marker.trim());
+v3/@claude-flow/cli/src/benchmarks/gaia-agent.ts:415:      const match = FINAL_ANSWER_RE.exec(textBlock.text);
+v3/@claude-flow/cli/src/appliance/rvfa-builder.ts:13:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/appliance/rvfa-builder.ts:188:    try { nodeVersion = execSync('node --version', { encoding: 'utf-8' }).trim(); } catch { /* keep default */ }
+v3/@claude-flow/cli/src/appliance/rvfa-builder.ts:201:      const raw = execSync('npm pack ruflo@latest --dry-run --json 2>/dev/null', { encoding: 'utf-8', timeout: 15_000 });
+v3/@claude-flow/browser/tests/agent-browser-adapter.test.ts:7:import { execFileSync } from 'child_process';
+v3/@claude-flow/browser/tests/agent-browser-adapter.test.ts:9:vi.mock('child_process', () => ({
+v3/@claude-flow/browser/tests/agent-browser-adapter.test.ts:10:  execSync: vi.fn(),
+v3/@claude-flow/browser/tests/agent-browser-adapter.test.ts:12:  spawn: vi.fn(),
+v3/@claude-flow/browser/src/application/signed-trajectory-service.ts:113: * unit-tested without spawning Playwright.
+v3/@claude-flow/browser/src/application/browser-service.ts:486:  async spawnAgent(role: 'navigator' | 'scraper' | 'validator' | 'tester' | 'monitor'): Promise<BrowserService> {
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/grounded_query.ts:148:    const { execSync } = await import('node:child_process');
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/grounded_query.ts:149:    const key = execSync(
+v3/@claude-flow/cli/src/benchmarks/gaia-critic.ts:36:import { execSync } from 'node:child_process';
+v3/@claude-flow/cli/src/benchmarks/gaia-critic.ts:136:    return execSync(
+v3/@claude-flow/browser/tests/e2e/browser-e2e.test.ts:9:import { execFileSync } from 'child_process';
+v3/@claude-flow/aidefence/src/domain/services/threat-detection-service.ts:290:      const match = pattern.pattern.exec(normalizedInput);

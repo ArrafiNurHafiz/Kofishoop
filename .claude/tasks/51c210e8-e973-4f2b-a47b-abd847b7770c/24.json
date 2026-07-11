@@ -1,0 +1,9 @@
+{
+  "id": "24",
+  "subject": "Perbaiki T3: TOPSIS error handling",
+  "description": "Wrap calculate_topsis_for_donation dalam try/except di donations.py",
+  "activeForm": "Memperbaiki TOPSIS error handling",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

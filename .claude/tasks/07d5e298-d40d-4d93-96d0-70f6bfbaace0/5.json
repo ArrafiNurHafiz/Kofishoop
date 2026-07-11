@@ -1,0 +1,8 @@
+{
+  "id": "5",
+  "subject": "Enhance Pricing with monthly/annual toggle",
+  "description": "Add billing period toggle switch to Pricing component with annual discount logic",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

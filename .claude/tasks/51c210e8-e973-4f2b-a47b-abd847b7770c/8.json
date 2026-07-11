@@ -1,0 +1,9 @@
+{
+  "id": "8",
+  "subject": "Review server/main.py — entry point & middleware",
+  "description": "White box review of main.py: startup flow, middleware ordering, exception handlers, rate limiting, CORS, static files, upload endpoint",
+  "activeForm": "Reviewing main.py",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

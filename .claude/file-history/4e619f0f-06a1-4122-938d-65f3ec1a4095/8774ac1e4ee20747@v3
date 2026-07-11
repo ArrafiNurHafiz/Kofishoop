@@ -1,0 +1,426 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Category;
+use App\Models\DataSource;
+use App\Models\TransitStop;
+use App\Models\TransitRoute;
+use App\Models\TransitRouteStop;
+use App\Models\Poi;
+use App\Models\PoiTransitStop;
+use App\Models\Itinerary;
+use App\Models\ItineraryItem;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    public function run(): void
+    {
+        // --- Data Sources ---
+        $osmSource = DataSource::create([
+            'name' => 'OpenStreetMap Yogyakarta',
+            'type' => 'open_data',
+            'url' => 'https://www.openstreetmap.org/relation/23937584',
+            'license_note' => 'ODbL — Open Database License. Wajib mencantumkan © OpenStreetMap contributors.',
+            'retrieved_at' => '2026-07-08',
+        ]);
+
+        $mapidMenuGo = DataSource::create([
+            'name' => 'MAPID Menu Go',
+            'type' => 'mapid_apps',
+            'url' => null,
+            'license_note' => 'Data dari ekosistem MAPID — hanya untuk keperluan kompetisi.',
+            'retrieved_at' => '2026-07-08',
+        ]);
+
+        $fieldSurvey = DataSource::create([
+            'name' => 'Survei Lapangan Tim',
+            'type' => 'field_survey',
+            'url' => null,
+            'license_note' => 'Data hasil validasi lapangan oleh tim.',
+            'retrieved_at' => '2026-07-08',
+        ]);
+
+        // --- Categories ---
+        $kuliner = Category::create(['name' => 'Kuliner', 'slug' => 'kuliner', 'type' => 'poi_group', 'icon' => 'Kul']);
+        $wisata = Category::create(['name' => 'Wisata', 'slug' => 'wisata', 'type' => 'poi_group', 'icon' => 'Wis']);
+        $penginapan = Category::create(['name' => 'Penginapan', 'slug' => 'penginapan', 'type' => 'poi_group', 'icon' => 'Inap']);
+
+        // --- Transit Stops (Trans Jogja halte - sample) ---
+        $halteMalioboro1 = TransitStop::create([
+            'name' => 'Halte Malioboro 1', 'code' => 'TJ-01', 'latitude' => -7.79250, 'longitude' => 110.36650,
+            'mode' => 'bus', 'facilities' => ['atap', 'kursi', 'papan_info', 'akses_difabel'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteMalioboro2 = TransitStop::create([
+            'name' => 'Halte Malioboro 2', 'code' => 'TJ-02', 'latitude' => -7.79500, 'longitude' => 110.36700,
+            'mode' => 'bus', 'facilities' => ['atap', 'kursi'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteKraton = TransitStop::create([
+            'name' => 'Halte Kraton', 'code' => 'TJ-03', 'latitude' => -7.80800, 'longitude' => 110.36300,
+            'mode' => 'bus', 'facilities' => ['atap', 'kursi', 'papan_info', 'akses_difabel'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteKotaGede = TransitStop::create([
+            'name' => 'Halte Kota Gede', 'code' => 'TJ-04', 'latitude' => -7.82800, 'longitude' => 110.39700,
+            'mode' => 'bus', 'facilities' => ['atap'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteLempuyangan = TransitStop::create([
+            'name' => 'Stasiun Lempuyangan', 'code' => 'KRL-LP', 'latitude' => -7.79029, 'longitude' => 110.37552,
+            'mode' => 'krl', 'facilities' => ['atap', 'kursi', 'papan_info', 'akses_difabel', 'kios_makanan'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteUGM = TransitStop::create([
+            'name' => 'Halte UGM', 'code' => 'TJ-05', 'latitude' => -7.77200, 'longitude' => 110.37700,
+            'mode' => 'bus', 'facilities' => ['atap', 'akses_difabel'], 'data_source_id' => $osmSource->id,
+        ]);
+
+        // --- Transit Routes (mengikuti jalan, dari OSRM) ---
+        $route2A = TransitRoute::create([
+            'name' => 'Trans Jogja 2A', 'mode' => 'bus',
+            'geometry' => [
+                'type' => 'LineString',
+                'coordinates' => [
+                    [110.366487,-7.792688],[110.365448,-7.795855],[110.366737,-7.796114],[110.366184,-7.795928],
+                    [110.366454,-7.794368],[110.367520,-7.796167],[110.368134,-7.797512],[110.368084,-7.797534],
+                    [110.365331,-7.797438],[110.364944,-7.799843],[110.364753,-7.801375],[110.362029,-7.801278],
+                    [110.360757,-7.803149],[110.360313,-7.805975],[110.360820,-7.808157],[110.362243,-7.808648],
+                    [110.361702,-7.808573],[110.360529,-7.808072],[110.358804,-7.807846],[110.358574,-7.808564],
+                    [110.356362,-7.808642],[110.355954,-7.811147],[110.355868,-7.812948],[110.356900,-7.813181],
+                    [110.359369,-7.813545],[110.363980,-7.814190],[110.367468,-7.814699],[110.368804,-7.814640],
+                    [110.370178,-7.814892],[110.372924,-7.815264],[110.375359,-7.815568],[110.379870,-7.816219],
+                    [110.382441,-7.816592],[110.384463,-7.816890],[110.389761,-7.817746],[110.391419,-7.818062],
+                    [110.396456,-7.819358],[110.400666,-7.820445],[110.400631,-7.822780],[110.400420,-7.825147],
+                    [110.400393,-7.826544],[110.400315,-7.827807],[110.398005,-7.827441],[110.396480,-7.827976],
+                ]
+            ],
+            'operating_hours' => '05:30–21:00', 'frequency_minutes' => 10,
+            'data_source_id' => $osmSource->id,
+        ]);
+
+        $route1A = TransitRoute::create([
+            'name' => 'Trans Jogja 1A', 'mode' => 'bus',
+            'geometry' => [
+                'type' => 'LineString',
+                'coordinates' => [
+                    [110.366487,-7.792688],[110.367611,-7.791354],[110.367727,-7.790550],[110.367838,-7.790439],
+                    [110.368150,-7.790318],[110.368329,-7.790178],[110.368444,-7.789847],[110.368545,-7.789676],
+                    [110.369220,-7.789560],[110.369681,-7.789486],[110.370492,-7.788994],[110.371844,-7.788111],
+                    [110.372518,-7.787894],[110.373149,-7.787792],[110.373179,-7.787189],[110.373287,-7.786920],
+                    [110.373802,-7.786837],[110.374181,-7.786858],[110.374279,-7.786704],[110.374560,-7.785068],
+                    [110.374880,-7.783113],[110.375101,-7.781828],[110.375306,-7.780633],[110.375776,-7.777700],
+                    [110.375954,-7.776148],[110.375890,-7.776000],[110.375973,-7.775861],[110.376275,-7.775207],
+                    [110.377234,-7.771995],[110.377021,-7.771931],
+                ]
+            ],
+            'operating_hours' => '05:30–21:00', 'frequency_minutes' => 12,
+            'data_source_id' => $osmSource->id,
+        ]);
+
+        // --- Route Stops ---
+        TransitRouteStop::create(['transit_route_id' => $route2A->id, 'transit_stop_id' => $halteMalioboro1->id, 'sequence_order' => 1]);
+        TransitRouteStop::create(['transit_route_id' => $route2A->id, 'transit_stop_id' => $halteMalioboro2->id, 'sequence_order' => 2]);
+        TransitRouteStop::create(['transit_route_id' => $route2A->id, 'transit_stop_id' => $halteKraton->id, 'sequence_order' => 3]);
+        TransitRouteStop::create(['transit_route_id' => $route2A->id, 'transit_stop_id' => $halteKotaGede->id, 'sequence_order' => 4]);
+        TransitRouteStop::create(['transit_route_id' => $route1A->id, 'transit_stop_id' => $halteMalioboro1->id, 'sequence_order' => 1]);
+        TransitRouteStop::create(['transit_route_id' => $route1A->id, 'transit_stop_id' => $halteUGM->id, 'sequence_order' => 2]);
+
+        // --- POIs (Yogyakarta) ---
+        // --- Gudeg Permata Kota Gede (Kuliner) ---
+        $poiGudeg = Poi::create([
+            'category_id' => $kuliner->id, 'name' => 'Gudeg Permata Kota Gede',
+            'description' => 'Gudeg legendaris sejak 1985 di jantung Kota Gede. Manis, legit, porsi besar.',
+            'latitude' => -7.82750, 'longitude' => 110.39800, 'address' => 'Jl. Mondorakan No. 38, Kota Gede',
+            'price_range' => 'low', 'tags' => ['gudeg', 'legendaris', 'murah'], 'operating_hours' => '07:00–17:00',
+            'photo_url' => 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400', 'source_type' => 'menu_go', 'transit_friendliness_score' => 9.2,
+            'data_source_id' => $mapidMenuGo->id,
+            'phone' => '0274-1234567', 'whatsapp' => '081234567890',
+            'website' => null, 'menu_url' => null,
+            'google_place_id' => 'ChIJp4s_xL9wZS4Rk7Vn3a8vF0I',
+            'google_maps_url' => 'https://maps.google.com/?q=Gudeg+Permata+Kota+Gede',
+            'rating' => 4.5, 'review_count' => 1234, 'business_status' => 'operational',
+            'photos' => [
+                'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400',
+                'https://images.unsplash.com/photo-1625943553852-781c6dd46faa?w=400',
+                'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400',
+            ],
+            'facilities' => ['wifi', 'parkir_motor', 'mushola', 'toilet'],
+            'payment_methods' => ['cash', 'qris', 'transfer_bank'],
+            'opening_hours_details' => [
+                ['day' => 'Senin', 'open' => '07:00', 'close' => '17:00'],
+                ['day' => 'Selasa', 'open' => '07:00', 'close' => '17:00'],
+                ['day' => 'Rabu', 'open' => '07:00', 'close' => '17:00'],
+                ['day' => 'Kamis', 'open' => '07:00', 'close' => '17:00'],
+                ['day' => 'Jumat', 'open' => '07:00', 'close' => '17:00'],
+                ['day' => 'Sabtu', 'open' => '07:00', 'close' => '18:00'],
+                ['day' => 'Minggu', 'open' => '08:00', 'close' => '17:00'],
+            ],
+            'social_media' => ['instagram' => '@gudegpermata_kg', 'tiktok' => null, 'facebook' => 'GudegPermataKotaGede'],
+            'popularity' => 'high', 'is_verified' => true,
+        ]);
+
+        // --- Angkringan Malioboro (Kuliner) ---
+        $poiAngkringan = Poi::create([
+            'category_id' => $kuliner->id, 'name' => 'Angkringan Malioboro',
+            'description' => 'Angkringan ikonik di sepanjang Malioboro. Sate usus, nasi kucing, wedang jahe.',
+            'latitude' => -7.79260, 'longitude' => 110.36680,
+            'price_range' => 'low', 'tags' => ['angkringan', 'malam', 'murah'], 'operating_hours' => '17:00–02:00',
+            'photo_url' => 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400', 'source_type' => 'menu_go', 'transit_friendliness_score' => 8.5,
+            'data_source_id' => $mapidMenuGo->id,
+            'phone' => null, 'whatsapp' => '087654321098',
+            'website' => null, 'menu_url' => null,
+            'google_place_id' => 'ChIJWc5z8LlwZS4RgtVn2b8wG3J',
+            'google_maps_url' => 'https://maps.google.com/?q=Angkringan+Malioboro',
+            'rating' => 4.2, 'review_count' => 890, 'business_status' => 'operational',
+            'photos' => [
+                'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400',
+                'https://images.unsplash.com/photo-1544025162-d76694265947?w=400',
+                'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400',
+            ],
+            'facilities' => ['lesehan', 'parkir_tepi_jalan', 'wifi'],
+            'payment_methods' => ['cash', 'qris'],
+            'opening_hours_details' => [
+                ['day' => 'Senin', 'open' => '17:00', 'close' => '02:00'],
+                ['day' => 'Selasa', 'open' => '17:00', 'close' => '02:00'],
+                ['day' => 'Rabu', 'open' => '17:00', 'close' => '02:00'],
+                ['day' => 'Kamis', 'open' => '17:00', 'close' => '02:00'],
+                ['day' => 'Jumat', 'open' => '17:00', 'close' => '02:30'],
+                ['day' => 'Sabtu', 'open' => '17:00', 'close' => '03:00'],
+                ['day' => 'Minggu', 'open' => '17:00', 'close' => '02:00'],
+            ],
+            'social_media' => ['instagram' => '@angkringan_malioboro', 'tiktok' => '@angkringan_jogja', 'facebook' => null],
+            'popularity' => 'high', 'is_verified' => false,
+        ]);
+
+        // --- Sate Klathak Pak Pong (Kuliner) ---
+        $poiSate = Poi::create([
+            'category_id' => $kuliner->id, 'name' => 'Sate Klathak Pak Pong',
+            'description' => 'Sate kambing bakar khas Klathak. Daging empuk, bumbu sederhana tapi kaya rasa.',
+            'latitude' => -7.80500, 'longitude' => 110.33000, 'address' => 'Jl. Imogiri Timur, Panggungharjo',
+            'price_range' => 'med', 'tags' => ['sate', 'kambing', 'klathak'], 'operating_hours' => '10:00–22:00',
+            'photo_url' => 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400', 'source_type' => 'menu_go', 'transit_friendliness_score' => 6.2,
+            'data_source_id' => $mapidMenuGo->id,
+            'phone' => '0274-7654321', 'whatsapp' => '085678901234',
+            'website' => null, 'menu_url' => 'https://menu.go.id/sate-klathak-pak-pong',
+            'google_place_id' => 'ChIJVcF03rFwZS4RmPqH4d9iKsN',
+            'google_maps_url' => 'https://maps.google.com/?q=Sate+Klathak+Pak+Pong',
+            'rating' => 4.7, 'review_count' => 2100, 'business_status' => 'operational',
+            'photos' => [
+                'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400',
+                'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400',
+                'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400',
+            ],
+            'facilities' => ['parkir_mobil', 'ac', 'mushola', 'toilet', 'area_bayi'],
+            'payment_methods' => ['cash', 'qris', 'kartu_kredit', 'kartu_debit'],
+            'opening_hours_details' => [
+                ['day' => 'Senin', 'open' => '10:00', 'close' => '22:00'],
+                ['day' => 'Selasa', 'open' => '10:00', 'close' => '22:00'],
+                ['day' => 'Rabu', 'open' => '10:00', 'close' => '22:00'],
+                ['day' => 'Kamis', 'open' => '10:00', 'close' => '22:00'],
+                ['day' => 'Jumat', 'open' => '10:00', 'close' => '22:30'],
+                ['day' => 'Sabtu', 'open' => '09:00', 'close' => '23:00'],
+                ['day' => 'Minggu', 'open' => '09:00', 'close' => '22:00'],
+            ],
+            'social_media' => ['instagram' => '@sateklathakpong', 'tiktok' => null, 'facebook' => 'SateKlathakPakPong'],
+            'popularity' => 'high', 'is_verified' => true,
+        ]);
+
+        // --- Taman Sari (Wisata) ---
+        $poiTamanSari = Poi::create([
+            'category_id' => $wisata->id, 'name' => 'Taman Sari',
+            'description' => 'Bekas taman istana Keraton Yogyakarta. Kolam pemandian, lorong bawah tanah, arsitektur campuran Jawa-Portugis.',
+            'latitude' => -7.81000, 'longitude' => 110.36300, 'address' => 'Jl. Tamanan, Kraton',
+            'price_range' => 'low', 'tags' => ['sejarah', 'kolam', 'budaya'], 'operating_hours' => '09:00–15:00',
+            'photo_url' => 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400', 'source_type' => 'community_activity', 'transit_friendliness_score' => 9.0,
+            'data_source_id' => $fieldSurvey->id,
+            'phone' => '0274-373517', 'whatsapp' => null,
+            'website' => 'https://tamansari.kratonjogja.com', 'menu_url' => null,
+            'google_place_id' => 'ChIJ4cBq4LxwZS4R3U0rCj9jX8M',
+            'google_maps_url' => 'https://maps.google.com/?q=Taman+Sari+Yogyakarta',
+            'rating' => 4.4, 'review_count' => 5678, 'business_status' => 'operational',
+            'photos' => [
+                'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400',
+                'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=400',
+                'https://images.unsplash.com/photo-1612388927156-6c2c35c5c0ce?w=400',
+                'https://images.unsplash.com/photo-1579310969373-3ee5ab9e8a6c?w=400',
+            ],
+            'facilities' => ['parkir_mobil', 'toilet', 'pemandu_wisata', 'akses_difabel', 'mushola'],
+            'payment_methods' => ['cash', 'qris', 'kartu_kredit'],
+            'opening_hours_details' => [
+                ['day' => 'Senin', 'open' => '09:00', 'close' => '15:00'],
+                ['day' => 'Selasa', 'open' => '09:00', 'close' => '15:00'],
+                ['day' => 'Rabu', 'open' => '09:00', 'close' => '15:00'],
+                ['day' => 'Kamis', 'open' => '09:00', 'close' => '15:00'],
+                ['day' => 'Jumat', 'open' => '09:00', 'close' => '15:00'],
+                ['day' => 'Sabtu', 'open' => '09:00', 'close' => '15:00'],
+                ['day' => 'Minggu', 'open' => '09:00', 'close' => '15:00'],
+            ],
+            'social_media' => ['instagram' => '@tamansari_jogja', 'tiktok' => null, 'facebook' => 'TamanSariYogyakarta'],
+            'popularity' => 'high', 'is_verified' => true,
+        ]);
+
+        // --- Kampung Perak Kota Gede (Wisata) ---
+        $poiKotaGede = Poi::create([
+            'category_id' => $wisata->id, 'name' => 'Kampung Perak Kota Gede',
+            'description' => 'Sentra kerajinan perak dengan sejarah sejak abad ke-18. Banyak perajin, showroom, dan workshop.',
+            'latitude' => -7.83000, 'longitude' => 110.40000, 'address' => 'Kota Gede',
+            'price_range' => 'med', 'tags' => ['perak', 'kerajinan', 'belanja'], 'operating_hours' => '08:00–17:00',
+            'photo_url' => 'https://images.unsplash.com/photo-1594059389825-d7b3f7e6c7b3?w=400', 'source_type' => 'community_activity', 'transit_friendliness_score' => 7.8,
+            'data_source_id' => $fieldSurvey->id,
+            'phone' => '0274-4567890', 'whatsapp' => '082134567890',
+            'website' => null, 'menu_url' => null,
+            'google_place_id' => 'ChIJk9Z6X71wZS4Rf2gH5n3qWpD',
+            'google_maps_url' => 'https://maps.google.com/?q=Kampung+Perak+Kota+Gede',
+            'rating' => 4.3, 'review_count' => 1230, 'business_status' => 'operational',
+            'photos' => [
+                'https://images.unsplash.com/photo-1594059389825-d7b3f7e6c7b3?w=400',
+                'https://images.unsplash.com/photo-1604742445381-0e2cb4f90b2a?w=400',
+                'https://images.unsplash.com/photo-1573108037320-64f1f1e1e1a5?w=400',
+            ],
+            'facilities' => ['parkir_motor', 'toilet', 'workshop', 'galeri'],
+            'payment_methods' => ['cash', 'qris', 'kartu_kredit', 'transfer_bank'],
+            'opening_hours_details' => [
+                ['day' => 'Senin', 'open' => '08:00', 'close' => '17:00'],
+                ['day' => 'Selasa', 'open' => '08:00', 'close' => '17:00'],
+                ['day' => 'Rabu', 'open' => '08:00', 'close' => '17:00'],
+                ['day' => 'Kamis', 'open' => '08:00', 'close' => '17:00'],
+                ['day' => 'Jumat', 'open' => '08:00', 'close' => '17:00'],
+                ['day' => 'Sabtu', 'open' => '08:00', 'close' => '18:00'],
+                ['day' => 'Minggu', 'open' => '09:00', 'close' => '16:00'],
+            ],
+            'social_media' => ['instagram' => '@kampungperak_kg', 'tiktok' => '@perakkotagede', 'facebook' => 'KampungPerakKotaGede'],
+            'popularity' => 'medium', 'is_verified' => true,
+        ]);
+
+        // --- Museum Affandi (Wisata) ---
+        $poiAffandi = Poi::create([
+            'category_id' => $wisata->id, 'name' => 'Museum Affandi',
+            'description' => 'Museum milik pelukis legendaris Affandi. Bangunan unik berbentuk daun, koleksi lukisan orisinal.',
+            'latitude' => -7.77800, 'longitude' => 110.38100, 'address' => 'Jl. Laksda Adisutjipto 167',
+            'price_range' => 'med', 'tags' => ['seni', 'lukis', 'museum'], 'operating_hours' => '09:00–16:00',
+            'photo_url' => 'https://images.unsplash.com/photo-1566127444979-b40d0b12a8d6?w=400', 'source_type' => 'community_activity', 'transit_friendliness_score' => 8.8,
+            'data_source_id' => $fieldSurvey->id,
+            'phone' => '0274-562593', 'whatsapp' => null,
+            'website' => 'https://affandi.org', 'menu_url' => null,
+            'google_place_id' => 'ChIJmcrPw7xwZS4RsT5F6h2iBvQ',
+            'google_maps_url' => 'https://maps.google.com/?q=Museum+Affandi',
+            'rating' => 4.6, 'review_count' => 3456, 'business_status' => 'operational',
+            'photos' => [
+                'https://images.unsplash.com/photo-1566127444979-b40d0b12a8d6?w=400',
+                'https://images.unsplash.com/photo-1598890777032-bde835ba27c2?w=400',
+                'https://images.unsplash.com/photo-1575870583624-3b69a8b6dd28?w=400',
+            ],
+            'facilities' => ['parkir_mobil', 'toilet', 'kafe', 'galeri_seni', 'tokosouvenir'],
+            'payment_methods' => ['cash', 'qris', 'kartu_kredit', 'kartu_debit'],
+            'opening_hours_details' => [
+                ['day' => 'Senin', 'open' => '09:00', 'close' => '16:00'],
+                ['day' => 'Selasa', 'open' => '09:00', 'close' => '16:00'],
+                ['day' => 'Rabu', 'open' => '09:00', 'close' => '16:00'],
+                ['day' => 'Kamis', 'open' => '09:00', 'close' => '16:00'],
+                ['day' => 'Jumat', 'open' => '09:00', 'close' => '16:00'],
+                ['day' => 'Sabtu', 'open' => '09:00', 'close' => '17:00'],
+                ['day' => 'Minggu', 'open' => '09:00', 'close' => '17:00'],
+            ],
+            'social_media' => ['instagram' => '@museumaffandi', 'tiktok' => null, 'facebook' => 'MuseumAffandi'],
+            'popularity' => 'medium', 'is_verified' => true,
+        ]);
+
+        // --- The Phoenix Hotel Yogyakarta (Penginapan) ---
+        $poiPhoenix = Poi::create([
+            'category_id' => $penginapan->id, 'name' => 'The Phoenix Hotel Yogyakarta',
+            'description' => 'Hotel butik bintang 4 — heritage dengan arsitektur Indische dan kolam renang ikonik.',
+            'latitude' => -7.78900, 'longitude' => 110.37100, 'address' => 'Jl. Jend. Sudirman 9',
+            'price_range' => 'high', 'tags' => ['boutik', 'kolam', 'heritage'], 'operating_hours' => '24 jam',
+            'photo_url' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400', 'source_type' => 'property_go', 'transit_friendliness_score' => 8.0,
+            'data_source_id' => $mapidMenuGo->id,
+            'phone' => '0274-566617', 'whatsapp' => '08112929292',
+            'website' => 'https://thephoenixyogya.com', 'menu_url' => null,
+            'google_place_id' => 'ChIJQamh0bxwZS4RIF0n6mN8vMk',
+            'google_maps_url' => 'https://maps.google.com/?q=The+Phoenix+Hotel+Yogyakarta',
+            'rating' => 4.5, 'review_count' => 2345, 'business_status' => 'operational',
+            'photos' => [
+                'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400',
+                'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400',
+                'https://images.unsplash.com/photo-1560200353-ce0a76b1d438?w=400',
+                'https://images.unsplash.com/photo-1590073242678-70ee3fc6586d?w=400',
+            ],
+            'facilities' => ['wifi', 'ac', 'kolam_renang', 'restoran', 'gym', 'spa', 'parkir_mobil', 'laundry', 'akses_difabel'],
+            'payment_methods' => ['cash', 'qris', 'kartu_kredit', 'kartu_debit', 'go_pay', 'ovo'],
+            'opening_hours_details' => [
+                ['day' => 'Senin', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Selasa', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Rabu', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Kamis', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Jumat', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Sabtu', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Minggu', 'open' => '00:00', 'close' => '24:00'],
+            ],
+            'social_media' => ['instagram' => '@thephoenixyogya', 'tiktok' => null, 'facebook' => 'ThePhoenixHotelYogya'],
+            'popularity' => 'high', 'is_verified' => true,
+        ]);
+
+        // --- Omah Kitiran Guest House (Penginapan) ---
+        $poiOmahKitiran = Poi::create([
+            'category_id' => $penginapan->id, 'name' => 'Omah Kitiran Guest House',
+            'description' => 'Homestay tradisional Jawa dengan suasana pedesaan di tengah kota. Halaman asri, sarapan homemade.',
+            'latitude' => -7.81800, 'longitude' => 110.39000, 'address' => 'Jl. Nitiprayan, Bantul',
+            'price_range' => 'low', 'tags' => ['homestay', 'tradisional', 'asri'], 'operating_hours' => '24 jam',
+            'photo_url' => 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400', 'source_type' => 'property_go', 'transit_friendliness_score' => 7.5,
+            'data_source_id' => $mapidMenuGo->id,
+            'phone' => '0274-7890123', 'whatsapp' => '085712345678',
+            'website' => null, 'menu_url' => null,
+            'google_place_id' => 'ChIJg8T5Ll9wZS4RqXYM3b4KqJk',
+            'google_maps_url' => 'https://maps.google.com/?q=Omah+Kitiran+Guest+House',
+            'rating' => 4.8, 'review_count' => 567, 'business_status' => 'operational',
+            'photos' => [
+                'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400',
+                'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400',
+                'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400',
+            ],
+            'facilities' => ['wifi', 'sarapan', 'parkir_motor', 'halaman', 'dapur_bersama'],
+            'payment_methods' => ['cash', 'qris', 'transfer_bank'],
+            'opening_hours_details' => [
+                ['day' => 'Senin', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Selasa', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Rabu', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Kamis', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Jumat', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Sabtu', 'open' => '00:00', 'close' => '24:00'],
+                ['day' => 'Minggu', 'open' => '00:00', 'close' => '24:00'],
+            ],
+            'social_media' => ['instagram' => '@omahkitiran_jogja', 'tiktok' => null, 'facebook' => 'OmahKitiranGuestHouse'],
+            'popularity' => 'medium', 'is_verified' => false,
+        ]);
+
+        // --- POI-Transit distances ---
+        // Gudeg → Kota Gede
+        PoiTransitStop::create(['poi_id' => $poiGudeg->id, 'transit_stop_id' => $halteKotaGede->id, 'distance_meters' => 150, 'walking_minutes' => 2]);
+        // Angkringan → Malioboro 1
+        PoiTransitStop::create(['poi_id' => $poiAngkringan->id, 'transit_stop_id' => $halteMalioboro1->id, 'distance_meters' => 50, 'walking_minutes' => 1]);
+        // Sate Klathak → Kraton (jauh)
+        PoiTransitStop::create(['poi_id' => $poiSate->id, 'transit_stop_id' => $halteKraton->id, 'distance_meters' => 2200, 'walking_minutes' => 28]);
+        PoiTransitStop::create(['poi_id' => $poiSate->id, 'transit_stop_id' => $halteMalioboro2->id, 'distance_meters' => 2800, 'walking_minutes' => 35]);
+        // Taman Sari → Kraton
+        PoiTransitStop::create(['poi_id' => $poiTamanSari->id, 'transit_stop_id' => $halteKraton->id, 'distance_meters' => 400, 'walking_minutes' => 5]);
+        // Museum Affandi → UGM
+        PoiTransitStop::create(['poi_id' => $poiAffandi->id, 'transit_stop_id' => $halteUGM->id, 'distance_meters' => 600, 'walking_minutes' => 8]);
+        // Phoenix → Malioboro 1
+        PoiTransitStop::create(['poi_id' => $poiPhoenix->id, 'transit_stop_id' => $halteMalioboro1->id, 'distance_meters' => 300, 'walking_minutes' => 4]);
+        // Omah Kitiran → Kota Gede
+        PoiTransitStop::create(['poi_id' => $poiOmahKitiran->id, 'transit_stop_id' => $halteKotaGede->id, 'distance_meters' => 700, 'walking_minutes' => 9]);
+
+        // --- Sample Itinerary ---
+        $itinerary = Itinerary::create([
+            'session_token' => 'sample-demo',
+            'title' => 'Trip: Malioboro → Kota Gede',
+            'ai_narrative' => 'Mulai perjalanan dari Malioboro, sarapan angkringan sambil menikmati suasana pagi. Lanjut naik Trans Jogja 2A ke Kraton — 10 menit, turun di Halte Kraton. Jalan kaki 5 menit ke Taman Sari. Dari sini naik Trans Jogja 2A lagi ke arah Kota Gede untuk mengeksplorasi pengrajin perak dan makan gudeg. Balik ke Malioboro naik Trans Jogja 1A.',
+            'total_estimated_minutes' => 210,
+            'share_slug' => 'trip-malioboro-kotagede-x9f2',
+        ]);
+
+        ItineraryItem::create(['itinerary_id' => $itinerary->id, 'poi_id' => $poiAngkringan->id, 'visit_order' => 1, 'suggested_transit_stop_id' => $halteMalioboro1->id, 'estimated_arrival_time' => '08:00']);
+        ItineraryItem::create(['itinerary_id' => $itinerary->id, 'poi_id' => $poiTamanSari->id, 'visit_order' => 2, 'suggested_transit_stop_id' => $halteKraton->id, 'estimated_arrival_time' => '09:30']);
+        ItineraryItem::create(['itinerary_id' => $itinerary->id, 'poi_id' => $poiKotaGede->id, 'visit_order' => 3, 'suggested_transit_stop_id' => $halteKotaGede->id, 'estimated_arrival_time' => '10:45']);
+        ItineraryItem::create(['itinerary_id' => $itinerary->id, 'poi_id' => $poiGudeg->id, 'visit_order' => 4, 'suggested_transit_stop_id' => $halteKotaGede->id, 'estimated_arrival_time' => '12:00']);
+
+        $this->command->info('Database seeded! Yogyakarta transit + POI data ready.');
+    }
+}

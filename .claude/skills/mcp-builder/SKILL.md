@@ -1,0 +1,1 @@
+/home/arrafi/.config/opencode/skills/ms-mcp-builder/SKILL.md

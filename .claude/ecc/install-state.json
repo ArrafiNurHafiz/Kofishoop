@@ -1,0 +1,4086 @@
+{
+  "schemaVersion": "ecc.install.v1",
+  "installedAt": "2026-07-05T17:24:21.386Z",
+  "target": {
+    "id": "claude-home",
+    "target": "claude",
+    "kind": "home",
+    "root": "/home/arrafi/.claude",
+    "installStatePath": "/home/arrafi/.claude/ecc/install-state.json"
+  },
+  "request": {
+    "profile": "minimal",
+    "modules": [],
+    "includeComponents": [],
+    "excludeComponents": [],
+    "legacyLanguages": [],
+    "legacyMode": false
+  },
+  "resolution": {
+    "selectedModules": [
+      "rules-core",
+      "agents-core",
+      "commands-core",
+      "platform-configs",
+      "workflow-quality"
+    ],
+    "skippedModules": []
+  },
+  "source": {
+    "repoVersion": "2.0.0",
+    "repoCommit": "2159ed2fdee361bfa5e8caac6dcd76f042f930c8",
+    "manifestVersion": 1
+  },
+  "operations": [
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/README.md",
+      "sourceRelativePath": "rules/README.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/README.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/angular/coding-style.md",
+      "sourceRelativePath": "rules/angular/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/angular/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/angular/hooks.md",
+      "sourceRelativePath": "rules/angular/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/angular/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/angular/patterns.md",
+      "sourceRelativePath": "rules/angular/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/angular/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/angular/security.md",
+      "sourceRelativePath": "rules/angular/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/angular/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/angular/testing.md",
+      "sourceRelativePath": "rules/angular/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/angular/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/arkts/coding-style.md",
+      "sourceRelativePath": "rules/arkts/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/arkts/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/arkts/hooks.md",
+      "sourceRelativePath": "rules/arkts/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/arkts/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/arkts/patterns.md",
+      "sourceRelativePath": "rules/arkts/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/arkts/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/arkts/security.md",
+      "sourceRelativePath": "rules/arkts/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/arkts/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/arkts/testing.md",
+      "sourceRelativePath": "rules/arkts/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/arkts/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/agents.md",
+      "sourceRelativePath": "rules/common/agents.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/agents.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/code-review.md",
+      "sourceRelativePath": "rules/common/code-review.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/code-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/coding-style.md",
+      "sourceRelativePath": "rules/common/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/development-workflow.md",
+      "sourceRelativePath": "rules/common/development-workflow.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/development-workflow.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/git-workflow.md",
+      "sourceRelativePath": "rules/common/git-workflow.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/git-workflow.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/hooks.md",
+      "sourceRelativePath": "rules/common/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/patterns.md",
+      "sourceRelativePath": "rules/common/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/performance.md",
+      "sourceRelativePath": "rules/common/performance.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/performance.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/security.md",
+      "sourceRelativePath": "rules/common/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/common/testing.md",
+      "sourceRelativePath": "rules/common/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/common/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/cpp/coding-style.md",
+      "sourceRelativePath": "rules/cpp/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/cpp/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/cpp/hooks.md",
+      "sourceRelativePath": "rules/cpp/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/cpp/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/cpp/patterns.md",
+      "sourceRelativePath": "rules/cpp/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/cpp/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/cpp/security.md",
+      "sourceRelativePath": "rules/cpp/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/cpp/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/cpp/testing.md",
+      "sourceRelativePath": "rules/cpp/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/cpp/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/csharp/coding-style.md",
+      "sourceRelativePath": "rules/csharp/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/csharp/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/csharp/hooks.md",
+      "sourceRelativePath": "rules/csharp/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/csharp/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/csharp/patterns.md",
+      "sourceRelativePath": "rules/csharp/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/csharp/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/csharp/security.md",
+      "sourceRelativePath": "rules/csharp/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/csharp/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/csharp/testing.md",
+      "sourceRelativePath": "rules/csharp/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/csharp/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/dart/coding-style.md",
+      "sourceRelativePath": "rules/dart/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/dart/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/dart/hooks.md",
+      "sourceRelativePath": "rules/dart/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/dart/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/dart/patterns.md",
+      "sourceRelativePath": "rules/dart/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/dart/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/dart/security.md",
+      "sourceRelativePath": "rules/dart/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/dart/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/dart/testing.md",
+      "sourceRelativePath": "rules/dart/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/dart/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/fsharp/coding-style.md",
+      "sourceRelativePath": "rules/fsharp/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/fsharp/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/fsharp/hooks.md",
+      "sourceRelativePath": "rules/fsharp/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/fsharp/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/fsharp/patterns.md",
+      "sourceRelativePath": "rules/fsharp/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/fsharp/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/fsharp/security.md",
+      "sourceRelativePath": "rules/fsharp/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/fsharp/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/fsharp/testing.md",
+      "sourceRelativePath": "rules/fsharp/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/fsharp/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/golang/coding-style.md",
+      "sourceRelativePath": "rules/golang/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/golang/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/golang/hooks.md",
+      "sourceRelativePath": "rules/golang/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/golang/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/golang/patterns.md",
+      "sourceRelativePath": "rules/golang/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/golang/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/golang/security.md",
+      "sourceRelativePath": "rules/golang/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/golang/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/golang/testing.md",
+      "sourceRelativePath": "rules/golang/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/golang/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/java/coding-style.md",
+      "sourceRelativePath": "rules/java/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/java/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/java/hooks.md",
+      "sourceRelativePath": "rules/java/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/java/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/java/patterns.md",
+      "sourceRelativePath": "rules/java/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/java/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/java/security.md",
+      "sourceRelativePath": "rules/java/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/java/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/java/testing.md",
+      "sourceRelativePath": "rules/java/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/java/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/kotlin/coding-style.md",
+      "sourceRelativePath": "rules/kotlin/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/kotlin/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/kotlin/hooks.md",
+      "sourceRelativePath": "rules/kotlin/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/kotlin/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/kotlin/patterns.md",
+      "sourceRelativePath": "rules/kotlin/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/kotlin/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/kotlin/security.md",
+      "sourceRelativePath": "rules/kotlin/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/kotlin/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/kotlin/testing.md",
+      "sourceRelativePath": "rules/kotlin/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/kotlin/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/nuxt/coding-style.md",
+      "sourceRelativePath": "rules/nuxt/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/nuxt/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/nuxt/hooks.md",
+      "sourceRelativePath": "rules/nuxt/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/nuxt/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/nuxt/patterns.md",
+      "sourceRelativePath": "rules/nuxt/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/nuxt/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/nuxt/security.md",
+      "sourceRelativePath": "rules/nuxt/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/nuxt/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/nuxt/testing.md",
+      "sourceRelativePath": "rules/nuxt/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/nuxt/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/perl/coding-style.md",
+      "sourceRelativePath": "rules/perl/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/perl/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/perl/hooks.md",
+      "sourceRelativePath": "rules/perl/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/perl/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/perl/patterns.md",
+      "sourceRelativePath": "rules/perl/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/perl/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/perl/security.md",
+      "sourceRelativePath": "rules/perl/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/perl/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/perl/testing.md",
+      "sourceRelativePath": "rules/perl/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/perl/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/php/coding-style.md",
+      "sourceRelativePath": "rules/php/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/php/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/php/hooks.md",
+      "sourceRelativePath": "rules/php/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/php/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/php/patterns.md",
+      "sourceRelativePath": "rules/php/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/php/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/php/security.md",
+      "sourceRelativePath": "rules/php/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/php/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/php/testing.md",
+      "sourceRelativePath": "rules/php/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/php/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/python/coding-style.md",
+      "sourceRelativePath": "rules/python/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/python/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/python/fastapi.md",
+      "sourceRelativePath": "rules/python/fastapi.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/python/fastapi.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/python/hooks.md",
+      "sourceRelativePath": "rules/python/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/python/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/python/patterns.md",
+      "sourceRelativePath": "rules/python/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/python/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/python/security.md",
+      "sourceRelativePath": "rules/python/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/python/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/python/testing.md",
+      "sourceRelativePath": "rules/python/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/python/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/react/coding-style.md",
+      "sourceRelativePath": "rules/react/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/react/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/react/hooks.md",
+      "sourceRelativePath": "rules/react/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/react/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/react/patterns.md",
+      "sourceRelativePath": "rules/react/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/react/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/react/security.md",
+      "sourceRelativePath": "rules/react/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/react/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/react/testing.md",
+      "sourceRelativePath": "rules/react/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/react/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/ruby/coding-style.md",
+      "sourceRelativePath": "rules/ruby/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/ruby/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/ruby/hooks.md",
+      "sourceRelativePath": "rules/ruby/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/ruby/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/ruby/patterns.md",
+      "sourceRelativePath": "rules/ruby/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/ruby/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/ruby/security.md",
+      "sourceRelativePath": "rules/ruby/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/ruby/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/ruby/testing.md",
+      "sourceRelativePath": "rules/ruby/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/ruby/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/rust/coding-style.md",
+      "sourceRelativePath": "rules/rust/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/rust/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/rust/hooks.md",
+      "sourceRelativePath": "rules/rust/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/rust/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/rust/patterns.md",
+      "sourceRelativePath": "rules/rust/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/rust/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/rust/security.md",
+      "sourceRelativePath": "rules/rust/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/rust/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/rust/testing.md",
+      "sourceRelativePath": "rules/rust/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/rust/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/swift/coding-style.md",
+      "sourceRelativePath": "rules/swift/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/swift/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/swift/hooks.md",
+      "sourceRelativePath": "rules/swift/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/swift/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/swift/patterns.md",
+      "sourceRelativePath": "rules/swift/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/swift/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/swift/security.md",
+      "sourceRelativePath": "rules/swift/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/swift/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/swift/testing.md",
+      "sourceRelativePath": "rules/swift/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/swift/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/typescript/coding-style.md",
+      "sourceRelativePath": "rules/typescript/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/typescript/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/typescript/hooks.md",
+      "sourceRelativePath": "rules/typescript/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/typescript/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/typescript/patterns.md",
+      "sourceRelativePath": "rules/typescript/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/typescript/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/typescript/security.md",
+      "sourceRelativePath": "rules/typescript/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/typescript/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/typescript/testing.md",
+      "sourceRelativePath": "rules/typescript/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/typescript/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/vue/coding-style.md",
+      "sourceRelativePath": "rules/vue/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/vue/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/vue/hooks.md",
+      "sourceRelativePath": "rules/vue/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/vue/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/vue/patterns.md",
+      "sourceRelativePath": "rules/vue/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/vue/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/vue/security.md",
+      "sourceRelativePath": "rules/vue/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/vue/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/vue/testing.md",
+      "sourceRelativePath": "rules/vue/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/vue/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/web/coding-style.md",
+      "sourceRelativePath": "rules/web/coding-style.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/web/coding-style.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/web/design-quality.md",
+      "sourceRelativePath": "rules/web/design-quality.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/web/design-quality.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/web/hooks.md",
+      "sourceRelativePath": "rules/web/hooks.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/web/hooks.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/web/patterns.md",
+      "sourceRelativePath": "rules/web/patterns.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/web/patterns.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/web/performance.md",
+      "sourceRelativePath": "rules/web/performance.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/web/performance.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/web/security.md",
+      "sourceRelativePath": "rules/web/security.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/web/security.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "rules-core",
+      "sourcePath": "/home/arrafi/ECC/rules/web/testing.md",
+      "sourceRelativePath": "rules/web/testing.md",
+      "destinationPath": "/home/arrafi/.claude/rules/ecc/web/testing.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/plugins/marketplace.json",
+      "sourceRelativePath": ".agents/plugins/marketplace.json",
+      "destinationPath": "/home/arrafi/.claude/.agents/plugins/marketplace.json",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/agent-introspection-debugging/SKILL.md",
+      "sourceRelativePath": ".agents/skills/agent-introspection-debugging/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/agent-introspection-debugging/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/agent-introspection-debugging/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/agent-introspection-debugging/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/agent-introspection-debugging/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/agent-sort/SKILL.md",
+      "sourceRelativePath": ".agents/skills/agent-sort/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/agent-sort/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/agent-sort/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/agent-sort/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/agent-sort/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/api-design/SKILL.md",
+      "sourceRelativePath": ".agents/skills/api-design/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/api-design/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/api-design/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/api-design/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/api-design/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/article-writing/SKILL.md",
+      "sourceRelativePath": ".agents/skills/article-writing/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/article-writing/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/article-writing/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/article-writing/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/article-writing/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/backend-patterns/SKILL.md",
+      "sourceRelativePath": ".agents/skills/backend-patterns/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/backend-patterns/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/backend-patterns/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/backend-patterns/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/backend-patterns/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/benchmark-methodology/SKILL.md",
+      "sourceRelativePath": ".agents/skills/benchmark-methodology/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/benchmark-methodology/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/benchmark-methodology/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/benchmark-methodology/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/benchmark-methodology/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/SKILL.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/brand-discovery/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/references/10_purpose-why.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/references/10_purpose-why.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/references/10_purpose-why.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/references/20_positioning.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/references/20_positioning.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/references/20_positioning.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/references/30_audience-niche.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/references/30_audience-niche.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/references/30_audience-niche.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/references/40_personality-archetype.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/references/40_personality-archetype.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/references/40_personality-archetype.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/references/50_voice-tone.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/references/50_voice-tone.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/references/50_voice-tone.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/references/60_narrative-story.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/references/60_narrative-story.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/references/60_narrative-story.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/references/70_founder-tension.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/references/70_founder-tension.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/references/70_founder-tension.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-discovery/references/90_SYNTHESIS.md",
+      "sourceRelativePath": ".agents/skills/brand-discovery/references/90_SYNTHESIS.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-discovery/references/90_SYNTHESIS.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-voice/SKILL.md",
+      "sourceRelativePath": ".agents/skills/brand-voice/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-voice/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-voice/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/brand-voice/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-voice/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/brand-voice/references/voice-profile-schema.md",
+      "sourceRelativePath": ".agents/skills/brand-voice/references/voice-profile-schema.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/brand-voice/references/voice-profile-schema.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/bun-runtime/SKILL.md",
+      "sourceRelativePath": ".agents/skills/bun-runtime/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/bun-runtime/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/bun-runtime/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/bun-runtime/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/bun-runtime/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/coding-standards/SKILL.md",
+      "sourceRelativePath": ".agents/skills/coding-standards/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/coding-standards/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/coding-standards/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/coding-standards/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/coding-standards/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/competitive-platform-analysis/SKILL.md",
+      "sourceRelativePath": ".agents/skills/competitive-platform-analysis/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/competitive-platform-analysis/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/competitive-platform-analysis/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/competitive-platform-analysis/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/competitive-platform-analysis/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/competitive-report-structure/SKILL.md",
+      "sourceRelativePath": ".agents/skills/competitive-report-structure/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/competitive-report-structure/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/competitive-report-structure/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/competitive-report-structure/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/competitive-report-structure/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/content-engine/SKILL.md",
+      "sourceRelativePath": ".agents/skills/content-engine/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/content-engine/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/content-engine/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/content-engine/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/content-engine/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/crosspost/SKILL.md",
+      "sourceRelativePath": ".agents/skills/crosspost/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/crosspost/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/crosspost/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/crosspost/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/crosspost/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/deep-research/SKILL.md",
+      "sourceRelativePath": ".agents/skills/deep-research/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/deep-research/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/deep-research/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/deep-research/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/deep-research/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/dmux-workflows/SKILL.md",
+      "sourceRelativePath": ".agents/skills/dmux-workflows/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/dmux-workflows/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/dmux-workflows/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/dmux-workflows/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/dmux-workflows/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/documentation-lookup/SKILL.md",
+      "sourceRelativePath": ".agents/skills/documentation-lookup/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/documentation-lookup/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/documentation-lookup/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/documentation-lookup/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/documentation-lookup/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/e2e-testing/SKILL.md",
+      "sourceRelativePath": ".agents/skills/e2e-testing/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/e2e-testing/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/e2e-testing/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/e2e-testing/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/e2e-testing/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/eval-harness/SKILL.md",
+      "sourceRelativePath": ".agents/skills/eval-harness/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/eval-harness/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/eval-harness/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/eval-harness/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/eval-harness/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/everything-claude-code/SKILL.md",
+      "sourceRelativePath": ".agents/skills/everything-claude-code/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/everything-claude-code/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/everything-claude-code/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/everything-claude-code/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/everything-claude-code/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/exa-search/SKILL.md",
+      "sourceRelativePath": ".agents/skills/exa-search/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/exa-search/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/exa-search/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/exa-search/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/exa-search/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/fal-ai-media/SKILL.md",
+      "sourceRelativePath": ".agents/skills/fal-ai-media/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/fal-ai-media/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/fal-ai-media/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/fal-ai-media/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/fal-ai-media/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/frontend-patterns/SKILL.md",
+      "sourceRelativePath": ".agents/skills/frontend-patterns/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/frontend-patterns/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/frontend-patterns/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/frontend-patterns/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/frontend-patterns/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/frontend-slides/SKILL.md",
+      "sourceRelativePath": ".agents/skills/frontend-slides/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/frontend-slides/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/frontend-slides/STYLE_PRESETS.md",
+      "sourceRelativePath": ".agents/skills/frontend-slides/STYLE_PRESETS.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/frontend-slides/STYLE_PRESETS.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/frontend-slides/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/frontend-slides/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/frontend-slides/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/investor-materials/SKILL.md",
+      "sourceRelativePath": ".agents/skills/investor-materials/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/investor-materials/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/investor-materials/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/investor-materials/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/investor-materials/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/investor-outreach/SKILL.md",
+      "sourceRelativePath": ".agents/skills/investor-outreach/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/investor-outreach/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/investor-outreach/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/investor-outreach/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/investor-outreach/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/market-research/SKILL.md",
+      "sourceRelativePath": ".agents/skills/market-research/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/market-research/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/market-research/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/market-research/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/market-research/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/mcp-server-patterns/SKILL.md",
+      "sourceRelativePath": ".agents/skills/mcp-server-patterns/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/mcp-server-patterns/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/mcp-server-patterns/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/mcp-server-patterns/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/mcp-server-patterns/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/mle-workflow/SKILL.md",
+      "sourceRelativePath": ".agents/skills/mle-workflow/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/mle-workflow/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/mle-workflow/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/mle-workflow/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/mle-workflow/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/nextjs-turbopack/SKILL.md",
+      "sourceRelativePath": ".agents/skills/nextjs-turbopack/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/nextjs-turbopack/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/nextjs-turbopack/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/nextjs-turbopack/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/nextjs-turbopack/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/product-capability/SKILL.md",
+      "sourceRelativePath": ".agents/skills/product-capability/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/product-capability/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/product-capability/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/product-capability/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/product-capability/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/security-review/SKILL.md",
+      "sourceRelativePath": ".agents/skills/security-review/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/security-review/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/security-review/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/security-review/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/security-review/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/strategic-compact/SKILL.md",
+      "sourceRelativePath": ".agents/skills/strategic-compact/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/strategic-compact/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/strategic-compact/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/strategic-compact/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/strategic-compact/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/tdd-workflow/SKILL.md",
+      "sourceRelativePath": ".agents/skills/tdd-workflow/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/tdd-workflow/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/tdd-workflow/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/tdd-workflow/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/tdd-workflow/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/verification-loop/SKILL.md",
+      "sourceRelativePath": ".agents/skills/verification-loop/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/verification-loop/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/verification-loop/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/verification-loop/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/verification-loop/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/video-editing/SKILL.md",
+      "sourceRelativePath": ".agents/skills/video-editing/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/video-editing/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/video-editing/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/video-editing/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/video-editing/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/x-api/SKILL.md",
+      "sourceRelativePath": ".agents/skills/x-api/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/x-api/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/.agents/skills/x-api/agents/openai.yaml",
+      "sourceRelativePath": ".agents/skills/x-api/agents/openai.yaml",
+      "destinationPath": "/home/arrafi/.claude/.agents/skills/x-api/agents/openai.yaml",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/a11y-architect.md",
+      "sourceRelativePath": "agents/a11y-architect.md",
+      "destinationPath": "/home/arrafi/.claude/agents/a11y-architect.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/agent-evaluator.md",
+      "sourceRelativePath": "agents/agent-evaluator.md",
+      "destinationPath": "/home/arrafi/.claude/agents/agent-evaluator.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/architect.md",
+      "sourceRelativePath": "agents/architect.md",
+      "destinationPath": "/home/arrafi/.claude/agents/architect.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/build-error-resolver.md",
+      "sourceRelativePath": "agents/build-error-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/build-error-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/chief-of-staff.md",
+      "sourceRelativePath": "agents/chief-of-staff.md",
+      "destinationPath": "/home/arrafi/.claude/agents/chief-of-staff.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/code-architect.md",
+      "sourceRelativePath": "agents/code-architect.md",
+      "destinationPath": "/home/arrafi/.claude/agents/code-architect.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/code-explorer.md",
+      "sourceRelativePath": "agents/code-explorer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/code-explorer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/code-reviewer.md",
+      "sourceRelativePath": "agents/code-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/code-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/code-simplifier.md",
+      "sourceRelativePath": "agents/code-simplifier.md",
+      "destinationPath": "/home/arrafi/.claude/agents/code-simplifier.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/comment-analyzer.md",
+      "sourceRelativePath": "agents/comment-analyzer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/comment-analyzer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/conversation-analyzer.md",
+      "sourceRelativePath": "agents/conversation-analyzer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/conversation-analyzer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/cpp-build-resolver.md",
+      "sourceRelativePath": "agents/cpp-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/cpp-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/cpp-reviewer.md",
+      "sourceRelativePath": "agents/cpp-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/cpp-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/csharp-reviewer.md",
+      "sourceRelativePath": "agents/csharp-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/csharp-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/dart-build-resolver.md",
+      "sourceRelativePath": "agents/dart-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/dart-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/database-reviewer.md",
+      "sourceRelativePath": "agents/database-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/database-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/django-build-resolver.md",
+      "sourceRelativePath": "agents/django-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/django-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/django-reviewer.md",
+      "sourceRelativePath": "agents/django-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/django-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/doc-updater.md",
+      "sourceRelativePath": "agents/doc-updater.md",
+      "destinationPath": "/home/arrafi/.claude/agents/doc-updater.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/docs-lookup.md",
+      "sourceRelativePath": "agents/docs-lookup.md",
+      "destinationPath": "/home/arrafi/.claude/agents/docs-lookup.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/e2e-runner.md",
+      "sourceRelativePath": "agents/e2e-runner.md",
+      "destinationPath": "/home/arrafi/.claude/agents/e2e-runner.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/fastapi-reviewer.md",
+      "sourceRelativePath": "agents/fastapi-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/fastapi-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/flutter-reviewer.md",
+      "sourceRelativePath": "agents/flutter-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/flutter-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/fsharp-reviewer.md",
+      "sourceRelativePath": "agents/fsharp-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/fsharp-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/gan-evaluator.md",
+      "sourceRelativePath": "agents/gan-evaluator.md",
+      "destinationPath": "/home/arrafi/.claude/agents/gan-evaluator.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/gan-generator.md",
+      "sourceRelativePath": "agents/gan-generator.md",
+      "destinationPath": "/home/arrafi/.claude/agents/gan-generator.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/gan-planner.md",
+      "sourceRelativePath": "agents/gan-planner.md",
+      "destinationPath": "/home/arrafi/.claude/agents/gan-planner.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/go-build-resolver.md",
+      "sourceRelativePath": "agents/go-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/go-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/go-reviewer.md",
+      "sourceRelativePath": "agents/go-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/go-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/harmonyos-app-resolver.md",
+      "sourceRelativePath": "agents/harmonyos-app-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/harmonyos-app-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/harness-optimizer.md",
+      "sourceRelativePath": "agents/harness-optimizer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/harness-optimizer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/healthcare-reviewer.md",
+      "sourceRelativePath": "agents/healthcare-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/healthcare-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/homelab-architect.md",
+      "sourceRelativePath": "agents/homelab-architect.md",
+      "destinationPath": "/home/arrafi/.claude/agents/homelab-architect.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/java-build-resolver.md",
+      "sourceRelativePath": "agents/java-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/java-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/java-reviewer.md",
+      "sourceRelativePath": "agents/java-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/java-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/kotlin-build-resolver.md",
+      "sourceRelativePath": "agents/kotlin-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/kotlin-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/kotlin-reviewer.md",
+      "sourceRelativePath": "agents/kotlin-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/kotlin-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/loop-operator.md",
+      "sourceRelativePath": "agents/loop-operator.md",
+      "destinationPath": "/home/arrafi/.claude/agents/loop-operator.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/marketing-agent.md",
+      "sourceRelativePath": "agents/marketing-agent.md",
+      "destinationPath": "/home/arrafi/.claude/agents/marketing-agent.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/mle-reviewer.md",
+      "sourceRelativePath": "agents/mle-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/mle-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/network-architect.md",
+      "sourceRelativePath": "agents/network-architect.md",
+      "destinationPath": "/home/arrafi/.claude/agents/network-architect.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/network-config-reviewer.md",
+      "sourceRelativePath": "agents/network-config-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/network-config-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/network-troubleshooter.md",
+      "sourceRelativePath": "agents/network-troubleshooter.md",
+      "destinationPath": "/home/arrafi/.claude/agents/network-troubleshooter.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/opensource-forker.md",
+      "sourceRelativePath": "agents/opensource-forker.md",
+      "destinationPath": "/home/arrafi/.claude/agents/opensource-forker.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/opensource-packager.md",
+      "sourceRelativePath": "agents/opensource-packager.md",
+      "destinationPath": "/home/arrafi/.claude/agents/opensource-packager.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/opensource-sanitizer.md",
+      "sourceRelativePath": "agents/opensource-sanitizer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/opensource-sanitizer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/performance-optimizer.md",
+      "sourceRelativePath": "agents/performance-optimizer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/performance-optimizer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/php-reviewer.md",
+      "sourceRelativePath": "agents/php-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/php-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/planner.md",
+      "sourceRelativePath": "agents/planner.md",
+      "destinationPath": "/home/arrafi/.claude/agents/planner.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/pr-test-analyzer.md",
+      "sourceRelativePath": "agents/pr-test-analyzer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/pr-test-analyzer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/python-reviewer.md",
+      "sourceRelativePath": "agents/python-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/python-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/pytorch-build-resolver.md",
+      "sourceRelativePath": "agents/pytorch-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/pytorch-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/react-build-resolver.md",
+      "sourceRelativePath": "agents/react-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/react-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/react-reviewer.md",
+      "sourceRelativePath": "agents/react-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/react-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/refactor-cleaner.md",
+      "sourceRelativePath": "agents/refactor-cleaner.md",
+      "destinationPath": "/home/arrafi/.claude/agents/refactor-cleaner.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/rust-build-resolver.md",
+      "sourceRelativePath": "agents/rust-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/rust-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/rust-reviewer.md",
+      "sourceRelativePath": "agents/rust-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/rust-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/security-reviewer.md",
+      "sourceRelativePath": "agents/security-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/security-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/seo-specialist.md",
+      "sourceRelativePath": "agents/seo-specialist.md",
+      "destinationPath": "/home/arrafi/.claude/agents/seo-specialist.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/silent-failure-hunter.md",
+      "sourceRelativePath": "agents/silent-failure-hunter.md",
+      "destinationPath": "/home/arrafi/.claude/agents/silent-failure-hunter.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/spec-miner.md",
+      "sourceRelativePath": "agents/spec-miner.md",
+      "destinationPath": "/home/arrafi/.claude/agents/spec-miner.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/swift-build-resolver.md",
+      "sourceRelativePath": "agents/swift-build-resolver.md",
+      "destinationPath": "/home/arrafi/.claude/agents/swift-build-resolver.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/swift-reviewer.md",
+      "sourceRelativePath": "agents/swift-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/swift-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/tdd-guide.md",
+      "sourceRelativePath": "agents/tdd-guide.md",
+      "destinationPath": "/home/arrafi/.claude/agents/tdd-guide.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/type-design-analyzer.md",
+      "sourceRelativePath": "agents/type-design-analyzer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/type-design-analyzer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/typescript-reviewer.md",
+      "sourceRelativePath": "agents/typescript-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/typescript-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/agents/vue-reviewer.md",
+      "sourceRelativePath": "agents/vue-reviewer.md",
+      "destinationPath": "/home/arrafi/.claude/agents/vue-reviewer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "agents-core",
+      "sourcePath": "/home/arrafi/ECC/AGENTS.md",
+      "sourceRelativePath": "AGENTS.md",
+      "destinationPath": "/home/arrafi/.claude/AGENTS.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/aside.md",
+      "sourceRelativePath": "commands/aside.md",
+      "destinationPath": "/home/arrafi/.claude/commands/aside.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/auto-update.md",
+      "sourceRelativePath": "commands/auto-update.md",
+      "destinationPath": "/home/arrafi/.claude/commands/auto-update.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/build-fix.md",
+      "sourceRelativePath": "commands/build-fix.md",
+      "destinationPath": "/home/arrafi/.claude/commands/build-fix.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/checkpoint.md",
+      "sourceRelativePath": "commands/checkpoint.md",
+      "destinationPath": "/home/arrafi/.claude/commands/checkpoint.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/code-review.md",
+      "sourceRelativePath": "commands/code-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/code-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/cost-report.md",
+      "sourceRelativePath": "commands/cost-report.md",
+      "destinationPath": "/home/arrafi/.claude/commands/cost-report.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/cpp-build.md",
+      "sourceRelativePath": "commands/cpp-build.md",
+      "destinationPath": "/home/arrafi/.claude/commands/cpp-build.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/cpp-review.md",
+      "sourceRelativePath": "commands/cpp-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/cpp-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/cpp-test.md",
+      "sourceRelativePath": "commands/cpp-test.md",
+      "destinationPath": "/home/arrafi/.claude/commands/cpp-test.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/ecc-guide.md",
+      "sourceRelativePath": "commands/ecc-guide.md",
+      "destinationPath": "/home/arrafi/.claude/commands/ecc-guide.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/epic-claim.md",
+      "sourceRelativePath": "commands/epic-claim.md",
+      "destinationPath": "/home/arrafi/.claude/commands/epic-claim.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/epic-decompose.md",
+      "sourceRelativePath": "commands/epic-decompose.md",
+      "destinationPath": "/home/arrafi/.claude/commands/epic-decompose.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/epic-publish.md",
+      "sourceRelativePath": "commands/epic-publish.md",
+      "destinationPath": "/home/arrafi/.claude/commands/epic-publish.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/epic-review.md",
+      "sourceRelativePath": "commands/epic-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/epic-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/epic-sync.md",
+      "sourceRelativePath": "commands/epic-sync.md",
+      "destinationPath": "/home/arrafi/.claude/commands/epic-sync.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/epic-unblock.md",
+      "sourceRelativePath": "commands/epic-unblock.md",
+      "destinationPath": "/home/arrafi/.claude/commands/epic-unblock.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/epic-validate.md",
+      "sourceRelativePath": "commands/epic-validate.md",
+      "destinationPath": "/home/arrafi/.claude/commands/epic-validate.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/evolve.md",
+      "sourceRelativePath": "commands/evolve.md",
+      "destinationPath": "/home/arrafi/.claude/commands/evolve.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/fastapi-review.md",
+      "sourceRelativePath": "commands/fastapi-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/fastapi-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/feature-dev.md",
+      "sourceRelativePath": "commands/feature-dev.md",
+      "destinationPath": "/home/arrafi/.claude/commands/feature-dev.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/flutter-build.md",
+      "sourceRelativePath": "commands/flutter-build.md",
+      "destinationPath": "/home/arrafi/.claude/commands/flutter-build.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/flutter-review.md",
+      "sourceRelativePath": "commands/flutter-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/flutter-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/flutter-test.md",
+      "sourceRelativePath": "commands/flutter-test.md",
+      "destinationPath": "/home/arrafi/.claude/commands/flutter-test.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/gan-build.md",
+      "sourceRelativePath": "commands/gan-build.md",
+      "destinationPath": "/home/arrafi/.claude/commands/gan-build.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/gan-design.md",
+      "sourceRelativePath": "commands/gan-design.md",
+      "destinationPath": "/home/arrafi/.claude/commands/gan-design.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/go-build.md",
+      "sourceRelativePath": "commands/go-build.md",
+      "destinationPath": "/home/arrafi/.claude/commands/go-build.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/go-review.md",
+      "sourceRelativePath": "commands/go-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/go-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/go-test.md",
+      "sourceRelativePath": "commands/go-test.md",
+      "destinationPath": "/home/arrafi/.claude/commands/go-test.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/gradle-build.md",
+      "sourceRelativePath": "commands/gradle-build.md",
+      "destinationPath": "/home/arrafi/.claude/commands/gradle-build.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/harness-audit.md",
+      "sourceRelativePath": "commands/harness-audit.md",
+      "destinationPath": "/home/arrafi/.claude/commands/harness-audit.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/hookify-configure.md",
+      "sourceRelativePath": "commands/hookify-configure.md",
+      "destinationPath": "/home/arrafi/.claude/commands/hookify-configure.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/hookify-help.md",
+      "sourceRelativePath": "commands/hookify-help.md",
+      "destinationPath": "/home/arrafi/.claude/commands/hookify-help.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/hookify-list.md",
+      "sourceRelativePath": "commands/hookify-list.md",
+      "destinationPath": "/home/arrafi/.claude/commands/hookify-list.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/hookify.md",
+      "sourceRelativePath": "commands/hookify.md",
+      "destinationPath": "/home/arrafi/.claude/commands/hookify.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/instinct-export.md",
+      "sourceRelativePath": "commands/instinct-export.md",
+      "destinationPath": "/home/arrafi/.claude/commands/instinct-export.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/instinct-import.md",
+      "sourceRelativePath": "commands/instinct-import.md",
+      "destinationPath": "/home/arrafi/.claude/commands/instinct-import.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/instinct-status.md",
+      "sourceRelativePath": "commands/instinct-status.md",
+      "destinationPath": "/home/arrafi/.claude/commands/instinct-status.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/jira.md",
+      "sourceRelativePath": "commands/jira.md",
+      "destinationPath": "/home/arrafi/.claude/commands/jira.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/kotlin-build.md",
+      "sourceRelativePath": "commands/kotlin-build.md",
+      "destinationPath": "/home/arrafi/.claude/commands/kotlin-build.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/kotlin-review.md",
+      "sourceRelativePath": "commands/kotlin-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/kotlin-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/kotlin-test.md",
+      "sourceRelativePath": "commands/kotlin-test.md",
+      "destinationPath": "/home/arrafi/.claude/commands/kotlin-test.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/learn-eval.md",
+      "sourceRelativePath": "commands/learn-eval.md",
+      "destinationPath": "/home/arrafi/.claude/commands/learn-eval.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/learn.md",
+      "sourceRelativePath": "commands/learn.md",
+      "destinationPath": "/home/arrafi/.claude/commands/learn.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/loop-start.md",
+      "sourceRelativePath": "commands/loop-start.md",
+      "destinationPath": "/home/arrafi/.claude/commands/loop-start.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/loop-status.md",
+      "sourceRelativePath": "commands/loop-status.md",
+      "destinationPath": "/home/arrafi/.claude/commands/loop-status.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/marketing-campaign.md",
+      "sourceRelativePath": "commands/marketing-campaign.md",
+      "destinationPath": "/home/arrafi/.claude/commands/marketing-campaign.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/model-route.md",
+      "sourceRelativePath": "commands/model-route.md",
+      "destinationPath": "/home/arrafi/.claude/commands/model-route.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/multi-backend.md",
+      "sourceRelativePath": "commands/multi-backend.md",
+      "destinationPath": "/home/arrafi/.claude/commands/multi-backend.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/multi-execute.md",
+      "sourceRelativePath": "commands/multi-execute.md",
+      "destinationPath": "/home/arrafi/.claude/commands/multi-execute.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/multi-frontend.md",
+      "sourceRelativePath": "commands/multi-frontend.md",
+      "destinationPath": "/home/arrafi/.claude/commands/multi-frontend.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/multi-plan.md",
+      "sourceRelativePath": "commands/multi-plan.md",
+      "destinationPath": "/home/arrafi/.claude/commands/multi-plan.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/multi-workflow.md",
+      "sourceRelativePath": "commands/multi-workflow.md",
+      "destinationPath": "/home/arrafi/.claude/commands/multi-workflow.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/orch-add-feature.md",
+      "sourceRelativePath": "commands/orch-add-feature.md",
+      "destinationPath": "/home/arrafi/.claude/commands/orch-add-feature.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/orch-build-mvp.md",
+      "sourceRelativePath": "commands/orch-build-mvp.md",
+      "destinationPath": "/home/arrafi/.claude/commands/orch-build-mvp.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/orch-change-feature.md",
+      "sourceRelativePath": "commands/orch-change-feature.md",
+      "destinationPath": "/home/arrafi/.claude/commands/orch-change-feature.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/orch-fix-defect.md",
+      "sourceRelativePath": "commands/orch-fix-defect.md",
+      "destinationPath": "/home/arrafi/.claude/commands/orch-fix-defect.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/orch-refine-code.md",
+      "sourceRelativePath": "commands/orch-refine-code.md",
+      "destinationPath": "/home/arrafi/.claude/commands/orch-refine-code.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/plan-prd.md",
+      "sourceRelativePath": "commands/plan-prd.md",
+      "destinationPath": "/home/arrafi/.claude/commands/plan-prd.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/plan.md",
+      "sourceRelativePath": "commands/plan.md",
+      "destinationPath": "/home/arrafi/.claude/commands/plan.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/pm2.md",
+      "sourceRelativePath": "commands/pm2.md",
+      "destinationPath": "/home/arrafi/.claude/commands/pm2.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/pr.md",
+      "sourceRelativePath": "commands/pr.md",
+      "destinationPath": "/home/arrafi/.claude/commands/pr.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/project-init.md",
+      "sourceRelativePath": "commands/project-init.md",
+      "destinationPath": "/home/arrafi/.claude/commands/project-init.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/projects.md",
+      "sourceRelativePath": "commands/projects.md",
+      "destinationPath": "/home/arrafi/.claude/commands/projects.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/promote.md",
+      "sourceRelativePath": "commands/promote.md",
+      "destinationPath": "/home/arrafi/.claude/commands/promote.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/prp-commit.md",
+      "sourceRelativePath": "commands/prp-commit.md",
+      "destinationPath": "/home/arrafi/.claude/commands/prp-commit.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/prp-implement.md",
+      "sourceRelativePath": "commands/prp-implement.md",
+      "destinationPath": "/home/arrafi/.claude/commands/prp-implement.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/prp-plan.md",
+      "sourceRelativePath": "commands/prp-plan.md",
+      "destinationPath": "/home/arrafi/.claude/commands/prp-plan.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/prp-pr.md",
+      "sourceRelativePath": "commands/prp-pr.md",
+      "destinationPath": "/home/arrafi/.claude/commands/prp-pr.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/prp-prd.md",
+      "sourceRelativePath": "commands/prp-prd.md",
+      "destinationPath": "/home/arrafi/.claude/commands/prp-prd.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/prune.md",
+      "sourceRelativePath": "commands/prune.md",
+      "destinationPath": "/home/arrafi/.claude/commands/prune.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/python-review.md",
+      "sourceRelativePath": "commands/python-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/python-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/quality-gate.md",
+      "sourceRelativePath": "commands/quality-gate.md",
+      "destinationPath": "/home/arrafi/.claude/commands/quality-gate.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/react-build.md",
+      "sourceRelativePath": "commands/react-build.md",
+      "destinationPath": "/home/arrafi/.claude/commands/react-build.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/react-review.md",
+      "sourceRelativePath": "commands/react-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/react-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/react-test.md",
+      "sourceRelativePath": "commands/react-test.md",
+      "destinationPath": "/home/arrafi/.claude/commands/react-test.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/refactor-clean.md",
+      "sourceRelativePath": "commands/refactor-clean.md",
+      "destinationPath": "/home/arrafi/.claude/commands/refactor-clean.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/resume-session.md",
+      "sourceRelativePath": "commands/resume-session.md",
+      "destinationPath": "/home/arrafi/.claude/commands/resume-session.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/review-pr.md",
+      "sourceRelativePath": "commands/review-pr.md",
+      "destinationPath": "/home/arrafi/.claude/commands/review-pr.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/rust-build.md",
+      "sourceRelativePath": "commands/rust-build.md",
+      "destinationPath": "/home/arrafi/.claude/commands/rust-build.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/rust-review.md",
+      "sourceRelativePath": "commands/rust-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/rust-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/rust-test.md",
+      "sourceRelativePath": "commands/rust-test.md",
+      "destinationPath": "/home/arrafi/.claude/commands/rust-test.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/santa-loop.md",
+      "sourceRelativePath": "commands/santa-loop.md",
+      "destinationPath": "/home/arrafi/.claude/commands/santa-loop.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/save-session.md",
+      "sourceRelativePath": "commands/save-session.md",
+      "destinationPath": "/home/arrafi/.claude/commands/save-session.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/security-scan.md",
+      "sourceRelativePath": "commands/security-scan.md",
+      "destinationPath": "/home/arrafi/.claude/commands/security-scan.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/sessions.md",
+      "sourceRelativePath": "commands/sessions.md",
+      "destinationPath": "/home/arrafi/.claude/commands/sessions.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/setup-pm.md",
+      "sourceRelativePath": "commands/setup-pm.md",
+      "destinationPath": "/home/arrafi/.claude/commands/setup-pm.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/skill-create.md",
+      "sourceRelativePath": "commands/skill-create.md",
+      "destinationPath": "/home/arrafi/.claude/commands/skill-create.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/skill-health.md",
+      "sourceRelativePath": "commands/skill-health.md",
+      "destinationPath": "/home/arrafi/.claude/commands/skill-health.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/test-coverage.md",
+      "sourceRelativePath": "commands/test-coverage.md",
+      "destinationPath": "/home/arrafi/.claude/commands/test-coverage.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/update-codemaps.md",
+      "sourceRelativePath": "commands/update-codemaps.md",
+      "destinationPath": "/home/arrafi/.claude/commands/update-codemaps.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/update-docs.md",
+      "sourceRelativePath": "commands/update-docs.md",
+      "destinationPath": "/home/arrafi/.claude/commands/update-docs.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/commands/vue-review.md",
+      "sourceRelativePath": "commands/vue-review.md",
+      "destinationPath": "/home/arrafi/.claude/commands/vue-review.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/scripts/harness-audit.js",
+      "sourceRelativePath": "scripts/harness-audit.js",
+      "destinationPath": "/home/arrafi/.claude/scripts/harness-audit.js",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "commands-core",
+      "sourcePath": "/home/arrafi/ECC/scripts/skills-health.js",
+      "sourceRelativePath": "scripts/skills-health.js",
+      "destinationPath": "/home/arrafi/.claude/scripts/skills-health.js",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "platform-configs",
+      "sourcePath": "/home/arrafi/ECC/.claude-plugin/PLUGIN_SCHEMA_NOTES.md",
+      "sourceRelativePath": ".claude-plugin/PLUGIN_SCHEMA_NOTES.md",
+      "destinationPath": "/home/arrafi/.claude/PLUGIN_SCHEMA_NOTES.md",
+      "strategy": "sync-root-children",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "platform-configs",
+      "sourcePath": "/home/arrafi/ECC/.claude-plugin/README.md",
+      "sourceRelativePath": ".claude-plugin/README.md",
+      "destinationPath": "/home/arrafi/.claude/README.md",
+      "strategy": "sync-root-children",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "platform-configs",
+      "sourcePath": "/home/arrafi/ECC/.claude-plugin/marketplace.json",
+      "sourceRelativePath": ".claude-plugin/marketplace.json",
+      "destinationPath": "/home/arrafi/.claude/marketplace.json",
+      "strategy": "sync-root-children",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "platform-configs",
+      "sourcePath": "/home/arrafi/ECC/.claude-plugin/plugin.json",
+      "sourceRelativePath": ".claude-plugin/plugin.json",
+      "destinationPath": "/home/arrafi/.claude/plugin.json",
+      "strategy": "sync-root-children",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "platform-configs",
+      "sourcePath": "/home/arrafi/ECC/mcp-configs/mcp-servers.json",
+      "sourceRelativePath": "mcp-configs/mcp-servers.json",
+      "destinationPath": "/home/arrafi/.claude/mcp-configs/mcp-servers.json",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "platform-configs",
+      "sourcePath": "/home/arrafi/ECC/scripts/auto-update.js",
+      "sourceRelativePath": "scripts/auto-update.js",
+      "destinationPath": "/home/arrafi/.claude/scripts/auto-update.js",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "platform-configs",
+      "sourcePath": "/home/arrafi/ECC/scripts/setup-package-manager.js",
+      "sourceRelativePath": "scripts/setup-package-manager.js",
+      "destinationPath": "/home/arrafi/.claude/scripts/setup-package-manager.js",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/agent-sort/SKILL.md",
+      "sourceRelativePath": "skills/agent-sort/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/agent-sort/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/agent-introspection-debugging/SKILL.md",
+      "sourceRelativePath": "skills/agent-introspection-debugging/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/agent-introspection-debugging/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/ai-regression-testing/SKILL.md",
+      "sourceRelativePath": "skills/ai-regression-testing/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/ai-regression-testing/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/configure-ecc/SKILL.md",
+      "sourceRelativePath": "skills/configure-ecc/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/configure-ecc/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/code-tour/SKILL.md",
+      "sourceRelativePath": "skills/code-tour/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/code-tour/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning/SKILL.md",
+      "sourceRelativePath": "skills/continuous-learning/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning/config.json",
+      "sourceRelativePath": "skills/continuous-learning/config.json",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning/config.json",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning/evaluate-session.sh",
+      "sourceRelativePath": "skills/continuous-learning/evaluate-session.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning/evaluate-session.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/SKILL.md",
+      "sourceRelativePath": "skills/continuous-learning-v2/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/agents/observer-loop.sh",
+      "sourceRelativePath": "skills/continuous-learning-v2/agents/observer-loop.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/agents/observer-loop.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/agents/observer.md",
+      "sourceRelativePath": "skills/continuous-learning-v2/agents/observer.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/agents/observer.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/agents/session-guardian.sh",
+      "sourceRelativePath": "skills/continuous-learning-v2/agents/session-guardian.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/agents/session-guardian.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/agents/start-observer.sh",
+      "sourceRelativePath": "skills/continuous-learning-v2/agents/start-observer.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/agents/start-observer.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/config.json",
+      "sourceRelativePath": "skills/continuous-learning-v2/config.json",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/config.json",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/hooks/observe.sh",
+      "sourceRelativePath": "skills/continuous-learning-v2/hooks/observe.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/hooks/observe.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/scripts/detect-project.sh",
+      "sourceRelativePath": "skills/continuous-learning-v2/scripts/detect-project.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/scripts/detect-project.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/scripts/instinct-cli.py",
+      "sourceRelativePath": "skills/continuous-learning-v2/scripts/instinct-cli.py",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/scripts/instinct-cli.py",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/scripts/lib/homunculus-dir.sh",
+      "sourceRelativePath": "skills/continuous-learning-v2/scripts/lib/homunculus-dir.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/scripts/lib/homunculus-dir.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/scripts/migrate-homunculus.sh",
+      "sourceRelativePath": "skills/continuous-learning-v2/scripts/migrate-homunculus.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/scripts/migrate-homunculus.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/continuous-learning-v2/scripts/test_parse_instinct.py",
+      "sourceRelativePath": "skills/continuous-learning-v2/scripts/test_parse_instinct.py",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/continuous-learning-v2/scripts/test_parse_instinct.py",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/council/SKILL.md",
+      "sourceRelativePath": "skills/council/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/council/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/e2e-testing/SKILL.md",
+      "sourceRelativePath": "skills/e2e-testing/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/e2e-testing/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/error-handling/SKILL.md",
+      "sourceRelativePath": "skills/error-handling/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/error-handling/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/eval-harness/SKILL.md",
+      "sourceRelativePath": "skills/eval-harness/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/eval-harness/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/hookify-rules/SKILL.md",
+      "sourceRelativePath": "skills/hookify-rules/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/hookify-rules/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/iterative-retrieval/SKILL.md",
+      "sourceRelativePath": "skills/iterative-retrieval/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/iterative-retrieval/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/plankton-code-quality/SKILL.md",
+      "sourceRelativePath": "skills/plankton-code-quality/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/plankton-code-quality/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/production-audit/SKILL.md",
+      "sourceRelativePath": "skills/production-audit/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/production-audit/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/skill-scout/SKILL.md",
+      "sourceRelativePath": "skills/skill-scout/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/skill-scout/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/skill-stocktake/SKILL.md",
+      "sourceRelativePath": "skills/skill-stocktake/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/skill-stocktake/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/skill-stocktake/scripts/quick-diff.sh",
+      "sourceRelativePath": "skills/skill-stocktake/scripts/quick-diff.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/skill-stocktake/scripts/quick-diff.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/skill-stocktake/scripts/save-results.sh",
+      "sourceRelativePath": "skills/skill-stocktake/scripts/save-results.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/skill-stocktake/scripts/save-results.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/skill-stocktake/scripts/scan.sh",
+      "sourceRelativePath": "skills/skill-stocktake/scripts/scan.sh",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/skill-stocktake/scripts/scan.sh",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/strategic-compact/SKILL.md",
+      "sourceRelativePath": "skills/strategic-compact/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/strategic-compact/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/tdd-workflow/SKILL.md",
+      "sourceRelativePath": "skills/tdd-workflow/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/tdd-workflow/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/verification-loop/SKILL.md",
+      "sourceRelativePath": "skills/verification-loop/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/verification-loop/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    },
+    {
+      "kind": "copy-file",
+      "moduleId": "workflow-quality",
+      "sourcePath": "/home/arrafi/ECC/skills/windows-desktop-e2e/SKILL.md",
+      "sourceRelativePath": "skills/windows-desktop-e2e/SKILL.md",
+      "destinationPath": "/home/arrafi/.claude/skills/ecc/windows-desktop-e2e/SKILL.md",
+      "strategy": "preserve-relative-path",
+      "ownership": "managed",
+      "scaffoldOnly": false
+    }
+  ]
+}

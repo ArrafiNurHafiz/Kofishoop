@@ -1,0 +1,9 @@
+{
+  "id": "14",
+  "subject": "Refactor database.py — WAL pragma, public getter, cleaner exports",
+  "description": "Add WAL pragma via event listener, export get_session_maker(), remove unused Optional import",
+  "activeForm": "Refactoring database.py",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

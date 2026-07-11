@@ -1,0 +1,182 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Link from "next/link";
+import NavBar from "@/components/NavBar";
+import { getOwnerWills, getWill, WILL_STATUS, getWillStatus } from "@/lib/eterna";
+
+export default function DashboardPage() {
+  const { isConnected, address } = useAccount();
+  const [wills, setWills] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!address) return;
+    loadWills();
+  }, [address]);
+
+  async function loadWills() {
+    setLoading(true);
+    try {
+      const ids = await getOwnerWills(address!);
+      const willData = await Promise.all(
+        ids.map(async (id: bigint) => {
+          const will = await getWill(id);
+          const statusData = await getWillStatus(id);
+          return {
+            id: Number(id),
+            status: Number(will.status),
+            statusLabel: WILL_STATUS[Number(will.status)],
+            inactivityScore: Number(statusData[2]),
+            guardianScore: Number(statusData[3]),
+            totalGuardians: Number(statusData[5]),
+            guardianVotes: Number(statusData[4]),
+            lastHeartbeat: Number(will.lastHeartbeat),
+            createdAt: Number(will.createdAt),
+          };
+        })
+      );
+      setWills(willData);
+    } catch (err) {
+      console.error("Failed to load wills:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (!isConnected) {
+    return (
+      <div className="flex-1 flex items-center justify-center px-4">
+        <div className="card max-w-md text-center py-12">
+          <div className="text-3xl mb-4" aria-hidden="true">
+            <svg className="w-7 h-7 mx-auto text-[#d4a853]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-semibold mb-2">Connect Your Wallet</h2>
+          <p className="text-sm text-[#a1a1aa] mb-6">
+            Connect your wallet to view your digital wills.
+          </p>
+          <ConnectButton />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex-1 flex flex-col">
+      <NavBar />
+
+      <main className="flex-1 max-w-4xl mx-auto px-6 py-10 w-full">
+        <div className="flex items-end justify-between mb-10">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard</h1>
+            <p className="text-sm text-[#a1a1aa] mt-1.5 font-mono text-[13px] tabular-nums">
+              {address?.slice(0, 8)}...{address?.slice(-6)}
+            </p>
+          </div>
+          <Link href="/create" className="btn-primary text-sm px-5 py-2.5">
+            + New Will
+          </Link>
+        </div>
+
+        {/* Loading skeleton */}
+        {loading && (
+          <div className="space-y-4">
+            {[1, 2].map((i) => (
+              <div key={i} className="card">
+                <div className="skeleton h-5 w-32 mb-4" />
+                <div className="grid grid-cols-4 gap-4">
+                  {[1, 2, 3, 4].map((j) => (
+                    <div key={j}>
+                      <div className="skeleton h-3 w-16 mb-2" />
+                      <div className="skeleton h-4 w-20" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Empty state */}
+        {!loading && wills.length === 0 && (
+          <div className="card text-center py-16">
+            <div className="text-3xl mb-4" aria-hidden="true">
+            <svg className="w-7 h-7 mx-auto text-[#d4a853]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+            <h2 className="text-xl font-semibold mb-2">No Digital Wills Yet</h2>
+            <p className="text-sm text-[#a1a1aa] mb-6 max-w-sm mx-auto">
+              Create your first digital will to secure your assets and give your loved ones peace of mind.
+            </p>
+            <Link href="/create" className="btn-primary">
+              Create Your First Will
+            </Link>
+          </div>
+        )}
+
+        {/* Will list */}
+        {!loading && wills.length > 0 && (
+          <div className="space-y-3">
+            {wills.map((will) => {
+              const confidence = Math.max(will.inactivityScore, will.guardianScore) / 100;
+              return (
+                <Link key={will.id} href={`/will/${will.id}`} className="block no-underline">
+                  <div className="card card-glow cursor-pointer transition-all hover:border-[rgba(212,168,83,0.22)] hover:shadow-[0_0_36px_rgba(212,168,83,0.08)]">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <span className="text-base font-semibold tracking-tight">Will #{will.id}</span>
+                        <span
+                          className={`badge ${
+                            will.status === 0
+                              ? "badge-active"
+                              : will.status === 1
+                              ? "badge-executed"
+                              : "badge-revoked"
+                          }`}
+                        >
+                          {will.statusLabel}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 text-sm">
+                      <div>
+                        <p className="text-[#52525b] text-xs font-medium uppercase tracking-wider mb-1">Confidence</p>
+                        <p className="text-[#f5f5f5] font-semibold tabular-nums">{confidence}%</p>
+                      </div>
+                      <div>
+                        <p className="text-[#52525b] text-xs font-medium uppercase tracking-wider mb-1">Guardians</p>
+                        <p className="text-[#f5f5f5] font-semibold tabular-nums">
+                          {will.guardianVotes}/{will.totalGuardians}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-[#52525b] text-xs font-medium uppercase tracking-wider mb-1">Last Heartbeat</p>
+                        <p className="text-[#f5f5f5] font-semibold tabular-nums">
+                          {will.lastHeartbeat > 0
+                            ? new Date(will.lastHeartbeat * 1000).toLocaleDateString()
+                            : "—"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-[#52525b] text-xs font-medium uppercase tracking-wider mb-1">Created</p>
+                        <p className="text-[#f5f5f5] font-semibold tabular-nums">
+                          {new Date(will.createdAt * 1000).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}

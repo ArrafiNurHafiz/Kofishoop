@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Analyze codebase for performance optimizations",
+  "description": "Identify N+1 query patterns, unnecessary re-renders, caching opportunities, memory leaks, and redundant computations",
+  "activeForm": "Analyzing codebase for performance issues",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": []
+}

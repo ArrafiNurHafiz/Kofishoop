@@ -1,0 +1,31 @@
+"use client";
+
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
+import Link from "next/link";
+
+export default function NavBar() {
+  const { isConnected } = useAccount();
+
+  return (
+    <nav className="flex items-center justify-between px-6 py-4 border-b border-white/5">
+      <Link href="/" className="flex items-center gap-2">
+        <span className="text-xl">🕊️</span>
+        <span className="text-lg font-bold gradient-text">Eterna</span>
+      </Link>
+      <div className="flex items-center gap-4">
+        {isConnected && (
+          <>
+            <Link href="/dashboard" className="text-sm text-gray-300 hover:text-white transition">
+              Dashboard
+            </Link>
+            <Link href="/create" className="text-sm text-gray-300 hover:text-white transition">
+              Create Will
+            </Link>
+          </>
+        )}
+        <ConnectButton />
+      </div>
+    </nav>
+  );
+}

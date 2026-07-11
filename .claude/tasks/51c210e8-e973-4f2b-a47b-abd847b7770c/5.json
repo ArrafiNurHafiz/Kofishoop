@@ -1,0 +1,9 @@
+{
+  "id": "5",
+  "subject": "Implement TOPSIS algorithm dengan NumPy",
+  "description": "Buat services/topsis.py dengan numpy vectorized, services/notifications.py (SSE manager), services/gamification.py",
+  "activeForm": "Implementing services",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

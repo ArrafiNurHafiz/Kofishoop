@@ -1,0 +1,218 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useAccount } from "wagmi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { isGuardian, getWill, getGuardians, voteAsGuardian, WILL_STATUS } from "@/lib/eterna";
+
+export default function GuardianPage() {
+  const { id } = useParams<{ id: string }>();
+  const { address, isConnected } = useAccount();
+  const router = useRouter();
+  const willId = BigInt(id);
+
+  const [will, setWill] = useState<any>(null);
+  const [guardians, setGuardians] = useState<any[]>([]);
+  const [isValidGuardian, setIsValidGuardian] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [voting, setVoting] = useState(false);
+  const [voted, setVoted] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!address || !isConnected) return;
+    loadData();
+  }, [id, address, isConnected]);
+
+  async function loadData() {
+    setLoading(true);
+    try {
+      const [w, g] = await Promise.all([
+        getWill(willId),
+        getGuardians(willId),
+      ]);
+      setWill(w);
+      setGuardians([...g]);
+
+      const isG = await isGuardian(willId, address!);
+      setIsValidGuardian(isG);
+
+      if (isG) {
+        const myG = g.find(
+          (guard: any) => guard.wallet.toLowerCase() === address!.toLowerCase()
+        );
+        if (myG?.hasVoted) setVoted(true);
+      }
+    } catch (err) {
+      console.error("Error loading guardian data:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const handleVote = async (deceased: boolean) => {
+    setVoting(true);
+    setError("");
+    try {
+      await voteAsGuardian(willId, deceased);
+      setVoted(true);
+      loadData();
+    } catch (err: any) {
+      setError(err?.shortMessage || "Transaction failed");
+    } finally {
+      setVoting(false);
+    }
+  };
+
+  if (!isConnected) {
+    return (
+      <div className="flex-1 flex items-center justify-center px-4">
+        <div className="card max-w-md text-center py-12">
+          <div className="text-3xl mb-4" aria-hidden="true">🛡️</div>
+          <h2 className="text-xl font-semibold mb-2">Guardian Verification</h2>
+          <p className="text-sm text-[#a1a1aa] mb-6">
+            Connect your wallet to verify your identity as a guardian.
+          </p>
+          <ConnectButton />
+        </div>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="skeleton h-8 w-48" />
+          <div className="skeleton h-4 w-32" />
+        </div>
+      </div>
+    );
+  }
+
+  if (!will || !isValidGuardian) {
+    return (
+      <div className="flex-1 flex items-center justify-center px-4">
+        <div className="card max-w-md text-center py-12">
+          <div className="text-3xl mb-4" aria-hidden="true">🚫</div>
+          <h2 className="text-xl font-semibold mb-2">Access Denied</h2>
+          <p className="text-sm text-[#a1a1aa]">
+            You are not registered as a guardian for Will #{id}, or this will does not exist.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const willStatus = Number(will.status);
+  const totalGuardians = guardians.length;
+  const votesFor = guardians.filter((g) => g.hasVoted && g.vote).length;
+  const guardiansVoted = guardians.filter((g) => g.hasVoted).length;
+
+  return (
+    <div className="flex-1 flex items-center justify-center px-4 py-8">
+      <div className="max-w-lg w-full animate-fade-in">
+        <div className="card card-glow">
+          <div className="text-center mb-6">
+            <div className="text-3xl mb-3" aria-hidden="true">🛡️</div>
+            <h1 className="text-2xl font-bold tracking-tight">Guardian Dashboard</h1>
+            <p className="text-sm text-[#a1a1aa] mt-1">Will #{id}</p>
+          </div>
+
+          <div className="flex items-center justify-center gap-8 mb-6 text-sm">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-[#f5f5f5] tabular-nums">{votesFor}/{totalGuardians}</p>
+              <p className="text-xs text-[#52525b] mt-0.5">Votes For</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-[#f5f5f5] tabular-nums">{guardiansVoted}/{totalGuardians}</p>
+              <p className="text-xs text-[#52525b] mt-0.5">Voted</p>
+            </div>
+            <div className="text-center">
+              <span
+                className={`badge ${
+                  willStatus === 0 ? "badge-active" : "badge-revoked"
+                }`}
+              >
+                {WILL_STATUS[willStatus]}
+              </span>
+            </div>
+          </div>
+
+          {voted ? (
+            <div className="text-center py-6">
+              <div className="text-4xl mb-3" aria-hidden="true">✅</div>
+              <h3 className="text-lg font-semibold mb-1">Vote Recorded</h3>
+              <p className="text-sm text-[#a1a1aa]">
+                Your vote has been submitted on-chain. Thank you for fulfilling your duty as a guardian.
+              </p>
+              <button
+                onClick={() => router.push(`/will/${id}`)}
+                className="btn-primary mt-6"
+              >
+                View Will Details
+              </button>
+            </div>
+          ) : (
+            <>
+              <div className="mb-6">
+                <h3 className="font-semibold text-center mb-1">
+                  Has the owner of this will passed away?
+                </h3>
+                <p className="text-sm text-[#a1a1aa] text-center">
+                  Your identity has been verified. Please vote based on your knowledge.
+                </p>
+              </div>
+
+              {error && (
+                <div className="mb-4 p-3 bg-[rgba(248,113,113,0.08)] border border-[rgba(248,113,113,0.2)] rounded-lg text-sm text-[#f87171]">
+                  {error}
+                </div>
+              )}
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => handleVote(true)}
+                  disabled={voting}
+                  className="btn-primary flex-1 py-3"
+                >
+                  {voting ? "Confirming..." : "Yes, Deceased"}
+                </button>
+                <button
+                  onClick={() => handleVote(false)}
+                  disabled={voting}
+                  className="btn-secondary flex-1 py-3"
+                >
+                  No, Still Alive
+                </button>
+              </div>
+            </>
+          )}
+
+          {/* Guardian list */}
+          <div className="mt-6 pt-6 border-t border-white/[0.04]">
+            <h4 className="text-xs font-medium text-[#52525b] uppercase tracking-wider mb-3">All Guardians</h4>
+            <div className="space-y-2">
+              {guardians.map((g: any, i: number) => (
+                <div key={i} className="flex items-center justify-between text-sm">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        g.hasVoted ? "bg-[#4ade80]" : "bg-[#52525b]"
+                      }`}
+                    />
+                    <span className="text-[#f5f5f5]">{g.name}</span>
+                  </div>
+                  <span className={g.hasVoted ? "text-[#4ade80] text-xs" : "text-[#52525b] text-xs"}>
+                    {g.hasVoted ? (g.vote ? "Deceased" : "Alive") : "Not voted"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

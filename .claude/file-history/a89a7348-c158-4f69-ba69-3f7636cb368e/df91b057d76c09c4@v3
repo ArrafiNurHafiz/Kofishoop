@@ -1,0 +1,44 @@
+"use client";
+
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
+import Link from "next/link";
+
+export default function NavBar() {
+  const { isConnected } = useAccount();
+
+  return (
+    <header className="sticky top-0 z-50 bg-[#0c0c0c]/80 backdrop-blur-lg border-b border-white/[0.04]">
+      <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 h-14" aria-label="Main navigation">
+        <Link href="/" className="flex items-center gap-2 no-underline group">
+          <svg className="w-6 h-6 text-[#d4a853]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          <span className="text-lg font-semibold tracking-tight gradient-text">
+            Eterna
+          </span>
+        </Link>
+
+        <div className="flex items-center gap-3">
+          {isConnected && (
+            <>
+              <Link
+                href="/dashboard"
+                className="text-sm text-[#a1a1aa] hover:text-[#f5f5f5] transition-colors px-3 py-1.5 rounded-md hover:bg-white/[0.04] font-medium"
+              >
+                Dashboard
+              </Link>
+              <Link
+                href="/create"
+                className="text-sm text-[#a1a1aa] hover:text-[#f5f5f5] transition-colors px-3 py-1.5 rounded-md hover:bg-white/[0.04] font-medium"
+              >
+                Create Will
+              </Link>
+            </>
+          )}
+          <ConnectButton />
+        </div>
+      </nav>
+    </header>
+  );
+}

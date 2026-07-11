@@ -1,0 +1,8 @@
+{
+  "id": "3",
+  "subject": "Add Back to Top button",
+  "description": "Create BackToTop.tsx floating button that appears on scroll",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

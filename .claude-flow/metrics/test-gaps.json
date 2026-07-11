@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-07-11T02:09:10.065Z",
+  "mode": "headless",
+  "workerType": "testgaps",
+  "model": "sonnet",
+  "durationMs": 221361,
+  "executionId": "testgaps_1783735528704_nh0uuk",
+  "success": true,
+  "findings": {
+    "sections": [],
+    "codeBlocks": []
+  },
+  "rawOutputPreview": "The report above covers all the requested areas:\n\n1. **Untested functions and classes** — Tables for each major module (`brain.py`, `agent.py`, `engine.py`, `hunt.py`, `validate.py`)\n2. **Edge cases not covered** — Specific gaps in even well-tested modules (Unicode, concurrent access, IDN, etc.)\n3. **New test scenarios** — 14 test skeletons covering the most impactful gaps\n4. **Missing error handling tests** — API timeouts, network failures, disk-full, missing tools, corrupted configs\n5. **Integration test gaps** — Cross-module chains (recon → brain → report, validate → report, auth → subprocess)\n6. **Summary stats** — ~20% estimated coverage, 3 major modules at 0-5%\n\nWould you like me to implement any of these test skeletons into actual working test files, or dive deeper into a specific module?\n",
+  "rawOutputLength": 807
+}

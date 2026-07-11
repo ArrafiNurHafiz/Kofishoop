@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Analyze eterna codebase for performance optimizations",
+  "description": "Deep performance analysis covering: N+1 queries, unnecessary re-renders, caching opportunities, memory leaks, redundant computations. Read all source files and provide actionable suggestions with code examples.",
+  "activeForm": "Analyzing eterna codebase for performance issues",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

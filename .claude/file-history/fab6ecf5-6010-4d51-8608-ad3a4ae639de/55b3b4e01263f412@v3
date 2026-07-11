@@ -1,0 +1,45 @@
+# CLAUDE.md — Project Instructions
+
+## Skill Flow Otomatis
+Saat user memberikan perintah, deteksi skill yang relevan dari daftar skill yang tersedia dan invoke menggunakan `Skill` tool. Bisa lebih dari satu skill dalam satu sesi jika relevan — jalankan berurutan sesuai flow.
+
+### Urutan Prioritas Deteksi Skill
+1. **`/code-review`** — saat user minta "review", "periksa kode", "cek bug", "code review"
+2. **`/verify`** — saat user minta "verifikasi", "uji coba", "test", "cek perubahan berfungsi"
+3. **`/analisis`** — saat user minta "analisis data", "analisa file CSV/Excel", "statistik"
+4. **`/deep-research`** — saat user minta "research", "cari informasi", "teliti topik", "pelajari tentang"
+5. **`/dataviz`** — saat user minta "buat chart/graph/plot", "visualisasi", "dashboard", "grafik"
+6. **`/update-config`** — saat user minta "konfigurasi", "atur settings", "hook", "perubahan konfigurasi"
+7. **`/security-review`** — saat user minta "security review", "audit keamanan", "cek celah"
+8. **`/simplify`** — saat user minta "sederhanakan", "refactor", "rapikan kode"
+9. **`/web3-audit`** — saat user minta "audit smart contract", "web3", "solidity"
+10. **`/loop`** — saat user minta "pantau setiap", "cek tiap", "ulangi perintah", "setiap X menit"
+11. **`/keybindings-help`** — saat user minta "keyboard shortcut", "keybind", "shortcut"
+12. **`/lesser-permission-prompts`** — saat user minta "kurangi permission prompt", "izin berulang"
+13. **`/run`** — saat user minta "jalankan", "run", "start app", "buka aplikasi"
+14. **`/init`** — saat user minta "inisialisasi", "setup project", "init"
+15. **`/update-config`** — saat user minta "atur skill", "tambah skill", "skill baru"
+
+### Flow Multi-Skill
+Jika perintah user membutuhkan beberapa skill sekaligus, jalankan sesuai flow logis:
+
+**Contoh Flow Research + Visualisasi:**
+1. `/deep-research` — cari data/informasi
+2. `/analisis` — analisis hasil research
+3. `/dataviz` — buat visualisasi dari data
+
+**Contoh Flow Review + Fix:**
+1. `/code-review` — deteksi masalah
+2. `/simplify` — perbaiki & rapikan
+3. `/verify` — verifikasi hasil
+
+**Contoh Flow Data:**
+1. `/analisis` — analisis data mentah
+2. `/dataviz` — buat chart
+3. `/deep-research` — cari insight pembanding
+
+### Aturan Umum
+- Deteksi berdasarkan kata kunci — tidak harus nama skill persis
+- Jika ragu antara dua skill, pilih yang lebih spesifik
+- Untuk multi-skill, tanya user dulu jika flow-nya tidak jelas
+- Gunakan `Skill` tool dengan `args` yang relevan jika didukung

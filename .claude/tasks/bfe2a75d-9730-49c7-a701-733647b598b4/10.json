@@ -1,0 +1,9 @@
+{
+  "id": "10",
+  "subject": "Fitur Katalog Pangan + Upload Foto + Global Search",
+  "description": "Kerjakan bertahap: Katalog Pangan → Upload Foto → Global Search → Dashboard Statistik → PWA → TOPSIS Detail",
+  "activeForm": "Mengembangkan fitur baru",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "9",
+  "subject": "Refactor — Navbar & Footer reusable components",
+  "description": "Ekstrak Navbar (dengan auto-hide, mobile drawer, nav items) dan Footer jadi komponen reusable di src/components/. Hapus duplikasi dari 6 file halaman.",
+  "activeForm": "Refactor Navbar & Footer",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

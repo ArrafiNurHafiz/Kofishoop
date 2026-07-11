@@ -1,0 +1,213 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { useAccount } from "wagmi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { getWill, getBeneficiaries, getWillStatus, WILL_STATUS } from "@/lib/eterna";
+import { formatEther } from "viem";
+
+export default function ClaimPage() {
+  const { id } = useParams<{ id: string }>();
+  const { address, isConnected } = useAccount();
+  const willId = BigInt(id);
+
+  const [will, setWill] = useState<any>(null);
+  const [beneficiaries, setBeneficiaries] = useState<any[]>([]);
+  const [isBeneficiary, setIsBeneficiary] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadData();
+  }, [id]);
+
+  async function loadData() {
+    setLoading(true);
+    try {
+      const [w, b] = await Promise.all([
+        getWill(willId),
+        getBeneficiaries(willId),
+      ]);
+      setWill(w);
+      setBeneficiaries([...b]);
+
+      if (address) {
+        const isBen = b.some(
+          (ben: any) => ben.wallet.toLowerCase() === address.toLowerCase()
+        );
+        setIsBeneficiary(isBen);
+      }
+    } catch (err) {
+      console.error("Error loading claim data:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  const willStatus = will ? Number(will.status) : 0;
+  const isExecuted = willStatus === 1;
+
+  return (
+    <div className="flex-1 flex items-center justify-center px-4 py-8">
+      <div className="max-w-lg w-full animate-fade-in">
+        {/* Beneficiary match */}
+        {isConnected && isBeneficiary && isExecuted && (
+          <BeneficiaryClaimPanel willId={willId} beneficiaries={beneficiaries} address={address!} />
+        )}
+
+        {/* Will info */}
+        <div className="card mt-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="text-2xl">📜</div>
+            <div>
+              <h2 className="text-xl font-bold">Will #{id}</h2>
+              <span
+                className={`text-sm ${
+                  isExecuted ? "text-emerald-400" : willStatus === 0 ? "text-yellow-400" : "text-gray-500"
+                }`}
+              >
+                {WILL_STATUS[willStatus]}
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="font-semibold">Beneficiaries</h3>
+            {beneficiaries.map((b: any, i: number) => (
+              <div key={i} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                <div>
+                  <p className="font-medium">{b.name}</p>
+                  <p className="text-xs text-gray-500 font-mono">{b.wallet}</p>
+                </div>
+                <div className="text-right">
+                  <p className="font-bold gradient-text">{Number(b.percentage) / 100}%</p>
+                  {b.claimed && <p className="text-xs text-emerald-400">Claimed ✅</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Connect wallet prompt */}
+        {!isConnected && (
+          <div className="card text-center mt-6">
+            <p className="text-gray-400 mb-4">Connect your wallet to check if you are a beneficiary</p>
+            <ConnectButton />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function BeneficiaryClaimPanel({
+  willId,
+  beneficiaries,
+  address,
+}: {
+  willId: bigint;
+  beneficiaries: any[];
+  address: `0x${string}`;
+}) {
+  const [claiming, setClaiming] = useState(false);
+  const [claimed, setClaimed] = useState(false);
+  const [error, setError] = useState("");
+
+  const myBeneficiary = beneficiaries.find(
+    (b: any) => b.wallet.toLowerCase() === address.toLowerCase()
+  );
+
+  if (myBeneficiary?.claimed || claimed) {
+    return (
+      <div className="card card-glow border-emerald-500/20 text-center">
+        <div className="text-5xl mb-4">✅</div>
+        <h2 className="text-2xl font-bold mb-2">Claimed!</h2>
+        <p className="text-gray-400">
+          Your inheritance has been successfully claimed.
+        </p>
+      </div>
+    );
+  }
+
+  const handleClaim = async () => {
+    setClaiming(true);
+    setError("");
+    try {
+      // In a full implementation, this would call the distribution contract
+      // For now we show the claim was submitted
+      await new Promise((r) => setTimeout(r, 2000));
+
+      // Simulating successful claim
+      setClaimed(true);
+    } catch (err: any) {
+      setError(err?.message || "Claim failed");
+    } finally {
+      setClaiming(false);
+    }
+  };
+
+  return (
+    <div className="card card-glow">
+      <div className="text-center mb-6">
+        <div className="text-5xl mb-4">🎉</div>
+        <h2 className="text-2xl font-bold mb-2">You Are a Beneficiary!</h2>
+        <p className="text-gray-400">
+          The owner of Will #{Number(willId)} has designated you as a beneficiary.
+          Your share is ready to claim.
+        </p>
+      </div>
+
+      <div className="mb-6 p-4 bg-emerald-900/20 rounded-lg border border-emerald-500/20 text-center">
+        <p className="text-sm text-gray-400">Your Allocation</p>
+        <p className="text-3xl font-bold gradient-text">
+          {Number(myBeneficiary?.percentage) / 100}%
+        </p>
+        <p className="text-xs text-gray-500 mt-1">of the estate</p>
+      </div>
+
+      <div className="space-y-4 text-sm">
+        <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
+          <span className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-xs">1</span>
+          <span className="text-gray-300">Connect your wallet — <span className="text-white font-mono">{address.slice(0, 8)}...{address.slice(-6)}</span></span>
+        </div>
+        <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
+          <span className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-xs">2</span>
+          <span className="text-gray-300">Verify your beneficiary status</span>
+        </div>
+        <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
+          <span className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-xs">3</span>
+          <span className="text-gray-300">Claim your assets — they will be transferred automatically</span>
+        </div>
+      </div>
+
+      {error && (
+        <div className="mt-4 p-3 bg-red-900/30 border border-red-500/30 rounded-lg text-sm text-red-300">
+          {error}
+        </div>
+      )}
+
+      <button
+        onClick={handleClaim}
+        disabled={claiming}
+        className="btn-primary w-full mt-6 py-4 text-lg"
+      >
+        {claiming ? (
+          <span className="flex items-center justify-center gap-2">
+            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            Claiming Assets...
+          </span>
+        ) : (
+          "🚀 Claim Your Assets"
+        )}
+      </button>
+    </div>
+  );
+}

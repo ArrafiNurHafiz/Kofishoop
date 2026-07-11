@@ -1,0 +1,201 @@
+@extends('layouts.app')
+
+@section('title', 'Jelajahi - TransitTrip Yogyakarta')
+
+@section('content')
+<div id="map" class="w-full" style="height: calc(var(--vh, 1vh) * 100 - 52px);"></div>
+@endsection
+
+@push('scripts')
+<script>
+var map, poiCluster, transitRoutesLayer, transitStopsLayer, transitRadiusLayer;
+
+function initMap() {
+    if (map) return;
+
+    // Fix mobile viewport height
+    var vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', vh + 'px');
+    window.addEventListener('resize', function() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+    });
+
+    var isMobile = window.innerWidth < 768;
+
+    map = L.map('map', {
+        center: [-7.805, 110.378],
+        zoom: isMobile ? 13 : 14,
+        zoomControl: !isMobile,
+        attributionControl: !isMobile,
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors',
+        maxZoom: 19,
+    }).addTo(map);
+
+    // Mobile: add zoom control in bottom-right
+    if (isMobile) {
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+    }
+
+    // Marker cluster
+    poiCluster = L.markerClusterGroup({
+        chunkedLoading: true,
+        spiderfyOnEveryZoom: true,
+        maxClusterRadius: isMobile ? 60 : 50,
+        disableClusteringAtZoom: isMobile ? 15 : 16,
+    });
+
+    // Transit stops layer group (for toggle)
+    transitStopsLayer = L.layerGroup();
+    transitRadiusLayer = L.layerGroup();
+    transitRoutesLayer = L.layerGroup();
+
+    loadPois();
+    loadTransitStops();
+    loadTransitRoutes();
+
+    // Layer control - collapsible on mobile
+    L.control.layers(null, {
+        'Rute Transit': transitRoutesLayer,
+        'Halte': transitStopsLayer,
+        'Radius 500m': transitRadiusLayer
+    }, { collapsed: isMobile }).addTo(map);
+}
+
+function loadPois(filters) {
+    if (!poiCluster) return;
+    poiCluster.clearLayers();
+
+    var url = '/api/v1/pois?per_page=200';
+    if (filters) url += filters;
+
+    fetch(url)
+        .then(function(res) { return res.json(); })
+        .then(function(response) {
+            var pois = response.data || [];
+            pois.forEach(function(poi) {
+                var lat = parseFloat(poi.latitude);
+                var lng = parseFloat(poi.longitude);
+                if (isNaN(lat) || isNaN(lng)) return;
+
+                var marker = L.marker([lat, lng], {
+                    icon: L.divIcon({
+                        className: 'poi-marker',
+                        html: '<span style="font-size:1.35rem;line-height:1;display:block;text-align:center;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))">' + (poi.category?.icon || 'POI') + '</span>',
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 16],
+                    }),
+                });
+
+                marker.bindTooltip(poi.name || 'POI', { direction: 'top', offset: [0, -18] });
+                marker.on('click', function() {
+                    window.dispatchEvent(new CustomEvent('poi-selected', { detail: poi }));
+                });
+
+                poiCluster.addLayer(marker);
+            });
+
+            if (!map.hasLayer(poiCluster)) map.addLayer(poiCluster);
+        })
+        .catch(function(err) {
+          console.error('Failed to load POIs:', err);
+          window.dispatchEvent(new CustomEvent('load-error', { detail: { message: err.message || 'Gagal memuat POI' } }));
+        });
+}
+
+function loadTransitStops() {
+    fetch('/api/v1/transit-stops')
+        .then(function(res) { return res.json(); })
+        .then(function(response) {
+            var stops = response.data || [];
+            (Array.isArray(stops) ? stops : []).forEach(function(stop) {
+                var lat = parseFloat(stop.latitude);
+                var lng = parseFloat(stop.longitude);
+                if (isNaN(lat) || isNaN(lng)) return;
+
+                // Radius 500m
+                var radius = L.circle([lat, lng], {
+                    radius: 500,
+                    dashArray: '4 8',
+                    opacity: 0.08,
+                    fillOpacity: 0.05,
+                    color: '#1a3a4a',
+                    fillColor: '#1a3a4a',
+                    interactive: false,
+                });
+                transitRadiusLayer.addLayer(radius);
+
+                // Stop dot
+                var dot = L.circleMarker([lat, lng], {
+                    radius: 6,
+                    fillColor: '#1a3a4a',
+                    color: '#f5a623',
+                    weight: 2,
+                    fillOpacity: 0.85,
+                }).bindTooltip(stop.name || 'Halte', { direction: 'top' });
+                transitStopsLayer.addLayer(dot);
+            });
+
+            // Add to map
+            transitStopsLayer.addTo(map);
+            transitRadiusLayer.addTo(map);
+        })
+        .catch(function(err) { console.error('Failed to load transit stops:', err); });
+}
+
+function loadTransitRoutes() {
+    if (transitRoutesLayer) map.removeLayer(transitRoutesLayer);
+
+    fetch('/api/v1/transit-routes')
+        .then(function(res) { return res.json(); })
+        .then(function(response) {
+            var data = response.data && typeof response.data === 'object' ? response.data : response;
+
+            L.geoJSON(data, {
+                style: { color: '#f5a623', weight: 4, opacity: 0.7 },
+                onEachFeature: function(feature, layer) {
+                    if (feature.properties?.name) {
+                        layer.bindTooltip(feature.properties.name, { direction: 'top' });
+                    }
+                },
+            }).eachLayer(function(l) { transitRoutesLayer.addLayer(l); });
+
+            transitRoutesLayer.addTo(map);
+
+            if (transitRoutesLayer.getBounds && transitRoutesLayer.getBounds().isValid()) {
+                map.fitBounds(transitRoutesLayer.getBounds(), { padding: [50, 50], maxZoom: 15 });
+            }
+        })
+        .catch(function(err) { console.error('Failed to load transit routes:', err); });
+}
+
+function refreshMap() {
+    var filters = Alpine.store('filters');
+    if (!filters) { loadPois(); return; }
+    var qs = filters.toQueryString ? filters.toQueryString() : '';
+    loadPois(qs);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initMap();
+});
+
+window.refreshMap = refreshMap;
+window.loadPois = loadPois;
+</script>
+
+<style>
+.poi-marker { background: none !important; border: none !important; box-shadow: none !important; }
+.leaflet-top { margin-top: 0.5rem; }
+.leaflet-control-layers { font-size: 12px; border-radius: 10px !important; overflow: hidden; }
+.leaflet-control-zoom { border-radius: 10px !important; overflow: hidden; }
+.leaflet-control-zoom a { width: 36px !important; height: 36px !important; line-height: 36px !important; font-size: 18px !important; }
+@media (max-width: 767px) {
+    .leaflet-control-layers { font-size: 11px; }
+    .leaflet-control-attribution { font-size: 9px !important; }
+}
+</style>
+@endpush

@@ -1,0 +1,691 @@
+ Saya akan buatkan PRD lengkap untuk proyek **AI Agent Digital Afterlife / Inheritance Executor**. Ini akan menjadi dokumen yang komprehensif dan siap digunakan untuk hackathon.
+
+---
+
+# 📋 Product Requirements Document (PRD)
+
+## **Eterna** — AI-Powered Digital Afterlife & Inheritance Executor
+
+---
+
+## 1. Executive Summary
+
+### 1.1 Product Vision
+> *"Ketika kita tidak lagi ada, aset digital kita tetap terlindungi dan terdistribusi sesuai keinginan — tanpa birokrasi, tanpa notaris, tanpa kecurigaan."*
+
+**Eterna** adalah AI Agent berbasis blockchain yang mengeksekusi wasiat digital secara otonom. Agent ini memantau "kehidupan" pemilik wallet melalui multi-layer trigger mechanism dan mendistribusikan aset ke beneficiary yang telah ditentukan — sepenuhnya tanpa intervensi manusia.
+
+### 1.2 Problem Statement
+| Problem | Current State | Impact |
+|---------|-------------|--------|
+| **$140B+ Bitcoin hilang** | Wallet owner meninggal tanpa menyampaikan private key | Aset digital tidak bisa diakses oleh keluarga |
+| **Proses warisan tradisional lambat** | Notaris, pengadilan, birokrasi — bisa 6-24 bulan | Keluarga dalam kesulitan finansial menunggu |
+| **Tidak ada trustless inheritance** | Harus percaya pihak ketiga (exchange, lawyer) | Risiko fraud, mismanagement, atau kebocoran data |
+| **Crypto holder demographic muda** | Banyak holder usia 25-40 tidak punya estate planning | Risiko meningkat seiring adoption crypto |
+
+### 1.3 Solution Overview
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         ETERNA FLOW                              │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐  │
+│  │  SETUP   │───▶│ MONITOR  │───▶│ TRIGGER  │───▶│ EXECUTE  │  │
+│  │  Will    │    │  Life    │    │  Death   │    │  Estate  │  │
+│  └──────────┘    └──────────┘    └──────────┘    └──────────┘  │
+│       │               │               │               │         │
+│       ▼               ▼               ▼               ▼         │
+│   • Beneficiary   • Inactivity    • Multi-sig     • Auto      │
+│   • Distribution  • Heartbeat     • Oracle        • Transfer   │
+│   • Conditions    • Guardian      • Consensus     • Notify     │
+│       │               │               │               │         │
+│       └───────────────┴───────────────┴───────────────┘         │
+│                         AI AGENT (ETERNA)                        │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 2. Product Objectives & Success Metrics
+
+### 2.1 Objectives
+| No | Objective | Priority |
+|----|-----------|----------|
+| 1 | Memungkinkan user membuat wasiat digital yang terenkripsi dan immutable | P0 |
+| 2 | Memantau "kehidupan" pemilik wallet melalui multi-layer trigger | P0 |
+| 3 | Mengeksekusi distribusi aset secara otonom dan trustless | P0 |
+| 4 | Memberikan transparency dan auditability penuh kepada beneficiary | P1 |
+| 5 | Menyediakan UI/UX yang accessible untuk non-technical users | P1 |
+
+### 2.2 Success Metrics (Hackathon Demo)
+| Metric | Target |
+|--------|--------|
+| Demo execution time | < 3 menit end-to-end |
+| Trigger mechanism | Minimum 2 layer (inactivity + guardian) |
+| Asset types supported | ERC-20 tokens + ETH |
+| UI intuitiveness | Judge bisa setup will tanpa guidance |
+
+---
+
+## 3. User Personas
+
+### 3.1 Primary Persona: "Alex, The Crypto Native"
+```
+┌─────────────────────────────────────────────────────────────┐
+│  👤 Alex, 34 tahun                                           │
+│  • Software engineer, crypto holder sejak 2017              │
+│  • Portfolio: $250K (ETH, USDC, beberapa NFT)               │
+│  • Single, orang tua di kampung halaman                     │
+│  • Tidak punya will tradisional, khawatir jika sesuatu      │
+│    terjadi padanya                                           │
+│                                                              │
+│  Pain Points:                                                │
+│  • Tidak mau kasih private key ke siapapun sekarang         │
+│  • Tidak percaya exchange atau pihak ketiga                 │
+│  • Orang tuanya tidak paham crypto                          │
+│  • Ingin kontrol penuh atas kapan dan bagaimana aset         │
+│    didistribusikan                                          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 3.2 Secondary Persona: "Sarah, The Beneficiary"
+```
+┌─────────────────────────────────────────────────────────────┐
+│  👤 Sarah, 60 tahun                                          │
+│  • Ibu Alex, tidak paham teknologi                          │
+│  • Tinggal di kota kecil, akses internet terbatas           │
+│  • Butuh uang untuk biaya hidup dan pengobatan              │
+│                                                              │
+│  Needs:                                                      │
+│  • Notifikasi sederhana (SMS/email) saat aset siap diambil  │
+│  • Step-by-step guide untuk claim wallet                    │
+│  • Customer support yang bisa dihubungi                     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 4. Core Features & Functionality
+
+### 4.1 Feature List
+
+#### **F1: Will Creation & Configuration** (P0)
+| Sub-Feature | Description | Acceptance Criteria |
+|-------------|-------------|---------------------|
+| F1.1 | Beneficiary Management | User bisa menambahkan 1+ beneficiary dengan alamat wallet/nama |
+| F1.2 | Asset Distribution | User bisa set persentase/amount per beneficiary |
+| F1.3 | Distribution Conditions | User bisa set conditions (e.g., "Sarah dapat 50% segera, 50% sisanya setelah 1 tahun") |
+| F1.4 | Trigger Configuration | User pilih trigger mechanism (inactivity period, guardian consensus, oracle) |
+| F1.5 | Will Encryption | Will data dienkripsi dan disimpan on-chain/IPFS |
+
+#### **F2: Life Monitoring System** (P0)
+| Sub-Feature | Description | Acceptance Criteria |
+|-------------|-------------|---------------------|
+| F2.1 | Heartbeat Mechanism | User bisa "check-in" secara berkala untuk menandakan "masih hidup" |
+| F2.2 | Inactivity Detection | System memantau transaksi/activity wallet selama periode yang ditentukan |
+| F2.3 | Guardian Network | 3-5 trusted guardians bisa "vote" untuk trigger execution |
+| F2.4 | Oracle Integration | Integration dengan external data source (opsional untuk hackathon) |
+
+#### **F3: Execution Engine** (P0)
+| Sub-Feature | Description | Acceptance Criteria |
+|-------------|-------------|---------------------|
+| F3.1 | Trigger Validation | AI Agent memvalidasi trigger sebelum eksekusi |
+| F3.2 | Asset Distribution | Auto-transfer sesuai konfigurasi will |
+| F3.3 | Notification System | Kirim notifikasi ke beneficiary via email/SMS/on-chain message |
+| F3.4 | Execution Log | Semua action tercatat on-chain untuk auditability |
+
+#### **F4: Beneficiary Dashboard** (P1)
+| Sub-Feature | Description | Acceptance Criteria |
+|-------------|-------------|---------------------|
+| F4.1 | Will Viewer | Beneficiary bisa melihat will (setelah trigger) |
+| F4.2 | Claim Interface | Step-by-step guide untuk claim aset |
+| F4.3 | Support Chat | AI chatbot untuk bantu beneficiary |
+
+---
+
+### 4.2 User Flow Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                        USER FLOW: ALEX                              │
+└─────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
+  │  Connect │────▶│  Create  │────▶│ Configure│────▶│  Review  │
+  │  Wallet  │     │   Will   │     │  Triggers│     │  & Sign  │
+  └──────────┘     └──────────┘     └──────────┘     └──────────┘
+       │                 │                │                │
+       ▼                 ▼                ▼                ▼
+   • Metamask       • Add Sarah      • Inactivity:    • Preview
+   • WalletConnect   • Add Brother      6 months      distribution
+   • Privy           • Set % split    • Guardians:    • Sign with
+                       • Conditions       3 people      wallet
+                                          • Heartbeat:
+                                            monthly
+
+  ┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
+  │  Active  │────▶│  Trigger │────▶│  Execute │────▶│ Notify   │
+  │  Monitor │     │  Detected│     │  Will    │     & Confirm │
+  └──────────┘     └──────────┘     └──────────┘     └──────────┘
+       │                 │                │                │
+       ▼                 ▼                ▼                ▼
+   • Monthly        • No heartbeat   • Validate      • Email to
+     heartbeat        for 6 months   triggers        Sarah
+   • Transactions   • 2/3 guardians  • Distribute    • SMS to
+     detected         vote "deceased"  assets          Brother
+   • Guardian        • Oracle         • Log on-chain  • On-chain
+     check-ins         confirmation                     notification
+```
+
+---
+
+## 5. Technical Architecture
+
+### 5.1 System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         ETERNA ARCHITECTURE                         │
+└─────────────────────────────────────────────────────────────────────┘
+
+  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+  │   FRONTEND      │    │    BACKEND      │    │   BLOCKCHAIN    │
+  │  (Next.js)      │◄──►│  (Node.js/      │◄──►│  (Smart Contracts)│
+  │                 │    │   Python)       │    │                 │
+  ├─────────────────┤    ├─────────────────┤    ├─────────────────┤
+  │ • React UI      │    │ • AI Agent      │    │ • EternaWill    │
+  │ • Wallet Connect│    │   Engine        │    │   Contract      │
+  │ • Will Builder  │    │ • Trigger       │    │ • Guardian      │
+  │ • Dashboard     │    │   Monitor       │    │   Registry      │
+  │ • Beneficiary   │    │ • Notification  │    │ • Distribution  │
+  │   Portal        │    │   Service       │    │   Logic         │
+  └─────────────────┘    └─────────────────┘    └─────────────────┘
+           │                      │                      │
+           ▼                      ▼                      ▼
+  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+  │   STORAGE       │    │   EXTERNAL      │    │   ORACLE        │
+  │  (IPFS/         │    │   SERVICES      │    │  (Chainlink/    │
+  │   Arweave)      │    │                 │    │   Custom)       │
+  ├─────────────────┤    ├─────────────────┤    ├─────────────────┤
+  │ • Encrypted     │    │ • Email/SMS     │    │ • Death         │
+  │   will data     │    │   (Twilio/      │    │   certificate   │
+  │ • Execution     │    │   SendGrid)     │    │   verification  │
+  │   logs          │    │ • AI LLM        │    │ • External      │
+  │ • Beneficiary   │    │   (OpenAI/      │    │   data feeds    │
+  │   info (hash)   │    │   Claude)       │    │                 │
+  └─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+### 5.2 Smart Contract Architecture
+
+```solidity
+// ============================================
+// ETERNA CORE CONTRACTS
+// ============================================
+
+// 1. EternaWill.sol — Core will storage & execution
+contract EternaWill {
+    struct Will {
+        address owner;
+        bytes32 encryptedDataHash;     // IPFS hash of encrypted will
+        uint256 inactivityThreshold;   // e.g., 180 days
+        uint256 lastActivity;          // timestamp of last heartbeat
+        address[] beneficiaries;
+        uint256[] percentages;
+        bool isExecuted;
+        Guardian[] guardians;
+    }
+    
+    struct Guardian {
+        address guardianAddress;
+        bool hasVoted;
+        bool vote;
+    }
+    
+    // Trigger mechanisms
+    function checkIn() external;                    // Heartbeat
+    function guardianVote(bool _isDeceased) external;
+    function executeWill() external;                // AI Agent calls this
+}
+
+// 2. EternaGuardian.sol — Guardian management
+contract EternaGuardian {
+    function addGuardian(address _will, address _guardian) external;
+    function removeGuardian(address _will, address _guardian) external;
+    function getGuardianStatus(address _will) external view returns (uint256 votesFor, uint256 total);
+}
+
+// 3. EternaDistribution.sol — Asset distribution logic
+contract EternaDistribution {
+    function distributeAssets(
+        address _will,
+        address[] calldata _beneficiaries,
+        uint256[] calldata _percentages
+    ) external;
+    
+    function distributeWithConditions(
+        address _will,
+        Condition[] calldata _conditions
+    ) external;
+}
+```
+
+### 5.3 AI Agent Logic
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                     AI AGENT: ETERNA ENGINE                         │
+└─────────────────────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  TRIGGER MONITOR (Runs every 24 hours)                          │
+  ├─────────────────────────────────────────────────────────────────┤
+  │  For each active will:                                          │
+  │    1. Check lastHeartbeat vs inactivityThreshold                │
+  │    2. Check guardian votes (if threshold met)                   │
+  │    3. Check oracle confirmation (if configured)                 │
+  │    4. Calculate confidence score:                               │
+  │       confidence = (inactivityTrigger * 0.4) +                  │
+  │                    (guardianConsensus * 0.4) +                  │
+  │                    (oracleConfirmation * 0.2)                   │
+  │    5. If confidence >= 0.7 → proceed to execution               │
+  └─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  EXECUTION VALIDATOR                                            │
+  ├─────────────────────────────────────────────────────────────────┤
+  │  • Verify will is not already executed                          │
+  │  • Verify beneficiary addresses are valid                       │
+  │  • Verify sufficient balance for distribution + gas             │
+  │  • Verify no pending legal challenges (if oracle integrated)    │
+  │  • Generate execution proof for audit trail                     │
+  └─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  DISTRIBUTION EXECUTOR                                          │
+  ├─────────────────────────────────────────────────────────────────┤
+  │  • Calculate exact amounts per beneficiary                      │
+  │  • Execute transfers (batch if possible for gas efficiency)     │
+  │  • Update will status to EXECUTED                               │
+  │  • Emit events for notification service                         │
+  └─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  NOTIFICATION SERVICE                                           │
+  ├─────────────────────────────────────────────────────────────────┤
+  │  • Send email to each beneficiary with:                         │
+  │    - Will summary                                               │
+  │    - Amount received                                            │
+  │    - Step-by-step claim guide                                   │
+  │    - Support contact                                            │
+  │  • Send on-chain message (if beneficiary has registered)        │
+  │  • Update public execution log                                  │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 6. UI/UX Design
+
+### 6.1 Wireframe: Will Creation Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  STEP 1: CONNECT WALLET                                             │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│    ┌─────────────────────────────────────────────────────────┐     │
+│    │                                                         │     │
+│    │              🕊️  E T E R N A                           │     │
+│    │                                                         │     │
+│    │         Your Digital Legacy, Secured Forever            │     │
+│    │                                                         │     │
+│    │    ┌─────────────────────────────────────────────┐      │     │
+│    │    │                                             │      │     │
+│    │    │         [ Connect Wallet ]                  │      │     │
+│    │    │                                             │      │     │
+│    │    │    Metamask  |  WalletConnect  |  Coinbase  │      │     │
+│    │    │                                             │      │     │
+│    │    └─────────────────────────────────────────────┘      │     │
+│    │                                                         │     │
+│    │    "Over $140B in crypto is lost forever when            │     │
+│    │     owners pass away without a plan."                    │     │
+│    │                                                         │     │
+│    └─────────────────────────────────────────────────────────┘     │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│  STEP 2: ADD BENEFICIARIES                                          │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  Who should receive your assets?                                    │
+│                                                                     │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌───────────┐ │
+│  │  👤 Sarah   │  │  👤 Mike    │  │  + Add New  │  │           │ │
+│  │   (Mother)  │  │  (Brother)  │  │             │  │           │ │
+│  │  0x71a2...  │  │  0x8f3c...  │  │             │  │           │ │
+│  │   [50%]     │  │   [30%]     │  │             │  │           │ │
+│  └─────────────┘  └─────────────┘  └─────────────┘  └───────────┘ │
+│                                                                     │
+│  Remaining: 20% → [ Burn / Donate to Charity / Add More ]          │
+│                                                                     │
+│  [ ← Back ]                              [ Continue → ]             │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│  STEP 3: CONFIGURE TRIGGERS                                         │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  How should Eterna know when to execute your will?                  │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  ☐ Inactivity Period                                        │   │
+│  │     If no activity for [ 6 ] months → trigger               │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  ☑ Guardian Consensus                                       │   │
+│  │     Require [ 2 ] out of [ 3 ] guardians to confirm         │   │
+│  │     Guardians: Sarah (0x71a2...), Mike (0x8f3c...),         │   │
+│  │                 Dr. Lee (0x9a4d...)                         │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  ☐ Oracle Verification (Advanced)                           │   │
+│  │     External death certificate verification                   │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  [ ← Back ]                              [ Continue → ]             │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│  STEP 4: REVIEW & SIGN                                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  📜 YOUR DIGITAL WILL                                       │   │
+│  ├─────────────────────────────────────────────────────────────┤   │
+│  │                                                             │   │
+│  │  Owner: 0xAbC1... (You)                                     │   │
+│  │  Created: July 3, 2026                                      │   │
+│  │                                                             │   │
+│  │  BENEFICIARIES:                                             │   │
+│  │  • Sarah (Mother) — 50% — Immediate                         │   │
+│  │  • Mike (Brother) — 30% — After 1 year (age condition)      │   │
+│  │  • Charity: 0xDON8... — 20% — Immediate                     │   │
+│  │                                                             │   │
+│  │  TRIGGERS:                                                  │   │
+│  │  • Inactivity: 6 months                                     │   │
+│  │  • Guardian consensus: 2/3                                  │   │
+│  │                                                             │   │
+│  │  [ 🔒 View Encrypted Will Data on IPFS ]                    │   │
+│  │                                                             │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  [ ← Back ]                    [ ✍️ Sign & Deploy Will ]            │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 6.2 Wireframe: Beneficiary Notification
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  📧 EMAIL NOTIFICATION TO BENEFICIARY                               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  Subject: Important: Digital Assets from Alex                       │
+│                                                                     │
+│  ─────────────────────────────────────────────────────────────      │
+│                                                                     │
+│  Dear Sarah,                                                        │
+│                                                                     │
+│  This is an automated notification from Eterna — a digital          │
+│  inheritance service.                                               │
+│                                                                     │
+│  Alex (your son) has designated you as a beneficiary of their       │
+│  digital assets. The execution conditions of their will have        │
+│  been met, and assets are ready for distribution.                   │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  YOUR ALLOCATION                                            │   │
+│  │  • Amount: 2.5 ETH (~$6,250 USD)                            │   │
+│  │  • Status: Ready to Claim                                   │   │
+│  │  • Claim Deadline: 365 days from now                        │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  [ 🚀 How to Claim Your Assets ]  [ 📞 Contact Support ]           │
+│                                                                     │
+│  This is a sensitive matter. Please take your time and reach        │
+│  out if you need assistance.                                        │
+│                                                                     │
+│  ─ Eterna AI Agent                                                  │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 7. Data Model
+
+### 7.1 Database Schema (Simplified)
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                        DATA MODEL                                   │
+└─────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────────────┐      ┌──────────────────┐      ┌──────────────┐
+  │      USER        │      │      WILL        │      │  BENEFICIARY │
+  ├──────────────────┤      ├──────────────────┤      ├──────────────┤
+  │ id (UUID)        │◄────►│ id (UUID)        │◄────►│ id (UUID)    │
+  │ walletAddress    │      │ ownerId          │      │ willId       │
+  │ email            │      │ encryptedDataHash│      │ name         │
+  │ phone            │      │ status           │      │ walletAddress│
+  │ createdAt        │      │ inactivityPeriod │      │ percentage   │
+  │ lastLogin        │      │ lastHeartbeat    │      │ conditions   │
+  └──────────────────┘      │ guardianThreshold│      │ email        │
+                            │ createdAt        │      │ phone        │
+                            │ executedAt       │      │ status       │
+                            └──────────────────┘      └──────────────┘
+                                     │
+                                     ▼
+                            ┌──────────────────┐
+                            │    GUARDIAN      │
+                            ├──────────────────┤
+                            │ id (UUID)        │
+                            │ willId           │
+                            │ walletAddress    │
+                            │ name             │
+                            │ hasVoted         │
+                            │ vote             │
+                            │ votedAt          │
+                            └──────────────────┘
+                                     │
+                                     ▼
+                            ┌──────────────────┐
+                            │ EXECUTION_LOG    │
+                            ├──────────────────┤
+                            │ id (UUID)        │
+                            │ willId           │
+                            │ triggerType      │
+                            │ confidenceScore  │
+                            │ txHash           │
+                            │ executedAt       │
+                            │ status           │
+                            └──────────────────┘
+```
+
+---
+
+## 8. API Specification
+
+### 8.1 Core Endpoints
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| POST | `/api/wills` | Create new will | Wallet Signature |
+| GET | `/api/wills/:id` | Get will details | Wallet Signature |
+| PUT | `/api/wills/:id` | Update will | Wallet Signature |
+| POST | `/api/wills/:id/heartbeat` | Send heartbeat | Wallet Signature |
+| POST | `/api/guardians/vote` | Guardian vote | Wallet Signature |
+| POST | `/api/execute/:willId` | Trigger execution | AI Agent Only |
+| GET | `/api/beneficiaries/:willId` | Get beneficiary info | Email Token |
+| POST | `/api/beneficiaries/claim` | Claim assets | Wallet Signature |
+
+### 8.2 Example: Create Will
+
+```json
+// POST /api/wills
+// Headers: x-wallet-signature: <signed_message>
+
+{
+  "owner": "0xAbC123...",
+  "beneficiaries": [
+    {
+      "name": "Sarah Johnson",
+      "walletAddress": "0x71a2...",
+      "percentage": 50,
+      "conditions": {
+        "type": "immediate",
+        "delay": 0
+      },
+      "contact": {
+        "email": "sarah@email.com",
+        "phone": "+1-555-0123"
+      }
+    },
+    {
+      "name": "Mike Johnson",
+      "walletAddress": "0x8f3c...",
+      "percentage": 30,
+      "conditions": {
+        "type": "delayed",
+        "delay": "1 year"
+      }
+    }
+  ],
+  "charity": {
+    "walletAddress": "0xDON8...",
+    "percentage": 20
+  },
+  "triggers": {
+    "inactivityPeriod": 180,
+    "guardianThreshold": 2,
+    "guardians": [
+      "0xGuard1...",
+      "0xGuard2...",
+      "0xGuard3..."
+    ]
+  },
+  "heartbeatFrequency": 30
+}
+```
+
+---
+
+## 9. Security & Privacy
+
+### 9.1 Security Measures
+
+| Layer | Measure | Implementation |
+|-------|---------|----------------|
+| **Data Encryption** | Will data encrypted before IPFS storage | AES-256 + owner public key |
+| **Access Control** | Only owner can modify will | Smart contract ownership |
+| **Execution Safety** | Multi-layer trigger prevents false execution | Confidence scoring (≥0.7) |
+| **Guardian Integrity** | Guardians cannot collude easily | Minimum 3 guardians, threshold 2/3 |
+| **Audit Trail** | All actions logged on-chain | ExecutionLog contract |
+| **Emergency Stop** | Owner can pause/cancel will | Pause mechanism in contract |
+
+### 9.2 Privacy Considerations
+
+- Will content (beneficiary details, amounts) dienkripsi — hanya hash yang on-chain
+- Beneficiary identity tidak terexpos sampai execution
+- Guardian tidak tahu isi will, hanya bisa vote "deceased" atau not
+
+---
+
+## 10. Hackathon Demo Plan
+
+### 10.1 Demo Script (3 Minutes)
+
+| Time | Action | What to Show |
+|------|--------|--------------|
+| 0:00-0:30 | **Hook** | "What happens to your crypto when you die? $140B is lost forever." |
+| 0:30-1:00 | **Setup Will** | Alex connects wallet → adds Sarah & Mike → sets 50/30/20 split → configures triggers |
+| 1:00-1:30 | **Simulate Inactivity** | Show dashboard: "Alex hasn't checked in for 6 months" |
+| 1:30-2:00 | **Guardian Vote** | Show 2/3 guardians voting "deceased" → AI calculates confidence score: 0.85 |
+| 2:00-2:30 | **Execution** | AI Agent triggers will → assets distributed → on-chain tx confirmed |
+| 2:30-3:00 | **Beneficiary View** | Sarah receives email → opens claim portal → sees her 2.5 ETH allocation |
+
+### 10.2 Technical Stack for Hackathon
+
+| Layer | Technology | Rationale |
+|-------|-----------|-----------|
+| **Frontend** | Next.js + TailwindCSS | Fast development, great UI |
+| **Smart Contracts** | Solidity + Hardhat | EVM compatible, judges familiar |
+| **Deployment** | Base Sepolia / Sepolia | Free testnet ETH, fast finality |
+| **Storage** | IPFS (Pinata) | Decentralized, free tier |
+| **AI/Backend** | Node.js + OpenAI API | Quick setup, powerful LLM |
+| **Notifications** | SendGrid (email) | Free tier, reliable |
+| **Wallet** | RainbowKit | Best UX for wallet connection |
+
+---
+
+## 11. Future Roadmap
+
+### 11.1 Post-Hackathon
+
+| Phase | Timeline | Features |
+|-------|----------|----------|
+| **MVP** | Month 1-2 | Core will creation + execution on testnet |
+| **Beta** | Month 3-4 | Mainnet launch, multi-chain support (Ethereum, Base, Arbitrum) |
+| **v1.0** | Month 5-6 | Guardian mobile app, advanced conditions, NFT inheritance |
+| **v2.0** | Month 7-12 | Legal integration (notary verification), insurance partnership, DAO governance |
+
+---
+
+## 12. Appendices
+
+### 12.1 Glossary
+
+| Term | Definition |
+|------|------------|
+| **Will** | Digital document yang mendefinisikan distribusi aset |
+| **Heartbeat** | Signal dari owner yang menandakan "masih hidup" |
+| **Guardian** | Trusted party yang bisa vote untuk trigger execution |
+| **Trigger** | Condition yang memicu eksekusi will |
+| **Confidence Score** | AI-calculated probability bahwa owner telah meninggal |
+
+### 12.2 Risk Assessment
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|------------|
+| False execution | Low | Critical | Multi-layer trigger + high confidence threshold |
+| Smart contract bug | Medium | High | Audit by reputable firm post-hackathon |
+| Guardian collusion | Low | High | Minimum 3 guardians, diverse selection |
+| Regulatory uncertainty | Medium | Medium | Consult legal counsel, design for compliance |
+
+---
+
+## 13. Team Roles (Hackathon)
+
+| Role | Responsibility |
+|------|----------------|
+| **Smart Contract Dev** | Build EternaWill, Guardian, Distribution contracts |
+| **Frontend Dev** | Will builder UI, beneficiary portal, dashboard |
+| **AI/Backend Dev** | Trigger monitor, execution engine, notification service |
+| **Designer** | UI/UX, branding, demo presentation |
+
+---
+
+**Dokumen ini siap digunakan untuk hackathon.** Apakah kamu ingin saya:
+1. 📝 **Detailkan smart contract code** (Solidity)?
+2. 🎨 **Buatkan wireframe lebih detail** (Figma-style)?
+3. 🚀 **Buatkan pitch deck** untuk presentasi ke judges?
+4. 💻 **Buatkan starter code / boilerplate** untuk hackathon?

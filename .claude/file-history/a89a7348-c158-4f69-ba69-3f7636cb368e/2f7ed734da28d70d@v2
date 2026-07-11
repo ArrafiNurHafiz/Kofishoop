@@ -1,0 +1,10 @@
+import { hardhat } from "viem/chains";
+
+export const config = {
+  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "",
+  contractAddress: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "0x...",
+  chainId: parseInt(process.env.NEXT_PUBLIC_CHAIN_ID || "31337", 10),
+  rpcUrl: process.env.NEXT_PUBLIC_RPC_URL || "http://127.0.0.1:8545",
+  backendUrl: process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001",
+  isLocal: true,
+};

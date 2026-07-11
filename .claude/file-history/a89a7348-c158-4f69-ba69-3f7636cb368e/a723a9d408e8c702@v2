@@ -1,0 +1,334 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { useAccount } from "wagmi";
+import NavBar from "@/components/NavBar";
+import {
+  getWill,
+  getWillStatus,
+  getBeneficiaries,
+  getGuardians,
+  checkExecutable,
+  isGuardian,
+  sendHeartbeat,
+  voteAsGuardian,
+  WILL_STATUS,
+} from "@/lib/eterna";
+
+export default function WillDetailPage() {
+  const { id } = useParams<{ id: string }>();
+  const { address } = useAccount();
+  const willId = BigInt(id);
+
+  const [will, setWill] = useState<any>(null);
+  const [status, setStatus] = useState<any>(null);
+  const [beneficiaries, setBeneficiaries] = useState<any[]>([]);
+  const [guardians, setGuardians] = useState<any[]>([]);
+  const [executable, setExecutable] = useState<boolean | null>(null);
+  const [confidence, setConfidence] = useState(0);
+  const [isUserGuardian, setIsUserGuardian] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [heartbeatLoading, setHeartbeatLoading] = useState(false);
+  const [heartbeatMsg, setHeartbeatMsg] = useState("");
+  const [guardianVoting, setGuardianVoting] = useState(false);
+  const [guardianError, setGuardianError] = useState("");
+
+  useEffect(() => {
+    loadData();
+  }, [id, address]);
+
+  async function loadData() {
+    setLoading(true);
+    try {
+      const [w, s, b, g, e] = await Promise.all([
+        getWill(willId),
+        getWillStatus(willId),
+        getBeneficiaries(willId),
+        getGuardians(willId),
+        checkExecutable(willId),
+      ]);
+      setWill(w);
+      setStatus(s);
+      setBeneficiaries([...b]);
+      setGuardians([...g]);
+      setExecutable(e[0]);
+      setConfidence(Number(e[1]));
+
+      if (address) {
+        const isG = await isGuardian(willId, address);
+        setIsUserGuardian(isG);
+      }
+    } catch (err) {
+      console.error("Error loading will:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const handleHeartbeat = async () => {
+    setHeartbeatLoading(true);
+    setHeartbeatMsg("");
+    try {
+      await sendHeartbeat(willId);
+      setHeartbeatMsg("Heartbeat registered successfully!");
+      loadData();
+    } catch (err: any) {
+      setHeartbeatMsg(err?.shortMessage || "Failed to send heartbeat");
+    } finally {
+      setHeartbeatLoading(false);
+    }
+  };
+
+  const handleGuardianVote = async (deceased: boolean) => {
+    setGuardianVoting(true);
+    setGuardianError("");
+    try {
+      await voteAsGuardian(willId, deceased);
+      loadData();
+    } catch (err: any) {
+      setGuardianError(err?.shortMessage || "Vote failed");
+    } finally {
+      setGuardianVoting(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex-1 flex flex-col">
+        <NavBar />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="flex flex-col items-center gap-3">
+            <div className="skeleton h-8 w-48" />
+            <div className="skeleton h-4 w-32" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!will) {
+    return (
+      <div className="flex-1 flex flex-col">
+        <NavBar />
+        <div className="flex-1 flex items-center justify-center px-4">
+          <div className="card text-center py-12 max-w-md">
+            <div className="text-3xl mb-3" aria-hidden="true">📄</div>
+            <h2 className="text-xl font-semibold mb-2">Will Not Found</h2>
+            <p className="text-sm text-[#a1a1aa]">This will does not exist or could not be loaded.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const willStatus = Number(will.status);
+  const isOwner = address && will.owner.toLowerCase() === address.toLowerCase();
+  const inactivityScore = status ? Number(status[2]) : 0;
+  const guardianScore = status ? Number(status[3]) : 0;
+  const lastHeartbeat = will.lastHeartbeat ? Number(will.lastHeartbeat) : 0;
+  const myGuardianVote = guardians.find(
+    (g: any) => address && g.wallet.toLowerCase() === address.toLowerCase()
+  );
+
+  return (
+    <div className="flex-1 flex flex-col">
+      <NavBar />
+
+      <main className="flex-1 max-w-4xl mx-auto px-6 py-10 w-full">
+        {/* Header */}
+        <div className="flex items-start justify-between mb-10">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Will #{id}</h1>
+            <p className="text-sm text-[#a1a1aa] mt-1.5">
+              Created {new Date(Number(will.createdAt) * 1000).toLocaleDateString()}
+            </p>
+          </div>
+          <span
+            className={`badge ${
+              willStatus === 0 ? "badge-active" : willStatus === 1 ? "badge-executed" : "badge-revoked"
+            }`}
+          >
+            {WILL_STATUS[willStatus]}
+          </span>
+        </div>
+
+        {/* Status cards */}
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <div className="card">
+            <p className="text-xs text-[#52525b] font-medium uppercase tracking-wider mb-1.5">Confidence</p>
+            <p className="text-2xl font-bold gradient-text tabular-nums">
+              {Math.max(inactivityScore, guardianScore) / 100}%
+            </p>
+          </div>
+          <div className="card">
+            <p className="text-xs text-[#52525b] font-medium uppercase tracking-wider mb-1.5">Inactivity</p>
+            <div className="flex items-end gap-2">
+              <p className="text-2xl font-bold tabular-nums">{inactivityScore / 100}%</p>
+              <div className="flex-1 h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                <div
+                  className="h-full rounded-full transition-all"
+                  style={{
+                    width: `${Math.min(100, inactivityScore / 100)}%`,
+                    background: "rgb(212, 168, 83)",
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <p className="text-xs text-[#52525b] font-medium uppercase tracking-wider mb-1.5">Guardian Consensus</p>
+            <div className="flex items-end gap-2">
+              <p className="text-2xl font-bold tabular-nums">{guardianScore / 100}%</p>
+              <div className="flex-1 h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                <div
+                  className="h-full rounded-full transition-all"
+                  style={{
+                    width: `${Math.min(100, guardianScore / 100)}%`,
+                    background: "rgb(212, 168, 83)",
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <p className="text-xs text-[#52525b] font-medium uppercase tracking-wider mb-1.5">Last Heartbeat</p>
+            <p className="text-2xl font-bold tabular-nums">
+              {lastHeartbeat > 0
+                ? new Date(lastHeartbeat * 1000).toLocaleDateString()
+                : "—"}
+            </p>
+          </div>
+        </div>
+
+        {/* Owner Actions */}
+        {isOwner && willStatus === 0 && (
+          <div className="card card-glow mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="font-semibold text-[#f5f5f5]">Owner Actions</h3>
+                <p className="text-sm text-[#a1a1aa] mt-0.5">Send a heartbeat to prove you are active</p>
+              </div>
+              <button
+                onClick={handleHeartbeat}
+                disabled={heartbeatLoading}
+                className="btn-primary"
+              >
+                {heartbeatLoading ? (
+                  <span className="inline-flex items-center gap-2">
+                    <span className="w-4 h-4 border-2 border-[rgba(12,12,12,0.3)] border-t-[#0c0c0c] rounded-full animate-spin" />
+                    Sending...
+                  </span>
+                ) : (
+                  "Send Heartbeat"
+                )}
+              </button>
+            </div>
+            {heartbeatMsg && (
+              <p
+                className={`text-sm mt-3 ${
+                  heartbeatMsg.includes("success") ? "text-[#4ade80]" : "text-[#f87171]"
+                }`}
+              >
+                {heartbeatMsg}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Guardian Vote */}
+        {isUserGuardian && willStatus === 0 && myGuardianVote && !myGuardianVote.hasVoted && (
+          <div className="card card-glow border-[rgba(212,168,83,0.15)] mb-8">
+            <h3 className="font-semibold mb-1">Guardian Vote Required</h3>
+            <p className="text-sm text-[#a1a1aa] mb-4">
+              As a guardian for this will, please confirm whether you believe the owner is deceased.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => handleGuardianVote(true)}
+                disabled={guardianVoting}
+                className="btn-primary"
+              >
+                {guardianVoting ? "Voting..." : "Owner is Deceased"}
+              </button>
+              <button
+                onClick={() => handleGuardianVote(false)}
+                disabled={guardianVoting}
+                className="btn-secondary"
+              >
+                Owner is Alive
+              </button>
+            </div>
+            {guardianError && (
+              <p className="text-sm text-[#f87171] mt-2">{guardianError}</p>
+            )}
+          </div>
+        )}
+
+        {isUserGuardian && willStatus === 0 && myGuardianVote?.hasVoted && (
+          <div className="card border-[rgba(74,222,128,0.1)] mb-8">
+            <p className="text-sm text-[#4ade80]">You have voted as a guardian</p>
+          </div>
+        )}
+
+        {/* Beneficiaries */}
+        <Section title="Beneficiaries">
+          {beneficiaries.length === 0 ? (
+            <p className="text-sm text-[#52525b] py-2">No beneficiaries configured</p>
+          ) : (
+            <div className="divide-y divide-white/[0.04]">
+              {beneficiaries.map((b: any, i: number) => (
+                <div key={i} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
+                  <div>
+                    <p className="font-medium text-[#f5f5f5]">{b.name}</p>
+                    <p className="text-xs text-[#52525b] font-mono">{b.wallet}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-bold gradient-text tabular-nums">{Number(b.percentage) / 100}%</p>
+                    <p className="text-xs text-[#52525b]">
+                      {b.claimed ? "Claimed" : Number(b.delaySeconds) > 0 ? `Delayed ${Number(b.delaySeconds) / 86400}d` : "Pending"}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </Section>
+
+        {/* Guardians */}
+        <Section title="Guardians">
+          {guardians.length === 0 ? (
+            <p className="text-sm text-[#52525b] py-2">No guardians configured</p>
+          ) : (
+            <div className="divide-y divide-white/[0.04]">
+              {guardians.map((g: any, i: number) => (
+                <div key={i} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
+                  <div>
+                    <p className="font-medium text-[#f5f5f5]">{g.name}</p>
+                    <p className="text-xs text-[#52525b] font-mono">{g.wallet}</p>
+                  </div>
+                  <span
+                    className={`text-sm ${
+                      g.hasVoted ? (g.vote ? "text-[#4ade80]" : "text-[#a1a1aa]") : "text-[#52525b]"
+                    }`}
+                  >
+                    {g.hasVoted ? (g.vote ? "Voted: Deceased" : "Voted: Alive") : "Not voted"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+        </Section>
+      </main>
+    </div>
+  );
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="card mb-5">
+      <h3 className="font-semibold text-[#f5f5f5] mb-3">{title}</h3>
+      {children}
+    </div>
+  );
+}

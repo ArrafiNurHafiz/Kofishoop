@@ -1,0 +1,58 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('pois', function (Blueprint $table) {
+            // Contact
+            $table->string('phone', 30)->nullable()->after('photo_url');
+            $table->string('whatsapp', 30)->nullable()->after('phone');
+            $table->string('website', 255)->nullable()->after('whatsapp');
+
+            // Google Maps references
+            $table->string('google_place_id', 255)->nullable()->after('website');
+            $table->string('google_maps_url', 255)->nullable()->after('google_place_id');
+
+            // Ratings & reviews
+            $table->decimal('rating', 2, 1)->nullable()->after('google_maps_url');
+            $table->unsignedInteger('review_count')->default(0)->after('rating');
+
+            // Business status
+            $table->string('business_status', 30)->nullable()->after('review_count')
+                  ->comment('operational, closed_temporarily, closed_permanently');
+
+            // Structured JSON data
+            $table->json('photos')->nullable()->after('business_status');
+            $table->json('facilities')->nullable()->after('photos');
+            $table->json('payment_methods')->nullable()->after('facilities');
+            $table->json('opening_hours_details')->nullable()->after('payment_methods');
+            $table->json('social_media')->nullable()->after('opening_hours_details');
+            $table->string('menu_url', 255)->nullable()->after('social_media');
+            $table->string('popularity', 20)->nullable()->after('menu_url')
+                  ->comment('high, medium, low');
+            $table->boolean('is_verified')->default(false)->after('popularity');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('pois', function (Blueprint $table) {
+            $table->dropColumn([
+                'phone', 'whatsapp', 'website',
+                'google_place_id', 'google_maps_url',
+                'rating', 'review_count', 'business_status',
+                'photos', 'facilities', 'payment_methods',
+                'opening_hours_details', 'social_media',
+                'menu_url', 'popularity', 'is_verified',
+            ]);
+        });
+    }
+};

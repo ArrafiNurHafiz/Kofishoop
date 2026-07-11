@@ -1,0 +1,9 @@
+{
+  "id": "19",
+  "subject": "Refactor routers — use shared log_activity",
+  "description": "Replace duplicated log_activity with shared function from utils",
+  "activeForm": "Refactoring routers",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

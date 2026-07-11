@@ -1,0 +1,9 @@
+{
+  "id": "25",
+  "subject": "Perbaiki T4: Config production defaults + T5: backup + T6: monitoring",
+  "description": "Hapus dev defaults di production, buat script backup DB, dokumentasi monitoring",
+  "activeForm": "Memperbaiki config & deployment",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

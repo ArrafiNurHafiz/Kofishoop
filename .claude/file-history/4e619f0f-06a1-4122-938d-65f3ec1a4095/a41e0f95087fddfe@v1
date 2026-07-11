@@ -1,0 +1,528 @@
+<div
+  x-data="sidebarState()"
+  x-init="initSidebar()"
+  class="sidebar-context flex flex-col h-full bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 shadow-lg md:shadow-none"
+>
+  {{-- Mobile drag handle --}}
+  <div x-show="$store.sidebar.isMobileSheet"
+    class="md:hidden flex justify-center pt-2 pb-1 cursor-grab active:cursor-grabbing select-none"
+    @touchstart="$store.sidebar.onTouchStart($event)"
+  >
+    <div class="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+  </div>
+  {{-- Search Input --}}
+  <div class="px-4 pt-4 pb-2">
+    <div class="relative">
+      <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+      <input
+        type="text"
+        x-model="searchQuery"
+        @input.debounce="onSearchInput"
+        placeholder="Cari tempat, kuliner, atau destinasi..."
+        class="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition"
+      />
+    </div>
+  </div>
+
+  {{-- Filter Chips --}}
+  <div class="px-4 pb-2 overflow-x-auto scrollbar-hide">
+    <div class="flex flex-wrap gap-1.5">
+
+      {{-- Kategori Chips --}}
+      <template x-for="chip in filterOptions.categories" :key="chip.value">
+        <button
+          @click="toggleChip('categories', chip.value)"
+          :class="activeFilters.categories.includes(chip.value)
+            ? 'bg-emerald-600 text-white border-emerald-600'
+            : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700'"
+          class="px-3 py-1.5 text-xs font-medium rounded-full border transition-colors whitespace-nowrap"
+          x-text="chip.label"
+        ></button>
+      </template>
+
+      {{-- Harga Chips --}}
+      <template x-for="chip in filterOptions.prices" :key="chip.value">
+        <button
+          @click="toggleChip('prices', chip.value)"
+          :class="activeFilters.prices.includes(chip.value)
+            ? 'bg-emerald-600 text-white border-emerald-600'
+            : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700'"
+          class="px-3 py-1.5 text-xs font-medium rounded-full border transition-colors whitespace-nowrap"
+          x-text="chip.label"
+        ></button>
+      </template>
+
+      {{-- Dekat Halte Chip --}}
+      <button
+        @click="$store.filters.nearTransit = !$store.filters.nearTransit; activeFilters.nearStop = $store.filters.nearTransit; window.refreshMap()"
+        :class="$store.filters.nearTransit
+          ? 'bg-emerald-600 text-white border-emerald-600'
+          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700'"
+        class="px-3 py-1.5 text-xs font-medium rounded-full border transition-colors whitespace-nowrap flex items-center gap-1"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+        </svg>
+        <span>Dekat Halte</span>
+      </button>
+    </div>
+  </div>
+
+  {{-- Tab Switcher --}}
+  <div class="px-4 pb-3">
+    <div class="flex bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+      <button
+        @click="tab = 'poi'"
+        :class="tab === 'poi'
+          ? 'bg-white dark:bg-gray-700 shadow-sm text-gray-900 dark:text-gray-100'
+          : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'"
+        class="flex-1 py-2 text-sm font-medium rounded-lg transition-all"
+      >
+        POI
+        <span x-show="totalPoiCount > 0" class="ml-1 text-xs opacity-70" x-text="`(${totalPoiCount})`"></span>
+      </button>
+      <button
+        @click="tab = 'itinerary'"
+        :class="tab === 'itinerary'
+          ? 'bg-white dark:bg-gray-700 shadow-sm text-gray-900 dark:text-gray-100'
+          : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'"
+        class="flex-1 py-2 text-sm font-medium rounded-lg transition-all"
+      >
+        Rencana
+        <span x-show="$store.itinerary.items.length > 0" class="ml-1 text-xs opacity-70" x-text="`(${$store.itinerary.items.length})`"></span>
+      </button>
+    </div>
+  </div>
+
+  {{-- POI List Tab --}}
+  <div x-show="tab === 'poi'" class="flex-1 overflow-y-auto px-4 pb-4 space-y-2.5">
+    {{-- Loading State --}}
+    <template x-if="loading">
+      <div class="flex flex-col items-center justify-center py-12 text-gray-400 dark:text-gray-500">
+        <svg class="animate-spin h-8 w-8 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+        <span class="text-sm">Memuat data...</span>
+      </div>
+    </template>
+
+    {{-- Error State --}}
+    <template x-if="!loading && error">
+      <div class="flex flex-col items-center justify-center py-12 text-red-400">
+        <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <p class="text-sm font-medium">Gagal memuat data</p>
+        <p class="text-xs mt-1 text-red-300" x-text="error"></p>
+        <button @click="resetAndFetch()" class="mt-3 px-4 py-2 text-xs font-medium bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors">Coba Lagi</button>
+      </div>
+    </template>
+
+    {{-- Empty State --}}
+    <template x-if="!loading && pois.length === 0">
+      <div class="flex flex-col items-center justify-center py-16 text-gray-400 dark:text-gray-500">
+        <svg class="w-12 h-12 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        <p class="text-sm font-medium">Tidak ada POI ditemukan</p>
+        <p class="text-xs mt-1">Coba ubah filter atau kata kunci pencarian</p>
+      </div>
+    </template>
+
+    {{-- POI Cards --}}
+    <template x-for="poi in pois" :key="poi.id">
+      <div
+        @click="$dispatch('poi-selected', { poi })"
+        class="group flex gap-3 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 hover:border-emerald-300 dark:hover:border-emerald-700 cursor-pointer transition-all shadow-sm hover:shadow-md"
+      >
+        {{-- Icon / Emoji --}}
+        <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 flex items-center justify-center text-xl overflow-hidden">
+          <template x-if="poi.thumb">
+            <img :src="poi.thumb" :alt="poi.name" class="w-full h-full object-cover rounded-lg" />
+          </template>
+          <template x-if="!poi.thumb">
+            <span x-html="getCategoryIcon(poi.category?.slug)"></span>
+          </template>
+        </div>
+
+        {{-- Content --}}
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-1">
+            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors" x-text="poi.name"></h3>
+            {{-- Transit Score Badge --}}
+            <span
+              x-show="poi.transit_friendliness_score != null"
+              :class="scoreColor(poi.transit_friendliness_score)"
+              class="flex-shrink-0 px-1.5 py-0.5 text-xs font-bold rounded-md leading-tight"
+              x-text="poi.transit_friendliness_score"
+            ></span>
+          </div>
+
+          {{-- Category Label --}}
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5" x-text="poi.category?.name"></p>
+
+          {{-- Tags & Info Row --}}
+          <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+            {{-- Price Range --}}
+            <span
+              x-show="poi.price_range === 'low'"
+              class="inline-flex items-center gap-0.5 text-xs text-emerald-600 dark:text-emerald-400"
+            >
+              <span>$</span><span class="text-gray-300 dark:text-gray-600">$$</span>
+            </span>
+            <span
+              x-show="poi.price_range === 'medium'"
+              class="inline-flex items-center gap-0.5 text-xs text-amber-600 dark:text-amber-400"
+            >
+              <span>$$</span><span class="text-gray-300 dark:text-gray-600">$</span>
+            </span>
+            <span
+              x-show="poi.price_range === 'high'"
+              class="inline-flex items-center gap-0.5 text-xs text-red-600 dark:text-red-400"
+            >
+              <span>$$$</span>
+            </span>
+
+            {{-- Nearest Stop --}}
+            <template x-if="poi.nearest_stop">
+              <span class="inline-flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                </svg>
+                <span x-text="poi.nearest_stop.name"></span>
+                <span>·</span>
+                <span x-text="`${poi.nearest_stop.walking_minutes} mnt`"></span>
+              </span>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    {{-- Load More --}}
+    <template x-if="hasMore && !loading">
+      <div class="text-center py-3">
+        <button
+          @click="loadMore"
+          class="px-6 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 rounded-xl transition-colors"
+        >
+          Muat Lebih Banyak
+        </button>
+      </div>
+    </template>
+  </div>
+
+  {{-- Rencana / Itinerary Tab --}}
+  <div x-show="tab === 'itinerary'" class="flex-1 overflow-y-auto px-4 pb-4">
+
+    {{-- State: already built (has items) --}}
+    <template x-if="$store.itinerary.items.length > 0">
+      <div class="space-y-4">
+        {{-- AI Narrative --}}
+        <template x-if="$store.itinerary.ai_narrative">
+          <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/30 dark:to-teal-900/20 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800">
+            <div class="flex items-start gap-2">
+              <svg class="w-5 h-5 mt-0.5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+              <div>
+                <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider mb-1">Saran AI</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed" x-text="$store.itinerary.ai_narrative"></p>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        {{-- Timeline --}}
+        <div class="relative">
+          <div class="absolute left-[11px] top-3 bottom-3 w-0.5 bg-emerald-200 dark:bg-emerald-800"></div>
+          <template x-for="(item, index) in $store.itinerary.items" :key="item.id || index">
+            <div class="relative pl-8 pb-5 last:pb-0">
+              <div :class="index === 0 ? 'bg-emerald-500 ring-4 ring-emerald-100 dark:ring-emerald-900/50' : 'bg-emerald-300 dark:bg-emerald-700'"
+                class="absolute left-0 top-1.5 w-[22px] h-[22px] rounded-full flex items-center justify-center text-[10px] font-bold text-white" x-text="index + 1"></div>
+              <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate" x-text="item.poi_name || item.poi?.name"></h4>
+                  <span x-show="item.visit_order" class="text-[10px] text-gray-400 font-medium" x-text="'Urutan #' + item.visit_order"></span>
+                </div>
+                <div class="flex items-center gap-3 mt-2 text-xs text-gray-500 dark:text-gray-400">
+                  <template x-if="item.estimated_arrival_time">
+                    <span class="inline-flex items-center gap-1">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <span x-text="item.estimated_arrival_time"></span>
+                    </span>
+                  </template>
+                  <template x-if="item.suggested_stop_name || item.suggestedTransitStop?.name">
+                    <span class="inline-flex items-center gap-1">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                      <span x-text="item.suggested_stop_name || item.suggestedTransitStop?.name"></span>
+                    </span>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <template x-if="$store.itinerary.total_estimated_minutes">
+          <div class="flex items-center gap-2 px-1 py-2 text-sm text-gray-500 dark:text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Estimasi total: <strong class="text-gray-700 dark:text-gray-200" x-text="$store.itinerary.total_estimated_minutes + ' menit'"></strong></span>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    {{-- State: accumulated POIs, not yet built --}}
+    <template x-if="$store.itinerary.items.length === 0 && $store.itinerary.selectedIds.length > 0">
+      <div class="space-y-4">
+        <div class="bg-blue-50 rounded-xl p-4 border border-blue-200">
+          <p class="text-sm font-medium text-blue-800">POI terpilih: <span x-text="$store.itinerary.selectedIds.length"></span></p>
+          <p class="text-xs text-blue-600 mt-1">Klik tombol di bawah untuk menyusun rencana perjalanan.</p>
+        </div>
+
+        <div class="space-y-2">
+          <template x-for="(id, idx) in $store.itinerary.selectedIds" :key="id">
+            <div class="flex items-center justify-between bg-white rounded-xl border border-gray-200 p-3 shadow-sm">
+              <span class="text-sm font-medium text-gray-900" x-text="'POI #' + id"></span>
+              <button @click="$store.itinerary.removePoi(id)"
+                class="text-xs text-red-500 hover:text-red-700 font-medium">Hapus</button>
+            </div>
+          </template>
+        </div>
+
+        <button @click="$store.itinerary.build()"
+          class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-colors text-sm">
+          Susun Rencana Perjalanan
+        </button>
+
+        <button @click="$store.itinerary.selectedIds = []; $dispatch('itinerary-updated')"
+          class="w-full py-2 text-sm text-gray-500 hover:text-gray-700 font-medium text-center">
+          Hapus Semua
+        </button>
+      </div>
+    </template>
+
+    {{-- State: empty --}}
+    <template x-if="$store.itinerary.items.length === 0 && $store.itinerary.selectedIds.length === 0">
+      <div class="flex flex-col items-center justify-center py-16 text-gray-400 dark:text-gray-500">
+        <svg class="w-12 h-12 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+        </svg>
+        <p class="text-sm font-medium">Belum ada rencana perjalanan</p>
+        <p class="text-xs mt-1 text-center max-w-[200px]">Klik POI di peta atau daftar, lalu tambahkan ke rencana perjalanan</p>
+      </div>
+    </template>
+  </div>
+
+  {{-- Sidebar Toggle Button (floating) --}}
+  <button
+    @click="$dispatch('toggle-sidebar')"
+    class="absolute -right-3 top-4 w-6 h-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-md flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+  >
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+</div>
+
+{{-- Alpine Component State --}}
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('sidebarState', () => ({
+      tab: 'poi',
+      searchQuery: '',
+      loading: false,
+      loadingMore: false,
+      error: null,
+      pois: [],
+      searchResults: [],
+      page: 1,
+      hasMore: false,
+      totalPoiCount: 0,
+
+      activeFilters: {
+        categories: [],
+        prices: [],
+        nearStop: false,
+      },
+
+      filterOptions: {
+        categories: [
+          { label: 'Kuliner', value: 'kuliner' },
+          { label: 'Wisata', value: 'wisata' },
+          { label: 'Penginapan', value: 'penginapan' },
+        ],
+        prices: [
+          { label: 'Rendah', value: 'low' },
+          { label: 'Sedang', value: 'medium' },
+          { label: 'Tinggi', value: 'high' },
+        ],
+      },
+
+      getCategoryIcon(slug) {
+        const icons = {
+          'kuliner': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>',
+          'wisata': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>',
+          'penginapan': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>',
+        };
+        return icons[slug] || '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>';
+      },
+
+      scoreColor(score) {
+        if (score >= 8) return 'bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300';
+        if (score >= 7) return 'bg-amber-100 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300';
+        return 'bg-red-100 dark:bg-red-900/60 text-red-700 dark:text-red-300';
+      },
+
+      toggleChip(group, value) {
+        const target = this.activeFilters[group];
+        const idx = target.indexOf(value);
+        if (idx > -1) {
+          target.splice(idx, 1);
+        } else {
+          target.push(value);
+        }
+
+        // Update Alpine.store('filters')
+        const store = Alpine.store('filters');
+        if (group === 'categories') store.categories = [...this.activeFilters.categories];
+        if (group === 'prices') store.priceRange = this.activeFilters.prices[0] || null;
+        store.nearTransit = this.activeFilters.nearStop;
+
+        this.resetAndFetch();
+        if (window.refreshMap) window.refreshMap();
+      },
+
+      onSearchInput() {
+        if (!this.searchQuery.trim()) {
+          this.searchResults = [];
+          Alpine.store('filters').query = '';
+          this.resetAndFetch();
+          if (window.refreshMap) window.refreshMap();
+          return;
+        }
+        // Debounce: already handled by @input.debounce in template
+        this.loading = true;
+        fetch('/api/v1/search', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({query: this.searchQuery})
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(json) {
+          if (json.success) {
+            // Store results
+            this.searchResults = json.data.results;
+            this.pois = json.data.results;
+            this.totalPoiCount = json.data.results.length;
+
+            // Update filter store from parsed_filters
+            var pf = json.data.parsed_filters;
+            var store = Alpine.store('filters');
+            if (pf.category) store.categories = [pf.category];
+            if (pf.price_range) store.priceRange = pf.price_range;
+            if (pf.near_transit) store.nearTransit = true;
+            store.query = this.searchQuery;
+
+            // Update map
+            if (window.refreshMap) window.refreshMap();
+          }
+          this.loading = false;
+        }.bind(this))
+        .catch(function(err) {
+          console.error('Search failed:', err);
+          this.loading = false;
+          this.resetAndFetch();
+        }.bind(this));
+      },
+
+      resetAndFetch() {
+        this.page = 1;
+        this.pois = [];
+        this.error = null;
+        this.fetchPois();
+      },
+
+      async fetchPois() {
+        this.loading = this.page === 1;
+        this.loadingMore = this.page > 1;
+
+        try {
+          const params = new URLSearchParams();
+          params.set('per_page', '20');
+
+          if (this.searchQuery.trim()) {
+            params.set('search', this.searchQuery.trim());
+          }
+
+          if (this.activeFilters.categories.length === 1) {
+            params.set('category', this.activeFilters.categories[0]);
+          }
+
+          if (this.activeFilters.prices.length === 1) {
+            params.set('price_range', this.activeFilters.prices[0]);
+          }
+
+          if (this.activeFilters.nearStop) {
+            params.set('near_stop_id', 'all');
+            params.set('max_distance', '300');
+          }
+
+          params.set('page', this.page);
+
+          const res = await fetch(`/api/v1/pois?${params.toString()}`);
+          const json = await res.json();
+
+          if (json.success && json.data) {
+            // Normalise nearest_stop from pivot relationship
+            const normalised = json.data.map(poi => {
+              if (!poi.nearest_stop && poi.transit_stops && poi.transit_stops.length > 0) {
+                const sorted = [...poi.transit_stops].sort((a, b) => a.pivot?.distance_meters - b.pivot?.distance_meters);
+                const nearest = sorted[0];
+                poi.nearest_stop = {
+                  id: nearest.id,
+                  name: nearest.name,
+                  distance_meters: nearest.pivot?.distance_meters || 0,
+                  walking_minutes: nearest.pivot?.walking_minutes || 0,
+                };
+              }
+              return poi;
+            });
+
+            this.pois = [...this.pois, ...normalised];
+            this.totalPoiCount = json.meta?.pagination?.total || normalised.length;
+            const lastPage = json.meta?.pagination?.last_page || 1;
+            this.hasMore = this.page < lastPage;
+          }
+        } catch (err) {
+          console.error('Failed to fetch POIs:', err);
+          this.error = err.message || 'Terjadi kesalahan saat memuat data';
+        } finally {
+          this.loading = false;
+          this.loadingMore = false;
+        }
+      },
+
+      loadMore() {
+        this.page++;
+        this.fetchPois();
+      },
+
+      initSidebar() {
+        this.fetchPois();
+
+        // Listen for map-level load errors
+        window.addEventListener('load-error', (e) => {
+          if (e.detail?.message) {
+            this.error = e.detail.message;
+          }
+        });
+      },
+    }));
+  });
+</script>

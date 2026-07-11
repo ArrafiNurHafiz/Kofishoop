@@ -1,0 +1,9 @@
+{
+  "id": "14",
+  "subject": "Activity Log, Gamification & TOPSIS Detail",
+  "description": "Backend activity log table + endpoint, frontend di Admin & masing-masing dashboard",
+  "activeForm": "Membuat Activity Log",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

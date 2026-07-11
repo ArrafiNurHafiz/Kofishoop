@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Implement auth (JWT, bcrypt, middleware, dependencies)",
+  "description": "Buat auth.py (JWT sign/verify, cookie), dependencies.py (get_db, get_current_user, require_role), schemas.py (Pydantic models)",
+  "activeForm": "Implementing auth system",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

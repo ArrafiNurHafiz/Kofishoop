@@ -1,0 +1,9 @@
+{
+  "id": "13",
+  "subject": "PWA — Progressive Web App",
+  "description": "PWA manifest, service worker, install prompt, offline fallback",
+  "activeForm": "Membuat PWA",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "6",
+  "subject": "Upgrade Admin Dashboard — tabs, sort, auto-refresh, stat %",
+  "description": "Add tab sections (Overview/Verifikasi/Data), sortable tables with clickable headers, auto-refresh timer, stat cards with percentage change indicators",
+  "activeForm": "Meng-upgrade Admin Dashboard",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

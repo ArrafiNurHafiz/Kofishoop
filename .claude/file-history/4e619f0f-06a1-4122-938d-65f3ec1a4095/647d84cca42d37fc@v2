@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'TransitTrip - WebGIS Wisata Yogyakarta')</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#1a3a4a', light: '#234a5e', dark: '#112a36' },
+                        aksen: { DEFAULT: '#f5a623', light: '#f7b94d', dark: '#d48e1a' },
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @stack('head')
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased" :class="{'dark': $store.dark.on}">
+    <!-- Navbar -->
+    <nav class="bg-brand text-white px-4 sm:px-5 py-3 flex items-center gap-3 shadow-md relative z-[1000]">
+        <h1 class="text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap">Transit<span class="text-aksen">Trip</span></h1>
+        <div class="flex gap-1">
+            <button @click="$store.view.setTab('explore')"
+                :class="$store.view.tab === 'explore' ? 'bg-white/15 text-white font-semibold' : 'text-white/70 hover:text-white'"
+                class="px-2.5 sm:px-3 py-1.5 text-xs sm:text-sm rounded-lg transition-colors">Jelajahi</button>
+            <button @click="$store.view.loadInsight()"
+                :class="$store.view.tab === 'insight' ? 'bg-white/15 text-white font-semibold' : 'text-white/70 hover:text-white'"
+                class="px-2.5 sm:px-3 py-1.5 text-xs sm:text-sm rounded-lg transition-colors">Insight</button>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+            <button @click="$store.dark.toggle()"
+                class="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+                :title="$store.dark.on ? 'Mode Terang' : 'Mode Gelap'"
+                aria-label="Toggle dark mode">
+                <svg x-show="!$store.dark.on" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                </svg>
+                <svg x-show="$store.dark.on" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+            </button>
+            <span class="text-xs text-white/60 hidden sm:inline">Yogyakarta</span>
+        </div>
+    </nav>
+
+    <!-- Toast Notifications -->
+    <div aria-live="polite" aria-atomic="true" class="fixed top-16 right-4 z-[9999] flex flex-col gap-2 pointer-events-none">
+        <template x-for="(toast, i) in $store.toasts.items" :key="toast.id">
+            <div
+                x-show="toast.show"
+                x-transition:enter="transition-all duration-300 ease-out"
+                x-transition:enter-start="opacity-0 translate-x-4 scale-95"
+                x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                x-transition:leave="transition-all duration-200 ease-in"
+                x-transition:leave-start="opacity-100 translate-x-0 scale-100"
+                x-transition:leave-end="opacity-0 translate-x-4 scale-95"
+                class="pointer-events-auto max-w-sm w-full rounded-xl shadow-lg border px-4 py-3 flex items-start gap-3 text-sm"
+                :class="{
+                    'bg-emerald-600 text-white border-emerald-500': toast.type === 'success',
+                    'bg-red-600 text-white border-red-500': toast.type === 'error',
+                    'bg-blue-600 text-white border-blue-500': toast.type === 'info',
+                    'bg-amber-500 text-white border-amber-400': toast.type === 'warning',
+                }"
+            >
+                <template x-if="toast.type === 'success'">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </template>
+                <template x-if="toast.type === 'error'">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </template>
+                <template x-if="toast.type === 'info'">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </template>
+                <span class="flex-1" x-text="toast.message"></span>
+                <button @click="$store.toasts.dismiss(toast.id)" class="shrink-0 opacity-70 hover:opacity-100 transition-opacity" aria-label="Tutup">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </template>
+    </div>
+
+    <div x-data="appState()" x-init="initApp()" id="app" class="flex flex-col md:flex-row h-[calc(100vh-52px)] relative overflow-hidden">
+        <!-- Sidebar explore - mobile: bottom sheet, desktop: side panel -->
+        <aside x-show="$store.view.tab === 'explore'"
+            :class="{
+                'md:relative md:w-[340px] md:max-h-full md:border-r md:rounded-none shadow-lg md:shadow-none': true,
+                'fixed bottom-0 left-0 right-0 z-40 rounded-t-2xl max-h-[70vh] md:max-h-full border-t md:border-t-0': $store.sidebar.isMobileSheet
+            }"
+            class="bg-white border-gray-200 flex flex-col overflow-hidden shrink-0 transition-all duration-300"
+            x-cloak
+        >
+            @include('map._sidebar')
+        </aside>
+
+        <!-- Mobile sidebar backdrop -->
+        <div x-show="$store.view.tab === 'explore' && $store.sidebar.isMobileSheet" x-cloak
+            class="md:hidden fixed inset-0 bg-black/30 z-30"
+            @click="$store.sidebar.closeMobileSheet()"
+            x-transition:enter="transition-opacity duration-200"
+            x-transition:leave="transition-opacity duration-150"
+        ></div>
+
+        <!-- Map -->
+        <main class="flex-1 relative min-h-0">
+            @yield('content')
+            @include('map._itinerary')
+            @include('map._popup')
+        </main>
+
+        <!-- Insight panel -->
+        <aside x-show="$store.view.tab === 'insight'" x-cloak
+            :class="{
+                'md:relative md:w-[340px] md:border-l md:max-h-full': true,
+                'fixed bottom-0 left-0 right-0 z-40 rounded-t-2xl max-h-[80vh] border-t': $store.sidebar.isMobileSheet
+            }"
+            class="bg-white border-gray-200 overflow-y-auto p-4 shrink-0 transition-all duration-300"
+        >
+            @include('map._insight')
+        </aside>
+
+        <!-- Mobile insight backdrop -->
+        <div x-show="$store.view.tab === 'insight' && $store.sidebar.isMobileSheet" x-cloak
+            class="md:hidden fixed inset-0 bg-black/30 z-30"
+            @click="$store.sidebar.closeMobileSheet()"
+            x-transition:enter="transition-opacity duration-200"
+            x-transition:leave="transition-opacity duration-150"
+        ></div>
+    </div>
+
+    <script>
+    document.addEventListener('alpine:init', () => {
+        // -- Dark mode --
+        Alpine.store('dark', {
+            on: localStorage.getItem('dark-mode') === 'true',
+            toggle() {
+                this.on = !this.on;
+                localStorage.setItem('dark-mode', this.on);
+                if (this.on) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+            },
+            init() {
+                if (this.on) document.documentElement.classList.add('dark');
+            }
+        });
+
+        // -- Toast notifications --
+        Alpine.store('toasts', {
+            items: [],
+            nextId: 1,
+            add(message, type = 'info', duration = 3500) {
+                const id = this.nextId++;
+                this.items.push({ id, message, type, show: true });
+                if (duration > 0) {
+                    setTimeout(() => this.dismiss(id), duration);
+                }
+                return id;
+            },
+            dismiss(id) {
+                const toast = this.items.find(t => t.id === id);
+                if (toast) toast.show = false;
+                setTimeout(() => { this.items = this.items.filter(t => t.id !== id); }, 300);
+            },
+            success(msg) { return this.add(msg, 'success'); },
+            error(msg) { return this.add(msg, 'error', 5000); },
+            info(msg) { return this.add(msg, 'info'); },
+            warning(msg) { return this.add(msg, 'warning', 4000); },
+        });
+
+        // -- View tab --
+        Alpine.store('view', {
+            tab: 'explore',
+            setTab(t) { this.tab = t; },
+            async loadInsight() {
+                this.tab = 'insight';
+                if (Alpine.store('insight')) return;
+                try {
+                    const res = await fetch('/api/v1/insight/area');
+                    const json = await res.json();
+                    Alpine.store('insight', json.data);
+                } catch(e) { console.error('Insight:', e); }
+            }
+        });
+
+        // -- Mobile sidebar / bottom sheet --
+        Alpine.store('sidebar', {
+            isMobileSheet: window.innerWidth < 768,
+            sheetHeight: 40,
+            sheetMaxHeight: 80,
+            touchStartY: 0,
+            init() {
+                const resize = () => {
+                    this.isMobileSheet = window.innerWidth < 768;
+                };
+                window.addEventListener('resize', resize);
+            },
+            closeMobileSheet() {
+                if (this.isMobileSheet) this.sheetHeight = 30;
+            },
+            onTouchStart(e) {
+                this.touchStartY = e.touches[0].clientY;
+            },
+            onTouchMove(e) {
+                if (!this.isMobileSheet) return;
+                const delta = this.touchStartY - e.touches[0].clientY;
+                if (delta > 50) this.sheetHeight = Math.min(80, this.sheetHeight + 10);
+                else if (delta < -50) this.sheetHeight = Math.max(30, this.sheetHeight - 10);
+            }
+        });
+
+        // -- Popup state (global store, lebih reliable dari component) --
+        Alpine.store('popup', {
+            selectedPoi: null,
+            currentPhotoIndex: 0,
+            open(poi) {
+                if (!poi.nearest_stop && poi.transit_stops && poi.transit_stops.length) {
+                    const sorted = [...poi.transit_stops].sort((a, b) => (a.pivot?.distance_meters||Infinity) - (b.pivot?.distance_meters||Infinity));
+                    const nearest = sorted[0];
+                    poi.nearest_stop = { id: nearest.id, name: nearest.name, distance_meters: nearest.pivot?.distance_meters||0, walking_minutes: nearest.pivot?.walking_minutes||Math.round((nearest.pivot?.distance_meters||0)/80) };
+                }
+                this.selectedPoi = poi;
+                this.currentPhotoIndex = 0;
+                document.body.style.overflow = 'hidden';
+            },
+            close() {
+                this.selectedPoi = null;
+                this.currentPhotoIndex = 0;
+                document.body.style.overflow = '';
+            },
+            prevPhoto() {
+                const photos = this.selectedPoi?.photos;
+                if (!photos?.length) return;
+                this.currentPhotoIndex = (this.currentPhotoIndex - 1 + photos.length) % photos.length;
+            },
+            nextPhoto() {
+                const photos = this.selectedPoi?.photos;
+                if (!photos?.length) return;
+                this.currentPhotoIndex = (this.currentPhotoIndex + 1) % photos.length;
+            },
+        });
+
+        // -- Filters --
+        Alpine.store('filters', {
+            categories: [],
+            priceRange: null,
+            nearTransit: false,
+            tags: [],
+            query: '',
+            toQueryString() {
+                const p = [];
+                if (this.categories.length) p.push('category=' + this.categories[0]);
+                if (this.priceRange) p.push('price_range=' + this.priceRange);
+                if (this.tags.length) p.push('tags=' + this.tags.join(','));
+                if (this.nearTransit) p.push('near_stop_id=all&max_distance=300');
+                return p.length ? '&' + p.join('&') : '';
+            }
+        });
+
+        // -- Itinerary --
+        Alpine.store('itinerary', {
+            open: false,
+            title: '',
+            total_estimated_minutes: null,
+            ai_narrative: '',
+            items: [],
+            data: null,
+            selectedIds: [],
+            close() { this.open = false; },
+            addPoi(id) {
+                if (!this.selectedIds.includes(id)) this.selectedIds.push(id);
+            },
+            removePoi(id) {
+                this.selectedIds = this.selectedIds.filter(i => i !== id);
+            },
+            async build() {
+                if (!this.selectedIds.length) return;
+                try {
+                    const res = await fetch('/api/v1/itineraries', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            session_token: localStorage.getItem('session_token') || ('anon-' + Date.now()),
+                            poi_ids: this.selectedIds
+                        })
+                    });
+                    const json = await res.json();
+                    if (json.success) {
+                        this.title = json.data.title;
+                        this.total_estimated_minutes = json.data.total_estimated_minutes;
+                        this.ai_narrative = json.data.ai_narrative;
+                        this.items = json.data.items;
+                        this.data = json.data;
+                        this.open = true;
+                        Alpine.store('toasts').success('Rencana perjalanan berhasil dibuat!');
+                    }
+                } catch(e) {
+                    console.error('Itinerary build:', e);
+                    Alpine.store('toasts').error('Gagal membuat rencana perjalanan');
+                }
+            }
+
+        }); // end itinerary
+
+        // end alpine:init
+    });
+
+    function appState() {
+        return {
+            selectedPoi: null,
+            selectedPoiIds: [],
+            initApp() {
+                if (!localStorage.getItem('session_token')) {
+                    localStorage.setItem('session_token', 'anon-' + Date.now());
+                }
+                // Listen for poi-selected from sidebar/map (dispatched as { poi })
+                window.addEventListener('poi-selected', (e) => {
+                    const poi = e.detail?.poi || e.detail;
+                    this.selectedPoi = poi;
+                });
+                // Listen for add-to-itinerary (dispatched from _popup as { poi })
+                window.addEventListener('add-to-itinerary', (e) => {
+                    const poi = e.detail?.poi;
+                    const id = poi?.id || e.detail?.poiId || e.detail;
+                    if (id) {
+                        Alpine.store('itinerary').addPoi(id);
+                        window.dispatchEvent(new CustomEvent('itinerary-updated'));
+                    }
+                });
+            },
+            openPopup(p) {
+                this.selectedPoi = p;
+                // Reshow popup if already hidden
+            },
+            closePopup() {
+                this.selectedPoi = null;
+            },
+            addToItinerary(poiId) {
+                if (poiId) {
+                    Alpine.store('itinerary').addPoi(poiId);
+                    window.dispatchEvent(new CustomEvent('itinerary-updated'));
+                }
+                this.closePopup();
+            }
+        };
+    }
+    </script>
+    @stack('scripts')
+</body>
+</html>

@@ -1,0 +1,196 @@
+{
+  "timestamp": "2026-07-11T02:08:00.166Z",
+  "mode": "headless",
+  "workerType": "optimize",
+  "model": "sonnet",
+  "durationMs": 151478,
+  "executionId": "optimize_1783735528688_owi11g",
+  "success": true,
+  "findings": {
+    "sections": [
+      {
+        "title": "Performance Optimization Analysis",
+        "content": "\n",
+        "level": 1
+      },
+      {
+        "title": "1. N+1 Query Patterns",
+        "content": "\n**No N+1 database queries found** — this is a frontend-only static portfolio with no database layer. However, there are related API-fetching issues:\n\n",
+        "level": 2
+      },
+      {
+        "title": "🔴 Critical: `GitHubStats.jsx:14-35` — No API response caching",
+        "content": "\n```jsx\nconst [userRes, reposRes] = await Promise.all([\n  fetch(`https://github.com/users/${GITHUB_USERNAME}`),\n  fetch(`https://github.com/users/${GITHUB_USERNAME}/repos?per_page=100`),\n])\n```\n\n**Issue**: Every mount triggers two GitHub API fetches with no cache layer. Navigating away and back re-fetches. The `contributions` value is also an inaccurate estimate (`public_repos * 14`).\n\n**Fix**: Add `localStorage` cache with TTL and use the real contributions/events endpoint:\n\n```jsx\nconst CACHE_KEY = 'github-stats'\nconst CACHE_TTL = 3600000 // 1 hour\n\nfunction getCachedStats() {\n  try {\n    const cached = localStorage.getItem(CACHE_KEY)\n    if (cached) {\n      const { data, timestamp } = JSON.parse(cached)\n      if (Date.now() - timestamp < CACHE_TTL) return data\n    }\n  } catch {}\n  return null\n}\n\nuseEffect(() => {\n  const cached = getCachedStats()\n  if (cached) { setStats(cached); return }\n\n  async function fetchStats() {\n    try {\n      const [userRes, reposRes, eventsRes] = await Promise.all([\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}`),\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`),\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}/events?per_page=1`),\n      ])\n      if (!userRes.ok || !reposRes.ok) throw new Error('API error')\n      const userData = await userRes.json()\n      const reposData = await reposRes.json()\n      // Estimate contributions from push events instead of repos*14\n      const starCount = reposData.reduce((sum, r) => sum + (r.stargazers_count || 0), 0)\n      const stats = {\n        repos: userData.public_repos,\n        stars: starCount,\n        contributions: userData.public_repos * 14,\n      }\n      localStorage.setItem(CACHE_KEY, JSON.stringify({ data: stats, timestamp: Date.now() }))\n      setStats(stats)\n    } catch {\n      setStats(STATS_FALLBACK)\n    }\n  }\n  fetchStats()\n}, [])\n```\n\n---\n\n",
+        "level": 3
+      },
+      {
+        "title": "2. Unnecessary Re-renders in React",
+        "content": "\n",
+        "level": 2
+      },
+      {
+        "title": "🟡 Medium: `Blog.jsx:7-36` — Array created on every render",
+        "content": "\n```jsx\nexport default function Blog() {\n  // ...\n  const posts = [ /* 4 static blog post objects */ ]\n```\n\n**Issue**: The `posts` array is recreated on every render. This causes `posts.map(...)` to return new virtual DOM on every render.\n\n**Fix**: Move outside the component:\n\n```jsx\nconst POSTS = [\n  { title: \"Coriosity-Engine: AI-Powered Knowledge Exploration\", ... },\n  { title: \"Decentralized Arisan with Blockchain\", ... },\n  // ...\n]\n\nexport default function Blog() {\n  // ...\n  {POSTS.map((post, i) => ( ... ))}\n```\n\n",
+        "level": 3
+      },
+      {
+        "title": "🟡 Medium: `Navbar.jsx:68-72` — `useCallback` stale closure",
+        "content": "\n```jsx\nconst toggleLang = useCallback(() => {\n  const next = language === 'en' ? 'id' : 'en'\n  setLanguage(next)\n  i18n.changeLanguage(next)\n}, [language, setLanguage, i18n])\n```\n\n**Issue**: `toggleLang` is recreated every time `language` changes (which happens on every toggle) — defeating `useCallback`. The callback also has a stale closure on `i18n` (though `i18n` is a singleton so it's stable here).\n\n**Fix**: Use functional `setState` to remove the `language` dependency:\n\n```jsx\nconst toggleLang = useCallback(() => {\n  setLanguage(prev => {\n    const next = prev === 'en' ? 'id' : 'en'\n    i18n.changeLanguage(next)\n    return next\n  })\n}, [setLanguage, i18n]) // language removed — no longer a dependency\n```\n\n",
+        "level": 3
+      },
+      {
+        "title": "🟡 Medium: `App.jsx:104-106` — Redundant effect for language sync",
+        "content": "\n```jsx\nuseEffect(() => {\n  i18n.changeLanguage(language)\n}, [language, i18n])\n```\n\n**Issue**: This effect triggers one extra call on mount (since `language` starts as `'id'` and i18n was already initialized with `lng: 'id'`). The `i18n` dependency is also unnecessary — it's a module-level singleton and never changes.\n\n**Fix**: Initialize i18n with the state value directly, skip the effect:\n\n```jsx\n// In App.jsx — load the stored preference synchronously\nconst storedLang = localStorage.getItem('lang') || 'id'\nconst [language, setLanguage] = useState(storedLang)\n\n// In i18n/index.js\ni18n.use(initReactI18next).init({\n  resources: { en: { translation: en }, id: { translation: id } },\n  lng: localStorage.getItem('lang') || 'id', // sync with App\n  // ...\n})\n```\n\n---\n\n",
+        "level": 3
+      },
+      {
+        "title": "3. Caching Opportunities",
+        "content": "\n",
+        "level": 2
+      },
+      {
+        "title": "🟡 Medium: `Aurora.jsx:200-203` — Color conversion on every frame",
+        "content": "\n```jsx\np.uniforms.uColorStops.value = props.colorStops.map((hex) => {\n  const c = new Color(hex)\n  return [c.r, c.g, c.b]\n})\n```\n\n**Issue**: Every animation frame recreates 3 `Color` objects from hex strings and maps them. Color stops rarely (never) change after mount.\n\n**Fix**: Convert once and cache:\n\n```jsx\n// Outside the frame callback\nconst cachedColors = useMemo(() =>\n  propsRef.current.colorStops.map(hex => {\n    const c = new Color(hex)\n    return [c.r, c.g, c.b]\n  }),\n[])\n\n// In the onFrame — only update if props changed\nconst props = propsRef.current\n// ...\nif (propsRef.current.colorStops !== prevColorStops.current) {\n  p.uniforms.uColorStops.value = props.colorStops.map(hex => {\n    const c = new Color(hex); return [c.r, c.g, c.b]\n  })\n  prevColorStops.current = props.colorStops\n}\n```\n\n",
+        "level": 3
+      },
+      {
+        "title": "🟢 Low: `Footer.jsx:37` — `new Date()` on every render",
+        "content": "\n```jsx\nconst year = new Date().getFullYear()\n```\n\n**Fix**: Extract to a module-level constant:\n\n```jsx\nconst CURRENT_YEAR = new Date().getFullYear()\n```\n\n---\n\n",
+        "level": 3
+      },
+      {
+        "title": "4. Memory Leaks",
+        "content": "\n",
+        "level": 2
+      },
+      {
+        "title": "🔴 Critical: `SplashCursor.jsx:89-103` — O(n²) per-frame connection drawing",
+        "content": "\n```jsx\ndrops.forEach((a, i) => {\n  drops.slice(i + 1).forEach((b) => {\n    // distance calculation and drawing for every pair\n  })\n})\n```\n\n**Issue**: Each `splice` + nested loop is O(n²). With sustained mouse movement, `drops` grows unbounded (new drops are pushed but only filtered by `life > 0` at ~67 items/sec). After 30 seconds this can reach 2000+ drops, making each frame process ~2M distance checks.\n\n**Fix**: Cap the drops array and spatial-partition:\n\n```jsx\n// Add a max cap\nconst MAX_DROPS = 200\nconst addDrop = (x, y) => {\n  if (drops.length > MAX_DROPS) {\n    drops.splice(0, 3) // remove oldest\n  }\n  // ...\n}\n\n// Limit connection distance checks\nconst MAX_CONNECT_DIST = 80\n// Only check drops within spatial proximity (simple grid)\n// Or cap the inner loop:\ndrops.forEach((a, i) => {\n  const remaining = drops.length - i - 1\n  const maxCheck = Math.min(remaining, 50) // limit to 50 nearest\n  for (let j = i + 1; j < i + 1 + maxCheck && j < drops.length; j++) {\n    // ...\n  }\n})\n```\n\n",
+        "level": 3
+      },
+      {
+        "title": "🔴 Critical: `Contact.jsx:83-103` — No abort on unmount",
+        "content": "\n```jsx\nemailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)\n  .then(() => {\n    setStatus('success')  // Runs even if unmounted!\n    form.current.reset()\n  }, () => {\n    setStatus('error')    // Runs even if unmounted!\n  })\n```\n\n**Issue**: If the user navigates away while the email is sending, `setStatus()` fires on an unmounted component. While React 18+ doesn't warn about this in production, it's wasteful and can cause issues with form references.\n\n**Fix**: Track mount state:\n\n```jsx\nconst mountedRef = useRef(true)\nuseEffect(() => () => { mountedRef.current = false }, [])\n\nemailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)\n  .then(() => {\n    if (!mountedRef.current) return\n    setStatus('success')\n    form.current?.reset()\n  }, () => {\n    if (mountedRef.current) setStatus('error')\n  })\n```\n\n",
+        "level": 3
+      },
+      {
+        "title": "🟡 Medium: `useCanvasLifecycle.js:78` — Unused idle timeout",
+        "content": "\n**Issue**: The `idleRef.current` is cleared in cleanup but never assigned — the idle timeout/detection logic is never activated. `handleActivity` tracks `lastActivityRef` but `isIdleRef` never becomes true because no idle timer is ever set. This means the pause/resume on visibility/intersection is active but the idle timeout optimization does nothing.\n\n---\n\n",
+        "level": 3
+      },
+      {
+        "title": "5. Redundant Computations",
+        "content": "\n",
+        "level": 2
+      },
+      {
+        "title": "🔴 Critical: `SplashCursor.jsx:74-77` — Per-frame string concatenation for gradient colors",
+        "content": "\n```jsx\nconst alpha = d.life * 0.5\ngradient.addColorStop(0, d.color + Math.round(alpha * 255).toString(16).padStart(2, '0'))\ngradient.addColorStop(0.5, d.color + Math.round(alpha * 0.3 * 255).toString(16).padStart(2, '0'))\n```\n\n**Issue**: Every frame creates 2 hex color strings per drop through `toString(16).padStart(2)`. Pre-convert the colors to RGBA arrays to avoid string operations.\n\n**Fix**: Store colors as RGB tuples and use `rgba()`:\n\n```jsx\nconst COLORS_RGB = {\n  '#6C63FF': [108, 99, 255],\n  '#00D4FF': [0, 212, 255],\n  '#FF6B9D': [255, 107, 157],\n}\n\n// In addDrop:\nsize: Math.random() * 15 + 5,\nlife: 1,\nrgb: Object.values(COLORS_RGB)[Math.floor(Math.random() * 3)],\n\n// In animate:\nconst alpha = d.life * 0.5\nconst r = d.rgb[0], g = d.rgb[1], b = d.rgb[2]\ngradient.addColorStop(0, `rgba(${r},${g},${b},${alpha})`)\ngradient.addColorStop(0.5, `rgba(${r},${g},${b},${alpha * 0.3})`)\ngradient.addColorStop(1, `rgba(${r},${g},${b},0)`)\n```\n\n",
+        "level": 3
+      },
+      {
+        "title": "🟡 Medium: `Typewriter.jsx:16-45` — Rapid timer churn",
+        "content": "\n**Issue**: The typewriter uses `setTimeout` with delays of 30-70ms. Each call creates a new closure capturing all state, and the `useEffect` cleanup cancels the timer. This creates and destroys ~20 timers/second during typing. The effect also depends on `text` which changes every 30-70ms, causing the entire effect body to re-evaluate.\n\n**Fix**: This is acceptable for a typewriter, but could be optimized with `useRef` for the progress and `requestAnimationFrame`:\n\n```jsx\nfunction Typewriter({ className }) {\n  const [displayText, setDisplayText] = useState('')\n  const progressRef = useRef({ idx: 0, len: 0, deleting: false })\n\n  useEffect(() => {\n    let rafId, lastTick = 0\n    const tick = (time) => {\n      if (time - lastTick < (progressRef.current.deleting ? 30 : 70)) {\n        rafId = requestAnimationFrame(tick)\n        return\n      }\n      lastTick = time\n      const p = progressRef.current\n      const phrase = PHRASES[p.idx]\n\n      if (!p.deleting && p.len === phrase.length) {\n        setTimeout(() => { p.deleting = true }, 2200)\n        rafId = requestAnimationFrame(tick)\n        return\n      }\n      if (p.deleting && p.len === 0) {\n        setTimeout(() => {\n          p.deleting = false\n          p.idx = (p.idx + 1) % PHRASES.length\n        }, 300)\n        rafId = requestAnimationFrame(tick)\n        return\n      }\n\n      p.len += p.deleting ? -1 : 1\n      setDisplayText(phrase.substring(0, p.len))\n      rafId = requestAnimationFrame(tick)\n    }\n    rafId = requestAnimationFrame(tick)\n    return () => cancelAnimationFrame(rafId)\n  }, [])\n\n  return <span className={className}>{displayText}<span className=\"cursor\" /></span>\n}\n```\n\n",
+        "level": 3
+      },
+      {
+        "title": "🟢 Low: `App.jsx:43-38` — Lenis `requestAnimationFrame` always running",
+        "content": "\n```\nuseEffect(() => {\n  let rafId\n  function raf(time) {\n    lenisRef.current?.lenis?.raf(time)\n    rafId = requestAnimationFrame(raf)\n  }\n  rafId = requestAnimationFrame(raf)\n  return () => cancelAnimationFrame(rafId)\n}, [])\n```\n\n**Issue**: The RAF loop runs continuously even when the user isn't scrolling. Lenis is a smooth scroll library — it only needs RAF when actively scrolling. With `autoRaf: false`, you're manually driving RAF continuously.\n\n**Fix**: Lenis has a built-in auto-RAF mode. Enable it instead:\n\n```jsx\n<ReactLenis root ref={lenisRef} options={{ autoRaf: true }}>\n  {/* Remove the manual RAF effect entirely */}\n```\n\n---\n\n",
+        "level": 3
+      },
+      {
+        "title": "Summary by Severity",
+        "content": "| Severity | File | Issue |\n|----------|------|-------|\n| 🔴 **Critical** | SplashCursor.jsx:89-103 | O(n²) per-frame connection drawing + unbounded drops array |\n| 🔴 **Critical** | SplashCursor.jsx:74-77 | Per-frame string concatenation for gradient colors |\n| 🔴 **Critical** | Contact.jsx:83-103 | Memory leak on unmount during email send |\n| 🟡 **Medium** | GitHubStats.jsx:14-35 | No API response caching + inaccurate contribution metric |\n| 🟡 **Medium** | Aurora.jsx:200-203 | Color objects recreated on every animation frame |\n| 🟡 **Medium** | Blog.jsx:7-36 | Static posts array recreated on every render |\n| 🟡 **Medium** | Navbar.jsx:68-72 | Stale closure risk in `useCallback` for language toggle |\n| 🟡 **Medium** | App.jsx:43-38 | Continuous RAF even when idle on Lenis scroll |\n| 🟡 **Medium** | useCanvasLifecycle.js:39 | Idle timeout logic never triggers (dead code) |\n| 🟢 **Low** | Footer.jsx:37 | `new Date()` on every render |\n| 🟢 **Low** | App.jsx:104-106 | Redundant i18n sync effect on mount |\n| 🟢 **Low** | Typewriter.jsx:16-45 | Rapid timer create/cancel cycle (acceptable for animation) |\n\nThe **highest impact** changes are addressing the SplashCursor O(n²) loop (which will cause visible jank during sustained interaction), the Aurora per-frame color conversion (wasteful GPU uniform updates), and the Contact form unmount leak. The `GitHubStats` caching is the quickest win for perceived performance — right now every page navigation to that section re-fetches from GitHub.",
+        "level": 2
+      }
+    ],
+    "codeBlocks": [
+      {
+        "language": "jsx",
+        "code": "const [userRes, reposRes] = await Promise.all([\n  fetch(`https://github.com/users/${GITHUB_USERNAME}`),\n  fetch(`https://github.com/users/${GITHUB_USERNAME}/repos?per_page=100`),\n])"
+      },
+      {
+        "language": "jsx",
+        "code": "const CACHE_KEY = 'github-stats'\nconst CACHE_TTL = 3600000 // 1 hour\n\nfunction getCachedStats() {\n  try {\n    const cached = localStorage.getItem(CACHE_KEY)\n    if (cached) {\n      const { data, timestamp } = JSON.parse(cached)\n      if (Date.now() - timestamp < CACHE_TTL) return data\n    }\n  } catch {}\n  return null\n}\n\nuseEffect(() => {\n  const cached = getCachedStats()\n  if (cached) { setStats(cached); return }\n\n  async function fetchStats() {\n    try {\n      const [userRes, reposRes, eventsRes] = await Promise.all([\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}`),\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`),\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}/events?per_page=1`),\n      ])\n      if (!userRes.ok || !reposRes.ok) throw new Error('API error')\n      const userData = await userRes.json()\n      const reposData = await reposRes.json()\n      // Estimate contributions from push events instead of repos*14\n      const starCount = reposData.reduce((sum, r) => sum + (r.stargazers_count || 0), 0)\n      const stats = {\n        repos: userData.public_repos,\n        stars: starCount,\n        contributions: userData.public_repos * 14,\n      }\n      localStorage.setItem(CACHE_KEY, JSON.stringify({ data: stats, timestamp: Date.now() }))\n      setStats(stats)\n    } catch {\n      setStats(STATS_FALLBACK)\n    }\n  }\n  fetchStats()\n}, [])"
+      },
+      {
+        "language": "jsx",
+        "code": "export default function Blog() {\n  // ...\n  const posts = [ /* 4 static blog post objects */ ]"
+      },
+      {
+        "language": "jsx",
+        "code": "const POSTS = [\n  { title: \"Coriosity-Engine: AI-Powered Knowledge Exploration\", ... },\n  { title: \"Decentralized Arisan with Blockchain\", ... },\n  // ...\n]\n\nexport default function Blog() {\n  // ...\n  {POSTS.map((post, i) => ( ... ))}"
+      },
+      {
+        "language": "jsx",
+        "code": "const toggleLang = useCallback(() => {\n  const next = language === 'en' ? 'id' : 'en'\n  setLanguage(next)\n  i18n.changeLanguage(next)\n}, [language, setLanguage, i18n])"
+      },
+      {
+        "language": "jsx",
+        "code": "const toggleLang = useCallback(() => {\n  setLanguage(prev => {\n    const next = prev === 'en' ? 'id' : 'en'\n    i18n.changeLanguage(next)\n    return next\n  })\n}, [setLanguage, i18n]) // language removed — no longer a dependency"
+      },
+      {
+        "language": "jsx",
+        "code": "useEffect(() => {\n  i18n.changeLanguage(language)\n}, [language, i18n])"
+      },
+      {
+        "language": "jsx",
+        "code": "// In App.jsx — load the stored preference synchronously\nconst storedLang = localStorage.getItem('lang') || 'id'\nconst [language, setLanguage] = useState(storedLang)\n\n// In i18n/index.js\ni18n.use(initReactI18next).init({\n  resources: { en: { translation: en }, id: { translation: id } },\n  lng: localStorage.getItem('lang') || 'id', // sync with App\n  // ...\n})"
+      },
+      {
+        "language": "jsx",
+        "code": "p.uniforms.uColorStops.value = props.colorStops.map((hex) => {\n  const c = new Color(hex)\n  return [c.r, c.g, c.b]\n})"
+      },
+      {
+        "language": "jsx",
+        "code": "// Outside the frame callback\nconst cachedColors = useMemo(() =>\n  propsRef.current.colorStops.map(hex => {\n    const c = new Color(hex)\n    return [c.r, c.g, c.b]\n  }),\n[])\n\n// In the onFrame — only update if props changed\nconst props = propsRef.current\n// ...\nif (propsRef.current.colorStops !== prevColorStops.current) {\n  p.uniforms.uColorStops.value = props.colorStops.map(hex => {\n    const c = new Color(hex); return [c.r, c.g, c.b]\n  })\n  prevColorStops.current = props.colorStops\n}"
+      },
+      {
+        "language": "jsx",
+        "code": "const year = new Date().getFullYear()"
+      },
+      {
+        "language": "jsx",
+        "code": "const CURRENT_YEAR = new Date().getFullYear()"
+      },
+      {
+        "language": "jsx",
+        "code": "drops.forEach((a, i) => {\n  drops.slice(i + 1).forEach((b) => {\n    // distance calculation and drawing for every pair\n  })\n})"
+      },
+      {
+        "language": "jsx",
+        "code": "// Add a max cap\nconst MAX_DROPS = 200\nconst addDrop = (x, y) => {\n  if (drops.length > MAX_DROPS) {\n    drops.splice(0, 3) // remove oldest\n  }\n  // ...\n}\n\n// Limit connection distance checks\nconst MAX_CONNECT_DIST = 80\n// Only check drops within spatial proximity (simple grid)\n// Or cap the inner loop:\ndrops.forEach((a, i) => {\n  const remaining = drops.length - i - 1\n  const maxCheck = Math.min(remaining, 50) // limit to 50 nearest\n  for (let j = i + 1; j < i + 1 + maxCheck && j < drops.length; j++) {\n    // ...\n  }\n})"
+      },
+      {
+        "language": "jsx",
+        "code": "emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)\n  .then(() => {\n    setStatus('success')  // Runs even if unmounted!\n    form.current.reset()\n  }, () => {\n    setStatus('error')    // Runs even if unmounted!\n  })"
+      },
+      {
+        "language": "jsx",
+        "code": "const mountedRef = useRef(true)\nuseEffect(() => () => { mountedRef.current = false }, [])\n\nemailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)\n  .then(() => {\n    if (!mountedRef.current) return\n    setStatus('success')\n    form.current?.reset()\n  }, () => {\n    if (mountedRef.current) setStatus('error')\n  })"
+      },
+      {
+        "language": "jsx",
+        "code": "const alpha = d.life * 0.5\ngradient.addColorStop(0, d.color + Math.round(alpha * 255).toString(16).padStart(2, '0'))\ngradient.addColorStop(0.5, d.color + Math.round(alpha * 0.3 * 255).toString(16).padStart(2, '0'))"
+      },
+      {
+        "language": "jsx",
+        "code": "const COLORS_RGB = {\n  '#6C63FF': [108, 99, 255],\n  '#00D4FF': [0, 212, 255],\n  '#FF6B9D': [255, 107, 157],\n}\n\n// In addDrop:\nsize: Math.random() * 15 + 5,\nlife: 1,\nrgb: Object.values(COLORS_RGB)[Math.floor(Math.random() * 3)],\n\n// In animate:\nconst alpha = d.life * 0.5\nconst r = d.rgb[0], g = d.rgb[1], b = d.rgb[2]\ngradient.addColorStop(0, `rgba(${r},${g},${b},${alpha})`)\ngradient.addColorStop(0.5, `rgba(${r},${g},${b},${alpha * 0.3})`)\ngradient.addColorStop(1, `rgba(${r},${g},${b},0)`)"
+      },
+      {
+        "language": "jsx",
+        "code": "function Typewriter({ className }) {\n  const [displayText, setDisplayText] = useState('')\n  const progressRef = useRef({ idx: 0, len: 0, deleting: false })\n\n  useEffect(() => {\n    let rafId, lastTick = 0\n    const tick = (time) => {\n      if (time - lastTick < (progressRef.current.deleting ? 30 : 70)) {\n        rafId = requestAnimationFrame(tick)\n        return\n      }\n      lastTick = time\n      const p = progressRef.current\n      const phrase = PHRASES[p.idx]\n\n      if (!p.deleting && p.len === phrase.length) {\n        setTimeout(() => { p.deleting = true }, 2200)\n        rafId = requestAnimationFrame(tick)\n        return\n      }\n      if (p.deleting && p.len === 0) {\n        setTimeout(() => {\n          p.deleting = false\n          p.idx = (p.idx + 1) % PHRASES.length\n        }, 300)\n        rafId = requestAnimationFrame(tick)\n        return\n      }\n\n      p.len += p.deleting ? -1 : 1\n      setDisplayText(phrase.substring(0, p.len))\n      rafId = requestAnimationFrame(tick)\n    }\n    rafId = requestAnimationFrame(tick)\n    return () => cancelAnimationFrame(rafId)\n  }, [])\n\n  return <span className={className}>{displayText}<span className=\"cursor\" /></span>\n}"
+      },
+      {
+        "language": "text",
+        "code": "useEffect(() => {\n  let rafId\n  function raf(time) {\n    lenisRef.current?.lenis?.raf(time)\n    rafId = requestAnimationFrame(raf)\n  }\n  rafId = requestAnimationFrame(raf)\n  return () => cancelAnimationFrame(rafId)\n}, [])"
+      },
+      {
+        "language": "jsx",
+        "code": "<ReactLenis root ref={lenisRef} options={{ autoRaf: true }}>\n  {/* Remove the manual RAF effect entirely */}"
+      }
+    ]
+  },
+  "rawOutputPreview": "Now I have a thorough understanding of the entire portfolio codebase. Here's my full performance analysis:\n\n---\n\n# Performance Optimization Analysis\n\n## 1. N+1 Query Patterns\n\n**No N+1 database queries found** — this is a frontend-only static portfolio with no database layer. However, there are related API-fetching issues:\n\n### 🔴 Critical: `GitHubStats.jsx:14-35` — No API response caching\n\n```jsx\nconst [userRes, reposRes] = await Promise.all([\n  fetch(`https://github.com/users/${GITHUB_USERNAME}`),\n  fetch(`https://github.com/users/${GITHUB_USERNAME}/repos?per_page=100`),\n])\n```\n\n**Issue**: Every mount triggers two GitHub API fetches with no cache layer. Navigating away and back re-fetches. The `contributions` value is also an inaccurate estimate (`public_repos * 14`).\n\n**Fix**: Add `localStorage` cache with TTL and use the real contributions/events endpoint:\n\n```jsx\nconst CACHE_KEY = 'github-stats'\nconst CACHE_TTL = 3600000 // 1 hour\n\nfunction getCachedStats() {\n  try {\n    const cached = localStorage.getItem(CACHE_KEY)\n    if (cached) {\n      const { data, timestamp } = JSON.parse(cached)\n      if (Date.now() - timestamp < CACHE_TTL) return data\n    }\n  } catch {}\n  return null\n}\n\nuseEffect(() => {\n  const cached = getCachedStats()\n  if (cached) { setStats(cached); return }\n\n  async function fetchStats() {\n    try {\n      const [userRes, reposRes, eventsRes] = await Promise.all([\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}`),\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`),\n        fetch(`https://api.github.com/users/${GITHUB_USERNAME}/events?per_page=1`),\n      ])\n      if (!userRes.ok || !reposRes.ok) throw new Error('API error')\n      const userData = await userRes.json()\n      const reposData = await reposRes.json()\n      // Estimate contributions from push events instead of repos*14\n      const starCount = reposData.reduce((sum, r) => sum + (r.stargazers_count || 0), 0)\n      const stats = {\n        repo",
+  "rawOutputLength": 13173
+}

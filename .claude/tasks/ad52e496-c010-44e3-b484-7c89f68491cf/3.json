@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Compile test coverage analysis report",
+  "description": "Synthesize all findings into a comprehensive report with untested functions, edge cases, error handling gaps, integration gaps, and test skeletons.",
+  "activeForm": "Compiling coverage analysis",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

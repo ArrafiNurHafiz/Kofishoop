@@ -1,0 +1,515 @@
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:148:      bridge.on('team:spawned', eventSpy);
+v3/plugins/teammate-plugin/tests/teammate-bridge.test.ts:633:    bridge.on('team:cleanup', eventSpy);
+v3/plugins/gastown-bridge/src/convoy/tracker.ts:167: * tracker.on('convoy:progressed', (event) => {
+v3/mcp/server-entry.ts:241:  process.on('SIGTERM', () => shutdown('SIGTERM'));
+v3/mcp/server-entry.ts:242:  process.on('SIGINT', () => shutdown('SIGINT'));
+v3/mcp/server-entry.ts:243:  process.on('SIGHUP', () => shutdown('SIGHUP'));
+v3/mcp/server-entry.ts:246:  process.on('uncaughtException', (error) => {
+v3/mcp/server-entry.ts:251:  process.on('unhandledRejection', (reason) => {
+v3/mcp/server-entry.ts:256:  server.on('server:started', (data) => {
+v3/mcp/server-entry.ts:277:  server.on('tool:registered', (name) => {
+v3/mcp/server-entry.ts:281:  server.on('tool:called', (data) => {
+v3/mcp/server-entry.ts:285:  server.on('tool:completed', (data) => {
+v3/mcp/server-entry.ts:289:  server.on('tool:error', (data) => {
+v3/mcp/server-entry.ts:293:  server.on('session:created', (session) => {
+v3/mcp/server-entry.ts:297:  server.on('session:closed', (data) => {
+v3/mcp/transport/websocket.ts:129:      this.server!.on('error', reject);
+v3/mcp/transport/websocket.ts:284:    this.wss.on('connection', (ws, req) => {
+v3/mcp/transport/websocket.ts:312:      ws.on('message', async (data) => {
+v3/mcp/transport/websocket.ts:317:      ws.on('pong', () => {
+v3/mcp/transport/websocket.ts:322:      ws.on('close', (code, reason) => {
+v3/mcp/transport/websocket.ts:334:      ws.on('error', (error) => {
+v3/mcp/transport/http.ts:111:      this.server!.on('error', reject);
+v3/mcp/transport/http.ts:248:      res.on('finish', () => {
+v3/mcp/transport/http.ts:323:    this.wss.on('connection', (ws, req) => {
+v3/mcp/transport/http.ts:329:      ws.on('message', async (data) => {
+v3/mcp/transport/http.ts:333:      ws.on('close', () => {
+v3/mcp/transport/http.ts:340:      ws.on('error', (error) => {
+v3/mcp/server.ts:751:    this.toolRegistry.on('tool:registered', (name) => {
+v3/mcp/server.ts:755:    this.toolRegistry.on('tool:called', (data) => {
+v3/mcp/server.ts:759:    this.toolRegistry.on('tool:completed', (data) => {
+v3/mcp/server.ts:763:    this.toolRegistry.on('tool:error', (data) => {
+v3/mcp/server.ts:768:    this.sessionManager.on('session:created', (session) => {
+v3/mcp/server.ts:772:    this.sessionManager.on('session:closed', (data) => {
+v3/mcp/server.ts:776:    this.sessionManager.on('session:expired', (session) => {
+v3/plugins/gastown-bridge/src/gupp/adapter.ts:191:    this.sessionManager.on('session-start', this.boundSessionStartHandler);
+v3/plugins/gastown-bridge/src/gupp/adapter.ts:192:    this.sessionManager.on('session-end', this.boundSessionEndHandler);
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:448:            res.on('data', chunk => data += chunk);
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:449:            res.on('end', () => {
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:458:          req.on('error', reject);
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:459:          req.on('timeout', () => reject(new Error('Request timeout')));
+v3/mcp/transport/stdio.ts:87:    this.rl.on('line', (line) => {
+v3/mcp/transport/stdio.ts:92:    this.rl.on('close', () => {
+v3/mcp/transport/stdio.ts:97:    this.inputStream.on('error', (error) => {
+v3/__tests__/integration/workflow-integration.test.ts:448:    eventBus.on('workflow:started', (e) => events.push({ type: 'started', ...e }));
+v3/__tests__/integration/workflow-integration.test.ts:449:    eventBus.on('workflow:taskComplete', (e) => events.push({ type: 'taskComplete', ...e }));
+v3/__tests__/integration/workflow-integration.test.ts:450:    eventBus.on('workflow:completed', (e) => events.push({ type: 'completed', ...e }));
+v3/__tests__/integration/plugin-integration.test.ts:167:    eventBus.on('plugin:loaded', (plugin) => loadedEvents.push(plugin.id));
+v3/__tests__/integration/plugin-integration.test.ts:168:    eventBus.on('plugin:unloaded', (plugin) => unloadedEvents.push(plugin.id));
+v3/plugins/gastown-bridge/src/bridges/bd-bridge.ts:573:      childProcess.stdout?.on('data', (data: Buffer) => {
+v3/plugins/gastown-bridge/src/bridges/bd-bridge.ts:577:      childProcess.stderr?.on('data', (data: Buffer) => {
+v3/plugins/gastown-bridge/src/bridges/bd-bridge.ts:581:      childProcess.on('close', (code) => {
+v3/plugins/gastown-bridge/src/bridges/bd-bridge.ts:602:      childProcess.on('error', (error) => {
+v3/__tests__/integration/swarm-integration.test.ts:95:    eventBus.on('agent:message', (msg) => messages.push(msg));
+v3/@claude-flow/swarm/__tests__/topology.test.ts:575:      topology.on('node.added', (data) => {
+v3/@claude-flow/swarm/__tests__/topology.test.ts:587:      topology.on('node.removed', (data) => {
+v3/@claude-flow/swarm/__tests__/topology.test.ts:600:      topology.on('topology.rebalanced', () => {
+v3/@claude-flow/swarm/__tests__/consensus-failure-injection.test.ts:47:  bft.on('consensus.achieved', () => { achieved = true; });
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:124:      this.server!.on('error', reject);
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:279:    this.wss.on('connection', (ws, req) => {
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:307:      ws.on('message', async (data) => {
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:312:      ws.on('pong', () => {
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:317:      ws.on('close', (code, reason) => {
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:329:      ws.on('error', (error) => {
+v3/@claude-flow/shared/src/core/event-bus.ts:105:    const subscription = this.on(type, wrappedHandler);
+v3/@claude-flow/testing/src/helpers/test-utils.ts:358: * emitter.on('message', handler);
+v3/@claude-flow/testing/src/helpers/test-utils.ts:381:      return this.on(event, wrappedHandler);
+v3/@claude-flow/swarm/src/unified-coordinator.ts:686:    this.topologyManager.on('node.added', (data) => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:690:    this.topologyManager.on('node.removed', (data) => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:694:    this.topologyManager.on('topology.rebalanced', (data) => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:699:    this.consensusEngine.on('consensus.achieved', (data) => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:705:    this.messageBus.on('message.delivered', (data) => {
+v3/@claude-flow/swarm/__tests__/byzantine-transport.test.ts:23:    bft.on('message.broadcast', (e) => broadcasts.push(e));
+v3/@claude-flow/swarm/__tests__/byzantine-transport.test.ts:42:    bft.on('message.broadcast', (e) => emitted.push(e));
+v3/@claude-flow/shared/src/mcp/transport/http.ts:110:      this.server!.on('error', reject);
+v3/@claude-flow/shared/src/mcp/transport/http.ts:274:      res.on('finish', () => {
+v3/@claude-flow/shared/src/mcp/transport/http.ts:349:    this.wss.on('connection', (ws, req) => {
+v3/@claude-flow/shared/src/mcp/transport/http.ts:355:      ws.on('message', async (data) => {
+v3/@claude-flow/shared/src/mcp/transport/http.ts:359:      ws.on('close', () => {
+v3/@claude-flow/shared/src/mcp/transport/http.ts:366:      ws.on('error', (error) => {
+v3/@claude-flow/shared/src/mcp/server.ts:730:    this.toolRegistry.on('tool:registered', (name) => {
+v3/@claude-flow/shared/src/mcp/server.ts:734:    this.toolRegistry.on('tool:called', (data) => {
+v3/@claude-flow/shared/src/mcp/server.ts:738:    this.toolRegistry.on('tool:completed', (data) => {
+v3/@claude-flow/shared/src/mcp/server.ts:742:    this.toolRegistry.on('tool:error', (data) => {
+v3/@claude-flow/shared/src/mcp/server.ts:747:    this.sessionManager.on('session:created', (session) => {
+v3/@claude-flow/shared/src/mcp/server.ts:751:    this.sessionManager.on('session:closed', (data) => {
+v3/@claude-flow/shared/src/mcp/server.ts:755:    this.sessionManager.on('session:expired', (session) => {
+v3/@claude-flow/plugins/__tests__/ruvector-streaming.test.ts:590:      stream.on('pause', () => pauseCount++);
+v3/@claude-flow/plugins/__tests__/ruvector-streaming.test.ts:591:      stream.on('resume', () => resumeCount++);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:189:    return this.on(event, wrappedHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:859:        client.on('connection:open', openHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:860:        client.on('connection:close', closeHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1043:        client.on('search:start', startHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1044:        client.on('search:complete', completeHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1138:        client.on('vector:inserted', insertHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1139:        client.on('vector:updated', updateHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1140:        client.on('vector:deleted', deleteHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1218:        client.on('index:created', createdHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1250:        client.on('index:rebuilt', rebuiltHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1259:        client.on('index:dropped', droppedHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1455:        client.on('attention:computed', handler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1637:        client.on('gnn:forward', forwardHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1720:        client.on('hyperbolic:distance', handler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1830:        client.on('hyperbolic:embed', handler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1914:        client.on('admin:analyze', analyzeHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:1915:        client.on('admin:vacuum', vacuumHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:2084:      const unsubscribe = client.on('connection:open', handler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:2112:      client.on('connection:open', handler1);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:2113:      client.on('connection:close', handler2);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:2128:      client.on('connection:open', openHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-bridge.test.ts:2129:      client.on('connection:close', closeHandler);
+v3/@claude-flow/performance/benchmarks/startup/cli-warm-start.bench.ts:228:      process.on('beforeExit', () => {
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:32:    child.stdout?.on('data', (data) => {
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:42:    child.stderr?.on('data', (data) => {
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:46:    child.on('error', reject);
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:48:    child.on('close', () => {
+v3/@claude-flow/memory/src/memory-graph.test.ts:286:      graph.on('graph:built', handler);
+v3/@claude-flow/memory/src/memory-graph.test.ts:350:      graph.on('pagerank:computed', handler);
+v3/@claude-flow/memory/src/memory-graph.test.ts:387:      graph.on('pagerank:computed', handler);
+v3/@claude-flow/memory/src/memory-graph.test.ts:438:      graph.on('communities:detected', handler);
+v3/@claude-flow/memory/src/index.ts:365:    this.adapter.on('entry:stored', (data) => this.emit('entry:stored', data));
+v3/@claude-flow/memory/src/index.ts:366:    this.adapter.on('entry:updated', (data) => this.emit('entry:updated', data));
+v3/@claude-flow/memory/src/index.ts:367:    this.adapter.on('entry:deleted', (data) => this.emit('entry:deleted', data));
+v3/@claude-flow/memory/src/index.ts:368:    this.adapter.on('cache:hit', (data) => this.emit('cache:hit', data));
+v3/@claude-flow/memory/src/index.ts:369:    this.adapter.on('cache:miss', (data) => this.emit('cache:miss', data));
+v3/@claude-flow/memory/src/index.ts:370:    this.adapter.on('index:added', (data) => this.emit('index:added', data));
+v3/@claude-flow/memory/src/index.ts:718:    migrator.on('migration:started', (data) => this.emit('migration:started', data));
+v3/@claude-flow/memory/src/index.ts:719:    migrator.on('migration:progress', (data) => this.emit('migration:progress', data));
+v3/@claude-flow/memory/src/index.ts:720:    migrator.on('migration:completed', (data) => this.emit('migration:completed', data));
+v3/@claude-flow/memory/src/index.ts:721:    migrator.on('migration:failed', (data) => this.emit('migration:failed', data));
+v3/@claude-flow/memory/src/index.ts:722:    migrator.on('migration:error', (data) => this.emit('migration:error', data));
+v3/@claude-flow/memory/src/index.ts:723:    migrator.on('migration:warning', (data) => this.emit('migration:warning', data));
+v3/@claude-flow/memory/src/hnsw-persistence.test.ts:135:    svc2.getAdapter().on('persistence:loaded', (ev: any) => { restoredStatus = ev; });
+v3/@claude-flow/memory/src/hnsw-persistence.test.ts:182:    svc2.getAdapter().on('persistence:loaded', (ev: any) => { loadedEvent = ev; });
+v3/@claude-flow/memory/src/cache-manager.ts:443:    this.l1Cache.on('cache:hit', (data) => this.emit('l1:hit', data));
+v3/@claude-flow/memory/src/cache-manager.ts:444:    this.l1Cache.on('cache:miss', (data) => this.emit('l1:miss', data));
+v3/@claude-flow/memory/src/cache-manager.ts:445:    this.l1Cache.on('cache:eviction', (data) => this.emit('l1:eviction', data));
+v3/@claude-flow/shared/src/core/orchestrator/event-coordinator.ts:68:    this.eventBus.on(type, handler);
+v3/@claude-flow/shared/src/core/orchestrator/event-coordinator.ts:90:    this.eventBus.on(SystemEventTypes.SYSTEM_ERROR, (event: IEvent) => {
+v3/@claude-flow/shared/src/core/orchestrator/event-coordinator.ts:96:    this.eventBus.on(SystemEventTypes.DEADLOCK_DETECTED, (event: IEvent) => {
+v3/@claude-flow/security/src/safe-executor.ts:405:      childProcess.stdout?.on('data', (data: Buffer) => {
+v3/@claude-flow/security/src/safe-executor.ts:409:      childProcess.stderr?.on('data', (data: Buffer) => {
+v3/@claude-flow/security/src/safe-executor.ts:413:      childProcess.on('close', (code) => {
+v3/@claude-flow/security/src/safe-executor.ts:424:      childProcess.on('error', (error) => {
+v3/@claude-flow/swarm/src/consensus/index.ts:123:    this.implementation.on('consensus.achieved', (data) => {
+v3/@claude-flow/swarm/src/consensus/index.ts:127:    this.implementation.on('leader.elected', (data) => {
+v3/@claude-flow/swarm/__tests__/queen-coordinator.test.ts:339:      queen.on('queen.initialized', eventHandler);
+v3/@claude-flow/swarm/__tests__/queen-coordinator.test.ts:366:      queen.on('queen.shutdown', eventHandler);
+v3/@claude-flow/swarm/__tests__/queen-coordinator.test.ts:484:      queen.on('queen.task.analyzed', eventHandler);
+v3/@claude-flow/swarm/__tests__/queen-coordinator.test.ts:636:      queen.on('queen.task.delegated', eventHandler);
+v3/@claude-flow/swarm/__tests__/queen-coordinator.test.ts:800:      queen.on('queen.health.report', eventHandler);
+v3/@claude-flow/swarm/__tests__/queen-coordinator.test.ts:973:      queen.on('queen.consensus.completed', eventHandler);
+v3/@claude-flow/swarm/__tests__/queen-coordinator.test.ts:1048:      queen.on('queen.outcome.recorded', eventHandler);
+v3/@claude-flow/swarm/__tests__/queen-coordinator.test.ts:1228:      queen.on('event', eventHandler);
+v3/@claude-flow/plugins/src/registry/enhanced-plugin-registry.ts:166:    this.emitter.on(event, handler);
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1580: * poolEvents.on('pool:connect', (client) => {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1584: * poolEvents.on('pool:error', (error, client) => {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1602:    return super.on(event, listener as (...args: unknown[]) => void);
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1648:    this.pool.on('connect', (...args: unknown[]) => {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1653:    this.pool.on('acquire', (...args: unknown[]) => {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1658:    this.pool.on('release', (...args: unknown[]) => {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1663:    this.pool.on('remove', (...args: unknown[]) => {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1668:    this.pool.on('error', (...args: unknown[]) => {
+v3/@claude-flow/shared/src/mcp/transport/stdio.ts:87:    this.rl.on('line', (line) => {
+v3/@claude-flow/shared/src/mcp/transport/stdio.ts:92:    this.rl.on('close', () => {
+v3/@claude-flow/shared/src/mcp/transport/stdio.ts:97:    this.inputStream.on('error', (error) => {
+v3/@claude-flow/shared/src/hooks/hooks.test.ts:372:    eventBus.on('hooks:pre-execute', preExecuteHandler);
+v3/@claude-flow/shared/src/hooks/hooks.test.ts:373:    eventBus.on('hooks:post-execute', postExecuteHandler);
+v3/@claude-flow/plugins/src/registry/plugin-registry.ts:75:    this.emitter.on(event, handler);
+v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:202:      this.pool.on('connect', () => {
+v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:212:      this.pool.on('error', (...args: unknown[]) => {
+v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:1864:      this.connectionManager!.on(event, (data) => {
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:388:          worker.on('message', resolve);
+v3/@claude-flow/memory/src/controller-registry.test.ts:170:      registry.on('initialized', handler);
+v3/@claude-flow/memory/src/controller-registry.test.ts:184:      registry.on('controller:initialized', handler);
+v3/@claude-flow/memory/src/controller-registry.test.ts:280:      registry.on('controller:failed', handler);
+v3/@claude-flow/memory/src/controller-registry.test.ts:525:      registry.on('shutdown', handler);
+v3/@claude-flow/memory/src/controller-registry.test.ts:720:      registry.on('agentdb:unavailable', handler);
+v3/@claude-flow/memory/src/controller-registry.test.ts:728:      registry.on('initialized', () => events.push('initialized'));
+v3/@claude-flow/memory/src/controller-registry.test.ts:729:      registry.on('shutdown', () => events.push('shutdown'));
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:121:    return this.on(event, wrappedHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:674:      client.on('connection:open', openHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:675:      client.on('connection:close', closeHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:856:      client.on('vector:inserted', insertHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:857:      client.on('vector:updated', updateHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:858:      client.on('vector:deleted', deleteHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:965:      client.on('index:rebuilt', rebuiltHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:974:      client.on('index:dropped', droppedHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:983:      client.on('index:created', createdHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1187:      client.on('admin:vacuum', vacuumHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1203:      const unsubscribe = client.on('connection:open', handler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1231:      client.on('connection:open', handler1);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1232:      client.on('connection:close', handler2);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1247:      client.on('connection:open', openHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1248:      client.on('connection:close', closeHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1294:        client.on('attention:computed', handler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1325:        client.on('gnn:forward', handler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1402:        client.on('hyperbolic:embed', embedHandler);
+v3/@claude-flow/plugins/__tests__/ruvector-integration.test.ts:1403:        client.on('hyperbolic:distance', distanceHandler);
+v3/@claude-flow/memory/src/agentdb-adapter.ts:138:    this.index.on('point:added', (data) => this.emit('index:added', data));
+v3/@claude-flow/memory/src/agentdb-adapter.ts:139:    this.cache.on('cache:hit', (data) => this.emit('cache:hit', data));
+v3/@claude-flow/memory/src/agentdb-adapter.ts:140:    this.cache.on('cache:miss', (data) => this.emit('cache:miss', data));
+v3/@claude-flow/memory/src/agentdb-adapter.ts:1178:      this.index.on('point:added', (data) => this.emit('index:added', data));
+v3/@claude-flow/memory/src/learning-bridge.test.ts:188:      bridge.on('insight:learning-started', handler);
+v3/@claude-flow/memory/src/learning-bridge.test.ts:214:      safeBridge.on('insight:learning-started', handler);
+v3/@claude-flow/memory/src/learning-bridge.test.ts:247:      bridge.on('insight:learning-started', handler);
+v3/@claude-flow/memory/src/learning-bridge.test.ts:289:      bridge.on('insight:accessed', handler);
+v3/@claude-flow/memory/src/learning-bridge.test.ts:415:      bridge.on('consolidation:completed', handler);
+v3/@claude-flow/memory/src/learning-bridge.test.ts:689:      bridge.on('insight:learning-started', () => {});
+v3/@claude-flow/memory/src/learning-bridge.test.ts:690:      bridge.on('consolidation:completed', () => {});
+v3/@claude-flow/memory/src/hybrid-backend.ts:187:    this.sqlite.on('entry:stored', (data) => this.emit('sqlite:stored', data));
+v3/@claude-flow/memory/src/hybrid-backend.ts:188:    this.sqlite.on('entry:updated', (data) => this.emit('sqlite:updated', data));
+v3/@claude-flow/memory/src/hybrid-backend.ts:189:    this.sqlite.on('entry:deleted', (data) => this.emit('sqlite:deleted', data));
+v3/@claude-flow/memory/src/hybrid-backend.ts:191:    this.agentdb.on('entry:stored', (data) => this.emit('agentdb:stored', data));
+v3/@claude-flow/memory/src/hybrid-backend.ts:192:    this.agentdb.on('entry:updated', (data) => this.emit('agentdb:updated', data));
+v3/@claude-flow/memory/src/hybrid-backend.ts:193:    this.agentdb.on('entry:deleted', (data) => this.emit('agentdb:deleted', data));
+v3/@claude-flow/memory/src/hybrid-backend.ts:194:    this.agentdb.on('cache:hit', (data) => this.emit('cache:hit', data));
+v3/@claude-flow/memory/src/hybrid-backend.ts:195:    this.agentdb.on('cache:miss', (data) => this.emit('cache:miss', data));
+v3/@claude-flow/mcp/src/task-manager.ts:311:      this.on('task:completed', onComplete);
+v3/@claude-flow/mcp/src/task-manager.ts:312:      this.on('task:failed', onFail);
+v3/@claude-flow/mcp/src/task-manager.ts:313:      this.on('task:cancelled', onCancel);
+v3/@claude-flow/mcp/src/server.ts:1094:    this.toolRegistry.on('tool:registered', (name) => {
+v3/@claude-flow/mcp/src/server.ts:1098:    this.toolRegistry.on('tool:called', (data) => {
+v3/@claude-flow/mcp/src/server.ts:1102:    this.toolRegistry.on('tool:completed', (data) => {
+v3/@claude-flow/mcp/src/server.ts:1106:    this.toolRegistry.on('tool:error', (data) => {
+v3/@claude-flow/mcp/src/server.ts:1110:    this.sessionManager.on('session:created', (session) => {
+v3/@claude-flow/mcp/src/server.ts:1114:    this.sessionManager.on('session:closed', (data) => {
+v3/@claude-flow/mcp/src/server.ts:1118:    this.sessionManager.on('session:expired', (session) => {
+v3/@claude-flow/mcp/src/transport/stdio.ts:65:    this.rl.on('line', (line) => {
+v3/@claude-flow/mcp/src/transport/stdio.ts:69:    this.rl.on('close', () => {
+v3/@claude-flow/mcp/src/transport/stdio.ts:73:    this.inputStream.on('error', (error) => {
+v3/@claude-flow/mcp/src/transport/http.ts:89:      this.server!.on('error', reject);
+v3/@claude-flow/mcp/src/transport/http.ts:223:      res.on('finish', () => {
+v3/@claude-flow/mcp/src/transport/http.ts:287:    this.wss.on('connection', (ws, req) => {
+v3/@claude-flow/mcp/src/transport/http.ts:323:      ws.on('message', async (data) => {
+v3/@claude-flow/mcp/src/transport/http.ts:327:      ws.on('close', () => {
+v3/@claude-flow/mcp/src/transport/http.ts:334:      ws.on('error', (error) => {
+v3/@claude-flow/mcp/__tests__/integration.test.ts:226:      taskManager.on('task:progress', (event: { taskId: string; progress: { progress: number } }) => {
+v3/@claude-flow/memory/src/migration.test.ts:115:    migrator.on('migration:warning', (w: { message: string }) => warnings.push(w.message));
+v3/@claude-flow/mcp/src/transport/websocket.ts:99:      this.server!.on('error', reject);
+v3/@claude-flow/mcp/src/transport/websocket.ts:221:    this.wss.on('connection', (ws) => {
+v3/@claude-flow/mcp/src/transport/websocket.ts:247:      ws.on('message', async (data) => {
+v3/@claude-flow/mcp/src/transport/websocket.ts:251:      ws.on('pong', () => {
+v3/@claude-flow/mcp/src/transport/websocket.ts:255:      ws.on('close', (code, reason) => {
+v3/@claude-flow/mcp/src/transport/websocket.ts:266:      ws.on('error', (error) => {
+v3/@claude-flow/memory/src/consolidator.ts:247:      fresh.on('point:added', (data: any) => adapter.emit('index:added', data));
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:451:      bridge.on('insight:recorded', handler);
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:519:      bridge.on('sync:completed', handler);
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:745:      bridge.on('index:skipped', (e) => { skipEvent = e; });
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:819:      bridge.on('sync:failed', handler);
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:976:      bridge.on('import:completed', handler);
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:1018:      bridge.on('index:skipped', (e) => { skipEvent = e; });
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:1029:      bridge.on('index:curated', handler);
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:1082:      bridge.on('insight:recorded', () => {});
+v3/@claude-flow/memory/src/auto-memory-bridge.test.ts:1083:      bridge.on('sync:completed', () => {});
+v3/@claude-flow/memory/src/graceful-retrieval.test.ts:55:    svc.getAdapter().on('health:embedder', (ev: any) => { degraded = ev; });
+v3/@claude-flow/memory/src/graceful-retrieval.test.ts:91:    svc.getAdapter().on('health:embedder', (ev: any) => { degraded = ev; });
+v3/@claude-flow/integration/src/worker-pool.ts:874:    worker.on('task-started', (data) => {
+v3/@claude-flow/integration/src/worker-pool.ts:878:    worker.on('task-completed', (data) => {
+v3/@claude-flow/integration/src/worker-pool.ts:882:    worker.on('task-failed', (data) => {
+v3/@claude-flow/integration/src/worker-pool.ts:886:    worker.on('load-updated', (data) => {
+v3/@claude-flow/hooks/src/swarm/index.ts:186:      reasoningBank.on('pattern:stored', async (data) => {
+v3/@claude-flow/hooks/src/__tests__/reasoningbank.test.ts:403:      reasoningBank.on('pattern:stored', (data) => events.push(data));
+v3/@claude-flow/hooks/src/__tests__/reasoningbank.test.ts:415:      reasoningBank.on('outcome:recorded', (data) => events.push(data));
+v3/@claude-flow/hooks/src/__tests__/reasoningbank.test.ts:428:      reasoningBank.on('consolidated', (data) => events.push(data));
+v3/@claude-flow/hooks/__tests__/workers.test.ts:109:      manager.on('worker:registered', registered);
+v3/@claude-flow/hooks/src/bridge/official-hooks-bridge.ts:335:    process.stdin.on('readable', () => {
+v3/@claude-flow/hooks/src/bridge/official-hooks-bridge.ts:342:    process.stdin.on('end', () => {
+v3/@claude-flow/hooks/bin/hooks-daemon.js:57:        process.on('SIGINT', async () => {
+v3/@claude-flow/hooks/bin/hooks-daemon.js:66:        process.on('SIGTERM', async () => {
+v3/@claude-flow/guidance/src/ruvbot-integration.ts:940:    this.ruvbot!.on(event, handler);
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:24:        child.stdout.on('data', (c) => { out.push(c); if (opts.verbose)
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:26:        child.stderr.on('data', (c) => { err.push(c); if (opts.verbose)
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:28:        child.on('close', (code) => resolve({
+v3/@claude-flow/cli/dist/src/appliance/rvfa-runner.js:32:        child.on('error', (e) => resolve({
+v3/@claude-flow/cli/dist/src/appliance/rvfa-distribution.js:59:            res.on('data', (c) => ch.push(c));
+v3/@claude-flow/cli/dist/src/appliance/rvfa-distribution.js:60:            res.on('end', () => {
+v3/@claude-flow/cli/dist/src/appliance/rvfa-distribution.js:73:        req.on('error', reject);
+v3/@claude-flow/cli/dist/src/appliance/rvfa-distribution.js:89:            res.on('data', (c) => ch.push(c));
+v3/@claude-flow/cli/dist/src/appliance/rvfa-distribution.js:90:            res.on('end', () => resolve(Buffer.concat(ch)));
+v3/@claude-flow/cli/dist/src/appliance/rvfa-distribution.js:93:        req.on('error', reject);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:150:            res.on('data', (c) => chunks.push(c));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:151:            res.on('end', () => {
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:159:            res.on('error', reject);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:161:        req.on('error', reject);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:266:                res.on('data', (c) => chunks.push(c));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:267:                res.on('end', () => {
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:276:                res.on('error', () => resolve(null));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:278:            req.on('error', () => resolve(null));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:63:                        r2.on('data', (c) => chunks.push(c));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:64:                        r2.on('end', () => resolve(Buffer.concat(chunks).toString('utf-8')));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:65:                        r2.on('error', reject);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:67:                        .on('error', reject);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:80:            res.on('data', (c) => chunks.push(c));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:81:            res.on('end', () => resolve(Buffer.concat(chunks).toString('utf-8')));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:82:            res.on('error', reject);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:84:        req.on('error', reject);
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:178:      proc.stdout?.on('data', (data) => {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:182:      proc.stderr?.on('data', (data) => {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:191:      proc.on('close', (code) => {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:202:      proc.on('error', (err) => {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:359:      proc.stdout?.on('data', (data) => { output += data.toString(); });
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:360:      proc.stderr?.on('data', (data) => { error += data.toString(); });
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:362:      proc.on('close', (code) => {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:370:      proc.on('error', reject);
+v3/@claude-flow/cli/dist/src/runtime/headless.js:136:    process.on('SIGINT', async () => {
+v3/@claude-flow/cli/dist/src/runtime/headless.js:141:    process.on('SIGTERM', async () => {
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:125:    child.stdout?.on('data', (d) => { stdout += d.toString(); });
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:126:    child.stderr?.on('data', (d) => { stderr += d.toString(); });
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:127:    child.on('error', (e) => finish({ stdout, stderr: e.message, code: null }));
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:128:    child.on('close', (code) => {
+v3/@claude-flow/codex/src/cli.ts:700:program.on('command:*', () => {
+v3/@claude-flow/codex/src/loop/index.ts:265:  child.stdout?.on('data', data => { stdout += data.toString(); });
+v3/@claude-flow/codex/src/loop/index.ts:266:  child.stderr?.on('data', data => { stderr += data.toString(); });
+v3/@claude-flow/codex/src/loop/index.ts:267:  child.on('error', err => {
+v3/@claude-flow/codex/src/loop/index.ts:271:  child.on('close', (code, signal) => {
+v3/@claude-flow/codex/src/dual-mode/cli.ts:66:      orchestrator.on('memory:initialized', ({ namespace }) => {
+v3/@claude-flow/codex/src/dual-mode/cli.ts:70:      orchestrator.on('worker:started', ({ id, role, platform }) => {
+v3/@claude-flow/codex/src/dual-mode/cli.ts:75:      orchestrator.on('worker:completed', ({ id }) => {
+v3/@claude-flow/codex/src/dual-mode/cli.ts:79:      orchestrator.on('worker:failed', ({ id, error }) => {
+v3/@claude-flow/codex/src/dual-mode/cli.ts:194:      proc.on('close', () => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:284:        process.on('uncaughtException', (err) => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:287:        process.on('unhandledRejection', (reason) => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:349:        process.stdin.on('data', async (chunk) => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:378:        process.stdin.on('end', () => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:383:        process.on('SIGINT', () => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:387:        process.on('SIGTERM', () => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:671:                res.on('data', (chunk) => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:674:                res.on('end', () => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:683:            req.on('error', reject);
+v3/@claude-flow/cli/dist/src/mcp-server.js:684:            req.on('timeout', () => {
+v3/@claude-flow/cli/dist/src/prompt.js:24:            this.rl.on('close', () => {
+v3/@claude-flow/cli/dist/src/prompt.js:124:            process.stdin.on('data', handleKeypress);
+v3/@claude-flow/cli/dist/src/prompt.js:229:            process.stdin.on('data', handleData);
+v3/@claude-flow/cli/dist/src/prompt.js:348:            process.stdin.on('data', handleKeypress);
+v3/@claude-flow/cli/dist/src/prompt.js:488:            process.stdin.on('data', handleKeypress);
+v3/@claude-flow/cli/dist/src/services/distill-oracle.js:265:    child.stdout?.on('data', (d) => { stdout += d.toString(); });
+v3/@claude-flow/cli/dist/src/services/distill-oracle.js:266:    child.stderr?.on('data', (d) => { stderr += d.toString(); });
+v3/@claude-flow/cli/dist/src/services/distill-oracle.js:267:    child.on('error', (e) => finish({ stdout, stderr: e.message, code: null }));
+v3/@claude-flow/cli/dist/src/services/distill-oracle.js:268:    child.on('close', (code) => finish({ stdout, stderr, code }));
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:422:            child.stdout?.on('data', (data) => {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:425:            child.stderr?.on('data', (data) => {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:428:            child.on('close', (code) => {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:440:            child.on('error', (error) => {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:196:                this.headlessExecutor.on('execution:start', (data) => {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:200:                this.headlessExecutor.on('execution:complete', (data) => {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:204:                this.headlessExecutor.on('execution:error', (data) => {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:208:                this.headlessExecutor.on('output', (data) => {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:368:        process.on('SIGTERM', shutdown);
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:369:        process.on('SIGINT', shutdown);
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:370:        process.on('SIGHUP', shutdown);
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:402:        process.on('uncaughtException', (err) => onCrash('uncaughtException', err));
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:403:        process.on('unhandledRejection', (err) => onCrash('unhandledRejection', err));
+v3/@claude-flow/cli/dist/src/commands/daemon.js:279:            process.on('exit', cleanup);
+v3/@claude-flow/cli/dist/src/commands/daemon.js:280:            process.on('SIGINT', () => { cleanup(); process.exit(0); });
+v3/@claude-flow/cli/dist/src/commands/daemon.js:281:            process.on('SIGTERM', () => { cleanup(); process.exit(0); });
+v3/@claude-flow/cli/dist/src/commands/daemon.js:284:                process.on('SIGHUP', () => { });
+v3/@claude-flow/cli/dist/src/commands/daemon.js:327:                daemon.on('worker:start', ({ type }) => {
+v3/@claude-flow/cli/dist/src/commands/daemon.js:330:                daemon.on('worker:complete', ({ type, durationMs }) => {
+v3/@claude-flow/cli/dist/src/commands/daemon.js:333:                daemon.on('worker:error', ({ type, error }) => {
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:298:            process.on('SIGINT', sigintHandler);
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:299:            process.on('SIGTERM', sigintHandler);
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:301:            claudeProcess.on('exit', (code) => {
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:324:            // claudeProcess.on('exit', ...) log lines actually print, and lets the
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:328:                claudeProcess.on('exit', (c) => resolve(c ?? 0));
+v3/@claude-flow/cli/dist/src/commands/hive-mind.js:329:                claudeProcess.on('error', () => resolve(1));
+v3/@claude-flow/cli/dist/src/commands/mcp.js:151:            manager.on('starting', () => {
+v3/@claude-flow/cli/dist/src/commands/mcp.js:154:            manager.on('started', (data) => {
+v3/@claude-flow/cli/dist/src/commands/mcp.js:157:            manager.on('log', (log) => {
+v3/@claude-flow/cli/dist/src/mcp-tools/browser-intent-tools.js:181:            req.on('data', (c) => chunks.push(c));
+v3/@claude-flow/cli/dist/src/mcp-tools/browser-intent-tools.js:182:            req.on('end', () => {
+v3/@claude-flow/cli/dist/src/mcp-tools/browser-intent-tools.js:208:        server.on('error', reject);
+v3/@claude-flow/cli/dist/src/mcp-tools/system-tools.js:585:                    socket.on('error', () => resolve(false));
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:947:            child.stdout?.on('data', (data) => {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:956:            child.stderr?.on('data', (data) => {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:965:            child.on('close', (code) => {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:976:            child.on('error', (error) => {
+v3/@claude-flow/cli/dist/src/commands/progress.js:179:        process.on('SIGINT', () => {
+v3/@claude-flow/cli/dist/src/commands/status.js:404:        process.on('SIGINT', () => {
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:79:        p.stdout?.on('data', (d) => { stdout += d.toString(); });
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:80:        p.stderr?.on('data', () => { });
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:86:        p.on('close', (code) => {
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:105:        p.on('error', () => {
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:132:        p.stdout?.on('data', (d) => { stdout += d.toString(); });
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:133:        p.stderr?.on('data', () => { });
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:138:        p.on('close', (code) => {
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:157:        p.on('error', () => {
+v3/@claude-flow/cli/src/services/worker-daemon.ts:311:        this.headlessExecutor.on('execution:start', (data) => {
+v3/@claude-flow/cli/src/services/worker-daemon.ts:316:        this.headlessExecutor.on('execution:complete', (data) => {
+v3/@claude-flow/cli/src/services/worker-daemon.ts:321:        this.headlessExecutor.on('execution:error', (data) => {
+v3/@claude-flow/cli/src/services/worker-daemon.ts:326:        this.headlessExecutor.on('output', (data) => {
+v3/@claude-flow/cli/src/services/worker-daemon.ts:497:    process.on('SIGTERM', shutdown);
+v3/@claude-flow/cli/src/services/worker-daemon.ts:498:    process.on('SIGINT', shutdown);
+v3/@claude-flow/cli/src/services/worker-daemon.ts:499:    process.on('SIGHUP', shutdown);
+v3/@claude-flow/cli/src/services/worker-daemon.ts:530:    process.on('uncaughtException', (err) => onCrash('uncaughtException', err));
+v3/@claude-flow/cli/src/services/worker-daemon.ts:531:    process.on('unhandledRejection', (err) => onCrash('unhandledRejection', err));
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1257:      child.stdout?.on('data', (data: Buffer) => {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1267:      child.stderr?.on('data', (data: Buffer) => {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1277:      child.on('close', (code: number | null) => {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1289:      child.on('error', (error: Error) => {
+v3/@claude-flow/cli/src/services/fable-harness.ts:202:    child.stdout?.on('data', (d: Buffer) => { stdout += d.toString(); });
+v3/@claude-flow/cli/src/services/fable-harness.ts:203:    child.stderr?.on('data', (d: Buffer) => { stderr += d.toString(); });
+v3/@claude-flow/cli/src/services/fable-harness.ts:204:    child.on('error', (e: Error) => finish({ stdout, stderr: e.message, code: null }));
+v3/@claude-flow/cli/src/services/fable-harness.ts:205:    child.on('close', (code: number | null) => {
+v3/@claude-flow/cli/src/services/distill-oracle.ts:426:    child.stdout?.on('data', (d: Buffer) => { stdout += d.toString(); });
+v3/@claude-flow/cli/src/services/distill-oracle.ts:427:    child.stderr?.on('data', (d: Buffer) => { stderr += d.toString(); });
+v3/@claude-flow/cli/src/services/distill-oracle.ts:428:    child.on('error', (e: Error) => finish({ stdout, stderr: e.message, code: null }));
+v3/@claude-flow/cli/src/services/distill-oracle.ts:429:    child.on('close', (code: number | null) => finish({ stdout, stderr, code }));
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:602:      child.stdout?.on('data', (data: Buffer) => {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:606:      child.stderr?.on('data', (data: Buffer) => {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:610:      child.on('close', (code) => {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:626:      child.on('error', (error) => {
+v3/@claude-flow/cli/src/runtime/headless.ts:177:  process.on('SIGINT', async () => {
+v3/@claude-flow/cli/src/runtime/headless.ts:183:  process.on('SIGTERM', async () => {
+v3/@claude-flow/cli/src/prompt.ts:37:      this.rl.on('close', () => {
+v3/@claude-flow/cli/src/prompt.ts:149:      process.stdin.on('data', handleKeypress);
+v3/@claude-flow/cli/src/prompt.ts:286:      process.stdin.on('data', handleData);
+v3/@claude-flow/cli/src/prompt.ts:422:      process.stdin.on('data', handleKeypress);
+v3/@claude-flow/cli/src/prompt.ts:589:      process.stdin.on('data', handleKeypress);
+v3/@claude-flow/cli/src/commands/status.ts:507:    process.on('SIGINT', () => {
+v3/@claude-flow/cli/src/commands/mcp.ts:172:      manager.on('starting', () => {
+v3/@claude-flow/cli/src/commands/mcp.ts:176:      manager.on('started', (data: { startupTime?: number }) => {
+v3/@claude-flow/cli/src/commands/mcp.ts:180:      manager.on('log', (log: { level: string; msg: string; data?: unknown }) => {
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:88:    p.stdout?.on('data', (d) => { stdout += d.toString(); });
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:89:    p.stderr?.on('data', () => { /* swallow — graceful */ });
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:92:    p.on('close', (code) => {
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:106:    p.on('error', () => {
+v3/@claude-flow/cli/src/mcp-tools/system-tools.ts:617:          socket.on('error', () => resolve(false));
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:140:    p.stdout?.on('data', (d) => { stdout += d.toString(); });
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:141:    p.stderr?.on('data', () => { /* swallow — graceful */ });
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:143:    p.on('close', (code) => {
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:157:    p.on('error', () => {
+v3/@claude-flow/cli/src/init/helpers-generator.ts:502:    '    process.stdin.on("data", (chunk) => { data += chunk; });',
+v3/@claude-flow/cli/src/init/helpers-generator.ts:503:    '    process.stdin.on("end", () => { clearTimeout(timer); resolve(data); });',
+v3/@claude-flow/cli/src/init/helpers-generator.ts:504:    '    process.stdin.on("error", () => { clearTimeout(timer); resolve(data); });',
+v3/@claude-flow/cli/src/init/helpers-generator.ts:1025:process.on('unhandledRejection', () => {});
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:204:        res.on('data', (c: Buffer) => chunks.push(c));
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:205:        res.on('end', () => {
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:212:        res.on('error', reject);
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:215:    req.on('error', reject);
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:340:        res.on('data', (c: Buffer) => chunks.push(c));
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:341:        res.on('end', () => {
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:349:        res.on('error', () => resolve(null));
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:351:      req.on('error', () => resolve(null));
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:494:        '    process.stdin.on("data", (chunk) => { data += chunk; });',
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:495:        '    process.stdin.on("end", () => { clearTimeout(timer); resolve(data); });',
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:496:        '    process.stdin.on("error", () => { clearTimeout(timer); resolve(data); });',
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:1015:process.on('unhandledRejection', () => {});
+v3/@claude-flow/cli/src/mcp-server.ts:365:    process.on('uncaughtException', (err) => {
+v3/@claude-flow/cli/src/mcp-server.ts:368:    process.on('unhandledRejection', (reason) => {
+v3/@claude-flow/cli/src/mcp-server.ts:446:    process.stdin.on('data', async (chunk) => {
+v3/@claude-flow/cli/src/mcp-server.ts:483:    process.stdin.on('end', () => {
+v3/@claude-flow/cli/src/mcp-server.ts:491:    process.on('SIGINT', () => {
+v3/@claude-flow/cli/src/mcp-server.ts:498:    process.on('SIGTERM', () => {
+v3/@claude-flow/cli/src/mcp-server.ts:822:          res.on('data', (chunk: string) => {
+v3/@claude-flow/cli/src/mcp-server.ts:825:          res.on('end', () => {
+v3/@claude-flow/cli/src/mcp-server.ts:835:      req.on('error', reject);
+v3/@claude-flow/cli/src/mcp-server.ts:836:      req.on('timeout', () => {
+v3/@claude-flow/cli/src/commands/daemon.ts:255:      process.on('exit', cleanup);
+v3/@claude-flow/cli/src/commands/daemon.ts:256:      process.on('SIGINT', () => { cleanup(); process.exit(0); });
+v3/@claude-flow/cli/src/commands/daemon.ts:257:      process.on('SIGTERM', () => { cleanup(); process.exit(0); });
+v3/@claude-flow/cli/src/commands/daemon.ts:260:        process.on('SIGHUP', () => { /* ignore — keep running */ });
+v3/@claude-flow/cli/src/commands/daemon.ts:313:        daemon.on('worker:start', ({ type }: { type: string }) => {
+v3/@claude-flow/cli/src/commands/daemon.ts:317:        daemon.on('worker:complete', ({ type, durationMs }: { type: string; durationMs: number }) => {
+v3/@claude-flow/cli/src/commands/daemon.ts:321:        daemon.on('worker:error', ({ type, error }: { type: string; error: string }) => {
+v3/@claude-flow/cli/bin/cli.js:160:  process.stdin.on('data', async (chunk) => {
+v3/@claude-flow/cli/bin/cli.js:209:  process.stdin.on('end', () => {
+v3/@claude-flow/cli/src/mcp-tools/browser-intent-tools.ts:225:      req.on('data', (c: Buffer) => chunks.push(c));
+v3/@claude-flow/cli/src/mcp-tools/browser-intent-tools.ts:226:      req.on('end', () => {
+v3/@claude-flow/cli/src/mcp-tools/browser-intent-tools.ts:252:    server.on('error', reject);
+v3/@claude-flow/cli/src/commands/progress.ts:214:    process.on('SIGINT', () => {
+v3/@claude-flow/cli/src/commands/hive-mind.ts:353:      process.on('SIGINT', sigintHandler);
+v3/@claude-flow/cli/src/commands/hive-mind.ts:354:      process.on('SIGTERM', sigintHandler);
+v3/@claude-flow/cli/src/commands/hive-mind.ts:357:      claudeProcess.on('exit', (code) => {
+v3/@claude-flow/cli/src/commands/hive-mind.ts:382:      // claudeProcess.on('exit', ...) log lines actually print, and lets the
+v3/@claude-flow/cli/src/commands/hive-mind.ts:386:        claudeProcess.on('exit', (c) => resolve(c ?? 0));
+v3/@claude-flow/cli/src/commands/hive-mind.ts:387:        claudeProcess.on('error', () => resolve(1));
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:86:              r2.on('data', (c: Buffer) => chunks.push(c));
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:87:              r2.on('end', () => resolve(Buffer.concat(chunks).toString('utf-8')));
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:88:              r2.on('error', reject);
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:90:            .on('error', reject);
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:104:      res.on('data', (c: Buffer) => chunks.push(c));
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:105:      res.on('end', () => resolve(Buffer.concat(chunks).toString('utf-8')));
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:106:      res.on('error', reject);
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:109:    req.on('error', reject);
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:49:    child.stdout.on('data', (c: Buffer) => { out.push(c); if (opts.verbose) process.stdout.write(c); });
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:50:    child.stderr.on('data', (c: Buffer) => { err.push(c); if (opts.verbose) process.stderr.write(c); });
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:51:    child.on('close', (code) => resolve({
+v3/@claude-flow/cli/src/appliance/rvfa-runner.ts:55:    child.on('error', (e) => resolve({
+v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:86:        res.on('data', (c: Buffer) => ch.push(c));
+v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:87:        res.on('end', () => {
+v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:96:    req.on('error', reject);
+v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:111:      res.on('data', (c: Buffer) => ch.push(c));
+v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:112:      res.on('end', () => resolve(Buffer.concat(ch)));
+v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:115:    req.on('error', reject);
+v3/@claude-flow/cli/bin/mcp-server.js:57:process.stdin.on('data', async (chunk) => {
+v3/@claude-flow/cli/bin/mcp-server.js:101:process.stdin.on('end', () => {
+v3/@claude-flow/cli/bin/mcp-server.js:109:process.on('SIGINT', () => {
+v3/@claude-flow/cli/bin/mcp-server.js:114:process.on('SIGTERM', () => {
+bin/cli.js:15:cp.on('exit', (code) => process.exit(code ?? 1));
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:169:      childProcess.stdout?.on('data', (data: Buffer) => {
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:175:      childProcess.stderr?.on('data', (data: Buffer) => {
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:181:      childProcess.on('close', (code: number | null) => {
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:223:      childProcess.on('error', (err: Error) => {
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:486:      executor.on('output', outputHandler);
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:509:      executor.on('error', errorHandler);
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:532:      executor.on('error', () => {});
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:596:      executor.on('error', errorHandler);
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:805:      executor.on('timeout', timeoutHandler);
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:865:      executor.on('error', errorHandler);
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:885:      executor.on('error', errorHandler);
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:909:      executor.on('error', () => {});
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:926:      executor.on('output', (event) => outputs.push(event));
+v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:949:      executor.on('error', (event) => errors.push(event));
+v3/@claude-flow/cli/__tests__/http-fetch-tools.test.ts:50:      req.on('data', (c) => chunks.push(c));
+v3/@claude-flow/cli/__tests__/http-fetch-tools.test.ts:51:      req.on('end', () => {

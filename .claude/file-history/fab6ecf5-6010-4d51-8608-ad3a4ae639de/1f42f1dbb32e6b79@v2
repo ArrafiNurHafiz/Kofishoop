@@ -1,0 +1,275 @@
+<?php
+// Array asosiatif tarif gaji per hari berdasarkan golongan
+$tarifGaji = [
+    'A' => 200000,
+    'B' => 150000,
+    'C' => 100000
+];
+
+/**
+ * Fungsi untuk menghitung total gaji karyawan
+ *
+ * @param string $golongan Golongan karyawan (A, B, atau C)
+ * @param int    $hari     Jumlah hari kerja
+ * @return array           Array berisi gajiPokok, tunjangan, dan total
+ */
+function hitungGaji($gol, $hari) {
+    global $tarifGaji;
+
+    // Hitung gaji pokok
+    $gajiPokok = $tarifGaji[$gol] * $hari;
+
+    // Tunjangan makan: Rp 50.000 jika hari kerja > 20
+    $tunjangan = ($hari > 20) ? 50000 : 0;
+
+    // Total gaji
+    $total = $gajiPokok + $tunjangan;
+
+    return [
+        'gajiPokok' => $gajiPokok,
+        'tunjangan' => $tunjangan,
+        'total'     => $total
+    ];
+}
+
+// Inisialisasi variabel untuk hasil
+$hasil = null;
+$namaKaryawan = '';
+
+// Proses form jika disubmit
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $namaKaryawan = $_POST['nama'] ?? '';
+    $golongan      = $_POST['golongan'] ?? '';
+    $hari          = (int) ($_POST['hari'] ?? 0);
+
+    // Validasi sederhana
+    if (!empty($namaKaryawan) && isset($tarifGaji[$golongan]) && $hari > 0) {
+        $hasil = hitungGaji($golongan, $hari);
+    } else {
+        $error = 'Harap isi semua data dengan benar.';
+    }
+}
+
+/**
+ * Format angka ke format Rupiah
+ */
+function formatRupiah($angka) {
+    return 'Rp ' . number_format($angka, 0, ',', '.');
+}
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Gaji Karyawan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 650px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 12px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            background: #fafafa;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #fff;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .error {
+            background: #ffecec;
+            color: #e74c3c;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .hasil {
+            margin-top: 30px;
+            border-top: 2px dashed #e0e0e0;
+            padding-top: 25px;
+        }
+        .hasil h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .struk {
+            background: #f8f9ff;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .struk .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 15px;
+        }
+        .struk .row:last-child {
+            border-bottom: none;
+        }
+        .struk .label {
+            color: #555;
+            font-weight: 500;
+        }
+        .struk .value {
+            color: #333;
+            font-weight: 600;
+        }
+        .struk .row.total {
+            background: #667eea;
+            margin: 0 -20px -20px -20px;
+            padding: 14px 20px;
+            border-radius: 0 0 10px 10px;
+            border-bottom: none;
+            margin-top: 10px;
+        }
+        .struk .row.total .label {
+            color: #fff;
+            font-weight: 700;
+        }
+        .struk .row.total .value {
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #999;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Kalkulator Gaji Karyawan</h1>
+
+        <?php if (isset($error)) : ?>
+            <div class="error"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="nama">Nama Karyawan</label>
+                <input type="text" id="nama" name="nama"
+                       placeholder="Masukkan nama lengkap"
+                       value="<?= htmlspecialchars($namaKaryawan) ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="golongan">Golongan</label>
+                <select id="golongan" name="golongan" required>
+                    <option value="">— Pilih Golongan —</option>
+                    <option value="A" <?= (isset($golongan) && $golongan === 'A') ? 'selected' : '' ?>>A (Rp 200.000/hari)</option>
+                    <option value="B" <?= (isset($golongan) && $golongan === 'B') ? 'selected' : '' ?>>B (Rp 150.000/hari)</option>
+                    <option value="C" <?= (isset($golongan) && $golongan === 'C') ? 'selected' : '' ?>>C (Rp 100.000/hari)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hari">Jumlah Hari Kerja</label>
+                <input type="number" id="hari" name="hari"
+                       placeholder="Contoh: 22"
+                       value="<?= isset($hari) ? htmlspecialchars($hari) : '' ?>"
+                       min="1" required>
+            </div>
+
+            <button type="submit">🧮 Hitung Gaji</button>
+        </form>
+
+        <?php if ($hasil) : ?>
+            <div class="hasil">
+                <h2>🧾 Struk Rincian Gaji</h2>
+                <div class="struk">
+                    <div class="row">
+                        <span class="label">Nama Karyawan</span>
+                        <span class="value"><?= htmlspecialchars($namaKaryawan) ?></span>
+                    </div>
+                    <div class="row">
+                        <span class="label">Gaji Pokok</span>
+                        <span class="value"><?= formatRupiah($hasil['gajiPokok']) ?></span>
+                    </div>
+                    <div class="row">
+                        <span class="label">Tunjangan Makan</span>
+                        <span class="value"><?= formatRupiah($hasil['tunjangan']) ?></span>
+                    </div>
+                    <div class="row total">
+                        <span class="label">Total Diterima</span>
+                        <span class="value"><?= formatRupiah($hasil['total']) ?></span>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <div class="footer">
+            &copy; <?= date('Y') ?> — Sistem Kalkulasi Gaji Karyawan
+        </div>
+    </div>
+</body>
+</html>

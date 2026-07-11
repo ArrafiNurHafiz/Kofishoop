@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Implement database layer (SQLModel + aiosqlite)",
+  "description": "Buat models.py (9 tabel), database.py (engine, init, session), dan data migration",
+  "activeForm": "Implementing database layer",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

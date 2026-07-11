@@ -1,0 +1,232 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Category;
+use App\Models\DataSource;
+use App\Models\TransitStop;
+use App\Models\TransitRoute;
+use App\Models\TransitRouteStop;
+use App\Models\Poi;
+use App\Models\PoiTransitStop;
+use App\Models\Itinerary;
+use App\Models\ItineraryItem;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    public function run(): void
+    {
+        // --- Data Sources ---
+        $osmSource = DataSource::create([
+            'name' => 'OpenStreetMap Yogyakarta',
+            'type' => 'open_data',
+            'url' => 'https://www.openstreetmap.org/relation/23937584',
+            'license_note' => 'ODbL — Open Database License. Wajib mencantumkan © OpenStreetMap contributors.',
+            'retrieved_at' => '2026-07-08',
+        ]);
+
+        $mapidMenuGo = DataSource::create([
+            'name' => 'MAPID Menu Go',
+            'type' => 'mapid_apps',
+            'url' => null,
+            'license_note' => 'Data dari ekosistem MAPID — hanya untuk keperluan kompetisi.',
+            'retrieved_at' => '2026-07-08',
+        ]);
+
+        $fieldSurvey = DataSource::create([
+            'name' => 'Survei Lapangan Tim',
+            'type' => 'field_survey',
+            'url' => null,
+            'license_note' => 'Data hasil validasi lapangan oleh tim.',
+            'retrieved_at' => '2026-07-08',
+        ]);
+
+        // --- Categories ---
+        $kuliner = Category::create(['name' => 'Kuliner', 'slug' => 'kuliner', 'type' => 'poi_group', 'icon' => 'Kul']);
+        $wisata = Category::create(['name' => 'Wisata', 'slug' => 'wisata', 'type' => 'poi_group', 'icon' => 'Wis']);
+        $penginapan = Category::create(['name' => 'Penginapan', 'slug' => 'penginapan', 'type' => 'poi_group', 'icon' => 'Inap']);
+
+        // --- Transit Stops (Trans Jogja halte - sample) ---
+        $halteMalioboro1 = TransitStop::create([
+            'name' => 'Halte Malioboro 1', 'code' => 'TJ-01', 'latitude' => -7.79250, 'longitude' => 110.36650,
+            'mode' => 'bus', 'facilities' => ['atap', 'kursi', 'papan_info', 'akses_difabel'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteMalioboro2 = TransitStop::create([
+            'name' => 'Halte Malioboro 2', 'code' => 'TJ-02', 'latitude' => -7.79500, 'longitude' => 110.36700,
+            'mode' => 'bus', 'facilities' => ['atap', 'kursi'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteKraton = TransitStop::create([
+            'name' => 'Halte Kraton', 'code' => 'TJ-03', 'latitude' => -7.80800, 'longitude' => 110.36300,
+            'mode' => 'bus', 'facilities' => ['atap', 'kursi', 'papan_info', 'akses_difabel'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteKotaGede = TransitStop::create([
+            'name' => 'Halte Kota Gede', 'code' => 'TJ-04', 'latitude' => -7.82800, 'longitude' => 110.39700,
+            'mode' => 'bus', 'facilities' => ['atap'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteLempuyangan = TransitStop::create([
+            'name' => 'Stasiun Lempuyangan', 'code' => 'KRL-LP', 'latitude' => -7.79029, 'longitude' => 110.37552,
+            'mode' => 'krl', 'facilities' => ['atap', 'kursi', 'papan_info', 'akses_difabel', 'kios_makanan'], 'data_source_id' => $osmSource->id,
+        ]);
+        $halteUGM = TransitStop::create([
+            'name' => 'Halte UGM', 'code' => 'TJ-05', 'latitude' => -7.77200, 'longitude' => 110.37700,
+            'mode' => 'bus', 'facilities' => ['atap', 'akses_difabel'], 'data_source_id' => $osmSource->id,
+        ]);
+
+        // --- Transit Routes (mengikuti jalan, dari OSRM) ---
+        $route2A = TransitRoute::create([
+            'name' => 'Trans Jogja 2A', 'mode' => 'bus',
+            'geometry' => [
+                'type' => 'LineString',
+                'coordinates' => [
+                    [110.366487,-7.792688],[110.365448,-7.795855],[110.366737,-7.796114],[110.366184,-7.795928],
+                    [110.366454,-7.794368],[110.367520,-7.796167],[110.368134,-7.797512],[110.368084,-7.797534],
+                    [110.365331,-7.797438],[110.364944,-7.799843],[110.364753,-7.801375],[110.362029,-7.801278],
+                    [110.360757,-7.803149],[110.360313,-7.805975],[110.360820,-7.808157],[110.362243,-7.808648],
+                    [110.361702,-7.808573],[110.360529,-7.808072],[110.358804,-7.807846],[110.358574,-7.808564],
+                    [110.356362,-7.808642],[110.355954,-7.811147],[110.355868,-7.812948],[110.356900,-7.813181],
+                    [110.359369,-7.813545],[110.363980,-7.814190],[110.367468,-7.814699],[110.368804,-7.814640],
+                    [110.370178,-7.814892],[110.372924,-7.815264],[110.375359,-7.815568],[110.379870,-7.816219],
+                    [110.382441,-7.816592],[110.384463,-7.816890],[110.389761,-7.817746],[110.391419,-7.818062],
+                    [110.396456,-7.819358],[110.400666,-7.820445],[110.400631,-7.822780],[110.400420,-7.825147],
+                    [110.400393,-7.826544],[110.400315,-7.827807],[110.398005,-7.827441],[110.396480,-7.827976],
+                ]
+            ],
+            'operating_hours' => '05:30–21:00', 'frequency_minutes' => 10,
+            'data_source_id' => $osmSource->id,
+        ]);
+
+        $route1A = TransitRoute::create([
+            'name' => 'Trans Jogja 1A', 'mode' => 'bus',
+            'geometry' => [
+                'type' => 'LineString',
+                'coordinates' => [
+                    [110.366487,-7.792688],[110.367611,-7.791354],[110.367727,-7.790550],[110.367838,-7.790439],
+                    [110.368150,-7.790318],[110.368329,-7.790178],[110.368444,-7.789847],[110.368545,-7.789676],
+                    [110.369220,-7.789560],[110.369681,-7.789486],[110.370492,-7.788994],[110.371844,-7.788111],
+                    [110.372518,-7.787894],[110.373149,-7.787792],[110.373179,-7.787189],[110.373287,-7.786920],
+                    [110.373802,-7.786837],[110.374181,-7.786858],[110.374279,-7.786704],[110.374560,-7.785068],
+                    [110.374880,-7.783113],[110.375101,-7.781828],[110.375306,-7.780633],[110.375776,-7.777700],
+                    [110.375954,-7.776148],[110.375890,-7.776000],[110.375973,-7.775861],[110.376275,-7.775207],
+                    [110.377234,-7.771995],[110.377021,-7.771931],
+                ]
+            ],
+            'operating_hours' => '05:30–21:00', 'frequency_minutes' => 12,
+            'data_source_id' => $osmSource->id,
+        ]);
+
+        // --- Route Stops ---
+        TransitRouteStop::create(['transit_route_id' => $route2A->id, 'transit_stop_id' => $halteMalioboro1->id, 'sequence_order' => 1]);
+        TransitRouteStop::create(['transit_route_id' => $route2A->id, 'transit_stop_id' => $halteMalioboro2->id, 'sequence_order' => 2]);
+        TransitRouteStop::create(['transit_route_id' => $route2A->id, 'transit_stop_id' => $halteKraton->id, 'sequence_order' => 3]);
+        TransitRouteStop::create(['transit_route_id' => $route2A->id, 'transit_stop_id' => $halteKotaGede->id, 'sequence_order' => 4]);
+        TransitRouteStop::create(['transit_route_id' => $route1A->id, 'transit_stop_id' => $halteMalioboro1->id, 'sequence_order' => 1]);
+        TransitRouteStop::create(['transit_route_id' => $route1A->id, 'transit_stop_id' => $halteUGM->id, 'sequence_order' => 2]);
+
+        // --- POIs (Yogyakarta) ---
+        $poiGudeg = Poi::create([
+            'category_id' => $kuliner->id, 'name' => 'Gudeg Permata Kota Gede',
+            'description' => 'Gudeg legendaris sejak 1985 di jantung Kota Gede. Manis, legit, porsi besar.',
+            'latitude' => -7.82750, 'longitude' => 110.39800, 'address' => 'Jl. Mondorakan No. 38, Kota Gede',
+            'price_range' => 'low', 'tags' => ['gudeg', 'legendaris', 'murah'], 'operating_hours' => '07:00–17:00',
+            'photo_url' => null, 'source_type' => 'menu_go', 'transit_friendliness_score' => 9.2,
+            'data_source_id' => $mapidMenuGo->id,
+        ]);
+
+        $poiAngkringan = Poi::create([
+            'category_id' => $kuliner->id, 'name' => 'Angkringan Malioboro',
+            'description' => 'Angkringan ikonik di sepanjang Malioboro. Sate usus, nasi kucing, wedang jahe.',
+            'latitude' => -7.79260, 'longitude' => 110.36680,
+            'price_range' => 'low', 'tags' => ['angkringan', 'malam', 'murah'], 'operating_hours' => '17:00–02:00',
+            'photo_url' => null, 'source_type' => 'menu_go', 'transit_friendliness_score' => 8.5,
+            'data_source_id' => $mapidMenuGo->id,
+        ]);
+
+        $poiSate = Poi::create([
+            'category_id' => $kuliner->id, 'name' => 'Sate Klathak Pak Pong',
+            'description' => 'Sate kambing bakar khas Klathak. Daging empuk, bumbu sederhana tapi kaya rasa.',
+            'latitude' => -7.80500, 'longitude' => 110.33000, 'address' => 'Jl. Imogiri Timur, Panggungharjo',
+            'price_range' => 'med', 'tags' => ['sate', 'kambing', 'klathak'], 'operating_hours' => '10:00–22:00',
+            'photo_url' => null, 'source_type' => 'menu_go', 'transit_friendliness_score' => 6.2,
+            'data_source_id' => $mapidMenuGo->id,
+        ]);
+
+        $poiTamanSari = Poi::create([
+            'category_id' => $wisata->id, 'name' => 'Taman Sari',
+            'description' => 'Bekas taman istana Keraton Yogyakarta. Kolam pemandian, lorong bawah tanah, arsitektur campuran Jawa-Portugis.',
+            'latitude' => -7.81000, 'longitude' => 110.36300, 'address' => 'Jl. Tamanan, Kraton',
+            'price_range' => 'low', 'tags' => ['sejarah', 'kolam', 'budaya'], 'operating_hours' => '09:00–15:00',
+            'photo_url' => null, 'source_type' => 'community_activity', 'transit_friendliness_score' => 9.0,
+            'data_source_id' => $fieldSurvey->id,
+        ]);
+
+        $poiKotaGede = Poi::create([
+            'category_id' => $wisata->id, 'name' => 'Kampung Perak Kota Gede',
+            'description' => 'Sentra kerajinan perak dengan sejarah sejak abad ke-18. Banyak perajin, showroom, dan workshop.',
+            'latitude' => -7.83000, 'longitude' => 110.40000, 'address' => 'Kota Gede',
+            'price_range' => 'med', 'tags' => ['perak', 'kerajinan', 'belanja'], 'operating_hours' => '08:00–17:00',
+            'photo_url' => null, 'source_type' => 'community_activity', 'transit_friendliness_score' => 7.8,
+            'data_source_id' => $fieldSurvey->id,
+        ]);
+
+        $poiAffandi = Poi::create([
+            'category_id' => $wisata->id, 'name' => 'Museum Affandi',
+            'description' => 'Museum milik pelukis legendaris Affandi. Bangunan unik berbentuk daun, koleksi lukisan orisinal.',
+            'latitude' => -7.77800, 'longitude' => 110.38100, 'address' => 'Jl. Laksda Adisutjipto 167',
+            'price_range' => 'med', 'tags' => ['seni', 'lukis', 'museum'], 'operating_hours' => '09:00–16:00',
+            'photo_url' => null, 'source_type' => 'community_activity', 'transit_friendliness_score' => 8.8,
+            'data_source_id' => $fieldSurvey->id,
+        ]);
+
+        $poiPhoenix = Poi::create([
+            'category_id' => $penginapan->id, 'name' => 'The Phoenix Hotel Yogyakarta',
+            'description' => 'Hotel butik bintang 4 — heritage dengan arsitektur Indische dan kolam renang ikonik.',
+            'latitude' => -7.78900, 'longitude' => 110.37100, 'address' => 'Jl. Jend. Sudirman 9',
+            'price_range' => 'high', 'tags' => ['boutik', 'kolam', 'heritage'], 'operating_hours' => '24 jam',
+            'photo_url' => null, 'source_type' => 'property_go', 'transit_friendliness_score' => 8.0,
+            'data_source_id' => $mapidMenuGo->id,
+        ]);
+
+        $poiOmahKitiran = Poi::create([
+            'category_id' => $penginapan->id, 'name' => 'Omah Kitiran Guest House',
+            'description' => 'Homestay tradisional Jawa dengan suasana pedesaan di tengah kota. Halaman asri, sarapan homemade.',
+            'latitude' => -7.81800, 'longitude' => 110.39000, 'address' => 'Jl. Nitiprayan, Bantul',
+            'price_range' => 'low', 'tags' => ['homestay', 'tradisional', 'asri'], 'operating_hours' => '24 jam',
+            'photo_url' => null, 'source_type' => 'property_go', 'transit_friendliness_score' => 7.5,
+            'data_source_id' => $mapidMenuGo->id,
+        ]);
+
+        // --- POI-Transit distances ---
+        // Gudeg → Kota Gede
+        PoiTransitStop::create(['poi_id' => $poiGudeg->id, 'transit_stop_id' => $halteKotaGede->id, 'distance_meters' => 150, 'walking_minutes' => 2]);
+        // Angkringan → Malioboro 1
+        PoiTransitStop::create(['poi_id' => $poiAngkringan->id, 'transit_stop_id' => $halteMalioboro1->id, 'distance_meters' => 50, 'walking_minutes' => 1]);
+        // Sate Klathak → Kraton (jauh)
+        PoiTransitStop::create(['poi_id' => $poiSate->id, 'transit_stop_id' => $halteKraton->id, 'distance_meters' => 2200, 'walking_minutes' => 28]);
+        PoiTransitStop::create(['poi_id' => $poiSate->id, 'transit_stop_id' => $halteMalioboro2->id, 'distance_meters' => 2800, 'walking_minutes' => 35]);
+        // Taman Sari → Kraton
+        PoiTransitStop::create(['poi_id' => $poiTamanSari->id, 'transit_stop_id' => $halteKraton->id, 'distance_meters' => 400, 'walking_minutes' => 5]);
+        // Museum Affandi → UGM
+        PoiTransitStop::create(['poi_id' => $poiAffandi->id, 'transit_stop_id' => $halteUGM->id, 'distance_meters' => 600, 'walking_minutes' => 8]);
+        // Phoenix → Malioboro 1
+        PoiTransitStop::create(['poi_id' => $poiPhoenix->id, 'transit_stop_id' => $halteMalioboro1->id, 'distance_meters' => 300, 'walking_minutes' => 4]);
+        // Omah Kitiran → Kota Gede
+        PoiTransitStop::create(['poi_id' => $poiOmahKitiran->id, 'transit_stop_id' => $halteKotaGede->id, 'distance_meters' => 700, 'walking_minutes' => 9]);
+
+        // --- Sample Itinerary ---
+        $itinerary = Itinerary::create([
+            'session_token' => 'sample-demo',
+            'title' => 'Trip: Malioboro → Kota Gede',
+            'ai_narrative' => 'Mulai perjalanan dari Malioboro, sarapan angkringan sambil menikmati suasana pagi. Lanjut naik Trans Jogja 2A ke Kraton — 10 menit, turun di Halte Kraton. Jalan kaki 5 menit ke Taman Sari. Dari sini naik Trans Jogja 2A lagi ke arah Kota Gede untuk mengeksplorasi pengrajin perak dan makan gudeg. Balik ke Malioboro naik Trans Jogja 1A.',
+            'total_estimated_minutes' => 210,
+            'share_slug' => 'trip-malioboro-kotagede-x9f2',
+        ]);
+
+        ItineraryItem::create(['itinerary_id' => $itinerary->id, 'poi_id' => $poiAngkringan->id, 'visit_order' => 1, 'suggested_transit_stop_id' => $halteMalioboro1->id, 'estimated_arrival_time' => '08:00']);
+        ItineraryItem::create(['itinerary_id' => $itinerary->id, 'poi_id' => $poiTamanSari->id, 'visit_order' => 2, 'suggested_transit_stop_id' => $halteKraton->id, 'estimated_arrival_time' => '09:30']);
+        ItineraryItem::create(['itinerary_id' => $itinerary->id, 'poi_id' => $poiKotaGede->id, 'visit_order' => 3, 'suggested_transit_stop_id' => $halteKotaGede->id, 'estimated_arrival_time' => '10:45']);
+        ItineraryItem::create(['itinerary_id' => $itinerary->id, 'poi_id' => $poiGudeg->id, 'visit_order' => 4, 'suggested_transit_stop_id' => $halteKotaGede->id, 'estimated_arrival_time' => '12:00']);
+
+        $this->command->info('Database seeded! Yogyakarta transit + POI data ready.');
+    }
+}

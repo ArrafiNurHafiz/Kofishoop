@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Setup Python project structure dan dependencies",
+  "description": "Buat pyproject.toml, requirements.txt, struktur folder server/, config.py, main.py dasar",
+  "activeForm": "Setting up Python project",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

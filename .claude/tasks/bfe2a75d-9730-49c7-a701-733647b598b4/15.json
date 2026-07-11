@@ -1,0 +1,9 @@
+{
+  "id": "15",
+  "subject": "Blackbox Testing Seluruh Fitur",
+  "description": "Blackbox testing full — auth, crud, edge cases, validasi, error handling",
+  "activeForm": "Blackbox testing",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

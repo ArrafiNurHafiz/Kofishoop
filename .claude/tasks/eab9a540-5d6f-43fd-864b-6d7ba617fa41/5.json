@@ -1,0 +1,8 @@
+{
+  "id": "5",
+  "subject": "Generate test gap report with skeletons",
+  "description": "Produce final report with untested areas, edge cases, missing error handling, and integration gaps",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

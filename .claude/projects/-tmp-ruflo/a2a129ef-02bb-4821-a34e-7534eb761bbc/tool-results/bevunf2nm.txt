@@ -1,0 +1,425 @@
+v3/mcp/session-manager.ts:377:    this.cleanupTimer = setInterval(() => {
+v3/mcp/connection-pool.ts:223:      setTimeout(() => {
+v3/mcp/connection-pool.ts:337:      await new Promise((resolve) => setTimeout(resolve, 100));
+v3/mcp/connection-pool.ts:363:    this.evictionTimer = setInterval(() => {
+v3/mcp/transport/http.ts:234:        res.setTimeout(this.config.requestTimeout!, () => {
+v3/mcp/tools/sona-tools.js:355:    await new Promise(resolve => setTimeout(resolve, 1));
+v3/mcp/tools/system-tools.js:405:                    new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), input.timeout)),
+v3/mcp/tools/system-tools.js:429:                    new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), input.timeout)),
+v3/mcp/tools/system-tools.js:454:                    new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), input.timeout)),
+v3/@claude-flow/testing/src/regression/integration-regression.ts:97:        setTimeout(() => reject(new Error('Test timeout')), test.timeout);
+v3/@claude-flow/testing/src/regression/integration-regression.ts:230:        await new Promise((resolve) => setTimeout(resolve, 100));
+v3/@claude-flow/testing/src/regression/integration-regression.ts:255:        await new Promise((resolve) => setTimeout(resolve, 100));
+v3/@claude-flow/testing/src/mocks/mock-mcp-client.ts:343:      await new Promise(resolve => setTimeout(resolve, this._latencySimulation));
+v3/@claude-flow/testing/src/helpers/swarm-instance.ts:206:    await new Promise(resolve => setTimeout(resolve, 1));
+v3/@claude-flow/testing/src/helpers/test-utils.ts:166:    const timer = setTimeout(() => {
+v3/@claude-flow/testing/src/helpers/test-utils.ts:194:  return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/testing/src/helpers/test-utils.ts:202: * setTimeout(() => deferred.resolve('done'), 1000);
+v3/@claude-flow/testing/src/helpers/mock-factory.ts:348:    await new Promise(resolve => setTimeout(resolve, 10));
+v3/@claude-flow/swarm/src/federation-hub.ts:200:  private syncInterval?: ReturnType<typeof setInterval>;
+v3/@claude-flow/swarm/src/federation-hub.ts:201:  private cleanupInterval?: ReturnType<typeof setInterval>;
+v3/@claude-flow/swarm/src/federation-hub.ts:308:    this.syncInterval = setInterval(
+v3/@claude-flow/swarm/src/federation-hub.ts:315:      this.cleanupInterval = setInterval(
+v3/@claude-flow/swarm/src/federation-hub.ts:482:    setTimeout(() => {
+v3/@claude-flow/swarm/src/federation-hub.ts:531:    setTimeout(() => {
+v3/@claude-flow/swarm/src/federation-hub.ts:860:        setTimeout(check, 100);
+v3/@claude-flow/swarm/src/agent-pool.ts:363:    this.healthCheckInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:712:    this.heartbeatInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:717:    this.healthCheckInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:722:    this.metricsInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1281:      const checkInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1317:      setTimeout(() => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1336:      const checkInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1350:      setTimeout(() => {
+v3/@claude-flow/swarm/src/unified-coordinator.ts:1683:      await new Promise(resolve => setTimeout(resolve, gracePeriodMs));
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:82:  private healthCheckTimer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/swarm/src/coordination/agent-registry.ts:291:    this.healthCheckTimer = setInterval(() => {
+v3/@claude-flow/swarm/src/message-bus.ts:406:    this.processingInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/message-bus.ts:456:        const timeout = setTimeout(() => {
+v3/@claude-flow/swarm/src/message-bus.ts:512:    this.statsInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/consensus/gossip.ts:276:      const checkInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/consensus/gossip.ts:315:    this.gossipInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/workers/worker-dispatch.js:819:        await new Promise(resolve => setTimeout(resolve, Math.min(ms, 50)));
+v3/@claude-flow/swarm/src/consensus/raft.ts:242:      const checkInterval = setInterval(() => {
+v3/@claude-flow/swarm/src/consensus/raft.ts:292:    this.electionTimeout = setTimeout(() => {
+v3/@claude-flow/swarm/src/consensus/raft.ts:378:    this.heartbeatInterval = setInterval(() => {
+v3/@claude-flow/shared/src/services/v3-progress.service.ts:272:    this.updateInterval = setInterval(async () => {
+v3/@claude-flow/swarm/src/consensus/byzantine.ts:260:      const checkInterval = setInterval(() => {
+v3/@claude-flow/shared/src/resilience/circuit-breaker.ts:119:  private timeoutId?: ReturnType<typeof setTimeout>;
+v3/@claude-flow/shared/src/resilience/circuit-breaker.ts:304:    this.timeoutId = setTimeout(() => {
+v3/@claude-flow/shared/src/plugins/official/maestro-plugin.ts:408:      await new Promise((resolve) => setTimeout(resolve, 10));
+v3/@claude-flow/shared/src/mcp/connection-pool.ts:223:      setTimeout(() => {
+v3/@claude-flow/shared/src/mcp/connection-pool.ts:337:      await new Promise((resolve) => setTimeout(resolve, 100));
+v3/@claude-flow/shared/src/mcp/connection-pool.ts:363:    this.evictionTimer = setInterval(() => {
+v3/@claude-flow/shared/src/mcp/transport/http.ts:260:        res.setTimeout(this.config.requestTimeout!, () => {
+v3/@claude-flow/shared/src/hooks/executor.ts:353:        setTimeout(() => reject(new Error(`Hook execution timeout after ${timeout}ms`)), timeout)
+v3/@claude-flow/shared/src/resilience/rate-limiter.ts:88:  private cleanupInterval?: ReturnType<typeof setInterval>;
+v3/@claude-flow/shared/src/resilience/rate-limiter.ts:97:    this.cleanupInterval = setInterval(() => {
+v3/@claude-flow/shared/src/resilience/rate-limiter.ts:255:  private cleanupInterval?: ReturnType<typeof setInterval>;
+v3/@claude-flow/shared/src/resilience/rate-limiter.ts:261:    this.cleanupInterval = setInterval(() => {
+v3/@claude-flow/shared/src/core/orchestrator/health-monitor.ts:40:  private interval?: ReturnType<typeof setInterval>;
+v3/@claude-flow/shared/src/core/orchestrator/health-monitor.ts:60:    this.interval = setInterval(async () => {
+v3/@claude-flow/shared/src/core/orchestrator/health-monitor.ts:188:      setTimeout(() => reject(new Error(message)), ms);
+v3/@claude-flow/shared/src/events/example-usage.ts:114:  await new Promise((resolve) => setTimeout(resolve, 100));
+v3/@claude-flow/providers/src/ruvector-provider.ts:225:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 120000);
+v3/@claude-flow/providers/src/ruvector-provider.ts:281:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 120000);
+v3/@claude-flow/providers/src/ruvector-provider.ts:345:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 120000) * 2);
+v3/mcp/types.ts:124:    resetTimeout: number;
+v3/mcp/transport/websocket.ts:474:    this.heartbeatTimer = setInterval(() => {
+v3/mcp/transport/connection-pool.ts:210:      const timeoutId = setTimeout(() => {
+v3/mcp/transport/connection-pool.ts:369:    this.healthCheckTimer = setInterval(async () => {
+v3/mcp/tools/sona-tools.ts:619:  await new Promise(resolve => setTimeout(resolve, 1));
+v3/mcp/tools/system-tools.ts:570:            setTimeout(() => reject(new Error('Timeout')), input.timeout)
+v3/mcp/tools/system-tools.ts:596:            setTimeout(() => reject(new Error('Timeout')), input.timeout)
+v3/mcp/tools/system-tools.ts:623:            setTimeout(() => reject(new Error('Timeout')), input.timeout)
+v3/@claude-flow/testing/src/mocks/mock-services.ts:71:    await new Promise(resolve => setTimeout(resolve, 10));
+v3/@claude-flow/testing/src/mocks/mock-services.ts:333:      await new Promise(resolve => setTimeout(resolve, 10));
+v3/@claude-flow/shared/src/plugin-loader.ts:600:    this.healthCheckIntervalId = setInterval(async () => {
+v3/@claude-flow/shared/src/plugin-loader.ts:625:        setTimeout(() => reject(new Error(errorMessage)), timeoutMs)
+v3/@claude-flow/testing/src/helpers/setup-teardown.ts:470:            await new Promise(resolve => setTimeout(resolve, match.delay));
+v3/@claude-flow/testing/src/helpers/setup-teardown.ts:675:      setTimeout(() => reject(new Error(`Test timed out after ${timeoutMs}ms`)), timeoutMs)
+v3/@claude-flow/swarm/src/queen-coordinator.ts:1672:    this.healthCheckInterval = setInterval(async () => {
+v3/@claude-flow/swarm/src/federation-hub.js:137:        this.syncInterval = setInterval(() => this.syncFederation(), this.config.syncIntervalMs);
+v3/@claude-flow/swarm/src/federation-hub.js:140:            this.cleanupInterval = setInterval(() => this.cleanupExpiredAgents(), this.config.cleanupIntervalMs);
+v3/@claude-flow/swarm/src/federation-hub.js:283:        setTimeout(() => {
+v3/@claude-flow/swarm/src/federation-hub.js:327:        setTimeout(() => {
+v3/@claude-flow/swarm/src/federation-hub.js:593:                setTimeout(check, 100);
+v3/@claude-flow/swarm/src/workers/worker-dispatch.ts:1049:    await new Promise(resolve => setTimeout(resolve, Math.min(ms, 10)));
+v3/@claude-flow/swarm/src/consensus/transport.ts:264:      new Promise<ConsensusReply>((_, rej) => setTimeout(() => rej(new Error(`LocalTransport: send to ${to} timed out (${t}ms)`)), t)),
+v3/@claude-flow/swarm/src/consensus/federation-transport.ts:85:  private readonly pending = new Map<string, { resolve: (r: ConsensusReply) => void; reject: (e: Error) => void; timer: ReturnType<typeof setTimeout> }>();
+v3/@claude-flow/swarm/src/consensus/federation-transport.ts:161:      const timer = setTimeout(() => { this.pending.delete(corr); reject(new Error(`FederationTransport: send to ${to} timed out (${t}ms)`)); }, t);
+v3/@claude-flow/shared/src/resilience/retry.ts:178:    setTimeout(() => {
+v3/@claude-flow/shared/src/resilience/retry.ts:190:  return new Promise((resolve) => setTimeout(resolve, ms));
+v3/@claude-flow/shared/src/mcp/session-manager.ts:377:    this.cleanupTimer = setInterval(() => {
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:445:    this.heartbeatTimer = setInterval(() => {
+v3/@claude-flow/shared/src/hooks/example-usage.ts:478:  await new Promise(resolve => setTimeout(resolve, 100));
+v3/@claude-flow/providers/src/anthropic-provider.ts:148:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 60000);
+v3/@claude-flow/providers/src/anthropic-provider.ts:176:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 60000) * 2);
+v3/@claude-flow/plugins/src/workers/index.ts:202:      const timer = setTimeout(() => {
+v3/@claude-flow/plugins/src/workers/index.ts:326:  private healthCheckTimer?: ReturnType<typeof setInterval>;
+v3/@claude-flow/plugins/src/workers/index.ts:352:    this.healthCheckTimer = setInterval(
+v3/@claude-flow/plugins/src/workers/index.ts:412:        const checkWorker = setInterval(() => {
+v3/@claude-flow/plugins/src/workers/index.ts:426:        setTimeout(() => {
+v3/@claude-flow/plugins/src/security/index.ts:547:          setTimeout(() => reject(new Error('Execution time limit exceeded')), config.maxExecutionTime)
+v3/@claude-flow/plugins/src/registry/plugin-registry.ts:580:        setTimeout(() => reject(new Error('Initialization timeout')), timeout)
+v3/@claude-flow/plugins/src/integrations/ruvector/self-learning.ts:2024:  private backgroundInterval?: ReturnType<typeof setInterval>;
+v3/@claude-flow/plugins/src/integrations/ruvector/self-learning.ts:2065:      this.backgroundInterval = setInterval(
+v3/@claude-flow/plugins/src/integrations/ruvector/quantization.ts:794:        await new Promise(resolve => setTimeout(resolve, 0));
+v3/@claude-flow/plugins/src/integrations/ruvector/quantization.ts:1117:      await new Promise(resolve => setTimeout(resolve, 0));
+v3/@claude-flow/plugins/examples/ruvector/streaming-large-data.ts:211:    await new Promise(resolve => setTimeout(resolve, 1));
+v3/@claude-flow/plugin-iot-cognitum/src/workers/telemetry-ingest-worker.ts:10:  private timer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/plugin-iot-cognitum/src/workers/telemetry-ingest-worker.ts:25:    this.timer = setInterval(() => void this.ingest(), this.config.intervalMs);
+v3/@claude-flow/plugin-iot-cognitum/src/workers/firmware-watch-worker.ts:10:  private timer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/plugin-iot-cognitum/src/workers/firmware-watch-worker.ts:26:    this.timer = setInterval(() => void this.watch(), this.config.intervalMs);
+v3/@claude-flow/providers/src/ollama-provider.ts:142:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 120000);
+v3/@claude-flow/providers/src/ollama-provider.ts:170:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 120000) * 2);
+v3/@claude-flow/providers/src/base-provider.ts:45:    private readonly resetTimeout: number = 60000
+v3/@claude-flow/providers/src/base-provider.ts:50:      if (Date.now() - this.lastFailure > this.resetTimeout) {
+v3/@claude-flow/providers/src/base-provider.ts:115:    resetTimeout?: number;
+v3/@claude-flow/providers/src/base-provider.ts:128:  protected healthCheckInterval?: ReturnType<typeof setInterval>;
+v3/@claude-flow/providers/src/base-provider.ts:155:      options.circuitBreakerOptions?.resetTimeout || 60000
+v3/@claude-flow/providers/src/base-provider.ts:576:    this.healthCheckInterval = setInterval(() => {
+v3/@claude-flow/plugins/src/hooks/index.ts:214:          setTimeout(() => reject(new Error('Hook execution timeout')), timeout)
+v3/@claude-flow/plugins/examples/ruvector/transactions.ts:53:  return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/performance/src/framework/benchmark.ts:244:        setTimeout(() => reject(new Error('Warmup timeout')), timeout)
+v3/@claude-flow/performance/src/framework/benchmark.ts:275:        setTimeout(() => reject(new Error('Iteration timeout')), timeout)
+v3/@claude-flow/neural/src/modes/edge.js:227:            this.updateTimer = setTimeout(() => {
+v3/@claude-flow/neural/src/modes/edge.js:251:            this.updateTimer = setTimeout(() => {
+v3/@claude-flow/plugin-iot-cognitum/src/workers/witness-audit-worker.ts:11:  private timer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/plugin-iot-cognitum/src/workers/witness-audit-worker.ts:27:    this.timer = setInterval(() => void this.audit(), this.config.intervalMs);
+v3/@claude-flow/plugin-iot-cognitum/src/workers/health-probe-worker.ts:11:  private timer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/plugin-iot-cognitum/src/workers/health-probe-worker.ts:29:    this.timer = setInterval(() => void this.probe(), this.config.intervalMs);
+v3/@claude-flow/memory/src/rvf-learning-store.ts:117:  private autoPersistTimer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/memory/src/rvf-learning-store.ts:142:      this.autoPersistTimer = setInterval(
+v3/@claude-flow/shared/src/mcp/types.ts:122:    resetTimeout: number;
+v3/@claude-flow/shared/src/hooks/hooks.test.ts:302:      await new Promise(resolve => setTimeout(resolve, 200));
+v3/@claude-flow/shared/src/events/event-store.ts:172:      this.persistTimer = setInterval(() => {
+v3/@claude-flow/providers/src/openai-provider.ts:198:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 60000);
+v3/@claude-flow/providers/src/openai-provider.ts:226:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 60000) * 2);
+v3/@claude-flow/providers/src/cohere-provider.ts:145:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 60000);
+v3/@claude-flow/providers/src/cohere-provider.ts:173:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 60000) * 2);
+v3/@claude-flow/plugins/src/registry/enhanced-plugin-registry.ts:501:        setTimeout(() => reject(new Error('Initialization timeout')), timeout)
+v3/@claude-flow/plugins/src/registry/enhanced-plugin-registry.ts:575:        setTimeout(() => reject(new Error('Hot reload timeout')), timeout)
+v3/@claude-flow/plugins/src/providers/index.ts:349:    return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:390:      const timer = setTimeout(() => {
+v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1563:    return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:383:      const timer = setTimeout(() => {
+v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:481:    return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/plugins/src/integrations/ruvector/attention-executor.ts:257:          setTimeout(() => reject(new Error('Query timeout')), timeoutMs)
+v3/@claude-flow/providers/src/google-provider.ts:141:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 60000);
+v3/@claude-flow/providers/src/google-provider.ts:171:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 60000) * 2);
+v3/@claude-flow/plugin-iot-cognitum/src/workers/anomaly-scan-worker.ts:10:  private timer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/plugin-iot-cognitum/src/workers/anomaly-scan-worker.ts:25:    this.timer = setInterval(() => void this.scan(), this.config.intervalMs);
+v3/@claude-flow/plugin-agent-federation/src/domain/services/discovery-service.ts:57:  private discoveryTimer: ReturnType<typeof setInterval> | null;
+v3/@claude-flow/plugin-agent-federation/src/domain/services/discovery-service.ts:189:    this.discoveryTimer = setInterval(() => {
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:77:  await new Promise((resolve) => setTimeout(resolve, config.initTime / 5));
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:82:    await new Promise((resolve) => setTimeout(resolve, 2));
+v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:109:  await new Promise((resolve) => setTimeout(resolve, config.initTime / 10));
+v3/@claude-flow/memory/src/migration.test.ts:77:      await new Promise((r) => setTimeout(r, 2));
+v3/@claude-flow/memory/src/auto-memory-bridge.ts:211:  private syncTimer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/memory/src/auto-memory-bridge.ts:741:    this.syncTimer = setInterval(async () => {
+v3/@claude-flow/performance/benchmarks/startup/mcp-server-init.bench.ts:53:  await new Promise((resolve) => setTimeout(resolve, 5));
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:54:    setTimeout(() => {
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:76:    await new Promise((resolve) => setTimeout(resolve, 1));
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:85:  await new Promise((resolve) => setTimeout(resolve, 5));
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:95:  await new Promise((resolve) => setTimeout(resolve, 3));
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:139:        await new Promise((resolve) => setTimeout(resolve, 0.5));
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:153:        new Promise((resolve) => setTimeout(resolve, 1)),
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:154:        new Promise((resolve) => setTimeout(resolve, 1)),
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:155:        new Promise((resolve) => setTimeout(resolve, 1)),
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:156:        new Promise((resolve) => setTimeout(resolve, 1)),
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:157:        new Promise((resolve) => setTimeout(resolve, 1)),
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:186:        new Promise((resolve) => setTimeout(resolve, 10)),
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:187:        new Promise((resolve) => setTimeout(resolve, 10)),
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:191:      await new Promise((resolve) => setTimeout(resolve, 5));
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:194:      await new Promise((resolve) => setTimeout(resolve, 5));
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:208:      await new Promise((resolve) => setTimeout(resolve, 100));
+v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:217:      await new Promise((resolve) => setTimeout(resolve, 20));
+v3/@claude-flow/mcp/src/transport/websocket.ts:364:    this.heartbeatTimer = setInterval(() => {
+v3/@claude-flow/neural/src/modes/edge.ts:38:  private updateTimer: ReturnType<typeof setTimeout> | null = null;
+v3/@claude-flow/neural/src/modes/edge.ts:300:      this.updateTimer = setTimeout(() => {
+v3/@claude-flow/neural/src/modes/edge.ts:327:      this.updateTimer = setTimeout(() => {
+v3/@claude-flow/neural/src/modes/batch.js:162:        this.batchTimer = setTimeout(() => {
+v3/@claude-flow/mcp/src/types.ts:85:    resetTimeout: number;
+v3/@claude-flow/mcp/src/rate-limiter.ts:217:    this.cleanupTimer = setInterval(() => {
+v3/@claude-flow/mcp/src/connection-pool.ts:171:      setTimeout(() => {
+v3/@claude-flow/mcp/src/connection-pool.ts:268:      await new Promise((resolve) => setTimeout(resolve, 100));
+v3/@claude-flow/mcp/src/connection-pool.ts:287:    this.evictionTimer = setInterval(() => {
+v3/@claude-flow/mcp/src/transport/http.ts:210:        res.setTimeout(this.config.requestTimeout!, () => {
+v3/@claude-flow/integration/src/worker-pool.ts:803:    this.healthCheckTimer = setInterval(() => {
+v3/@claude-flow/integration/src/sona-adapter.ts:649:    this.consolidationTimer = setInterval(
+v3/@claude-flow/integration/src/provider-adapter.ts:902:      setTimeout(() => {
+v3/@claude-flow/integration/src/provider-adapter.ts:983:    this.healthCheckTimer = setInterval(() => {
+v3/@claude-flow/integration/src/provider-adapter.ts:1034:    return new Promise((resolve) => setTimeout(resolve, ms));
+v3/@claude-flow/integration/src/multi-model-router.ts:212:    resetTimeout: number;
+v3/@claude-flow/integration/src/multi-model-router.ts:464:        resetTimeout: config.circuitBreaker?.resetTimeout || 60000,
+v3/@claude-flow/integration/src/multi-model-router.ts:961:    await new Promise(resolve => setTimeout(resolve, Math.min(modelConfig.latencyMs, 100)));
+v3/@claude-flow/integration/src/multi-model-router.ts:1025:      setTimeout(() => {
+v3/@claude-flow/integration/src/multi-model-router.ts:1029:      }, this.config.circuitBreaker.resetTimeout);
+v3/@claude-flow/integration/src/long-running-worker.ts:631:        setTimeout(() => {
+v3/@claude-flow/integration/src/long-running-worker.ts:704:    this.checkpointTimer = setInterval(async () => {
+v3/@claude-flow/integration/src/long-running-worker.ts:726:    this.progressTimer = setInterval(() => {
+v3/@claude-flow/integration/src/long-running-worker.ts:821:    return new Promise((resolve) => setTimeout(resolve, ms));
+v3/@claude-flow/memory/src/index.ts:276:   * ADR-125 Phase 4. When `autoRun: true`, the service starts a `setInterval`
+v3/@claude-flow/memory/src/index.ts:317:  private consolidatorTimer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/memory/src/index.ts:453:    this.consolidatorTimer = setInterval(() => {
+v3/@claude-flow/integration/src/agentic-flow-agent.ts:786:    return new Promise((resolve) => setTimeout(resolve, ms));
+v3/@claude-flow/memory/src/cache-manager.ts:397:    this.cleanupInterval = setInterval(() => {
+v3/@claude-flow/hooks/src/workers/index.ts:844:      this.autoSaveTimer = setInterval(() => {
+v3/@claude-flow/hooks/src/workers/index.ts:851:      this.statuslineTimer = setInterval(() => {
+v3/@claude-flow/hooks/src/workers/index.ts:913:          setTimeout(() => reject(new Error('Timeout')), config.timeout)
+v3/@claude-flow/hooks/src/workers/index.ts:1016:        this.timers.set(name, setTimeout(run, config.interval));
+v3/@claude-flow/hooks/src/workers/index.ts:1022:    this.timers.set(name, setTimeout(run, stagger));
+v3/@claude-flow/hooks/src/swarm/index.ts:182:    this.cleanupTimer = setInterval(() => this.cleanup(), 60000);
+v3/@claude-flow/hooks/src/swarm/index.ts:478:    setTimeout(() => this.resolveConsensus(request.id), timeout || this.config.consensusTimeout);
+v3/@claude-flow/hooks/src/executor/index.ts:202:      const timer = setTimeout(() => {
+v3/@claude-flow/embeddings/src/rvf-embedding-cache.ts:98:  private flushTimer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/embeddings/src/rvf-embedding-cache.ts:384:    this.flushTimer = setInterval(() => {
+v3/@claude-flow/embeddings/src/persistent-cache.ts:59:  private autoSaveTimer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/embeddings/src/persistent-cache.ts:138:    this.autoSaveTimer = setInterval(() => {
+v3/@claude-flow/codex/src/loop/index.ts:260:  const timer = setTimeout(() => {
+v3/@claude-flow/codex/src/loop/index.ts:309:  return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/plugin-iot-cognitum/src/workers/mesh-sync-worker.ts:11:  private timer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/plugin-iot-cognitum/src/workers/mesh-sync-worker.ts:28:    this.timer = setInterval(() => void this.sync(), this.config.intervalMs);
+v3/@claude-flow/hooks/src/daemons/index.ts:24:  timer?: ReturnType<typeof setInterval>;
+v3/@claude-flow/hooks/src/daemons/index.ts:91:      daemon.timer = setInterval(async () => {
+v3/@claude-flow/hooks/src/daemons/index.ts:266:          setTimeout(() => {
+v3/@claude-flow/hooks/src/bridge/official-hooks-bridge.ts:351:    setTimeout(() => {
+v3/@claude-flow/hooks/bin/hooks-daemon.js:75:        setInterval(() => {}, 1000);
+v3/@claude-flow/hooks/bin/hooks-daemon.js:129:        await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/guidance/tests/temporal.test.ts:261:      setTimeout(() => {
+v3/@claude-flow/embeddings/src/embedding-service.ts:328:        const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+v3/@claude-flow/embeddings/src/embedding-service.ts:360:        await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 100));
+v3/@claude-flow/embeddings/src/embedding-service.ts:520:      await new Promise(resolve => setTimeout(resolve, this.simulatedLatency));
+v3/@claude-flow/cli/dist/src/production/circuit-breaker.js:16:    resetTimeoutMs: 30000,
+v3/@claude-flow/cli/dist/src/production/circuit-breaker.js:181:            if (now - this.stateChangedAt >= this.config.resetTimeoutMs) {
+v3/@claude-flow/cli/dist/src/appliance/rvfa-distribution.js:72:        req.setTimeout(30_000, () => { req.destroy(new Error('Request timed out after 30s')); });
+v3/@claude-flow/cli/dist/src/appliance/rvfa-distribution.js:92:        req.setTimeout(30_000, () => { req.destroy(new Error('Request timed out after 30s')); });
+v3/@claude-flow/plugin-agent-federation/src/a2a/consume.ts:55:  const timer = setTimeout(() => controller.abort(), options.timeoutMs ?? 10_000);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-convergence.smoke.js:236:setTimeout(() => {
+v3/@claude-flow/mcp/src/session-manager.ts:303:    this.cleanupTimer = setInterval(() => {
+v3/@claude-flow/guidance/tests/persistence.test.ts:46:  return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/neural/src/modes/batch.ts:47:  private batchTimer: ReturnType<typeof setTimeout> | null = null;
+v3/@claude-flow/neural/src/modes/batch.ts:225:    this.batchTimer = setTimeout(() => {
+v3/@claude-flow/guidance/src/persistence.ts:391:  private compactTimer: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/guidance/src/persistence.ts:528:      this.compactTimer = setInterval(() => {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:186:      const timer = setTimeout(() => {
+v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:248:      await new Promise(resolve => setTimeout(resolve, checkInterval));
+v3/@claude-flow/cli/dist/src/mcp-server.js:546:            const timer = setTimeout(() => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:559:        this.healthCheckInterval = setInterval(async () => {
+v3/@claude-flow/cli/dist/src/mcp-server.js:695:        return new Promise((resolve) => setTimeout(resolve, ms));
+v3/@claude-flow/cli/dist/src/production/retry.js:93:    return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/memory/src/consolidator.test.ts:236:    await new Promise((r) => setTimeout(r, 180));
+v3/@claude-flow/memory/src/consolidator.test.ts:254:    await new Promise((r) => setTimeout(r, 150));
+v3/@claude-flow/memory/src/consolidator.test.ts:258:    await new Promise((r) => setTimeout(r, 150));
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-agent.js:232:    const timer = setTimeout(() => controller.abort(), timeoutMs);
+v3/@claude-flow/mcp/src/task-manager.ts:110:    const timeoutId = setTimeout(() => {
+v3/@claude-flow/mcp/src/task-manager.ts:276:      const timeoutId = setTimeout(() => {
+v3/@claude-flow/mcp/src/task-manager.ts:368:    this.cleanupTimer = setInterval(() => {
+v3/@claude-flow/mcp/src/sampling.ts:278:        setTimeout(() => reject(new Error('Sampling timeout')), timeout);
+v3/@claude-flow/mcp/src/sampling.ts:299:      await new Promise((r) => setTimeout(r, 100));
+v3/@claude-flow/mcp/src/oauth.ts:364:    this.cleanupTimer = setInterval(() => {
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:162:        req.setTimeout(30_000, () => {
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-loader.js:279:            req.setTimeout(60_000, () => { req.destroy(); resolve(null); });
+v3/@claude-flow/cli/dist/src/business-pods/bbs-budget-tracker.js:25: * callers are expected to drive it on a setInterval — that integration lives
+v3/@claude-flow/cli/dist/src/business-pods/bbs-budget-tracker.js:326:     * passed to 'expired'. Callers should drive this on a setInterval per
+v3/@claude-flow/cli/dist/src/transfer/ipfs/upload.js:239:    await new Promise(resolve => setTimeout(resolve, 300));
+v3/@claude-flow/cli/dist/src/transfer/ipfs/upload.js:270:    await new Promise(resolve => setTimeout(resolve, 200));
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:59:        this.cleanupTimer = setInterval(() => this.cleanupExpired(), 60000);
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:289:            setTimeout(() => {
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:416:                        await new Promise(resolve => setTimeout(resolve, 100));
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:428:                        await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:434:                    await new Promise(resolve => setTimeout(resolve, 5000));
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:466:            await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/cli/dist/src/services/worker-queue.js:491:        this.heartbeatTimer = setInterval(() => {
+v3/@claude-flow/cli/dist/src/services/distill-oracle.js:257:    const timer = setTimeout(() => {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:213:            new Promise(resolve => setTimeout(resolve, 30000)),
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:413:            const timeout = setTimeout(() => {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:416:                setTimeout(() => {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:487:        this.healthCheckTimer = setInterval(async () => {
+v3/@claude-flow/cli/dist/src/services/container-worker-pool.js:529:        this.idleCheckTimer = setInterval(async () => {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:558:                        setTimeout(() => this.processPendingWorkers(), 30_000).unref();
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:735:        this.queuePollTimer = setInterval(() => {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:866:        this.lifecycleTimer = setInterval(() => {
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:912:     * foreground keep-alive in the daemon command is a *ref'd* `setInterval`
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:958:                const timer = setTimeout(runAndReschedule, workerConfig.intervalMs);
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:964:        const timer = setTimeout(runAndReschedule, initialDelay);
+v3/@claude-flow/cli/dist/src/services/worker-daemon.js:1067:            const timer = setTimeout(() => {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:547:            setTimeout(() => {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:920:            const timeoutHandle = setTimeout(() => {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:924:                    setTimeout(() => {
+v3/@claude-flow/cli/dist/src/services/headless-worker-executor.js:988:            setTimeout(() => {
+v3/@claude-flow/cli/dist/src/commands/appliance.js:52:        await new Promise(r => setTimeout(r, delay));
+v3/@claude-flow/cli/dist/src/commands/appliance.js:234:                await new Promise(r => setTimeout(r, 500));
+v3/@claude-flow/cli/dist/src/commands/progress.js:177:        const timer = setInterval(check, interval);
+v3/@claude-flow/cli/dist/src/commands/embeddings.js:685:                    await new Promise(r => setTimeout(r, 500));
+v3/@claude-flow/cli/dist/src/commands/embeddings.js:1172:                await new Promise(r => setTimeout(r, 500));
+v3/@claude-flow/cli/dist/src/commands/providers.js:81:        const timeout = setTimeout(() => controller.abort(), 5000);
+v3/@claude-flow/cli/dist/src/commands/providers.js:327:                    const timeout = setTimeout(() => controller.abort(), 5000);
+v3/@claude-flow/cli/dist/src/commands/daemon.js:148:                        await new Promise((r) => setTimeout(r, 100));
+v3/@claude-flow/cli/dist/src/commands/daemon.js:336:                // Keep process alive — setInterval creates a ref'd handle that prevents
+v3/@claude-flow/cli/dist/src/commands/daemon.js:338:                setInterval(() => { }, 60_000);
+v3/@claude-flow/cli/dist/src/commands/daemon.js:343:                setInterval(() => { }, 60_000); // Keep alive with ref'd handle (#1478)
+v3/@claude-flow/cli/dist/src/commands/daemon.js:544:    await new Promise(resolve => setTimeout(resolve, 500));
+v3/@claude-flow/cli/dist/src/commands/daemon.js:622:        await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/cli/dist/src/commands/hooks.js:910:                await new Promise(resolve => setTimeout(resolve, 800));
+v3/@claude-flow/cli/dist/src/commands/hooks.js:2005:                await new Promise(resolve => setTimeout(resolve, 500));
+v3/@claude-flow/cli/dist/src/commands/start.js:193:            const keepAlive = setInterval(() => {
+v3/@claude-flow/cli/dist/src/commands/start.js:334:        await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/cli/dist/src/mcp-tools/http-fetch-tools.js:203:    const timer = setTimeout(() => controller.abort(), timeoutMs);
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:488:        '    const timer = setTimeout(() => {',
+v3/@claude-flow/cli/dist/src/init/helpers-generator.js:1083:        'setInterval(() => { require("fs").writeFileSync(".claude-flow/metrics/swarm-activity.json", JSON.stringify({swarm:{active:true,agent_count:0},timestamp:Date.now()})) }, 5000)'
+v3/@claude-flow/cli/src/mcp-server.ts:690:      const timer = setTimeout(() => {
+v3/@claude-flow/cli/src/mcp-server.ts:705:    this.healthCheckInterval = setInterval(async () => {
+v3/@claude-flow/cli/src/mcp-server.ts:849:    return new Promise((resolve) => setTimeout(resolve, ms));
+v3/@claude-flow/cli/src/services/worker-queue.ts:158:    this.cleanupTimer = setInterval(() => this.cleanupExpired(), 60000);
+v3/@claude-flow/cli/src/services/worker-queue.ts:434:      setTimeout(() => {
+v3/@claude-flow/cli/src/services/worker-queue.ts:592:            await new Promise(resolve => setTimeout(resolve, 100));
+v3/@claude-flow/cli/src/services/worker-queue.ts:605:            await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/cli/src/services/worker-queue.ts:610:          await new Promise(resolve => setTimeout(resolve, 5000));
+v3/@claude-flow/cli/src/services/worker-queue.ts:648:      await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/cli/src/services/worker-queue.ts:679:    this.heartbeatTimer = setInterval(() => {
+v3/@claude-flow/cli/dist/src/mcp-tools/managed-agent-tools.js:115:        await new Promise(r => setTimeout(r, POLL_INTERVAL_MS));
+v3/@claude-flow/cli/src/services/worker-daemon.ts:686:            setTimeout(() => this.processPendingWorkers(), 30_000).unref();
+v3/@claude-flow/cli/src/services/worker-daemon.ts:867:    this.queuePollTimer = setInterval(() => {
+v3/@claude-flow/cli/src/services/worker-daemon.ts:993:    this.lifecycleTimer = setInterval(() => {
+v3/@claude-flow/cli/src/services/worker-daemon.ts:1039:   * foreground keep-alive in the daemon command is a *ref'd* `setInterval`
+v3/@claude-flow/cli/src/services/worker-daemon.ts:1090:        const timer = setTimeout(runAndReschedule, workerConfig.intervalMs);
+v3/@claude-flow/cli/src/services/worker-daemon.ts:1097:    const timer = setTimeout(runAndReschedule, initialDelay);
+v3/@claude-flow/cli/src/services/worker-daemon.ts:1225:      const timer = setTimeout(() => {
+v3/@claude-flow/cli/dist/src/mcp-tools/browser-intent-tools.js:40: *   DEMO `PageAgent` instance via `setTimeout`, pointed at Alibaba's public
+v3/@claude-flow/cli/dist/src/mcp-tools/browser-intent-tools.js:401:        await new Promise((res) => setTimeout(res, 500));
+v3/@claude-flow/cli/dist/src/mcp-tools/system-tools.js:399:                            new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 3000)),
+v3/@claude-flow/cli/dist/src/mcp-tools/system-tools.js:586:                    socket.setTimeout(2000, () => {
+v3/@claude-flow/cli/src/services/distill-oracle.ts:421:    const timer = setTimeout(() => {
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-execute-core.js:108:        const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-execute-core.js:197:        const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+v3/@claude-flow/cli/dist/src/mcp-tools/agent-execute-core.js:264:        const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:809:      setTimeout(() => {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1226:      const timeoutHandle = setTimeout(() => {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1230:          setTimeout(() => {
+v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1302:      setTimeout(() => {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:348:      new Promise<void>(resolve => setTimeout(resolve, 30000)),
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:592:      const timeout = setTimeout(() => {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:595:        setTimeout(() => {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:677:    this.healthCheckTimer = setInterval(async () => {
+v3/@claude-flow/cli/src/services/container-worker-pool.ts:725:    this.idleCheckTimer = setInterval(async () => {
+v3/@claude-flow/cli/dist/src/memory/intelligence.js:395:        this.saveTimeout = setTimeout(() => {
+v3/@claude-flow/cli/src/runtime/parent-death-watchdog.ts:76:  timer = setInterval(() => {
+v3/@claude-flow/cli/src/production/retry.ts:150:  return new Promise(resolve => setTimeout(resolve, ms));
+v3/@claude-flow/cli/src/memory/intelligence.ts:443:  private saveTimeout: ReturnType<typeof setTimeout> | null = null;
+v3/@claude-flow/cli/src/memory/intelligence.ts:524:    this.saveTimeout = setTimeout(() => {
+v3/@claude-flow/cli/src/mcp-tools/managed-agent-tools.ts:131:    await new Promise(r => setTimeout(r, POLL_INTERVAL_MS));
+v3/@claude-flow/cli/src/mcp-tools/workflow-tools.ts:373:            await new Promise(r => setTimeout(r, ms));
+v3/@claude-flow/cli/src/mcp-tools/system-tools.ts:426:              new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 3000)),
+v3/@claude-flow/cli/src/mcp-tools/system-tools.ts:618:          socket.setTimeout(2000, () => {
+v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:142:    const timer = setTimeout(() => { try { p.kill('SIGTERM'); } catch { /* ignore */ } }, 120_000);
+v3/@claude-flow/cli/src/mcp-tools/http-fetch-tools.ts:233:  const timer = setTimeout(() => controller.abort(), timeoutMs);
+v3/@claude-flow/cli/dist/src/benchmarks/gaia-tools/web_search.js:85:        req.setTimeout(REQUEST_TIMEOUT_MS, () => {
+v3/@claude-flow/cli/dist/src/runtime/parent-death-watchdog.js:54:    timer = setInterval(() => {
+v3/@claude-flow/cli/src/production/circuit-breaker.ts:22:  resetTimeoutMs: number;
+v3/@claude-flow/cli/src/production/circuit-breaker.ts:55:  resetTimeoutMs: 30000,
+v3/@claude-flow/cli/src/production/circuit-breaker.ts:249:      if (now - this.stateChangedAt >= this.config.resetTimeoutMs) {
+v3/@claude-flow/cli/src/memory/memory-initializer.ts:501:      await new Promise(resolve => setTimeout(resolve, 10));
+v3/@claude-flow/cli/src/init/helpers-generator.ts:496:    '    const timer = setTimeout(() => {',
+v3/@claude-flow/cli/src/init/helpers-generator.ts:1094:        'setInterval(() => { require("fs").writeFileSync(".claude-flow/metrics/swarm-activity.json", JSON.stringify({swarm:{active:true,agent_count:0},timestamp:Date.now()})) }, 5000)'
+v3/@claude-flow/cli/dist/src/services/fable-harness.js:113:    const timer = setTimeout(() => {
+v3/@claude-flow/cli/src/mcp-tools/coordination-tools.ts:325:        await new Promise(resolve => setTimeout(resolve, 50));
+v3/@claude-flow/cli/src/commands/start.ts:235:      const keepAlive = setInterval(() => {
+v3/@claude-flow/cli/src/commands/start.ts:388:    await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/cli/src/commands/providers.ts:107:    const timeout = setTimeout(() => controller.abort(), 5000);
+v3/@claude-flow/cli/src/commands/providers.ts:389:          const timeout = setTimeout(() => controller.abort(), 5000);
+v3/@claude-flow/cli/src/commands/performance.ts:287:    await new Promise(r => setTimeout(r, Math.min(duration * 100, 2000)));
+v3/@claude-flow/cli/src/commands/performance.ts:550:    await new Promise(r => setTimeout(r, 800));
+v3/@claude-flow/cli/src/commands/performance.ts:596:    await new Promise(r => setTimeout(r, 600));
+v3/@claude-flow/cli/src/mcp-tools/agent-execute-core.ts:168:    const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+v3/@claude-flow/cli/src/mcp-tools/agent-execute-core.ts:265:    const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+v3/@claude-flow/cli/src/mcp-tools/agent-execute-core.ts:351:    const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+v3/@claude-flow/cli/src/commands/memory.ts:1667:        setTimeout(() => {
+v3/@claude-flow/cli/src/commands/status.ts:503:  const intervalId = setInterval(refresh, intervalSeconds * 1000);
+v3/@claude-flow/cli/src/commands/plugins.ts:648:      await new Promise(r => setTimeout(r, 150));
+v3/@claude-flow/cli/dist/src/commands/plugins.js:563:            await new Promise(r => setTimeout(r, 150));
+v3/@claude-flow/cli/dist/src/commands/performance.js:243:        await new Promise(r => setTimeout(r, Math.min(duration * 100, 2000)));
+v3/@claude-flow/cli/dist/src/commands/performance.js:486:        await new Promise(r => setTimeout(r, 800));
+v3/@claude-flow/cli/dist/src/commands/performance.js:527:        await new Promise(r => setTimeout(r, 600));
+v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:110:    req.setTimeout(REQUEST_TIMEOUT_MS, () => {
+v3/@claude-flow/cli/dist/src/commands/memory.js:1456:                setTimeout(() => {
+v3/@claude-flow/cli/dist/src/commands/status.js:401:    const intervalId = setInterval(refresh, intervalSeconds * 1000);
+v3/@claude-flow/cli/dist/src/mcp-tools/testgen-tools.js:82:        const timer = setTimeout(() => { try {
+v3/@claude-flow/cli/dist/src/mcp-tools/metaharness-tools.js:134:        const timer = setTimeout(() => { try {
+v3/@claude-flow/cli/dist/src/mcp-tools/coordination-tools.js:250:                await new Promise(resolve => setTimeout(resolve, 50));
+v3/@claude-flow/cli/dist/src/mcp-tools/workflow-tools.js:323:                        await new Promise(r => setTimeout(r, ms));
+v3/@claude-flow/cli/dist/src/mcp-tools/hooks-tools.js:4225:                    setTimeout(() => {
+v3/@claude-flow/cli/src/benchmarks/gaia-convergence.smoke.ts:294:setTimeout(() => {
+v3/@claude-flow/cli/dist/src/memory/memory-initializer.js:473:            await new Promise(resolve => setTimeout(resolve, 10));
+v3/@claude-flow/cli-core/src/output.ts:578:  private interval: ReturnType<typeof setInterval> | null = null;
+v3/@claude-flow/cli-core/src/output.ts:598:    this.interval = setInterval(() => {
+v3/@claude-flow/cli/src/services/fable-harness.ts:195:    const timer = setTimeout(() => {
+v3/@claude-flow/claims/tests/events.test.ts:220:  private batchTimeout: ReturnType<typeof setTimeout> | null = null;
+v3/@claude-flow/claims/tests/events.test.ts:509:        this.batchTimeout = setTimeout(
+v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:91:    const timer = setTimeout(() => { try { p.kill('SIGTERM'); } catch { /* ignore */ } }, 20 * 60_000);
+v3/@claude-flow/cli/src/commands/embeddings.ts:782:          await new Promise(r => setTimeout(r, 500));
+v3/@claude-flow/cli/src/commands/embeddings.ts:1312:        await new Promise(r => setTimeout(r, 500));
+v3/@claude-flow/cli/src/commands/daemon.ts:149:            await new Promise((r) => setTimeout(r, 100));
+v3/@claude-flow/cli/src/commands/daemon.ts:325:        // Keep process alive — setInterval creates a ref'd handle that prevents
+v3/@claude-flow/cli/src/commands/daemon.ts:327:        setInterval(() => {}, 60_000);
+v3/@claude-flow/cli/src/commands/daemon.ts:331:        setInterval(() => {}, 60_000); // Keep alive with ref'd handle (#1478)
+v3/@claude-flow/cli/src/commands/daemon.ts:558:  await new Promise(resolve => setTimeout(resolve, 500));
+v3/@claude-flow/cli/src/commands/daemon.ts:650:    await new Promise(resolve => setTimeout(resolve, 1000));
+v3/@claude-flow/cli/src/business-pods/bbs-budget-tracker.ts:25: * callers are expected to drive it on a setInterval — that integration lives
+v3/@claude-flow/cli/src/business-pods/bbs-budget-tracker.ts:436:   * passed to 'expired'. Callers should drive this on a setInterval per
+v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:95:    req.setTimeout(30_000, () => { req.destroy(new Error('Request timed out after 30s')); });
+v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:114:    req.setTimeout(30_000, () => { req.destroy(new Error('Request timed out after 30s')); });
+v3/src/task-execution/application/WorkflowEngine.ts:381:        await new Promise(resolve => setTimeout(resolve, 100));
+v3/src/agent-lifecycle/domain/Agent.ts:105:    await new Promise(resolve => setTimeout(resolve, overhead));
+v3/@claude-flow/cli/src/commands/hooks.ts:1095:        await new Promise(resolve => setTimeout(resolve, 800));
+v3/@claude-flow/cli/src/commands/hooks.ts:2428:        await new Promise(resolve => setTimeout(resolve, 500));
+v3/@claude-flow/cli/src/mcp-tools/browser-intent-tools.ts:40: *   DEMO `PageAgent` instance via `setTimeout`, pointed at Alibaba's public
+v3/@claude-flow/cli/src/mcp-tools/browser-intent-tools.ts:454:    await new Promise((res) => setTimeout(res, 500));
+v3/@claude-flow/cli/src/commands/progress.ts:211:    const timer = setInterval(check, interval);
+v3/@claude-flow/cli/src/commands/appliance.ts:75:    await new Promise(r => setTimeout(r, delay));
+v3/@claude-flow/cli/src/commands/appliance.ts:270:        await new Promise(r => setTimeout(r, 500));
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:216:    req.setTimeout(30_000, () => {
+v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:352:      req.setTimeout(60_000, () => { req.destroy(); resolve(null); });
+v3/@claude-flow/cli/src/benchmarks/gaia-agent.ts:375:  const timer = setTimeout(() => controller.abort(), timeoutMs);
+v3/@claude-flow/cli/src/mcp-tools/hooks-tools.ts:4437:          setTimeout(() => {

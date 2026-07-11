@@ -1,0 +1,58 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:20128/v1",
+    "ANTHROPIC_AUTH_TOKEN": "sk-2713f0d691ad9964-i5oa5d-4988fe67",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "ocg/qwen3.7-max",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "ocg/deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "ocg/deepseek-v4-flash"
+  },
+  "model": "haiku",
+  "hasCompletedOnboarding": true,
+  "mcpServers": {
+    "agentmemory": {
+      "command": ["npx", "-y", "@agentmemory/mcp"],
+      "env": {
+        "AGENTMEMORY_URL": "http://localhost:3111"
+      }
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "grep-vercel": {
+      "type": "remote",
+      "url": "https://mcp.grep.app"
+    },
+    "chrome-devtools": {
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"]
+    },
+    "browsermcp": {
+      "command": ["npx", "@browsermcp/mcp@latest"]
+    },
+    "21st-dev-magic": {
+      "command": ["npx", "-y", "@21st-dev/magic@latest"],
+      "env": {
+        "API_KEY": "afa14deef3a5a8a653704a9cf510f976e64e36d7899f7520f024ca1ee8496da1"
+      }
+    },
+    "gitmcp": {
+      "type": "remote",
+      "url": "https://gitmcp.io/docs"
+    },
+    "blender-mcp": {
+      "command": ["blender-mcp"]
+    },
+    "reactbits": {
+      "command": ["node", "/home/arrafi/reactbits-mcp-server/dist/index.js"]
+    },
+    "figma-developer-mcp": {
+      "command": ["npx", "-y", "figma-developer-mcp", "--stdio"],
+      "env": {
+        "FIGMA_API_KEY": "figd_c6Lg0fPXIuGmgUt7xMj4y1P10ItTltHK4Wp_MK05"
+      }
+    },
+    "agent-orchestrator": {
+      "command": ["npx", "-y", "@ralphkrauss/agent-orchestrator@0.3.7"]
+    }
+  }
+}

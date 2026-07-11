@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopisop — 学生的咖啡与学习天堂</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ===== NAVIGASI ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="nav-logo">
+                <i class="fas fa-mug-hot"></i> Kopisop
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="打开菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">首页</a></li>
+                <li><a href="#tentang" class="nav-link">关于我们</a></li>
+                <li><a href="#layanan" class="nav-link">服务</a></li>
+                <li><a href="#galeri" class="nav-link">相册</a></li>
+                <li><a href="#testimoni" class="nav-link">评价</a></li>
+                <li><a href="#kontak" class="nav-link">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-bg" id="heroBg" style="background-image: url('images/hero-bg.jpg');"></div>
+        <div class="container hero-content">
+            <div class="hero-text reveal">
+                <span class="hero-badge">— 欢迎光临 —</span>
+                <h1 class="hero-title">Kopisop</h1>
+                <p class="hero-tagline">学生最喜欢的咖啡与学习天堂</p>
+                <p class="hero-desc">温暖的环境、美味的咖啡、舒适的学习角落 — 一切尽在这里。</p>
+                <div class="hero-actions">
+                    <a href="#layanan" class="btn btn-primary">查看服务</a>
+                    <a href="#kontak" class="btn btn-outline">联系我们</a>
+                </div>
+            </div>
+            <div class="hero-decoration reveal">
+                <div class="hero-circle"></div>
+                <div class="hero-circle-small"></div>
+                <i class="fas fa-mug-hot hero-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TENTANG (STICKY) ===== -->
+    <section class="sticky-section" id="tentang">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">关于我们</span>
+                <h2 class="section-title">一杯咖啡背后的故事</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal-left">
+                    <p><strong>Kopisop</strong> 诞生于对咖啡的热爱和对学习的热情。我们相信，一杯温暖的咖啡可以陪伴你完成每一份作业、每一次热烈的讨论和每一个精彩的想法。</p>
+                    <p>自2024年成立以来，Kopisop 成为学生的第三空间 — 不仅仅是咖啡店，更是友谊建立、知识分享的地方，每一口都像是一次宁静的暂停。</p>
+                    <p>我们选用本地农民精选的咖啡豆，营造温暖的室内氛围和舒适的阅读角落，希望每一次光临都让你感觉像 <em>回家</em> 一样。</p>
+                    <div class="about-values reveal-stagger">
+                        <div class="value-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>本地咖啡豆</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>快速Wi-Fi</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-book-open"></i>
+                            <span>学习空间</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-heart"></i>
+                            <span>学生友好</span>
+                        </div>
+                    </div>
+                    <!-- Stats -->
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="2024">0</span>
+                            <span class="stat-label">成立年份</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="5000">0</span>
+                            <span class="stat-label">服务学生+</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="150">0</span>
+                            <span class="stat-label">咖啡品种</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="4.9">0</span>
+                            <span class="stat-label">顾客评分</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image reveal-right">
+                    <div class="about-img-box" style="background-image: url('images/about.jpg');">
+                        <div class="about-img-overlay"></div>
+                        <div class="about-img-content">
+                            <i class="fas fa-mug-hot"></i>
+                            <div class="about-img-label">Sejak 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LAYANAN (STICKY) — TAB INTERFACE ===== -->
+    <section class="sticky-section" id="layanan">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">服务</span>
+                <h2 class="section-title">我们的服务</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="service-tabs reveal">
+                <button class="service-tab active" data-tab="menu">
+                    <i class="fas fa-mug-saucer"></i>
+                    <span>特色菜单</span>
+                </button>
+                <button class="service-tab" data-tab="wifi">
+                    <i class="fas fa-wifi"></i>
+                    <span>高速Wi-Fi</span>
+                </button>
+                <button class="service-tab" data-tab="study">
+                    <i class="fas fa-laptop"></i>
+                    <span>学习空间</span>
+                </button>
+                <button class="service-tab" data-tab="discount">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>学生折扣</span>
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="service-panels reveal">
+                <!-- Panel 1: Menu -->
+                <div class="service-panel active" id="panel-menu">
+                    <div class="panel-grid">
+                        <div class="panel-image" style="background-image: url('images/layanan-menu.jpg');"></div>
+                        <div class="panel-info">
+                            <h3 class="panel-title"><i class="fas fa-mug-saucer"></i> 特色菜单</h3>
+                            <p class="panel-desc">从经典的浓缩咖啡到手工冲泡咖啡，我们为您提供各种印尼群岛咖啡、非咖啡饮品和轻食，价格亲民。</p>
+                            <div class="panel-highlights">
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-fire"></i></span>
+                                    <div>
+                                        <strong>经典浓缩咖啡</strong>
+                                        <small>Arabika 精选豆</small>
+                                    </div>
+                                </div>
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-tint"></i></span>
+                                    <div>
+                                        <strong>手工冲泡咖啡</strong>
+                                        <small>V60 / Chemex</small>
+                                    </div>
+                                </div>
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-cookie-bite"></i></span>
+                                    <div>
+                                        <strong>手工甜点</strong>
+                                        <small>每日新鲜烘焙</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="panel-price">学生价：从 <strong>Rp 15K</strong> 起</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 2: WiFi -->
+                <div class="service-panel" id="panel-wifi">
+                    <div class="panel-grid">
+                        <div class="panel-image" style="background-image: url('images/layanan-wifi.jpg');"></div>
+                        <div class="panel-info">
+                            <h3 class="panel-title"><i class="fas fa-wifi"></i> 高速Wi-Fi</h3>
+                            <p class="panel-desc">稳定快速的网络连接，随时陪伴你浏览、流媒体和学习。全区域覆盖无死角！</p>
+                            <div class="panel-highlights">
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-tachometer-alt"></i></span>
+                                    <div>
+                                        <strong>高达 100Mbps</strong>
+                                        <small>光纤网络</small>
+                                    </div>
+                                </div>
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-wifi"></i></span>
+                                    <div>
+                                        <strong>免费使用</strong>
+                                        <small>不限时，不限流量</small>
+                                    </div>
+                                </div>
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-map-marked-alt"></i></span>
+                                    <div>
+                                        <strong>全区域覆盖</strong>
+                                        <small>每个角落信号满格</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="panel-price">所有顾客免费使用</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3: Study -->
+                <div class="service-panel" id="panel-study">
+                    <div class="panel-grid">
+                        <div class="panel-image" style="background-image: url('images/layanan-study.jpg');"></div>
+                        <div class="panel-info">
+                            <h3 class="panel-title"><i class="fas fa-laptop"></i> 学习空间</h3>
+                            <p class="panel-desc">安静舒适的学习环境，宽敞的桌子、充足的电源插座、舒适的照明，让你专注学习每一分钟。</p>
+                            <div class="panel-highlights">
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-user-graduate"></i></span>
+                                    <div>
+                                        <strong>独立学习区</strong>
+                                        <small>安静无干扰</small>
+                                    </div>
+                                </div>
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-users"></i></span>
+                                    <div>
+                                        <strong>小组讨论室</strong>
+                                        <small>可容纳 4-6 人</small>
+                                    </div>
+                                </div>
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-plug"></i></span>
+                                    <div>
+                                        <strong>电源插座充足</strong>
+                                        <small>每个座位都有</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="panel-price">点任一饮品即可使用</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 4: Discount -->
+                <div class="service-panel" id="panel-discount">
+                    <div class="panel-grid">
+                        <div class="panel-image" style="background-image: url('images/layanan-discount.jpg');"></div>
+                        <div class="panel-info">
+                            <h3 class="panel-title"><i class="fas fa-graduation-cap"></i> 学生折扣</h3>
+                            <p class="panel-desc">我们关心每一位学生！出示你的学生证，即可享受专属优惠，让学习时光更轻松。</p>
+                            <div class="panel-highlights">
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-tags"></i></span>
+                                    <div>
+                                        <strong>每日 15% 折扣</strong>
+                                        <small>所有饮品通用</small>
+                                    </div>
+                                </div>
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-id-card"></i></span>
+                                    <div>
+                                        <strong>会员积分制度</strong>
+                                        <small>消费累计积分</small>
+                                    </div>
+                                </div>
+                                <div class="panel-highlight">
+                                    <span class="hl-icon"><i class="fas fa-coffee"></i></span>
+                                    <div>
+                                        <strong>免费续杯优惠</strong>
+                                        <small>购买指定饮品</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="panel-price">持学生证即享优惠</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALERI (STICKY) ===== -->
+    <section class="sticky-section" id="galeri">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">相册</span>
+                <h2 class="section-title">Kopisop 的氛围</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">探索 Kopisop 的每个角落 — 咖啡香、温暖氛围、与美好时光。</p>
+            </div>
+            <div class="gallery-layout">
+                <!-- Featured large -->
+                <div class="gallery-featured reveal-scale" data-index="0" style="transition-delay: 0s">
+                    <div class="gallery-featured-img" style="background-image: url('images/gallery-1.jpg');">
+                        <div class="gallery-featured-overlay">
+                            <div class="gallery-featured-label">
+                                <span class="gallery-featured-tag">咖啡</span>
+                                <h3>拉花艺术</h3>
+                                <p>每一杯都是匠心之作，艺术与美味的完美结合</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid of smaller cards -->
+                <div class="gallery-card gallery-card-tall reveal-scale" data-index="1" style="transition-delay: 0.1s">
+                    <div class="gallery-card-img" style="background-image: url('images/gallery-2.jpg');">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">氛围</span>
+                            <h4>温馨如家</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-card reveal-scale" data-index="2" style="transition-delay: 0.15s">
+                    <div class="gallery-card-img" style="background-image: url('images/gallery-3.jpg');">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">咖啡</span>
+                            <h4>匠心冲泡</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-card reveal-scale" data-index="3" style="transition-delay: 0.2s">
+                    <div class="gallery-card-img" style="background-image: url('images/gallery-4.jpg');">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">阅读</span>
+                            <h4>安静角落</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-card reveal-scale" data-index="4" style="transition-delay: 0.25s">
+                    <div class="gallery-card-img" style="background-image: url('images/gallery-5.jpg');">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">阅读</span>
+                            <h4>咖啡与书</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-card reveal-scale" data-index="5" style="transition-delay: 0.3s">
+                    <div class="gallery-card-img" style="background-image: url('images/gallery-6.jpg');">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">咖啡豆</span>
+                            <h4>精选原料</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <div class="lightbox-content">
+            <div class="lightbox-img" id="lightboxImg"></div>
+            <p class="lightbox-caption" id="lightboxCaption">Kopisop — 每一刻都是享受</p>
+        </div>
+    </div>
+
+    <!-- ===== TESTIMONI (STICKY) ===== -->
+    <section class="sticky-section" id="testimoni">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">评价</span>
+                <h2 class="section-title">顾客心声</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="testimoni-carousel reveal">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <div class="testimoni-card">
+                            <div class="testimoni-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimoni-quote">"最喜欢的学习地点！Wi-Fi很快，咖啡很好喝，氛围让人想待上好几个小时。就像是第二个家。"</p>
+                            <div class="testimoni-author">
+                                <div class="testimoni-avatar">R</div>
+                                <div>
+                                    <h4>丽娜</h4>
+                                    <span>计算机科学专业学生</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="testimoni-card">
+                            <div class="testimoni-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimoni-quote">"第一次被朋友带来，现在成了常客。尤其是学生折扣对学生党太友好了！"</p>
+                            <div class="testimoni-author">
+                                <div class="testimoni-avatar">D</div>
+                                <div>
+                                    <h4>迪马斯</h4>
+                                    <span>视觉传达设计专业学生</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="testimoni-card">
+                            <div class="testimoni-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="testimoni-quote">"氛围非常舒适，适合一边喝热巧克力一边看书。服务很友好，强烈推荐！"</p>
+                            <div class="testimoni-author">
+                                <div class="testimoni-avatar">S</div>
+                                <div>
+                                    <h4>萨里</h4>
+                                    <span>英语文学专业学生</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-dot active" data-slide="0"></button>
+                    <button class="carousel-dot" data-slide="1"></button>
+                    <button class="carousel-dot" data-slide="2"></button>
+                </div>
+            </div>
+            <div class="testimoni-stats reveal">
+                <div class="testimoni-stat">
+                    <span class="num">1000+</span>
+                    <span class="lbl">满意顾客</span>
+                </div>
+                <div class="testimoni-stat">
+                    <span class="num">4.9</span>
+                    <span class="lbl">平均评分</span>
+                </div>
+                <div class="testimoni-stat">
+                    <span class="num">98%</span>
+                    <span class="lbl">推荐率</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KONTAK (STICKY) ===== -->
+    <section class="sticky-section" id="kontak">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">联系我们</span>
+                <h2 class="section-title">欢迎光临！</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">有问题或想预约？请联系我们或直接来店！</p>
+            </div>
+            <div class="kontak-grid">
+                <div class="kontak-form reveal">
+                    <form id="kontakForm">
+                        <div class="form-group">
+                            <label for="nama">姓名</label>
+                            <input type="text" id="nama" name="nama" placeholder="您的全名" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pesan">留言</label>
+                            <textarea id="pesan" name="pesan" rows="4" placeholder="写下您的留言或问题..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> 发送消息
+                        </button>
+                    </form>
+                    <div class="form-toast" id="formToast">
+                        <i class="fas fa-check-circle"></i> 消息已成功发送！我们会尽快联系您。
+                    </div>
+                </div>
+                <div class="kontak-info reveal">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>位置</h4>
+                            <p>Jl. Kopi Nikmat No. 10, 靠近加内沙校区</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>营业时间</h4>
+                            <p>周一 — 周六：08.00 — 22.00<br>周日：10.00 — 18.00</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>联系方式</h4>
+                            <p>hello@kofishoop.com<br>+62 812-3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <h4>社交媒体</h4>
+                            <p>@kofishoop</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#hero" class="footer-logo"><i class="fas fa-mug-hot"></i> Kopisop</a>
+                <p>学生最喜欢的咖啡与学习天堂。温暖、舒适、充满灵感。</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>导航</h4>
+                <ul>
+                    <li><a href="#hero">首页</a></li>
+                    <li><a href="#tentang">关于我们</a></li>
+                    <li><a href="#layanan">服务</a></li>
+                    <li><a href="#galeri">相册</a></li>
+                    <li><a href="#testimoni">评价</a></li>
+                    <li><a href="#kontak">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>营业时间</h4>
+                <ul class="footer-hours">
+                    <li><span>周一 — 周六</span><span>08.00 — 22.00</span></li>
+                    <li><span>周日</span><span>10.00 — 18.00</span></li>
+                </ul>
+                <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7;">
+                    <i class="fas fa-mug-hot"></i> #边喝咖啡边学习
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Kopisop。用 <i class="fas fa-heart"></i> 为学生们打造。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

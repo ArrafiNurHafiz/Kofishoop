@@ -1,0 +1,145 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Link from "next/link";
+import NavBar from "@/components/NavBar";
+import { getOwnerWills, getWill, WILL_STATUS, getWillStatus } from "@/lib/eterna";
+
+export default function DashboardPage() {
+  const { isConnected, address } = useAccount();
+  const [wills, setWills] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!address) return;
+    loadWills();
+  }, [address]);
+
+  async function loadWills() {
+    setLoading(true);
+    try {
+      const ids = await getOwnerWills(address!);
+      const willData = await Promise.all(
+        ids.map(async (id: bigint) => {
+          const will = await getWill(id);
+          const statusData = await getWillStatus(id);
+          return {
+            id: Number(id),
+            status: Number(will.status),
+            statusLabel: WILL_STATUS[Number(will.status)],
+            inactivityScore: Number(statusData[2]),
+            guardianScore: Number(statusData[3]),
+            totalGuardians: Number(statusData[5]),
+            guardianVotes: Number(statusData[4]),
+            lastHeartbeat: Number(will.lastHeartbeat),
+            createdAt: Number(will.createdAt),
+          };
+        })
+      );
+      setWills(willData);
+    } catch (err) {
+      console.error("Failed to load wills:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (!isConnected) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <div className="text-center card max-w-md">
+          <h2 className="text-xl font-bold mb-4">Connect Your Wallet</h2>
+          <p className="text-gray-400 mb-6">Connect your wallet to view your digital wills.</p>
+          <ConnectButton />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex-1 flex flex-col">
+      <NavBar />
+
+      <main className="flex-1 max-w-4xl mx-auto px-4 py-8 w-full">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold">Dashboard</h1>
+            <p className="text-gray-400 text-sm mt-1">
+              {address?.slice(0, 8)}...{address?.slice(-6)}
+            </p>
+          </div>
+          <Link href="/create" className="btn-primary">+ New Will</Link>
+        </div>
+
+        {loading ? (
+          <div className="flex items-center justify-center py-20">
+            <div className="w-8 h-8 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+          </div>
+        ) : wills.length === 0 ? (
+          <div className="card text-center py-16">
+            <div className="text-4xl mb-4">🕊️</div>
+            <h2 className="text-xl font-semibold mb-2">No Digital Wills Yet</h2>
+            <p className="text-gray-400 mb-6">Create your first digital will to secure your assets.</p>
+            <Link href="/create" className="btn-primary">Create Your First Will</Link>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {wills.map((will) => (
+              <Link key={will.id} href={`/will/${will.id}`}>
+                <div className="card card-glow hover:border-purple-500/40 transition-all cursor-pointer">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="text-lg font-bold">Will #{will.id}</span>
+                      <span
+                        className={`text-xs px-2 py-1 rounded-full ${
+                          will.status === 0
+                            ? "bg-emerald-900/30 text-emerald-400"
+                            : will.status === 1
+                            ? "bg-blue-900/30 text-blue-400"
+                            : "bg-gray-800 text-gray-400"
+                        }`}
+                      >
+                        {will.statusLabel}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                    <div>
+                      <p className="text-gray-500">Confidence</p>
+                      <p className="text-white font-medium">
+                        {Math.max(will.inactivityScore, will.guardianScore) / 100}%
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Guardians</p>
+                      <p className="text-white font-medium">
+                        {will.guardianVotes}/{will.totalGuardians}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Last Heartbeat</p>
+                      <p className="text-white font-medium">
+                        {will.lastHeartbeat > 0
+                          ? new Date(will.lastHeartbeat * 1000).toLocaleDateString()
+                          : "Never"}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Created</p>
+                      <p className="text-white font-medium">
+                        {new Date(will.createdAt * 1000).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}

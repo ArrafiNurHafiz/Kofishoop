@@ -1,0 +1,195 @@
+import { createPublicClient, createWalletClient, custom, http, type Address } from "viem";
+import { type Chain, baseSepolia, sepolia, hardhat as hardhatChain } from "viem/chains";
+import { config } from "./config";
+import { ETERNA_WILL_ABI } from "./abi";
+
+const chainMap: Record<number, Chain> = {
+  31337: hardhatChain,
+  84532: baseSepolia,
+  11155111: sepolia,
+};
+
+const chain: Chain = chainMap[config.chainId] || hardhatChain;
+
+export function getPublicClient() {
+  return createPublicClient({
+    chain,
+    transport: http(config.rpcUrl),
+  });
+}
+
+export function getWalletClient() {
+  return createWalletClient({
+    chain,
+    transport: custom((window as any).ethereum!),
+  });
+}
+
+export function getContract(address?: Address) {
+  return {
+    address: (address || config.contractAddress) as Address,
+    abi: ETERNA_WILL_ABI,
+  } as const;
+}
+
+// ---- Will Creation ----
+
+export async function createWill(
+  beneficiaries: Address[],
+  percentages: bigint[],
+  names: string[],
+  delays: bigint[],
+  guardians: Address[],
+  guardianNames: string[],
+  inactivityPeriod: bigint,
+  guardianThreshold: bigint,
+  minGuardians: bigint,
+  encryptedDataHash: `0x${string}`
+) {
+  const walletClient = getWalletClient();
+  const [account] = await walletClient.getAddresses();
+
+  const hash = await walletClient.writeContract({
+    address: config.contractAddress as Address,
+    abi: ETERNA_WILL_ABI,
+    functionName: "createWill",
+    args: [
+      beneficiaries,
+      percentages,
+      names,
+      delays,
+      guardians,
+      guardianNames,
+      {
+        inactivityPeriod,
+        guardianThreshold,
+        minGuardians,
+        useOracle: false,
+      },
+      encryptedDataHash,
+    ],
+    account,
+  });
+
+  const publicClient = getPublicClient();
+  const receipt = await publicClient.waitForTransactionReceipt({ hash });
+
+  // Parse WillCreated event
+  const log = receipt.logs[0];
+  const willId = Number(log.topics[1]); // indexed willId
+  return { hash, willId, receipt };
+}
+
+// ---- Heartbeat ----
+
+export async function sendHeartbeat(willId: bigint) {
+  const walletClient = getWalletClient();
+  const [account] = await walletClient.getAddresses();
+
+  const hash = await walletClient.writeContract({
+    address: config.contractAddress as Address,
+    abi: ETERNA_WILL_ABI,
+    functionName: "checkIn",
+    args: [willId],
+    account,
+  });
+
+  const publicClient = getPublicClient();
+  return publicClient.waitForTransactionReceipt({ hash });
+}
+
+// ---- Guardian Vote ----
+
+export async function voteAsGuardian(willId: bigint, isDeceased: boolean) {
+  const walletClient = getWalletClient();
+  const [account] = await walletClient.getAddresses();
+
+  const hash = await walletClient.writeContract({
+    address: config.contractAddress as Address,
+    abi: ETERNA_WILL_ABI,
+    functionName: "guardianVote",
+    args: [willId, isDeceased],
+    account,
+  });
+
+  const publicClient = getPublicClient();
+  return publicClient.waitForTransactionReceipt({ hash });
+}
+
+// ---- Queries ----
+
+export async function getWill(willId: bigint) {
+  const publicClient = getPublicClient();
+  return publicClient.readContract({
+    ...getContract(),
+    functionName: "getWill",
+    args: [willId],
+  });
+}
+
+export async function getWillStatus(willId: bigint) {
+  const publicClient = getPublicClient();
+  return publicClient.readContract({
+    ...getContract(),
+    functionName: "getWillStatus",
+    args: [willId],
+  });
+}
+
+export async function getBeneficiaries(willId: bigint) {
+  const publicClient = getPublicClient();
+  return publicClient.readContract({
+    ...getContract(),
+    functionName: "getBeneficiaries",
+    args: [willId],
+  });
+}
+
+export async function getGuardians(willId: bigint) {
+  const publicClient = getPublicClient();
+  return publicClient.readContract({
+    ...getContract(),
+    functionName: "getGuardians",
+    args: [willId],
+  });
+}
+
+export async function checkExecutable(willId: bigint) {
+  const publicClient = getPublicClient();
+  return publicClient.readContract({
+    ...getContract(),
+    functionName: "checkExecutable",
+    args: [willId],
+  });
+}
+
+export async function getOwnerWills(owner: Address) {
+  const publicClient = getPublicClient();
+  return publicClient.readContract({
+    ...getContract(),
+    functionName: "getOwnerWills",
+    args: [owner],
+  });
+}
+
+export async function isGuardian(willId: bigint, address: Address) {
+  const publicClient = getPublicClient();
+  return publicClient.readContract({
+    ...getContract(),
+    functionName: "isGuardian",
+    args: [willId, address],
+  });
+}
+
+// ---- Status helpers ----
+
+export const WILL_STATUS = ["Active", "Executed", "Revoked"] as const;
+
+export function formatTimeLeft(timestamp: bigint): string {
+  const now = Math.floor(Date.now() / 1000);
+  const diff = Number(timestamp) - now;
+  if (diff <= 0) return "Overdue";
+  const days = Math.floor(diff / 86400);
+  const hours = Math.floor((diff % 86400) / 3600);
+  return `${days}d ${hours}h remaining`;
+}

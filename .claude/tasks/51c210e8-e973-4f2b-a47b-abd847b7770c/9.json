@@ -1,0 +1,9 @@
+{
+  "id": "9",
+  "subject": "Review server/auth.py — authentication logic",
+  "description": "White box review of auth.py: JWT sign/verify, bcrypt hashing, cookie management, get_current_user dependency, require_role",
+  "activeForm": "Reviewing auth.py",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

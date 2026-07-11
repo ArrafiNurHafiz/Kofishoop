@@ -1,0 +1,9 @@
+{
+  "id": "5",
+  "subject": "Verifikasi — run dev server, lint, cek semua halaman",
+  "description": "Run dev server, check all pages, run linter, fix any issues",
+  "activeForm": "Verifikasi hasil",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

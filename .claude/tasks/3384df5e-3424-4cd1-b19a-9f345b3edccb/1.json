@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Perbaiki bug tampilan & fungsionalitas",
+  "description": "Perbaiki: 1) logout.php exit, 2) peminjaman limit logic, 3) stok buku tidak terupdate, 4) link edit koleksi salah, 5) CSS salah letak, 6) accept attribute file upload",
+  "activeForm": "Memperbaiki bug tampilan",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

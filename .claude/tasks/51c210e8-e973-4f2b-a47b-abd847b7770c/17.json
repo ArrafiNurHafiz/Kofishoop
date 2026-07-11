@@ -1,0 +1,9 @@
+{
+  "id": "17",
+  "subject": "Refactor utils/ — shared log_activity, fix upload",
+  "description": "Move log_activity to utils/logger.py, fix upload.py aiofiles → sync write, clean code",
+  "activeForm": "Refactoring utils",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

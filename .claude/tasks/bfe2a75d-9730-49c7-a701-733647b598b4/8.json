@@ -1,0 +1,9 @@
+{
+  "id": "8",
+  "subject": "Upgrade Recipient Dashboard — grafik tren gizi, spacing/hierarchy",
+  "description": "Add nutrition trend chart (line chart for 7-day view), improved spacing, better visual hierarchy, layout refinements",
+  "activeForm": "Meng-upgrade Recipient Dashboard",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "16",
+  "subject": "Refactor topsis.py — cached engine, clean imports",
+  "description": "Cache sync engine at module level, move imports to top, cleaner structure",
+  "activeForm": "Refactoring services/topsis.py",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

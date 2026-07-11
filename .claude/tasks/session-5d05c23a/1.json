@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Install ECC fully",
+  "description": "Complete ECC installation: memory database, AIDefence, hooks, TypeScript, agentic-flow",
+  "activeForm": "Menginstall ECC penuh",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": []
+}

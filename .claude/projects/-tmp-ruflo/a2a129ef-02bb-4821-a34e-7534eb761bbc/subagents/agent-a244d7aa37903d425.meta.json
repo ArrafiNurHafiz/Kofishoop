@@ -1,0 +1,1 @@
+{"agentType":"typescript-reviewer","description":"Scan for stream/file/process leaks","name":"stream-scanner","toolUseId":"call_04_wSQittLk47wydRTC57tq2853","spawnDepth":3}

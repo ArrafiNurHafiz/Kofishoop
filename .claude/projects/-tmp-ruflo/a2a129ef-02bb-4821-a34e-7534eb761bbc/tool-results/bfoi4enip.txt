@@ -1,0 +1,300 @@
+v3/scripts/prepare-publish.js:125:  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+v3/scripts/prepare-publish.js:148:  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+v3/plugins/test-intelligence/src/types.ts:480:      text: JSON.stringify(data, null, 2),
+v3/plugins/test-intelligence/src/types.ts:490:      text: JSON.stringify({
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:742:      JSON.stringify(fullConfig, null, 2),
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:1649:      JSON.stringify(remoteSession, null, 2),
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:1735:    memory.size = JSON.stringify(memory).length;
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:1747:      JSON.stringify(memory, null, 2),
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:2176:    fs.writeFileSync(mailboxPath, JSON.stringify(messages, null, 2), {
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:2263:      JSON.stringify(team, null, 2),
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:2279:        fs.writeFileSync(filePath, JSON.stringify(data, null, 2), {
+v3/plugins/teammate-plugin/src/teammate-bridge.ts:2300:        fs.writeFileSync(filePath, JSON.stringify(data, null, 2), {
+v3/plugins/quantum-optimizer/src/types.ts:518:      text: JSON.stringify(data, null, 2),
+v3/plugins/quantum-optimizer/src/types.ts:531:      text: JSON.stringify({
+v3/plugins/prime-radiant/src/plugin.ts:777:              text: JSON.stringify({ ...result, interpretation }, null, 2),
+v3/plugins/prime-radiant/src/plugin.ts:821:              text: JSON.stringify(
+v3/plugins/prime-radiant/src/plugin.ts:875:              text: JSON.stringify({ ...result, recommendation }, null, 2),
+v3/plugins/prime-radiant/src/plugin.ts:947:              text: JSON.stringify(result, null, 2),
+v3/plugins/prime-radiant/src/plugin.ts:992:              text: JSON.stringify({ ...result, interpretation }, null, 2),
+v3/plugins/prime-radiant/src/plugin.ts:1065:              text: JSON.stringify(
+v3/plugins/prime-radiant/src/plugin.ts:1205:            content: JSON.stringify({
+v3/plugins/prime-radiant/src/engines/CategoryEngine.ts:314:    this.registerFunctor('json_encode', (x) => JSON.stringify(x), {
+v3/plugins/prime-radiant/__tests__/plugin.test.ts:246:          content: [{ type: 'text', text: JSON.stringify({ coherent: true, energy: 0.1 }) }],
+v3/plugins/prime-radiant/__tests__/plugin.test.ts:261:          content: [{ type: 'text', text: JSON.stringify({ stable: true, spectralGap: 0.25 }) }],
+v3/plugins/prime-radiant/__tests__/plugin.test.ts:277:          content: [{ type: 'text', text: JSON.stringify({ causalEffect: -0.35 }) }],
+v3/plugins/prime-radiant/__tests__/plugin.test.ts:292:          content: [{ type: 'text', text: JSON.stringify({ consensusAchieved: true }) }],
+v3/plugins/prime-radiant/__tests__/plugin.test.ts:307:          content: [{ type: 'text', text: JSON.stringify({ bettiNumbers: [1, 2, 0] }) }],
+v3/plugins/prime-radiant/__tests__/plugin.test.ts:323:          content: [{ type: 'text', text: JSON.stringify({ action: 'allow' }) }],
+v3/plugins/prime-radiant/__tests__/engines/cohomology.test.ts:256:    const vectorHash = JSON.stringify(vectorSet.vectors.map((v) => v.slice(0, 3)));
+v3/plugins/prime-radiant/src/tools/memory-gate.ts:40:  const str = typeof value === 'string' ? value : JSON.stringify(value);
+v3/plugins/prime-radiant/src/tools/types.ts:327:      text: JSON.stringify(data, null, 2),
+v3/plugins/prime-radiant/src/tools/types.ts:340:      text: JSON.stringify({
+v3/plugins/perf-optimizer/src/types.ts:648:      text: JSON.stringify(data, null, 2),
+v3/plugins/perf-optimizer/src/types.ts:658:      text: JSON.stringify({
+v3/plugins/neural-coordination/src/types.ts:501:      text: JSON.stringify(data, null, 2),
+v3/plugins/neural-coordination/src/types.ts:514:      text: JSON.stringify({
+v3/plugins/legal-contracts/src/mcp-tools.ts:135:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/legal-contracts/src/mcp-tools.ts:143:          text: JSON.stringify({
+v3/plugins/legal-contracts/src/mcp-tools.ts:215:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/legal-contracts/src/mcp-tools.ts:223:          text: JSON.stringify({
+v3/plugins/legal-contracts/src/mcp-tools.ts:306:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/legal-contracts/src/mcp-tools.ts:314:          text: JSON.stringify({
+v3/plugins/legal-contracts/src/mcp-tools.ts:402:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/legal-contracts/src/mcp-tools.ts:410:          text: JSON.stringify({
+v3/plugins/legal-contracts/src/mcp-tools.ts:497:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/legal-contracts/src/mcp-tools.ts:505:          text: JSON.stringify({
+v3/plugins/hyperbolic-reasoning/src/types.ts:536:      text: JSON.stringify(data, null, 2),
+v3/plugins/hyperbolic-reasoning/src/types.ts:549:      text: JSON.stringify({
+v3/plugins/prime-radiant/src/engines/HottEngine.ts:200:      proof: `refl(${JSON.stringify(x)})`
+v3/plugins/prime-radiant/src/engines/HottEngine.ts:292:      return JSON.stringify(a) === JSON.stringify(b);
+v3/plugins/prime-radiant/__tests__/tools/coherence-check.test.ts:199:    return JSON.stringify({ vectors: vectorSample, threshold: input.threshold });
+v3/plugins/healthcare-clinical/src/types.ts:606:    content: [{ type: 'text', text: JSON.stringify(data) }],
+v3/plugins/healthcare-clinical/src/types.ts:618:    content: [{ type: 'text', text: JSON.stringify({ error: message, timestamp: new Date().toISOString() }) }],
+v3/plugins/healthcare-clinical/src/mcp-tools.ts:92:  const str = JSON.stringify(input);
+v3/plugins/gastown-bridge/tests/wasm-loader.test.ts:164:    const cooked = JSON.parse(JSON.stringify(formula)) as FormulaAST;
+v3/plugins/gastown-bridge/src/mcp-tools.ts:708:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:716:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:757:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:765:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:806:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:814:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:855:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:863:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:919:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:927:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:970:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:978:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1017:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1025:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1066:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1074:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1113:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1121:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1182:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1190:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1237:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1245:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1299:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1307:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1348:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1356:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1395:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1403:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1463:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1471:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1517:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1525:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1572:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1580:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1631:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1639:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1690:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1698:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1757:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/gastown-bridge/src/mcp-tools.ts:1765:          text: JSON.stringify({
+v3/plugins/gastown-bridge/src/gupp/state.ts:362:  const jsonContent = JSON.stringify(stateToSave, null, 2);
+v3/plugins/gastown-bridge/src/gupp/state.ts:658:  const content = JSON.stringify({
+v3/plugins/gastown-bridge/src/bridges/bd-bridge.ts:842:      args.push('--metadata', JSON.stringify(params.metadata));
+v3/plugins/cognitive-kernel/src/types.ts:506:      text: JSON.stringify(data, null, 2),
+v3/plugins/cognitive-kernel/src/types.ts:519:      text: JSON.stringify({
+v3/plugins/agentic-qe/src/tools/test-generation/tdd-cycle.ts:252:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/test-generation/tdd-cycle.ts:262:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/test-generation/suggest-tests.ts:174:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/test-generation/suggest-tests.ts:184:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/security-compliance/security-scan.ts:222:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/security-compliance/security-scan.ts:232:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/quality-assessment/evaluate-quality-gate.ts:267:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/quality-assessment/evaluate-quality-gate.ts:277:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/quality-assessment/calculate-risk.ts:223:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/quality-assessment/calculate-risk.ts:233:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/defect-intelligence/predict-defects.ts:203:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/defect-intelligence/predict-defects.ts:213:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/coverage-analysis/track-trends.ts:198:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/coverage-analysis/track-trends.ts:208:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/chaos-resilience/chaos-inject.ts:284:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/chaos-resilience/chaos-inject.ts:294:          text: JSON.stringify(
+v3/plugins/gastown-bridge/src/errors.ts:150:      str += ` | Context: ${JSON.stringify(this.context)}`;
+v3/plugins/gastown-bridge/src/formula/executor.ts:1203:          JSON.stringify(context.variables),
+v3/plugins/gastown-bridge/src/formula/executor.ts:1204:          JSON.stringify(step.needs ?? []),
+v3/plugins/agentic-qe/src/tools/security-compliance/detect-secrets.ts:224:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/security-compliance/detect-secrets.ts:234:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/defect-intelligence/find-similar-defects.ts:205:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/defect-intelligence/find-similar-defects.ts:215:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/coverage-analysis/analyze-coverage.ts:194:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/coverage-analysis/analyze-coverage.ts:204:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/bridges/QEMemoryBridge.ts:207:        content: JSON.stringify(pattern),
+v3/plugins/agentic-qe/src/bridges/QEMemoryBridge.ts:286:        content: JSON.stringify(gap),
+v3/plugins/agentic-qe/src/bridges/QEMemoryBridge.ts:394:        content: JSON.stringify(trajectory),
+v3/mcp/tool-registry.ts:428:          text: typeof result === 'string' ? result : JSON.stringify(result, null, 2),
+v3/mcp/transport/http.ts:193:    const message = JSON.stringify(notification);
+v3/mcp/transport/http.ts:436:        ws.send(JSON.stringify({
+v3/mcp/transport/http.ts:452:          ws.send(JSON.stringify({
+v3/mcp/transport/http.ts:461:        ws.send(JSON.stringify(response));
+v3/mcp/transport/http.ts:470:        ws.send(JSON.stringify({
+v3/mcp/transport/http.ts:476:        ws.send(JSON.stringify({
+v3/mcp/tools/config-tools.ts:334:    await fs.writeFile(safePath, JSON.stringify(configToSave, null, 2), 'utf-8');
+v3/goal_ui/supabase/functions/optimize-research-config/index.ts:124:      body: JSON.stringify({
+v3/goal_ui/supabase/functions/optimize-research-config/index.ts:269:        return new Response(JSON.stringify({ error: "Rate limits exceeded. Please try again later." }), {
+v3/goal_ui/supabase/functions/optimize-research-config/index.ts:275:        return new Response(JSON.stringify({ error: "AI usage limit reached. Please add credits to continue." }), {
+v3/goal_ui/supabase/functions/optimize-research-config/index.ts:296:    return new Response(JSON.stringify({ config }), {
+v3/goal_ui/supabase/functions/optimize-research-config/index.ts:303:      JSON.stringify({ 
+v3/goal_ui/supabase/functions/generate-action-items/index.ts:120:      body: JSON.stringify({
+v3/goal_ui/supabase/functions/generate-action-items/index.ts:196:        return new Response(JSON.stringify({ error: "Rate limits exceeded" }), {
+v3/goal_ui/supabase/functions/generate-action-items/index.ts:202:        return new Response(JSON.stringify({ error: "AI usage limit reached" }), {
+v3/goal_ui/supabase/functions/generate-action-items/index.ts:221:    return new Response(JSON.stringify(result), {
+v3/goal_ui/supabase/functions/generate-action-items/index.ts:228:      JSON.stringify({ 
+v3/__tests__/integration/workflow-integration.test.ts:538:      content: JSON.stringify(workflowState),
+v3/__tests__/integration/workflow-integration.test.ts:556:      content: JSON.stringify(workflowState),
+v3/__tests__/appliance/rvfa-format.test.ts:320:    const corruptedHeader = Buffer.from(JSON.stringify(header), 'utf-8');
+v3/__tests__/appliance/rvfa-format.test.ts:343:    const corruptedHeader = Buffer.from(JSON.stringify(header), 'utf-8');
+v3/@claude-flow/testing/src/setup.ts:24:      JSON.stringify(call) === JSON.stringify(expected)
+v3/@claude-flow/testing/src/setup.ts:30:        ? `Expected mock not to have been called with ${JSON.stringify(expected)}`
+v3/@claude-flow/testing/src/setup.ts:31:        : `Expected mock to have been called with ${JSON.stringify(expected)}, but was called with ${JSON.stringify(received.mock.calls)}`,
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:298:        JSON.stringify(entry),
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:426:      const probeConfig = ${JSON.stringify(probe)};
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:427:      const targetUrl = ${JSON.stringify(target)};
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:462:            req.write(JSON.stringify(probeConfig.payload));
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:470:        .then(result => console.log(JSON.stringify(result)))
+v3/plugins/agentic-qe/src/bridges/QESecurityBridge.ts:471:        .catch(error => console.error(JSON.stringify({ error: error.message })));
+v3/plugins/agentic-qe/src/bridges/QECoreBridge.ts:352:      this.logger.debug(`Listing agents with filter: ${JSON.stringify(filter)}`);
+v3/plugins/agentic-qe/__tests__/plugin.test.ts:198:          content: [{ type: 'text', text: JSON.stringify({ status: 'generated', input }) }],
+v3/plugins/agentic-qe/__tests__/plugin.test.ts:214:          content: [{ type: 'text', text: JSON.stringify({ status: 'analyzed', input }) }],
+v3/plugins/agentic-qe/__tests__/plugin.test.ts:230:          content: [{ type: 'text', text: JSON.stringify({ status: 'scanned', input }) }],
+v3/plugins/agentic-qe/__tests__/plugin.test.ts:248:          content: [{ type: 'text', text: JSON.stringify({ status: 'injected', input }) }],
+v3/mcp/transport/websocket.ts:462:      return JSON.stringify(message);
+v3/mcp/transport/websocket.ts:464:    return JSON.stringify(message);
+v3/mcp/tools/session-tools.ts:355:  const dataStr = JSON.stringify(sessionData);
+v3/mcp/tools/session-tools.ts:366:    await fs.writeFile(filePath, JSON.stringify(sessionData, null, 2), 'utf-8');
+v3/mcp/tools/session-tools.ts:410:      const calculatedChecksum = calculateChecksum(JSON.stringify(dataWithoutChecksum));
+v3/mcp/tools/session-tools.ts:571:      size: JSON.stringify(data).length,
+v3/@claude-flow/testing/src/regression/api-contract.ts:471:    await writeFile(this.contractPath, JSON.stringify(contracts, null, 2));
+v3/mcp/tools/session-tools.js:227:    const dataStr = JSON.stringify(sessionData);
+v3/mcp/tools/session-tools.js:236:        await fs.writeFile(filePath, JSON.stringify(sessionData, null, 2), 'utf-8');
+v3/mcp/tools/session-tools.js:273:            const calculatedChecksum = calculateChecksum(JSON.stringify(dataWithoutChecksum));
+v3/mcp/tools/session-tools.js:428:            size: JSON.stringify(data).length,
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:100:            content: [{ type: 'text', text: JSON.stringify({ error: 'Title is required' }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:115:            content: [{ type: 'text', text: JSON.stringify(bead) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:119:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:157:            content: [{ type: 'text', text: JSON.stringify(beads) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:161:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:185:            content: [{ type: 'text', text: JSON.stringify({ error: 'bead_id is required' }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:194:            content: [{ type: 'text', text: JSON.stringify({ error: 'Invalid bead ID format' }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:202:            content: [{ type: 'text', text: JSON.stringify(bead) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:206:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:241:            content: [{ type: 'text', text: JSON.stringify({ error: 'Invalid action' }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:248:            content: [{ type: 'text', text: JSON.stringify({ error: 'child and parent required for add/remove' }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:262:            content: [{ type: 'text', text: result || JSON.stringify({ success: true }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:266:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:299:            content: [{ type: 'text', text: JSON.stringify({ error: 'name is required' }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:319:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:353:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:386:            content: [{ type: 'text', text: JSON.stringify({ error: 'bead_id and target are required' }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:395:            content: [{ type: 'text', text: JSON.stringify({ error: 'Invalid target. Must be polecat, crew, or mayor' }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:408:            content: [{ type: 'text', text: JSON.stringify({ success: true, slung: input.bead_id, to: input.target }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:412:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:446:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:487:            content: [{ type: 'text', text: JSON.stringify({ error: (error as Error).message }) }],
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:840:    mockBridge.gt.mockResolvedValue(JSON.stringify({ id: 'conv-123', name: 'My Convoy' }));
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:933:    const agentList = JSON.stringify([
+v3/plugins/gastown-bridge/tests/mcp-tools.test.ts:948:    const formulas = JSON.stringify([
+v3/plugins/gastown-bridge/tests/bridges.test.ts:378:      mockExecSuccess(JSON.stringify(bead) + '\n');
+v3/plugins/gastown-bridge/tests/bridges.test.ts:389:      mockExecSuccess(JSON.stringify(bead));
+v3/plugins/gastown-bridge/tests/bridges.test.ts:403:      mockExecSuccess(JSON.stringify(bead));
+v3/plugins/gastown-bridge/tests/bridges.test.ts:416:      mockExecSuccess(JSON.stringify(bead));
+v3/plugins/gastown-bridge/tests/bridges.test.ts:429:      mockExecSuccess(JSON.stringify(bead));
+v3/plugins/gastown-bridge/tests/bridges.test.ts:444:      mockExecSuccess(beads.map(b => JSON.stringify(b)).join('\n'));
+v3/plugins/gastown-bridge/tests/bridges.test.ts:480:      mockExecSuccess(JSON.stringify(bead));
+v3/plugins/gastown-bridge/tests/bridges.test.ts:496:      mockExecSuccess(beads.map(b => JSON.stringify(b)).join('\n'));
+v3/plugins/gastown-bridge/tests/bridges.test.ts:699:    mockExecSuccess(beads.map(b => JSON.stringify(b)).join('\n'));
+v3/plugins/gastown-bridge/tests/bridges.test.ts:711:    mockExecSuccess(JSON.stringify(bead) + '\n');
+v3/plugins/gastown-bridge/tests/bridges.test.ts:720:    mockExecSuccess(JSON.stringify(beads[0]) + '\n\n' + JSON.stringify(beads[1]) + '\n');
+v3/plugins/gastown-bridge/src/wasm-loader.ts:851:          JSON.stringify(formula),
+v3/plugins/gastown-bridge/src/wasm-loader.ts:852:          JSON.stringify(vars)
+v3/plugins/gastown-bridge/src/wasm-loader.ts:902:        JSON.stringify(formulas),
+v3/plugins/gastown-bridge/src/wasm-loader.ts:903:        JSON.stringify(varsArray)
+v3/plugins/gastown-bridge/src/wasm-loader.ts:963:          JSON.stringify(nodes),
+v3/plugins/gastown-bridge/src/wasm-loader.ts:964:          JSON.stringify(edges)
+v3/plugins/gastown-bridge/src/wasm-loader.ts:1012:        JSON.stringify(nodes),
+v3/plugins/gastown-bridge/src/wasm-loader.ts:1013:        JSON.stringify(edges)
+v3/plugins/gastown-bridge/src/wasm-loader.ts:1065:        JSON.stringify(nodes),
+v3/plugins/gastown-bridge/src/wasm-loader.ts:1066:        JSON.stringify(edges),
+v3/plugins/gastown-bridge/src/wasm-loader.ts:1067:        JSON.stringify(weights)
+v3/plugins/gastown-bridge/src/index.ts:434:        console.log(JSON.stringify({ level: msgLevel, msg, ...meta, timestamp: new Date().toISOString() }));
+v3/plugins/gastown-bridge/src/cache.ts:279:      return JSON.stringify(value).length * 2;
+v3/plugins/gastown-bridge/src/convoy/observer.ts:516:        const resultJson = this.wasmModule.topo_sort(JSON.stringify(wasmNodes));
+v3/plugins/gastown-bridge/src/convoy/observer.ts:639:      const currentState = JSON.stringify({
+v3/plugins/gastown-bridge/src/convoy/observer.ts:846:    const beadsJson = JSON.stringify(wasmNodes);
+v3/plugins/financial-risk/src/mcp-tools.ts:115:  const str = JSON.stringify(obj);
+v3/plugins/financial-risk/src/bridges/economy-bridge.ts:546:    const str = JSON.stringify(obj);
+v3/plugins/agentic-qe/src/plugin.ts:1128:      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/agentic-qe/src/plugin.ts:1149:      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/agentic-qe/src/plugin.ts:1165:          content: [{ type: 'text', text: JSON.stringify({ error: pathResult.error }) }],
+v3/plugins/agentic-qe/src/plugin.ts:1184:      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/agentic-qe/src/plugin.ts:1210:      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/agentic-qe/src/plugin.ts:1232:      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/agentic-qe/src/plugin.ts:1254:      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/agentic-qe/src/plugin.ts:1297:      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/agentic-qe/src/plugin.ts:1328:      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/agentic-qe/src/tools/test-generation/generate-tests.ts:152:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/test-generation/generate-tests.ts:162:          text: JSON.stringify(
+v3/plugins/code-intelligence/src/mcp-tools.ts:207:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/code-intelligence/src/mcp-tools.ts:215:          text: JSON.stringify({
+v3/plugins/code-intelligence/src/mcp-tools.ts:312:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/code-intelligence/src/mcp-tools.ts:320:          text: JSON.stringify({
+v3/plugins/code-intelligence/src/mcp-tools.ts:430:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/code-intelligence/src/mcp-tools.ts:438:          text: JSON.stringify({
+v3/plugins/code-intelligence/src/mcp-tools.ts:545:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/code-intelligence/src/mcp-tools.ts:553:          text: JSON.stringify({
+v3/plugins/code-intelligence/src/mcp-tools.ts:625:        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+v3/plugins/code-intelligence/src/mcp-tools.ts:633:          text: JSON.stringify({
+v3/plugins/agentic-qe/src/tools/quality-assessment/assess-readiness.ts:236:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/quality-assessment/assess-readiness.ts:246:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/coverage-analysis/prioritize-gaps.ts:206:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/coverage-analysis/prioritize-gaps.ts:216:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/security-compliance/audit-compliance.ts:207:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/security-compliance/audit-compliance.ts:217:          text: JSON.stringify(
+v3/plugins/agentic-qe/src/tools/defect-intelligence/analyze-root-cause.ts:228:          text: JSON.stringify(result, null, 2),
+v3/plugins/agentic-qe/src/tools/defect-intelligence/analyze-root-cause.ts:238:          text: JSON.stringify(
+v3/mcp/server-entry.ts:136:    const dataStr = data ? ` ${JSON.stringify(data)}` : '';
+v3/mcp/server-entry.ts:273:      console.log(JSON.stringify(notification));
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:392:        message: JSON.stringify({
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:426:        value: JSON.stringify(value),
+v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:492:      message: JSON.stringify({
+v3/mcp/transport/stdio.ts:254:    const json = JSON.stringify(response);
+v3/mcp/transport/stdio.ts:276:    const json = JSON.stringify(notification);
+v3/@claude-flow/swarm/src/consensus/transport.ts:125:  return Buffer.from(JSON.stringify(deepSortKeys(msg)), 'utf-8');
+v3/mcp/__tests__/session-tools.test.ts:475:      (fs.readFile as any).mockResolvedValue(JSON.stringify(sessionData));
+v3/mcp/tools/config-tools.js:173:        await fs.writeFile(path, JSON.stringify(configToSave, null, 2), 'utf-8');
+v3/__tests__/appliance/rvfa-signing.test.ts:272:    const newHeaderJson = Buffer.from(JSON.stringify(header), 'utf-8');
+v3/@claude-flow/shared/src/services/v3-progress.service.ts:257:      writeFileSync(this.metricsPath, JSON.stringify(output, null, 2));
+v3/@claude-flow/testing/src/helpers/mock-factory.ts:544:    return `token:${Buffer.from(JSON.stringify(payload)).toString('base64')}`;
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:26:        return JSON.stringify(call[i]) === JSON.stringify(expected);
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:35:      return JSON.stringify(callArg[key]) === JSON.stringify(expected);
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:138:    call => JSON.stringify(call) === JSON.stringify(args)
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:208:    const content = JSON.stringify(log).toLowerCase();
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:348:      allowed => JSON.stringify(call) === JSON.stringify(allowed)
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:353:        `Mock was called with unexpected arguments: ${JSON.stringify(call)}\n` +
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:354:        `Allowed: ${JSON.stringify(allowedCalls)}`
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:386:        `Expected to find ${JSON.stringify(expected)} after index ${lastIndex} in array`
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:408:        message ?? `Item at index ${i} failed predicate: ${JSON.stringify(items[i])}`
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:428:        message ?? `Item at index ${i} passed predicate but should not have: ${JSON.stringify(items[i])}`
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:444:    JSON.stringify(a).localeCompare(JSON.stringify(b))
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:447:    JSON.stringify(a).localeCompare(JSON.stringify(b))
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:558:          JSON.stringify(callArg[key]) === JSON.stringify(expected)
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:565:          ? `Expected mock not to have been called with pattern ${JSON.stringify(pattern)}`
+v3/@claude-flow/testing/src/helpers/assertion-helpers.ts:566:          : `Expected mock to have been called with pattern ${JSON.stringify(pattern)}`,
+v3/@claude-flow/testing/src/regression/performance-baseline.ts:354:    await writeFile(this.baselinePath, JSON.stringify(baseline, null, 2));
+v3/@claude-flow/shared/src/plugins/official/hive-mind-plugin.ts:292:    return `${taskData.description || 'task'}-${JSON.stringify(taskData.metadata ?? {})}`.slice(0, 100);
+v3/@claude-flow/testing/src/fixtures/mcp-fixtures.ts:673:        text: JSON.stringify({
+v3/@claude-flow/testing/src/fixtures/mcp-fixtures.ts:687:        text: JSON.stringify({
+v3/@claude-flow/testing/src/fixtures/mcp-fixtures.ts:701:        text: JSON.stringify({
+v3/@claude-flow/testing/src/mocks/mock-services.ts:249:      const key = JSON.stringify(vote);
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:433:      return JSON.stringify(message);
+v3/@claude-flow/shared/src/mcp/transport/websocket.ts:435:    return JSON.stringify(message);
+v3/@claude-flow/shared/src/mcp/transport/http.ts:192:    const message = JSON.stringify(notification);
+v3/@claude-flow/shared/src/mcp/transport/http.ts:473:        ws.send(JSON.stringify({
+v3/@claude-flow/shared/src/mcp/transport/http.ts:489:          ws.send(JSON.stringify({
+v3/@claude-flow/shared/src/mcp/transport/http.ts:498:        ws.send(JSON.stringify(response));
+v3/@claude-flow/shared/src/mcp/transport/http.ts:507:        ws.send(JSON.stringify({
+v3/@claude-flow/shared/src/mcp/transport/http.ts:513:        ws.send(JSON.stringify({

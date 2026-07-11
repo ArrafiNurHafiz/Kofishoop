@@ -1,0 +1,8 @@
+{
+  "id": "1",
+  "subject": "Analyze codebase for performance optimizations",
+  "description": "Analyze 3 main projects (claude-bug-bounty, reactbits-mcp-server, hexstrike-ai) for: N+1 queries, unnecessary re-renders, caching opportunities, memory leaks, redundant computations",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "7",
+  "subject": "Testing dan verifikasi",
+  "description": "Buat test structure, unit tests, integration tests, contract tests, verifikasi E2E Playwright",
+  "activeForm": "Testing and verification",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

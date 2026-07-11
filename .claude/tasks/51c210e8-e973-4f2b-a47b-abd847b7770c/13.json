@@ -1,0 +1,9 @@
+{
+  "id": "13",
+  "subject": "Review config, schemas, utils — support layer",
+  "description": "White box review of config.py (settings validation), schemas.py (Pydantic models), utils/logger.py, utils/upload.py",
+  "activeForm": "Reviewing support layer",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

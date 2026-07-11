@@ -1,0 +1,1 @@
+{"agentType":"code-analyzer","description":"Scan for global state leaks","name":"global-state-scanner","toolUseId":"call_03_ngy48ZT7WsTY8Yx6CGfQ6563","spawnDepth":3}

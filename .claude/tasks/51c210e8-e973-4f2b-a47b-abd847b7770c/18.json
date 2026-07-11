@@ -1,0 +1,9 @@
+{
+  "id": "18",
+  "subject": "Refactor main.py — upload auth, dead code, cleanup",
+  "description": "Fix upload endpoint use Depends(get_current_user), remove dead code comments, clean structure",
+  "activeForm": "Refactoring main.py",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,8 @@
+{
+  "id": "2",
+  "subject": "Add animated Stats/metrics section",
+  "description": "Create Stats.tsx with counter animation for trust metrics (deployments, users, uptime, etc.)",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

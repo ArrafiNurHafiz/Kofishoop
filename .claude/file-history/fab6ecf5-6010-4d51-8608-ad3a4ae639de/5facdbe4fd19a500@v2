@@ -1,0 +1,48 @@
+<?php
+/**
+ * functions.php
+ * Berisi array tarif gaji dan fungsi perhitungan
+ */
+
+// Array asosiatif tarif gaji per hari berdasarkan golongan
+$tarifGaji = [
+    'A' => 200000,
+    'B' => 150000,
+    'C' => 100000
+];
+
+/**
+ * Fungsi untuk menghitung total gaji karyawan
+ *
+ * @param string $gol Golongan karyawan (A, B, atau C)
+ * @param int    $hari Jumlah hari kerja
+ * @return array       Array berisi gajiPokok, tunjangan, dan total
+ */
+function hitungGaji($gol, $hari) {
+    global $tarifGaji;
+
+    // Hitung gaji pokok
+    $gajiPokok = $tarifGaji[$gol] * $hari;
+
+    // Tunjangan makan: Rp 50.000 jika hari kerja > 20
+    $tunjangan = ($hari > 20) ? 50000 : 0;
+
+    // Total gaji
+    $total = $gajiPokok + $tunjangan;
+
+    return [
+        'gajiPokok' => $gajiPokok,
+        'tunjangan' => $tunjangan,
+        'total'     => $total
+    ];
+}
+
+/**
+ * Format angka ke format Rupiah
+ *
+ * @param int $angka
+ * @return string
+ */
+function formatRupiah($angka) {
+    return 'Rp ' . number_format($angka, 0, ',', '.');
+}

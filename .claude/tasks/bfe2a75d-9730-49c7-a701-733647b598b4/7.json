@@ -1,0 +1,9 @@
+{
+  "id": "7",
+  "subject": "Upgrade Donor Dashboard — quick stats, real-time notif, multi-step form",
+  "description": "Add quick stats row, real-time notification polling, multi-step form (split into sections), improved visual hierarchy",
+  "activeForm": "Meng-upgrade Donor Dashboard",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

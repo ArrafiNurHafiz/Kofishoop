@@ -1,0 +1,9 @@
+{
+  "id": "26",
+  "subject": "Perbaiki prioritas rendah (R1-R14)",
+  "description": "Schema untuk emergency, .gitignore, JWT secret length, error handling Heroes, dll",
+  "activeForm": "Memperbaiki prioritas rendah",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

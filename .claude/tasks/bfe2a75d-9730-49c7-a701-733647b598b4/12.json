@@ -1,0 +1,9 @@
+{
+  "id": "12",
+  "subject": "Dashboard Statistik — grafik tren donasi & export",
+  "description": "Backend trend API + frontend chart (line, bar) + filter mingguan/bulanan",
+  "activeForm": "Membuat Dashboard Statistik",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

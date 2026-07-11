@@ -1,0 +1,8 @@
+{
+  "id": "6",
+  "subject": "Assemble new sections into landing page",
+  "description": "Update page.tsx to include all new sections in the correct order",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

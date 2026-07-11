@@ -1,0 +1,18 @@
+{
+  "name": "session-5d05c23a",
+  "createdAt": 1783733655392,
+  "leadAgentId": "team-lead@session-5d05c23a",
+  "leadSessionId": "5d05c23a-c1a3-49f9-a034-79ccccc59be9",
+  "members": [
+    {
+      "agentId": "team-lead@session-5d05c23a",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1783733655392,
+      "tmuxPaneId": "leader",
+      "cwd": "/home/arrafi",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -1,0 +1,451 @@
+/tmp/ruflo/v3/src/task-execution/application/WorkflowEngine.ts:381:        await new Promise(resolve => setTimeout(resolve, 100));
+/tmp/ruflo/v3/src/agent-lifecycle/domain/Agent.ts:105:    await new Promise(resolve => setTimeout(resolve, overhead));
+/tmp/ruflo/v3/plugins/test-intelligence/src/mcp-tools.ts:586:      return 'Replace setTimeout with proper async waiting';
+/tmp/ruflo/v3/plugins/teammate-plugin/src/teammate-bridge.ts:2277:    const timer = setTimeout(() => {
+/tmp/ruflo/v3/plugins/teammate-plugin/src/utils/retry.ts:46:      await new Promise(resolve => setTimeout(resolve, delay));
+/tmp/ruflo/v3/plugins/teammate-plugin/src/utils/retry.ts:83:  return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/plugins/teammate-plugin/src/utils/retry.ts:97:      setTimeout(
+/tmp/ruflo/v3/plugins/teammate-plugin/src/utils/health-checker.ts:81:        setTimeout(() => reject(new Error('Health check timeout')), this.config.timeoutMs);
+/tmp/ruflo/v3/plugins/teammate-plugin/src/utils/circuit-breaker.ts:81:          setTimeout(() => reject(new Error('Circuit breaker timeout')), this.config.timeoutMs)
+/tmp/ruflo/v3/plugins/prime-radiant/__tests__/plugin.test.ts:209:    await new Promise((resolve) => setTimeout(resolve, 10)); // Simulate load time
+/tmp/ruflo/v3/plugins/prime-radiant/__tests__/wasm-bridge.test.ts:72:    await new Promise((resolve) => setTimeout(resolve, 10));
+/tmp/ruflo/v3/plugins/gastown-bridge/src/cache.ts:541:    setTimeout(() => {
+/tmp/ruflo/v3/plugins/gastown-bridge/src/cache.ts:703:        setTimeout(async () => {
+/tmp/ruflo/v3/plugins/gastown-bridge/src/cache.ts:800:      const timeoutId = setTimeout(() => {
+/tmp/ruflo/v3/plugins/gastown-bridge/src/cache.ts:950:      this.timeoutId = setTimeout(() => {
+/tmp/ruflo/v3/plugins/gastown-bridge/src/formula/executor.ts:792:            await new Promise(resolve => setTimeout(resolve, 10));
+/tmp/ruflo/v3/plugins/gastown-bridge/src/convoy/observer.ts:302:      return setTimeout(async () => {
+/tmp/ruflo/v3/plugins/gastown-bridge/src/convoy/observer.ts:353:      this.subscriptionFlushTimer = setTimeout(() => {
+/tmp/ruflo/v3/plugins/gastown-bridge/src/convoy/observer.ts:687:      watcher.timer = setTimeout(async () => {
+/tmp/ruflo/v3/plugins/gastown-bridge/src/convoy/observer.ts:707:      watcher.timer = setTimeout(async () => {
+/tmp/ruflo/v3/plugins/gastown-bridge/src/memory/lazy.ts:85:  private idleTimer?: ReturnType<typeof setTimeout>;
+/tmp/ruflo/v3/plugins/gastown-bridge/src/memory/lazy.ts:233:      this.idleTimer = setTimeout(() => {
+/tmp/ruflo/v3/plugins/agentic-qe/src/plugin.ts:445:        setTimeout(
+/tmp/ruflo/v3/plugins/agentic-qe/src/tools/chaos-resilience/chaos-inject.ts:482:  await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/v3/plugins/agentic-qe/src/bridges/QEHiveBridge.ts:596:    return new Promise((resolve) => setTimeout(resolve, ms));
+/tmp/ruflo/v3/mcp/types.ts:124:    resetTimeout: number;
+/tmp/ruflo/v3/mcp/connection-pool.ts:223:      setTimeout(() => {
+/tmp/ruflo/v3/mcp/connection-pool.ts:337:      await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/v3/mcp/transport/connection-pool.ts:210:      const timeoutId = setTimeout(() => {
+/tmp/ruflo/v3/mcp/transport/http.ts:234:        res.setTimeout(this.config.requestTimeout!, () => {
+/tmp/ruflo/v3/mcp/tools/system-tools.js:405:                    new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), input.timeout)),
+/tmp/ruflo/v3/mcp/tools/system-tools.js:429:                    new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), input.timeout)),
+/tmp/ruflo/v3/mcp/tools/system-tools.js:454:                    new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), input.timeout)),
+/tmp/ruflo/v3/mcp/tools/sona-tools.ts:619:  await new Promise(resolve => setTimeout(resolve, 1));
+/tmp/ruflo/v3/mcp/tools/system-tools.ts:570:            setTimeout(() => reject(new Error('Timeout')), input.timeout)
+/tmp/ruflo/v3/mcp/tools/system-tools.ts:596:            setTimeout(() => reject(new Error('Timeout')), input.timeout)
+/tmp/ruflo/v3/mcp/tools/system-tools.ts:623:            setTimeout(() => reject(new Error('Timeout')), input.timeout)
+/tmp/ruflo/v3/mcp/tools/sona-tools.js:355:    await new Promise(resolve => setTimeout(resolve, 1));
+/tmp/ruflo/v3/goal_ui/src/widget.tsx:96:    // Use setTimeout to ensure script has fully loaded
+/tmp/ruflo/v3/goal_ui/src/widget.tsx:97:    setTimeout(() => initRufloResearchWidget(), 0);
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:519:    await new Promise(resolve => setTimeout(resolve, 1500));
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:613:    setTimeout(() => setShowGOAPCards(true), 300);
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:617:    await new Promise(resolve => setTimeout(resolve, 4500));
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:649:      await new Promise(resolve => setTimeout(resolve, 500));
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:753:      await new Promise(resolve => setTimeout(resolve, 2000));
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:765:      await new Promise(resolve => setTimeout(resolve, 500));
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:812:    setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:880:      setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:888:      setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Index.tsx:899:      setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:100:    setTimeout(() => setCurrentPhase(1), 1000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:101:    setTimeout(() => setCurrentPhase(2), 8000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:102:    setTimeout(() => setCurrentPhase(3), 16000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:103:    setTimeout(() => setCurrentPhase(4), 24000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:104:    setTimeout(() => setCurrentPhase(5), 32000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:105:    setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:119:    setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:123:    setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:127:    setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:131:    setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:135:    setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:139:    setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:166:      setTimeout(() => setCurrentPhase(1), 1000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:167:      setTimeout(() => setCurrentPhase(2), 8000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:168:      setTimeout(() => setCurrentPhase(3), 16000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:169:      setTimeout(() => setCurrentPhase(4), 24000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:170:      setTimeout(() => setCurrentPhase(5), 32000);
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:171:      setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:200:      setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Agents.tsx:209:      setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/pages/Demo.tsx:82:        await new Promise(resolve => setTimeout(resolve, 100));
+/tmp/ruflo/v3/goal_ui/src/pages/Demo.tsx:150:    setTimeout(() => setCopied(false), 2000);
+/tmp/ruflo/v3/goal_ui/src/hooks/use-toast.ts:53:const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
+/tmp/ruflo/v3/goal_ui/src/hooks/use-toast.ts:60:  const timeout = setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/components/WidgetCustomizer.tsx:69:    setTimeout(() => setCopied(false), 2000);
+/tmp/ruflo/v3/goal_ui/src/components/DevelopmentStep.tsx:49:        setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/components/DevelopmentStep.tsx:52:          setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/components/AgentStep.tsx:74:        setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/components/AgentStep.tsx:78:          setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/components/StateAssessmentCard.tsx:39:      setTimeout(() => {
+/tmp/ruflo/v3/goal_ui/src/components/StateAssessmentCard.tsx:42:        setTimeout(() => setAnimatingState(null), 600);
+/tmp/ruflo/v3/__tests__/integration/swarm-integration.test.ts:105:    await new Promise(resolve => setTimeout(resolve, 100));
+/tmp/ruflo/v3/__tests__/integration/workflow-integration.test.ts:406:    await new Promise(resolve => setTimeout(resolve, 100));
+/tmp/ruflo/v3/__tests__/integration/workflow-integration.test.ts:471:    await new Promise(resolve => setTimeout(resolve, 100));
+/tmp/ruflo/v3/__tests__/honesty/tool-honesty.test.ts:132:  // 2. daa_agent_adapt has no setTimeout (no fake delays)
+/tmp/ruflo/v3/__tests__/honesty/tool-honesty.test.ts:135:    it('should not contain setTimeout in daa-tools.ts', () => {
+/tmp/ruflo/v3/__tests__/honesty/tool-honesty.test.ts:137:      expect(source).not.toContain('setTimeout');
+/tmp/ruflo/v3/__tests__/honesty/tool-honesty.test.ts:143:      expect(source).not.toMatch(/new Promise.*setTimeout/);
+/tmp/ruflo/v3/__tests__/integration/plugin-integration.test.ts:180:    await new Promise(resolve => setTimeout(resolve, 50));
+/tmp/ruflo/v3/__tests__/integration/plugin-integration.test.ts:184:    await new Promise(resolve => setTimeout(resolve, 50));
+/tmp/ruflo/v3/__tests__/integration/setup.ts:69:  await new Promise(resolve => setTimeout(resolve, 10));
+/tmp/ruflo/v3/__tests__/integration/setup.ts:106:      await new Promise(resolve => setTimeout(resolve, interval));
+/tmp/ruflo/v3/__tests__/integration/setup.ts:178:        setTimeout(() => reject(new Error(`Operation timed out after ${timeout}ms`)), timeout)
+/tmp/ruflo/v3/__tests__/integration/setup.ts:199:          await new Promise(resolve => setTimeout(resolve, delay * attempt));
+/tmp/ruflo/v3/@claude-flow/testing/src/regression/integration-regression.ts:97:        setTimeout(() => reject(new Error('Test timeout')), test.timeout);
+/tmp/ruflo/v3/@claude-flow/testing/src/regression/integration-regression.ts:230:        await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/testing/src/regression/integration-regression.ts:255:        await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/testing/src/mocks/mock-mcp-client.ts:343:      await new Promise(resolve => setTimeout(resolve, this._latencySimulation));
+/tmp/ruflo/v3/@claude-flow/testing/src/helpers/test-utils.ts:166:    const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/testing/src/helpers/test-utils.ts:194:  return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/testing/src/helpers/test-utils.ts:202: * setTimeout(() => deferred.resolve('done'), 1000);
+/tmp/ruflo/v3/@claude-flow/testing/src/helpers/setup-teardown.ts:470:            await new Promise(resolve => setTimeout(resolve, match.delay));
+/tmp/ruflo/v3/@claude-flow/testing/src/helpers/setup-teardown.ts:675:      setTimeout(() => reject(new Error(`Test timed out after ${timeoutMs}ms`)), timeoutMs)
+/tmp/ruflo/v3/@claude-flow/testing/src/helpers/mock-factory.ts:348:    await new Promise(resolve => setTimeout(resolve, 10));
+/tmp/ruflo/v3/@claude-flow/swarm/src/unified-coordinator.ts:1317:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/swarm/src/unified-coordinator.ts:1350:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/swarm/src/unified-coordinator.ts:1683:      await new Promise(resolve => setTimeout(resolve, gracePeriodMs));
+/tmp/ruflo/v3/@claude-flow/swarm/src/message-bus.ts:456:        const timeout = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/swarm/src/federation-hub.js:283:        setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/swarm/src/federation-hub.js:327:        setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/swarm/src/federation-hub.js:593:                setTimeout(check, 100);
+/tmp/ruflo/v3/@claude-flow/swarm/src/workers/worker-dispatch.ts:1049:    await new Promise(resolve => setTimeout(resolve, Math.min(ms, 10)));
+/tmp/ruflo/v3/@claude-flow/swarm/src/workers/worker-dispatch.js:819:        await new Promise(resolve => setTimeout(resolve, Math.min(ms, 50)));
+/tmp/ruflo/v3/@claude-flow/testing/src/helpers/swarm-instance.ts:206:    await new Promise(resolve => setTimeout(resolve, 1));
+/tmp/ruflo/v3/@claude-flow/testing/src/mocks/mock-services.ts:71:    await new Promise(resolve => setTimeout(resolve, 10));
+/tmp/ruflo/v3/@claude-flow/testing/src/mocks/mock-services.ts:333:      await new Promise(resolve => setTimeout(resolve, 10));
+/tmp/ruflo/v3/@claude-flow/swarm/src/federation-hub.ts:482:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/swarm/src/federation-hub.ts:531:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/swarm/src/federation-hub.ts:860:        setTimeout(check, 100);
+/tmp/ruflo/v3/@claude-flow/swarm/src/consensus/transport.ts:264:      new Promise<ConsensusReply>((_, rej) => setTimeout(() => rej(new Error(`LocalTransport: send to ${to} timed out (${t}ms)`)), t)),
+/tmp/ruflo/v3/@claude-flow/swarm/src/consensus/raft.ts:292:    this.electionTimeout = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/swarm/src/consensus/federation-transport.ts:85:  private readonly pending = new Map<string, { resolve: (r: ConsensusReply) => void; reject: (e: Error) => void; timer: ReturnType<typeof setTimeout> }>();
+/tmp/ruflo/v3/@claude-flow/swarm/src/consensus/federation-transport.ts:161:      const timer = setTimeout(() => { this.pending.delete(corr); reject(new Error(`FederationTransport: send to ${to} timed out (${t}ms)`)); }, t);
+/tmp/ruflo/v3/@claude-flow/swarm/__tests__/topology.test.ts:610:      await new Promise(resolve => setTimeout(resolve, 6000));
+/tmp/ruflo/v3/@claude-flow/swarm/__tests__/topology.test.ts:615:      await new Promise(resolve => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/swarm/__tests__/federation-transport.test.ts:78:    await new Promise(r => setTimeout(r, 10)); // let microtasks drain
+/tmp/ruflo/v3/@claude-flow/swarm/__tests__/coordinator.test.ts:455:      await new Promise(resolve => setTimeout(resolve, 2500));
+/tmp/ruflo/v3/@claude-flow/swarm/__tests__/consensus.test.ts:45:      await new Promise(resolve => setTimeout(resolve, 150));
+/tmp/ruflo/v3/@claude-flow/swarm/__tests__/consensus.test.ts:105:      await new Promise(resolve => setTimeout(resolve, 150));
+/tmp/ruflo/v3/@claude-flow/swarm/__tests__/consensus.test.ts:148:      await new Promise(resolve => setTimeout(resolve, 150));
+/tmp/ruflo/v3/@claude-flow/swarm/__tests__/consensus.test.ts:547:      await new Promise(resolve => setTimeout(resolve, 150));
+/tmp/ruflo/v3/@claude-flow/shared/src/plugin-loader.ts:625:        setTimeout(() => reject(new Error(errorMessage)), timeoutMs)
+/tmp/ruflo/v3/@claude-flow/shared/src/resilience/retry.ts:178:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/shared/src/resilience/retry.ts:190:  return new Promise((resolve) => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/shared/src/resilience/circuit-breaker.ts:119:  private timeoutId?: ReturnType<typeof setTimeout>;
+/tmp/ruflo/v3/@claude-flow/shared/src/resilience/circuit-breaker.ts:304:    this.timeoutId = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/shared/src/resilience/bulkhead.ts:52:  timeoutId?: ReturnType<typeof setTimeout>;
+/tmp/ruflo/v3/@claude-flow/shared/src/resilience/bulkhead.ts:188:      item.timeoutId = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/shared/src/plugins/official/maestro-plugin.ts:408:      await new Promise((resolve) => setTimeout(resolve, 10));
+/tmp/ruflo/v3/@claude-flow/shared/src/mcp/types.ts:122:    resetTimeout: number;
+/tmp/ruflo/v3/@claude-flow/shared/src/mcp/connection-pool.ts:223:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/shared/src/mcp/connection-pool.ts:337:      await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/shared/src/mcp/transport/http.ts:260:        res.setTimeout(this.config.requestTimeout!, () => {
+/tmp/ruflo/v3/@claude-flow/shared/src/hooks/executor.ts:353:        setTimeout(() => reject(new Error(`Hook execution timeout after ${timeout}ms`)), timeout)
+/tmp/ruflo/v3/@claude-flow/shared/src/hooks/hooks.test.ts:302:      await new Promise(resolve => setTimeout(resolve, 200));
+/tmp/ruflo/v3/@claude-flow/shared/src/hooks/example-usage.ts:478:  await new Promise(resolve => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/shared/src/events/example-usage.ts:114:  await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/shared/__tests__/hooks/session-hooks.test.ts:53:      await new Promise(resolve => setTimeout(resolve, 10));
+/tmp/ruflo/v3/@claude-flow/shared/__tests__/hooks/session-hooks.test.ts:132:        await new Promise(resolve => setTimeout(resolve, 5));
+/tmp/ruflo/v3/@claude-flow/shared/src/core/orchestrator/health-monitor.ts:188:      setTimeout(() => reject(new Error(message)), ms);
+/tmp/ruflo/v3/@claude-flow/security/__tests__/token-generator.test.ts:208:      await new Promise(resolve => setTimeout(resolve, 1100));
+/tmp/ruflo/v3/@claude-flow/security/__tests__/token-generator.test.ts:282:      await new Promise(resolve => setTimeout(resolve, 1100));
+/tmp/ruflo/v3/@claude-flow/security/__tests__/safe-executor.test.ts:191:        shortTimeoutExecutor.execute('node', ['-e', 'setTimeout(() => {}, 10000)'])
+/tmp/ruflo/v3/@claude-flow/security/__tests__/unit/token-generator.test.ts:162:      await new Promise(resolve => setTimeout(resolve, 10));
+/tmp/ruflo/v3/@claude-flow/providers/src/openai-provider.ts:198:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 60000);
+/tmp/ruflo/v3/@claude-flow/providers/src/openai-provider.ts:226:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 60000) * 2);
+/tmp/ruflo/v3/@claude-flow/providers/src/google-provider.ts:141:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 60000);
+/tmp/ruflo/v3/@claude-flow/providers/src/google-provider.ts:171:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 60000) * 2);
+/tmp/ruflo/v3/@claude-flow/plugins/src/workers/index.ts:202:      const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/plugins/src/workers/index.ts:426:        setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/plugins/src/security/index.ts:547:          setTimeout(() => reject(new Error('Execution time limit exceeded')), config.maxExecutionTime)
+/tmp/ruflo/v3/@claude-flow/plugins/src/registry/plugin-registry.ts:580:        setTimeout(() => reject(new Error('Initialization timeout')), timeout)
+/tmp/ruflo/v3/@claude-flow/plugins/src/registry/enhanced-plugin-registry.ts:501:        setTimeout(() => reject(new Error('Initialization timeout')), timeout)
+/tmp/ruflo/v3/@claude-flow/plugins/src/registry/enhanced-plugin-registry.ts:575:        setTimeout(() => reject(new Error('Hot reload timeout')), timeout)
+/tmp/ruflo/v3/@claude-flow/plugins/src/providers/index.ts:349:    return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:383:      const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/ruvector-bridge.ts:481:    return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/plugins/src/hooks/index.ts:214:          setTimeout(() => reject(new Error('Hook execution timeout')), timeout)
+/tmp/ruflo/v3/@claude-flow/plugins/examples/ruvector/transactions.ts:53:  return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/plugins/examples/ruvector/streaming-large-data.ts:211:    await new Promise(resolve => setTimeout(resolve, 1));
+/tmp/ruflo/v3/@claude-flow/plugins/__tests__/security.test.ts:344:        await new Promise(resolve => setTimeout(resolve, 200));
+/tmp/ruflo/v3/@claude-flow/plugins/__tests__/ruvector-streaming.test.ts:59:      await new Promise((resolve) => setTimeout(resolve, 1));
+/tmp/ruflo/v3/@claude-flow/plugins/__tests__/ruvector-streaming.test.ts:263:      await new Promise((resolve) => setTimeout(resolve, delayMs));
+/tmp/ruflo/v3/@claude-flow/plugins/__tests__/ruvector-streaming.test.ts:605:              await new Promise((r) => setTimeout(r, 10));
+/tmp/ruflo/v3/@claude-flow/plugins/__tests__/ruvector-migrations.test.ts:174:    await new Promise((resolve) => setTimeout(resolve, 5 + Math.random() * 10));
+/tmp/ruflo/v3/@claude-flow/plugins/__tests__/ruvector-migrations.test.ts:1083:          await new Promise((r) => setTimeout(r, 5));
+/tmp/ruflo/v3/@claude-flow/plugins/__tests__/ruvector-migrations.test.ts:1085:          await new Promise((r) => setTimeout(r, 5));
+/tmp/ruflo/v3/@claude-flow/providers/src/ruvector-provider.ts:225:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 120000);
+/tmp/ruflo/v3/@claude-flow/providers/src/ruvector-provider.ts:281:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 120000);
+/tmp/ruflo/v3/@claude-flow/providers/src/ruvector-provider.ts:345:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 120000) * 2);
+/tmp/ruflo/v3/@claude-flow/providers/src/cohere-provider.ts:145:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 60000);
+/tmp/ruflo/v3/@claude-flow/providers/src/cohere-provider.ts:173:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 60000) * 2);
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/agentic-flow.ts:390:      const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/quantization.ts:794:        await new Promise(resolve => setTimeout(resolve, 0));
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/quantization.ts:1117:      await new Promise(resolve => setTimeout(resolve, 0));
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/attention-executor.ts:257:          setTimeout(() => reject(new Error('Query timeout')), timeoutMs)
+/tmp/ruflo/v3/@claude-flow/providers/src/ollama-provider.ts:142:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 120000);
+/tmp/ruflo/v3/@claude-flow/providers/src/ollama-provider.ts:170:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 120000) * 2);
+/tmp/ruflo/v3/@claude-flow/providers/src/base-provider.ts:45:    private readonly resetTimeout: number = 60000
+/tmp/ruflo/v3/@claude-flow/providers/src/base-provider.ts:50:      if (Date.now() - this.lastFailure > this.resetTimeout) {
+/tmp/ruflo/v3/@claude-flow/providers/src/base-provider.ts:115:    resetTimeout?: number;
+/tmp/ruflo/v3/@claude-flow/providers/src/base-provider.ts:155:      options.circuitBreakerOptions?.resetTimeout || 60000
+/tmp/ruflo/v3/@claude-flow/providers/src/anthropic-provider.ts:148:    const timeout = setTimeout(() => controller.abort(), this.config.timeout || 60000);
+/tmp/ruflo/v3/@claude-flow/providers/src/anthropic-provider.ts:176:    const timeout = setTimeout(() => controller.abort(), (this.config.timeout || 60000) * 2);
+/tmp/ruflo/v3/@claude-flow/plugins/src/integrations/ruvector/streaming.ts:1563:    return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/plugin-iot-cognitum/__tests__/integration/seed-client-raw.test.ts:19:        await new Promise((r) => setTimeout(r, delayMs));
+/tmp/ruflo/v3/@claude-flow/plugin-iot-cognitum/__tests__/integration/seed-client-raw.test.ts:25:      await new Promise((r) => setTimeout(r, 500 * (attempt + 1)));
+/tmp/ruflo/v3/@claude-flow/plugin-agent-federation/src/a2a/consume.ts:55:  const timer = setTimeout(() => controller.abort(), options.timeoutMs ?? 10_000);
+/tmp/ruflo/v3/@claude-flow/plugin-agent-federation/__tests__/unit/inbound-dispatcher.test.ts:150:    await new Promise((r) => setTimeout(r, 5));
+/tmp/ruflo/v3/@claude-flow/plugin-agent-federation/__tests__/unit/discovery-service.test.ts:167:      await new Promise((r) => setTimeout(r, 5));
+/tmp/ruflo/v3/@claude-flow/plugin-agent-federation/__tests__/unit/discovery-service.test.ts:304:      await new Promise((r) => setTimeout(r, 60));
+/tmp/ruflo/v3/@claude-flow/plugin-agent-federation/__tests__/unit/discovery-service.test.ts:319:      await new Promise((r) => setTimeout(r, 60));
+/tmp/ruflo/v3/@claude-flow/performance/src/framework/benchmark.ts:244:        setTimeout(() => reject(new Error('Warmup timeout')), timeout)
+/tmp/ruflo/v3/@claude-flow/performance/src/framework/benchmark.ts:275:        setTimeout(() => reject(new Error('Iteration timeout')), timeout)
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/mcp-server-init.bench.ts:53:  await new Promise((resolve) => setTimeout(resolve, 5));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:54:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:76:    await new Promise((resolve) => setTimeout(resolve, 1));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:85:  await new Promise((resolve) => setTimeout(resolve, 5));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:95:  await new Promise((resolve) => setTimeout(resolve, 3));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:139:        await new Promise((resolve) => setTimeout(resolve, 0.5));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:153:        new Promise((resolve) => setTimeout(resolve, 1)),
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:154:        new Promise((resolve) => setTimeout(resolve, 1)),
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:155:        new Promise((resolve) => setTimeout(resolve, 1)),
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:156:        new Promise((resolve) => setTimeout(resolve, 1)),
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:157:        new Promise((resolve) => setTimeout(resolve, 1)),
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:186:        new Promise((resolve) => setTimeout(resolve, 10)),
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:187:        new Promise((resolve) => setTimeout(resolve, 10)),
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:191:      await new Promise((resolve) => setTimeout(resolve, 5));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:194:      await new Promise((resolve) => setTimeout(resolve, 5));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:208:      await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/cli-cold-start.bench.ts:217:      await new Promise((resolve) => setTimeout(resolve, 20));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:77:  await new Promise((resolve) => setTimeout(resolve, config.initTime / 5));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:82:    await new Promise((resolve) => setTimeout(resolve, 2));
+/tmp/ruflo/v3/@claude-flow/performance/benchmarks/startup/agent-spawn.bench.ts:109:  await new Promise((resolve) => setTimeout(resolve, config.initTime / 10));
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/edge.ts:38:  private updateTimer: ReturnType<typeof setTimeout> | null = null;
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/edge.ts:300:      this.updateTimer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/edge.ts:327:      this.updateTimer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/edge.js:227:            this.updateTimer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/edge.js:251:            this.updateTimer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/batch.js:162:        this.batchTimer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/batch.ts:47:  private batchTimer: ReturnType<typeof setTimeout> | null = null;
+/tmp/ruflo/v3/@claude-flow/neural/src/modes/batch.ts:225:    this.batchTimer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/memory/src/migration.test.ts:77:      await new Promise((r) => setTimeout(r, 2));
+/tmp/ruflo/v3/@claude-flow/memory/src/consolidator.test.ts:236:    await new Promise((r) => setTimeout(r, 180));
+/tmp/ruflo/v3/@claude-flow/memory/src/consolidator.test.ts:254:    await new Promise((r) => setTimeout(r, 150));
+/tmp/ruflo/v3/@claude-flow/memory/src/consolidator.test.ts:258:    await new Promise((r) => setTimeout(r, 150));
+/tmp/ruflo/v3/@claude-flow/mcp/src/types.ts:85:    resetTimeout: number;
+/tmp/ruflo/v3/@claude-flow/mcp/src/task-manager.ts:110:    const timeoutId = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/mcp/src/task-manager.ts:276:      const timeoutId = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/mcp/src/sampling.ts:278:        setTimeout(() => reject(new Error('Sampling timeout')), timeout);
+/tmp/ruflo/v3/@claude-flow/mcp/src/sampling.ts:299:      await new Promise((r) => setTimeout(r, 100));
+/tmp/ruflo/v3/@claude-flow/mcp/src/connection-pool.ts:171:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/mcp/src/connection-pool.ts:268:      await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/mcp/src/transport/http.ts:210:        res.setTimeout(this.config.requestTimeout!, () => {
+/tmp/ruflo/v3/@claude-flow/mcp/__tests__/mcp.test.ts:617:          const timeout = setTimeout(resolve, 10000);
+/tmp/ruflo/v3/@claude-flow/mcp/__tests__/integration.test.ts:233:          await new Promise(r => setTimeout(r, 10));
+/tmp/ruflo/v3/@claude-flow/mcp/__tests__/integration.test.ts:248:          const timeout = setTimeout(resolve, 10000);
+/tmp/ruflo/v3/@claude-flow/mcp/__tests__/integration.test.ts:261:      await new Promise(r => setTimeout(r, 50));
+/tmp/ruflo/v3/@claude-flow/mcp/__tests__/integration.test.ts:273:          await new Promise(r => setTimeout(r, 10));
+/tmp/ruflo/v3/@claude-flow/mcp/__tests__/integration.test.ts:319:        await new Promise(r => setTimeout(r, 20));
+/tmp/ruflo/v3/@claude-flow/mcp/__tests__/integration.test.ts:321:        await new Promise(r => setTimeout(r, 20));
+/tmp/ruflo/v3/@claude-flow/integration/src/provider-adapter.ts:902:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/integration/src/provider-adapter.ts:1034:    return new Promise((resolve) => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/integration/src/multi-model-router.ts:212:    resetTimeout: number;
+/tmp/ruflo/v3/@claude-flow/integration/src/multi-model-router.ts:464:        resetTimeout: config.circuitBreaker?.resetTimeout || 60000,
+/tmp/ruflo/v3/@claude-flow/integration/src/multi-model-router.ts:961:    await new Promise(resolve => setTimeout(resolve, Math.min(modelConfig.latencyMs, 100)));
+/tmp/ruflo/v3/@claude-flow/integration/src/multi-model-router.ts:1025:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/integration/src/multi-model-router.ts:1029:      }, this.config.circuitBreaker.resetTimeout);
+/tmp/ruflo/v3/@claude-flow/integration/src/long-running-worker.ts:631:        setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/integration/src/long-running-worker.ts:821:    return new Promise((resolve) => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/integration/src/agentic-flow-agent.ts:786:    return new Promise((resolve) => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/hooks/src/swarm/index.ts:478:    setTimeout(() => this.resolveConsensus(request.id), timeout || this.config.consensusTimeout);
+/tmp/ruflo/v3/@claude-flow/hooks/src/workers/index.ts:913:          setTimeout(() => reject(new Error('Timeout')), config.timeout)
+/tmp/ruflo/v3/@claude-flow/hooks/src/workers/index.ts:1016:        this.timers.set(name, setTimeout(run, config.interval));
+/tmp/ruflo/v3/@claude-flow/hooks/src/workers/index.ts:1022:    this.timers.set(name, setTimeout(run, stagger));
+/tmp/ruflo/v3/@claude-flow/hooks/src/executor/index.ts:202:      const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/hooks/src/daemons/index.ts:266:          setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/hooks/src/bridge/official-hooks-bridge.ts:351:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/hooks/bin/hooks-daemon.js:129:        await new Promise(resolve => setTimeout(resolve, 1000));
+/tmp/ruflo/v3/@claude-flow/hooks/__tests__/workers.test.ts:149:        await new Promise(resolve => setTimeout(resolve, 10000));
+/tmp/ruflo/v3/@claude-flow/hooks/__tests__/workers.test.ts:230:        await new Promise(r => setTimeout(r, 50));
+/tmp/ruflo/v3/@claude-flow/guidance/tests/temporal.test.ts:261:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/guidance/tests/persistence.test.ts:46:  return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/embeddings/src/embedding-service.ts:328:        const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+/tmp/ruflo/v3/@claude-flow/embeddings/src/embedding-service.ts:360:        await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 100));
+/tmp/ruflo/v3/@claude-flow/embeddings/src/embedding-service.ts:520:      await new Promise(resolve => setTimeout(resolve, this.simulatedLatency));
+/tmp/ruflo/v3/@claude-flow/codex/src/loop/index.ts:260:  const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/codex/src/loop/index.ts:309:  return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:186:      const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/codex/src/dual-mode/orchestrator.ts:248:      await new Promise(resolve => setTimeout(resolve, checkInterval));
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-server.ts:690:      const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-server.ts:849:    return new Promise((resolve) => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/cli/src/transfer/ipfs/upload.ts:328:  await new Promise(resolve => setTimeout(resolve, 300));
+/tmp/ruflo/v3/@claude-flow/cli/src/transfer/ipfs/upload.ts:366:  await new Promise(resolve => setTimeout(resolve, 200));
+/tmp/ruflo/v3/@claude-flow/cli/src/services/headless-worker-executor.ts:809:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1226:      const timeoutHandle = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1230:          setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/headless-worker-executor.ts:1302:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-queue.ts:434:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-queue.ts:592:            await new Promise(resolve => setTimeout(resolve, 100));
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-queue.ts:605:            await new Promise(resolve => setTimeout(resolve, 1000));
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-queue.ts:610:          await new Promise(resolve => setTimeout(resolve, 5000));
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-queue.ts:648:      await new Promise(resolve => setTimeout(resolve, 1000));
+/tmp/ruflo/v3/@claude-flow/cli/src/services/fable-harness.ts:195:    const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-daemon.ts:686:            setTimeout(() => this.processPendingWorkers(), 30_000).unref();
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-daemon.ts:1090:        const timer = setTimeout(runAndReschedule, workerConfig.intervalMs);
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-daemon.ts:1097:    const timer = setTimeout(runAndReschedule, initialDelay);
+/tmp/ruflo/v3/@claude-flow/cli/src/services/worker-daemon.ts:1225:      const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/distill-oracle.ts:421:    const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/container-worker-pool.ts:348:      new Promise<void>(resolve => setTimeout(resolve, 30000)),
+/tmp/ruflo/v3/@claude-flow/cli/src/services/container-worker-pool.ts:592:      const timeout = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/services/container-worker-pool.ts:595:        setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/production/retry.ts:150:  return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/v3/@claude-flow/cli/src/production/circuit-breaker.ts:22:  resetTimeoutMs: number;
+/tmp/ruflo/v3/@claude-flow/cli/src/production/circuit-breaker.ts:55:  resetTimeoutMs: 30000,
+/tmp/ruflo/v3/@claude-flow/cli/src/production/circuit-breaker.ts:249:      if (now - this.stateChangedAt >= this.config.resetTimeoutMs) {
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/intelligence.ts:443:  private saveTimeout: ReturnType<typeof setTimeout> | null = null;
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/intelligence.ts:524:    this.saveTimeout = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/memory/memory-initializer.ts:501:      await new Promise(resolve => setTimeout(resolve, 10));
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/workflow-tools.ts:373:            await new Promise(r => setTimeout(r, ms));
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/system-tools.ts:426:              new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 3000)),
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/system-tools.ts:618:          socket.setTimeout(2000, () => {
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/metaharness-tools.ts:142:    const timer = setTimeout(() => { try { p.kill('SIGTERM'); } catch { /* ignore */ } }, 120_000);
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/managed-agent-tools.ts:131:    await new Promise(r => setTimeout(r, POLL_INTERVAL_MS));
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/http-fetch-tools.ts:233:  const timer = setTimeout(() => controller.abort(), timeoutMs);
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/browser-intent-tools.ts:40: *   DEMO `PageAgent` instance via `setTimeout`, pointed at Alibaba's public
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/browser-intent-tools.ts:454:    await new Promise((res) => setTimeout(res, 500));
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/testgen-tools.ts:91:    const timer = setTimeout(() => { try { p.kill('SIGTERM'); } catch { /* ignore */ } }, 20 * 60_000);
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/hooks-tools.ts:4437:          setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/coordination-tools.ts:325:        await new Promise(resolve => setTimeout(resolve, 50));
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/agent-execute-core.ts:168:    const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/agent-execute-core.ts:265:    const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+/tmp/ruflo/v3/@claude-flow/cli/src/mcp-tools/agent-execute-core.ts:351:    const timer = setTimeout(() => controller.abort(), input.timeoutMs || 60000);
+/tmp/ruflo/v3/@claude-flow/cli/src/init/helpers-generator.ts:496:    '    const timer = setTimeout(() => {',
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/start.ts:388:    await new Promise(resolve => setTimeout(resolve, 1000));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/providers.ts:107:    const timeout = setTimeout(() => controller.abort(), 5000);
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/providers.ts:389:          const timeout = setTimeout(() => controller.abort(), 5000);
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/performance.ts:287:    await new Promise(r => setTimeout(r, Math.min(duration * 100, 2000)));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/performance.ts:550:    await new Promise(r => setTimeout(r, 800));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/performance.ts:596:    await new Promise(r => setTimeout(r, 600));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/hooks.ts:1095:        await new Promise(resolve => setTimeout(resolve, 800));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/hooks.ts:2428:        await new Promise(resolve => setTimeout(resolve, 500));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/embeddings.ts:782:          await new Promise(r => setTimeout(r, 500));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/embeddings.ts:1312:        await new Promise(r => setTimeout(r, 500));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/daemon.ts:149:            await new Promise((r) => setTimeout(r, 100));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/daemon.ts:558:  await new Promise(resolve => setTimeout(resolve, 500));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/daemon.ts:650:    await new Promise(resolve => setTimeout(resolve, 1000));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/memory.ts:1667:        setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/benchmarks/gaia-agent.ts:375:  const timer = setTimeout(() => controller.abort(), timeoutMs);
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/plugins.ts:648:      await new Promise(r => setTimeout(r, 150));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/appliance.ts:75:    await new Promise(r => setTimeout(r, delay));
+/tmp/ruflo/v3/@claude-flow/cli/src/commands/appliance.ts:270:        await new Promise(r => setTimeout(r, 500));
+/tmp/ruflo/v3/@claude-flow/cli/src/benchmarks/gaia-convergence.smoke.ts:294:setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:216:    req.setTimeout(30_000, () => {
+/tmp/ruflo/v3/@claude-flow/cli/src/benchmarks/gaia-loader.ts:352:      req.setTimeout(60_000, () => { req.destroy(); resolve(null); });
+/tmp/ruflo/v3/@claude-flow/cli/src/benchmarks/gaia-tools/web_search.ts:110:    req.setTimeout(REQUEST_TIMEOUT_MS, () => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/plugins-transfer-deep.test.ts:946:    breaker = new CircuitBreaker({ failureThreshold: 3, resetTimeoutMs: 100, successThreshold: 2 });
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/plugins-transfer-deep.test.ts:972:    await new Promise(r => setTimeout(r, 150));
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/plugins-transfer-deep.test.ts:978:    await new Promise(r => setTimeout(r, 150));
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/plugins-transfer-deep.test.ts:987:    await new Promise(r => setTimeout(r, 150));
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/plugins-transfer-deep.test.ts:1520:      async () => { await new Promise(r => setTimeout(r, 10)); },
+/tmp/ruflo/v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:95:    req.setTimeout(30_000, () => { req.destroy(new Error('Request timed out after 30s')); });
+/tmp/ruflo/v3/@claude-flow/cli/src/appliance/rvfa-distribution.ts:114:    req.setTimeout(30_000, () => { req.destroy(new Error('Request timed out after 30s')); });
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/browser-intent-tools.test.ts:186:    const fakeBundle = 'window.PageAgent = function(){};\nvar DEMO_MODEL="qwen3.5-plus", DEMO_API_KEY="NA"; setTimeout(()=>{ new PageAgent({apiKey:DEMO_API_KEY}); });';
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/browser-intent-tools.test.ts:214:      'setTimeout(function(){ fetch("https://page-ag-testing-newhash.cn-shanghai.fcapp.run", {method:"POST"}); });';
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:379:      const setTimeoutSpy = vi.spyOn(global, 'setTimeout');
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:380:      const callCountBefore = setTimeoutSpy.mock.calls.length;
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:384:      // Find the 30-second backoff call among any setTimeout calls
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:385:      const backoffCalls = setTimeoutSpy.mock.calls
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:390:      setTimeoutSpy.mockRestore();
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:405:      const setTimeoutSpy = vi.spyOn(global, 'setTimeout');
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:406:      const callCountBefore = setTimeoutSpy.mock.calls.length;
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:411:      const backoffCalls = setTimeoutSpy.mock.calls
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:416:      setTimeoutSpy.mockRestore();
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:693:      const setTimeoutSpy = vi.spyOn(global, 'setTimeout');
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:694:      const before = setTimeoutSpy.mock.calls.length;
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:698:      const backoffCalls = setTimeoutSpy.mock.calls
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/worker-daemon-resource-thresholds.test.ts:705:      setTimeoutSpy.mockRestore();
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:163:      const timeoutId = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:465:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:488:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:511:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:553:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:571:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:934:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:957:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1127:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1154:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1187:      setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1226:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1247:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1265:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1284:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1301:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/services/headless-worker-executor.test.ts:1321:    setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/__tests__/system-uptime-2235.test.ts:23:    await new Promise((res) => setTimeout(res, 25));
+/tmp/ruflo/v3/@claude-flow/cli/.claude/helpers/hook-handler.cjs:64:    timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/.claude/helpers/hook-handler.cjs:86:    const timer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/cli/.claude/helpers/hook-handler.cjs:101:  const safetyTimer = setTimeout(() => {
+/tmp/ruflo/v3/@claude-flow/claims/tests/events.test.ts:220:  private batchTimeout: ReturnType<typeof setTimeout> | null = null;
+/tmp/ruflo/v3/@claude-flow/claims/tests/events.test.ts:509:        this.batchTimeout = setTimeout(
+/tmp/ruflo/tests/rvf-capability-verify.test.ts:377:    await new Promise(r => setTimeout(r, 5));
+/tmp/ruflo/tests/rvf-embeddings.test.ts:159:      await new Promise((resolve) => setTimeout(resolve, 10));
+/tmp/ruflo/tests/rvf-embeddings.test.ts:173:      await new Promise((resolve) => setTimeout(resolve, 10));
+/tmp/ruflo/tests/hook-handler-runwithtimeout.test.cjs:45:      const t = setTimeout(() => res('late'), INTELLIGENCE_TIMEOUT_MS + 2000);
+/tmp/ruflo/scripts/track-clones.mjs:160:    await new Promise((r) => setTimeout(r, 350));
+/tmp/ruflo/scripts/smoke-trajectory-graph-edges.mjs:53:  return new Promise(r => setTimeout(r, ms));
+/tmp/ruflo/scripts/smoke-all-plugins.mjs:89:    const timer = setTimeout(() => {
+/tmp/ruflo/scripts/smoke-all-plugins.mjs:93:      setTimeout(() => { try { p.kill('SIGKILL'); } catch {} }, 2000);
+/tmp/ruflo/scripts/smoke-all-plugins.mjs:100:      setTimeout(() => { try { p.kill('SIGKILL'); } catch {} }, 2000);
+/tmp/ruflo/ruflo/src/ruvocal/src/routes/api/mcp/health/+server.ts:96:		const timeoutId = setTimeout(() => controller.abort(), 30000);
+/tmp/ruflo/ruflo/src/ruvocal/src/routes/api/transcribe/+server.ts:60:		const timeoutId = setTimeout(() => controller.abort(), TRANSCRIPTION_TIMEOUT);
+/tmp/ruflo/ruflo/src/ruvocal/src/routes/api/fetch-url/+server.ts:64:	const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/workers/markdownWorker.ts:45:			await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/workers/autopilotWorker.ts:52:let batchTimeout: ReturnType<typeof setTimeout> | null = null;
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/workers/autopilotWorker.ts:71:		batchTimeout = setTimeout(flushUpdates, 16); // ~60fps
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/utils/timeout.ts:6:			timer = setTimeout(() => reject(new Error(`Timeout after ${time / 1000} seconds`)), time);
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/utils/messageUpdates.ts:320:	new Promise((resolve) => setTimeout(resolve, ms));
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/utils/debounce.ts:9:	let timer: ReturnType<typeof setTimeout>;
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/utils/debounce.ts:13:		timer = setTimeout(() => {
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/stores/wasmMcp.ts:469:	setTimeout(() => {
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/stores/settings.ts:62:			timeoutId = setTimeout(async () => {
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/stores/settings.ts:79:					setTimeout(() => {
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/stores/settings.ts:120:			timeoutId = setTimeout(async () => {
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/stores/settings.ts:136:					setTimeout(() => {
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/server/auth.ts:164:					await new Promise((resolve) => setTimeout(resolve, 200));
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/server/textGeneration/index.ts:20:		await new Promise((resolve) => setTimeout(resolve, 100));
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/server/router/arch.ts:170:	const to = setTimeout(() => ctrl.abort(), timeoutMs);
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/server/mcp/httpClient.ts:79:		resetTimeoutOnProgress: true,
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/server/files/uploadFile.ts:27:		setTimeout(() => reject(new Error("Upload timed out")), 20_000);
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/server/database/rvf.ts:72:let _saveTimer: ReturnType<typeof setTimeout> | null = null;
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/server/database/rvf.ts:152:	_saveTimer = setTimeout(() => flushToDisk(), SAVE_DEBOUNCE_MS);
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/server/__tests__/conversation-stop-generating.spec.ts:57:		await new Promise((resolve) => setTimeout(resolve, 5));
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/migrations/migrations.ts:32:			await new Promise((resolve) => setTimeout(resolve, 1000));
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/jobs/refresh-conversation-stats.ts:280:	setTimeout(maintainLock, 10_000);
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/actions/snapScrollToBottom.ts:47:	let userScrollTimeout: ReturnType<typeof setTimeout> | undefined;
+/tmp/ruflo/ruflo/src/ruvocal/src/lib/actions/snapScrollToBottom.ts:115:		userScrollTimeout = setTimeout(() => {
+/tmp/ruflo/ruflo/src/ruvocal/mcp-bridge/index.js:182:        setTimeout(() => { if (!this.ready) resolve(false); }, 60000);
+/tmp/ruflo/ruflo/src/ruvocal/mcp-bridge/index.js:222:      setTimeout(() => {
+/tmp/ruflo/ruflo/src/ruvocal/mcp-bridge/index.js:762:  const timer = setTimeout(() => controller.abort(), timeoutMs);
+/tmp/ruflo/ruflo/src/ruvocal/mcp-bridge/index.js:1588:  return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/ruflo/src/ruvocal/mcp-bridge/index.js:1794:  setTimeout(() => {
+/tmp/ruflo/ruflo/src/mcp-bridge/test-runtime-security.mjs:18:import { setTimeout as sleep } from "node:timers/promises";
+/tmp/ruflo/ruflo/src/mcp-bridge/index.js:182:        setTimeout(() => { if (!this.ready) resolve(false); }, 60000);
+/tmp/ruflo/ruflo/src/mcp-bridge/index.js:217:      setTimeout(() => {
+/tmp/ruflo/ruflo/src/mcp-bridge/index.js:673:  const timer = setTimeout(() => controller.abort(), timeoutMs);
+/tmp/ruflo/ruflo/src/mcp-bridge/index.js:1392:  return new Promise(resolve => setTimeout(resolve, ms));
+/tmp/ruflo/ruflo/src/mcp-bridge/index.js:1584:  setTimeout(() => {
+/tmp/ruflo/plugins/ruflo-testgen/scripts/tdd-repair/tdd-repair.mjs:207:    const timer = setTimeout(() => {
+/tmp/ruflo/plugins/ruflo-metaharness/scripts/test-mcp-tools.mjs:195:      setTimeout(() => reject(new Error(`${timeoutMs / 1000}s handler timeout`)), timeoutMs));
+/tmp/ruflo/plugins/ruflo-metaharness/scripts/_harness.mjs:149:    const timer = setTimeout(() => {
+/tmp/ruflo/plugins/ruflo-metaharness/scripts/_darwin.mjs:144:    const timer = setTimeout(() => {
+/tmp/ruflo/plugins/ruflo-core/scripts/test-mcp-roundtrips.mjs:74:const watchdog = setTimeout(() => {
+/tmp/ruflo/plugins/ruflo-core/scripts/test-mcp-roundtrips.mjs:91:    new Promise((_, rej) => setTimeout(() => rej(new Error(`inner-timeout ${ms}ms: ${label}`)), ms)),
+/tmp/ruflo/plugins/ruflo-core/scripts/test-mcp-roundtrips.mjs:110:    await new Promise(r => setTimeout(r, 50));
+/tmp/ruflo/plugins/ruflo-core/scripts/test-consensus-transport.mjs:60:const watchdog = setTimeout(() => {
+/tmp/ruflo/plugins/ruflo-core/scripts/test-cli-no-crash.mjs:40:const watchdog = setTimeout(() => {
+/tmp/ruflo/.claude/helpers/context-persistence-hook.mjs:853:    const timer = setTimeout(() => {
+/tmp/ruflo/.claude/helpers/hook-handler.cjs:64:    timer = setTimeout(() => {
+/tmp/ruflo/.claude/helpers/hook-handler.cjs:86:    const timer = setTimeout(() => {
+/tmp/ruflo/.claude/helpers/hook-handler.cjs:101:  const safetyTimer = setTimeout(() => {

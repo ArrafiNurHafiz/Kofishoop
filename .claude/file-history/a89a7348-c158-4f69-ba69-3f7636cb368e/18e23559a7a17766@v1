@@ -1,0 +1,461 @@
+"use client";
+
+import { useState } from "react";
+import { useAccount } from "wagmi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { parseEther, keccak256, toBytes } from "viem";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { createWill } from "@/lib/eterna";
+
+interface BeneficiaryInput {
+  name: string;
+  wallet: string;
+  percentage: string;
+  delay: string;
+}
+
+interface GuardianInput {
+  name: string;
+  wallet: string;
+}
+
+const STEPS = ["Beneficiaries", "Guardians", "Triggers", "Review & Sign"];
+
+export default function CreateWillPage() {
+  const { isConnected, address } = useAccount();
+  const router = useRouter();
+  const [step, setStep] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [txHash, setTxHash] = useState("");
+  const [willId, setWillId] = useState<number | null>(null);
+  const [error, setError] = useState("");
+
+  // Beneficiaries
+  const [beneficiaries, setBeneficiaries] = useState<BeneficiaryInput[]>([
+    { name: "", wallet: "", percentage: "", delay: "0" },
+  ]);
+
+  // Guardians
+  const [guardians, setGuardians] = useState<GuardianInput[]>([
+    { name: "", wallet: "" },
+    { name: "", wallet: "" },
+    { name: "", wallet: "" },
+  ]);
+
+  // Triggers
+  const [inactivityPeriod, setInactivityPeriod] = useState("180");
+  const [guardianThreshold, setGuardianThreshold] = useState("2");
+
+  const addBeneficiary = () => {
+    setBeneficiaries([...beneficiaries, { name: "", wallet: "", percentage: "", delay: "0" }]);
+  };
+
+  const removeBeneficiary = (idx: number) => {
+    setBeneficiaries(beneficiaries.filter((_, i) => i !== idx));
+  };
+
+  const updateBeneficiary = (idx: number, field: keyof BeneficiaryInput, value: string) => {
+    const updated = [...beneficiaries];
+    updated[idx] = { ...updated[idx], [field]: value };
+    setBeneficiaries(updated);
+  };
+
+  const addGuardian = () => {
+    setGuardians([...guardians, { name: "", wallet: "" }]);
+  };
+
+  const removeGuardian = (idx: number) => {
+    setGuardians(g => g.filter((_, i) => i !== idx));
+  };
+
+  const updateGuardian = (idx: number, field: keyof GuardianInput, value: string) => {
+    const updated = [...guardians];
+    updated[idx] = { ...updated[idx], [field]: value };
+    setGuardians(updated);
+  };
+
+  const totalPercentage = beneficiaries.reduce(
+    (sum, b) => sum + (parseInt(b.percentage) || 0),
+    0
+  );
+
+  const isValidBeneficiaries = () => {
+    return (
+      beneficiaries.length > 0 &&
+      beneficiaries.every((b) => b.name && b.wallet && b.percentage) &&
+      totalPercentage === 100
+    );
+  };
+
+  const isValidGuardians = () => {
+    return guardians.filter((g) => g.name && g.wallet).length >= 2;
+  };
+
+  const isValidTrigger = () => {
+    const threshold = parseInt(guardianThreshold);
+    const numGuardians = guardians.filter((g) => g.name && g.wallet).length;
+    return threshold >= 1 && threshold <= numGuardians && parseInt(inactivityPeriod) >= 1;
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    setError("");
+
+    try {
+      const benAddresses = beneficiaries.map((b) => b.wallet as `0x${string}`);
+      const percentages = beneficiaries.map((b) => BigInt(Math.round(parseFloat(b.percentage) * 100)));
+      const names = beneficiaries.map((b) => b.name);
+      const delays = beneficiaries.map((b) => BigInt(parseInt(b.delay) * 86400));
+
+      const activeGuardians = guardians.filter((g) => g.name && g.wallet);
+      const guardAddresses = activeGuardians.map((g) => g.wallet as `0x${string}`);
+      const guardNames = activeGuardians.map((g) => g.name);
+
+      // Generate encrypted data hash (simplified — in production, encrypt and upload to IPFS)
+      const dataStr = JSON.stringify({ beneficiaries, guardians, createdAt: Date.now() });
+      const encryptedDataHash = keccak256(toBytes(dataStr));
+
+      const result = await createWill(
+        benAddresses,
+        percentages,
+        names,
+        delays,
+        guardAddresses,
+        guardNames,
+        BigInt(parseInt(inactivityPeriod) * 86400),
+        BigInt(parseInt(guardianThreshold)),
+        BigInt(Math.max(2, activeGuardians.length)),
+        encryptedDataHash
+      );
+
+      setTxHash(result.hash);
+      setWillId(result.willId);
+    } catch (err: any) {
+      console.error("Create will error:", err);
+      setError(err?.message || "Transaction failed. Check console for details.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (!isConnected) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <div className="text-center card max-w-md">
+          <h2 className="text-xl font-bold mb-4">Connect Your Wallet</h2>
+          <p className="text-gray-400 mb-6">You need to connect a wallet to create a digital will.</p>
+          <ConnectButton />
+        </div>
+      </div>
+    );
+  }
+
+  if (txHash && willId !== null) {
+    return (
+      <div className="flex-1 flex items-center justify-center px-4">
+        <div className="card card-glow max-w-lg text-center animate-fade-in">
+          <div className="text-5xl mb-4">✅</div>
+          <h2 className="text-2xl font-bold mb-2">Digital Will Created!</h2>
+          <p className="text-gray-400 mb-2">Will ID: <span className="text-white font-mono">#{willId}</span></p>
+          <p className="text-xs text-gray-500 mb-6 break-all font-mono">Tx: {txHash}</p>
+          <div className="flex gap-3 justify-center">
+            <Link href={`/will/${willId}`} className="btn-primary">
+              View Will
+            </Link>
+            <Link href="/dashboard" className="btn-secondary">
+              Dashboard
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+      {/* Header */}
+      <div className="mb-8">
+        <Link href="/" className="text-sm text-gray-400 hover:text-white transition">← Back</Link>
+        <h1 className="text-3xl font-bold mt-2 gradient-text">Create Digital Will</h1>
+        <p className="text-gray-400 mt-1">Secure your digital legacy in under 5 minutes</p>
+      </div>
+
+      {/* Steps indicator */}
+      <div className="flex gap-2 mb-8">
+        {STEPS.map((s, i) => (
+          <div key={s} className="flex-1">
+            <div
+              className={`h-1 rounded-full transition-all ${
+                i < step ? "bg-emerald-500" : i === step ? "bg-purple-500" : "bg-gray-700"
+              }`}
+            />
+            <p className={`text-xs mt-1 ${i === step ? "text-purple-400" : "text-gray-600"}`}>{s}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Step 1: Beneficiaries */}
+      {step === 0 && (
+        <div className="animate-fade-in">
+          <h2 className="text-xl font-semibold mb-4">Who should receive your assets?</h2>
+          <p className="text-gray-400 text-sm mb-6">Add at least one beneficiary and allocate percentages (total must = 100%).</p>
+
+          <div className="space-y-4">
+            {beneficiaries.map((b, i) => (
+              <div key={i} className="card">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-medium text-gray-300">Beneficiary {i + 1}</span>
+                  {beneficiaries.length > 1 && (
+                    <button onClick={() => removeBeneficiary(i)} className="text-red-400 text-sm hover:text-red-300">
+                      Remove
+                    </button>
+                  )}
+                </div>
+                <div className="grid md:grid-cols-2 gap-3">
+                  <input
+                    className="input"
+                    placeholder="Name (e.g., Sarah)"
+                    value={b.name}
+                    onChange={(e) => updateBeneficiary(i, "name", e.target.value)}
+                  />
+                  <input
+                    className="input"
+                    placeholder="Wallet address (0x...)"
+                    value={b.wallet}
+                    onChange={(e) => updateBeneficiary(i, "wallet", e.target.value)}
+                  />
+                  <input
+                    className="input"
+                    type="number"
+                    placeholder="Percentage (%)"
+                    value={b.percentage}
+                    onChange={(e) => updateBeneficiary(i, "percentage", e.target.value)}
+                  />
+                  <input
+                    className="input"
+                    type="number"
+                    placeholder="Delay in days (0 = immediate)"
+                    value={b.delay}
+                    onChange={(e) => updateBeneficiary(i, "delay", e.target.value)}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button onClick={addBeneficiary} className="btn-secondary mt-3 w-full">
+            + Add Another Beneficiary
+          </button>
+
+          <div className="mt-4 flex items-center justify-between">
+            <span className={`text-sm ${totalPercentage === 100 ? "text-emerald-400" : "text-red-400"}`}>
+              Total: {totalPercentage}% {totalPercentage !== 100 && "(must be 100%)"}
+            </span>
+            <button
+              onClick={() => setStep(1)}
+              disabled={!isValidBeneficiaries()}
+              className="btn-primary"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Step 2: Guardians */}
+      {step === 1 && (
+        <div className="animate-fade-in">
+          <h2 className="text-xl font-semibold mb-4">Who will confirm your passing?</h2>
+          <p className="text-gray-400 text-sm mb-6">
+            Guardians are trusted individuals who vote to confirm your passing. Add at least 2 guardians.
+          </p>
+
+          <div className="space-y-4">
+            {guardians.map((g, i) => (
+              <div key={i} className="card">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-medium text-gray-300">Guardian {i + 1}</span>
+                  {guardians.length > 2 && (
+                    <button onClick={() => removeGuardian(i)} className="text-red-400 text-sm hover:text-red-300">
+                      Remove
+                    </button>
+                  )}
+                </div>
+                <div className="grid md:grid-cols-2 gap-3">
+                  <input
+                    className="input"
+                    placeholder="Name"
+                    value={g.name}
+                    onChange={(e) => updateGuardian(i, "name", e.target.value)}
+                  />
+                  <input
+                    className="input"
+                    placeholder="Wallet address (0x...)"
+                    value={g.wallet}
+                    onChange={(e) => updateGuardian(i, "wallet", e.target.value)}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button onClick={addGuardian} className="btn-secondary mt-3 w-full">
+            + Add Another Guardian
+          </button>
+
+          <div className="mt-6 flex items-center justify-between">
+            <span className="text-sm text-gray-400">
+              {guardians.filter((g) => g.name && g.wallet).length} of {guardians.length} configured
+            </span>
+            <div className="flex gap-3">
+              <button onClick={() => setStep(0)} className="btn-secondary">Back</button>
+              <button onClick={() => setStep(2)} disabled={!isValidGuardians()} className="btn-primary">
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Step 3: Triggers */}
+      {step === 2 && (
+        <div className="animate-fade-in">
+          <h2 className="text-xl font-semibold mb-4">Configure Execution Triggers</h2>
+          <p className="text-gray-400 text-sm mb-6">
+            Set the conditions that will trigger the execution of your will.
+          </p>
+
+          <div className="space-y-6">
+            <div className="card">
+              <h3 className="font-semibold mb-3">Inactivity Period</h3>
+              <p className="text-sm text-gray-400 mb-3">
+                If no heartbeat or transaction is detected for this period, the inactivity trigger activates.
+              </p>
+              <div className="flex items-center gap-3">
+                <input
+                  className="input max-w-[120px]"
+                  type="number"
+                  value={inactivityPeriod}
+                  onChange={(e) => setInactivityPeriod(e.target.value)}
+                />
+                <span className="text-gray-400">days</span>
+              </div>
+            </div>
+
+            <div className="card">
+              <h3 className="font-semibold mb-3">Guardian Consensus</h3>
+              <p className="text-sm text-gray-400 mb-3">
+                Minimum number of guardians who must vote "deceased" before execution.
+              </p>
+              <div className="flex items-center gap-3">
+                <input
+                  className="input max-w-[120px]"
+                  type="number"
+                  min="1"
+                  max={guardians.length}
+                  value={guardianThreshold}
+                  onChange={(e) => setGuardianThreshold(e.target.value)}
+                />
+                <span className="text-gray-400">
+                  out of {guardians.filter((g) => g.name && g.wallet).length} guardians
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 flex items-center justify-between">
+            <span className="text-sm text-gray-400">
+              <span className="text-white font-semibold">Confidence threshold:</span> 70%
+              (combined from inactivity + guardian consensus)
+            </span>
+            <div className="flex gap-3">
+              <button onClick={() => setStep(1)} className="btn-secondary">Back</button>
+              <button onClick={() => setStep(3)} disabled={!isValidTrigger()} className="btn-primary">
+                Review Will
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Step 4: Review & Sign */}
+      {step === 3 && (
+        <div className="animate-fade-in">
+          <h2 className="text-xl font-semibold mb-4">Review Your Digital Will</h2>
+          <p className="text-gray-400 text-sm mb-6">
+            Please review all details carefully before signing. This action cannot be undone.
+          </p>
+
+          <div className="space-y-4">
+            <div className="card card-glow">
+              <h3 className="font-semibold text-purple-300 mb-3">📜 Will Summary</h3>
+              <div className="text-sm space-y-2">
+                <p><span className="text-gray-400">Owner:</span> <span className="font-mono">{address?.slice(0, 10)}...{address?.slice(-6)}</span></p>
+                <p><span className="text-gray-400">Created:</span> {new Date().toLocaleDateString()}</p>
+              </div>
+            </div>
+
+            <div className="card">
+              <h3 className="font-semibold mb-3">Beneficiaries</h3>
+              {beneficiaries.map((b, i) => (
+                <div key={i} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                  <div>
+                    <p className="text-sm font-medium">{b.name || "Unnamed"}</p>
+                    <p className="text-xs text-gray-500 font-mono">{b.wallet || "—"}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm font-bold gradient-text">{b.percentage}%</p>
+                    <p className="text-xs text-gray-500">{parseInt(b.delay) === 0 ? "Immediate" : `${b.delay} day delay`}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="card">
+              <h3 className="font-semibold mb-3">Guardians</h3>
+              {guardians.filter(g => g.name && g.wallet).map((g, i) => (
+                <div key={i} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                  <p className="text-sm">{g.name}</p>
+                  <p className="text-xs text-gray-500 font-mono">{g.wallet.slice(0, 10)}...{g.wallet.slice(-6)}</p>
+                </div>
+              ))}
+              <p className="text-xs text-gray-500 mt-2">
+                Threshold: {guardianThreshold} of {guardians.filter(g => g.name && g.wallet).length} guardians must agree
+              </p>
+            </div>
+
+            <div className="card">
+              <h3 className="font-semibold mb-3">Trigger Configuration</h3>
+              <p className="text-sm text-gray-300">Inactivity period: <span className="text-white">{inactivityPeriod} days</span></p>
+              <p className="text-sm text-gray-300">Guardian threshold: <span className="text-white">{guardianThreshold} votes</span></p>
+              <p className="text-sm text-gray-300">Confidence threshold: <span className="text-white">70%</span></p>
+            </div>
+          </div>
+
+          {error && (
+            <div className="mt-4 p-3 bg-red-900/30 border border-red-500/30 rounded-lg text-sm text-red-300">
+              {error}
+            </div>
+          )}
+
+          <div className="mt-6 flex items-center justify-between">
+            <button onClick={() => setStep(2)} className="btn-secondary" disabled={loading}>
+              Back
+            </button>
+            <button onClick={handleSubmit} className="btn-primary text-lg px-8" disabled={loading}>
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Signing & Deploying...
+                </span>
+              ) : (
+                "✍️ Sign & Deploy Will"
+              )}
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
