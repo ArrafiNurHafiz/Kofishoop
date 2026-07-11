@@ -1,0 +1,867 @@
+/* ========================================
+   KOFISHOOP — Premium Animations
+   Mewah, halus, cinematic
+   ======================================== */
+
+/* =========================================
+   1. SHARED KEYFRAMES
+   ========================================= */
+
+/* Fade & Slide */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale Reveal */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes scaleInSoft {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+/* Clip Reveal (mewah!) */
+@keyframes clipRevealLeft {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes clipRevealRight {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes clipRevealUp {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes clipRevealBottom {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes clipCircle {
+  from {
+    clip-path: circle(0% at 50% 50%);
+  }
+  to {
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+
+/* Blur & Glass */
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes blurSlideUp {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Rotate / 3D */
+@keyframes rotateYIn {
+  from {
+    opacity: 0;
+    transform: perspective(800px) rotateY(15deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) rotateY(0);
+  }
+}
+@keyframes tiltFloat {
+  0%,
+  100% {
+    transform: perspective(800px) rotateX(0deg) translateY(0);
+  }
+  50% {
+    transform: perspective(800px) rotateX(2deg) translateY(-8px);
+  }
+}
+
+/* Float & Pulse */
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes floatX {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(230, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(230, 0, 0, 0.1);
+  }
+}
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Shimmer (text gradient sweep) */
+@keyframes shimmerText {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Border draw */
+@keyframes borderDraw {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60px;
+  }
+}
+
+/* =========================================
+   2. PER-SECTION REVEAL SYSTEM
+   ========================================= */
+
+/* Base reveal — all start hidden */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1) translateX(0);
+}
+
+/* ── HERO : handled by keyframes ── */
+#hero .reveal {
+  transform: none;
+  opacity: 1; /* handled by stagger keyframes */
+}
+
+/* ── TENTANG : scale + blur ── */
+#tentang .reveal {
+  transform: translateY(20px) scale(0.97);
+}
+#tentang .reveal.visible {
+  animation: scaleInSoft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── LAYANAN : slide right + clip ── */
+#layanan .reveal {
+  transform: translateX(-30px);
+}
+#layanan .reveal.visible {
+  animation: fadeSlideRight 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── GALERI : cascade up ── */
+#galeri .reveal {
+  transform: translateY(40px);
+}
+
+/* ── TESTIMONI : fade only ── */
+#testimoni .reveal {
+  transform: translateY(10px);
+}
+#testimoni .reveal.visible {
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+
+/* ── MEMBERSHIP : float up ── */
+#membership .reveal {
+  transform: translateY(30px);
+}
+#membership .reveal.visible {
+  transform: translateY(0);
+}
+
+/* ── KONTAK : slide left ── */
+#kontak .reveal {
+  transform: translateX(30px);
+}
+#kontak .reveal.visible {
+  transform: translateX(0);
+}
+
+/* =========================================
+   3. HERO — Entrance Stagger
+   ========================================= */
+.hero-eyebrow {
+  opacity: 0;
+  animation: fadeSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+.hero-title {
+  opacity: 0;
+  animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+.hero-tagline {
+  opacity: 0;
+  animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+.hero-actions {
+  opacity: 0;
+  animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+
+/* Speechmark orb — mewah floating + glow */
+.speechmark-orb {
+  animation:
+    floatY 4s ease-in-out infinite,
+    pulseGlow 3s ease-in-out infinite;
+}
+
+/* Parallax background via JS (transform style) */
+.hero-bg {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* =========================================
+   4. TENTANG — Warm scale reveal
+   ========================================= */
+#tentang .section-title {
+  background: linear-gradient(135deg, #25282b 0%, #e60000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: shimmerText 4s linear infinite;
+}
+
+.about-values .value-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#tentang.visible-section .value-item:nth-child(1) {
+  transition-delay: 0s;
+}
+#tentang.visible-section .value-item:nth-child(2) {
+  transition-delay: 0.1s;
+}
+#tentang.visible-section .value-item:nth-child(3) {
+  transition-delay: 0.2s;
+}
+#tentang.visible-section .value-item:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+#tentang.visible-section .value-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About image — clip circle reveal */
+.about-img-box {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.about-img-box:hover {
+  transform: scale(1.03);
+}
+
+/* Stat items — cascade */
+.about-stats .stat-item {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#tentang.visible-section .stat-item:nth-child(1) {
+  transition-delay: 0.4s;
+}
+#tentang.visible-section .stat-item:nth-child(2) {
+  transition-delay: 0.5s;
+}
+#tentang.visible-section .stat-item:nth-child(3) {
+  transition-delay: 0.6s;
+}
+#tentang.visible-section .stat-item:nth-child(4) {
+  transition-delay: 0.7s;
+}
+
+#tentang.visible-section .stat-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   5. LAYANAN — Tab & Peel
+   ========================================= */
+.service-tabs {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#layanan.visible-section .service-tabs {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-panel.active {
+  animation: panelPremiumIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes panelPremiumIn {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%);
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+/* Panel image peel */
+.panel-image {
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s ease;
+}
+.panel-grid:hover .panel-image {
+  transform: scale(1.05);
+}
+
+/* Highlight items stagger */
+.panel-highlight {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-panel.active .panel-highlight:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.service-panel.active .panel-highlight:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.service-panel.active .panel-highlight:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.service-panel.active .panel-highlight {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Tab hover */
+.service-tab {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-tab:hover {
+  transform: translateY(-2px);
+}
+.service-tab.active:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* =========================================
+   6. GALERI — Cascade + Tilt
+   ========================================= */
+.gallery-featured {
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease;
+}
+.gallery-featured:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 48px rgba(230, 0, 0, 0.12);
+}
+
+.gallery-featured-img {
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s ease;
+}
+.gallery-featured:hover .gallery-featured-img {
+  transform: scale(1.06);
+}
+
+.gallery-card {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(37, 40, 43, 0.1);
+}
+
+.gallery-card-img {
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s ease;
+}
+.gallery-card:hover .gallery-card-img {
+  transform: scale(1.08);
+}
+
+/* Featured overlay text reveal */
+.gallery-featured-overlay {
+  transition: opacity 0.4s ease;
+}
+
+/* Lightbox — premium */
+.lightbox.active .lightbox-content {
+  animation: lightboxPremiumIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes lightboxPremiumIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* =========================================
+   7. TESTIMONI — Smooth carousel
+   ========================================= */
+.testimoni-card {
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease;
+}
+.testimoni-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(37, 40, 43, 0.06);
+}
+
+.carousel-track {
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Testimoni stats cascade */
+.testimoni-stat {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#testimoni.visible-section .testimoni-stat:nth-child(1) {
+  transition-delay: 0.2s;
+}
+#testimoni.visible-section .testimoni-stat:nth-child(2) {
+  transition-delay: 0.35s;
+}
+#testimoni.visible-section .testimoni-stat:nth-child(3) {
+  transition-delay: 0.5s;
+}
+
+#testimoni.visible-section .testimoni-stat {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   8. MEMBERSHIP — Premium lift
+   ========================================= */
+
+/* Card cascade */
+.pricing-card {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+#membership.visible-section .pricing-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+#membership.visible-section .pricing-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+#membership.visible-section .pricing-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+#membership.visible-section .pricing-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Premium hover lift */
+.pricing-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(230, 0, 0, 0.1);
+}
+.pricing-card.featured:hover {
+  transform: translateY(-12px) scale(1.02);
+}
+
+/* Featured badge pulse */
+.pricing-badge {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Pricing icon float */
+.pricing-icon {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pricing-card:hover .pricing-icon {
+  transform: scale(1.15) translateY(-4px);
+}
+
+/* Pricing features list items */
+.pricing-features li {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+.pricing-features li:hover {
+  transform: translateX(6px);
+  color: #e60000;
+}
+.pricing-features li:hover i {
+  transform: scale(1.2);
+}
+
+/* Comparison table */
+.comparison-table {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#membership.visible-section .comparison-table {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.comparison-table tbody tr {
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+.comparison-table tbody tr:hover {
+  transform: scale(1.005);
+}
+
+/* =========================================
+   9. KONTAK — Float & Drift
+   ========================================= */
+.kontak-form {
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease;
+}
+.kontak-form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(37, 40, 43, 0.06);
+}
+
+/* Info cards stagger */
+.info-card {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#kontak.visible-section .info-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+#kontak.visible-section .info-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+#kontak.visible-section .info-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+#kontak.visible-section .info-card:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+#kontak.visible-section .info-card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Form toast */
+.form-toast.show {
+  animation: toastPremiumIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes toastPremiumIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* =========================================
+   10. BUTTONS — Premium interactions
+   ========================================= */
+.btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn:hover::after {
+  opacity: 1;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(230, 0, 0, 0.15);
+}
+.btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* =========================================
+   11. AUTH MODAL — Entrance
+   ========================================= */
+.auth-overlay.active .auth-modal {
+  animation: authModalPremium 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes authModalPremium {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Member type card selection */
+.member-type-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.member-type-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(230, 0, 0, 0.08);
+}
+.member-type-card.selected {
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* =========================================
+   12. NAVBAR — scroll effect
+   ========================================= */
+.navbar {
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    padding 0.3s ease;
+}
+.navbar.scrolled {
+  background: rgba(37, 40, 43, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 10px 0;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   13. FOOTER — subtle entrance
+   ========================================= */
+.footer {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.footer.visible-section {
+  opacity: 1;
+}
+
+/* =========================================
+   14. COUNTER — number animation
+   ========================================= */
+.stat-number {
+  display: inline-block;
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================
+   15. MISCELLANEOUS — micro interactions
+   ========================================= */
+
+/* Section dividers — draw in */
+.section-divider {
+  animation: borderDraw 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  width: 0;
+}
+
+/* Auth toast */
+.auth-toast.show {
+  animation: toastPremiumIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll indicator (future) */
+
+/* =========================================
+   16. REDUCED MOTION
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-eyebrow,
+  .hero-title,
+  .hero-tagline,
+  .hero-actions {
+    opacity: 1;
+    animation: none;
+  }
+
+  .speechmark-orb {
+    animation: none;
+  }
+
+  .section-divider {
+    width: 60px;
+  }
+
+  .navbar.scrolled {
+    backdrop-filter: none;
+  }
+
+  .btn::after {
+    display: none;
+  }
+}
