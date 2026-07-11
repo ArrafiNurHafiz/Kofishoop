@@ -2,7 +2,8 @@
   "dependencies": {
     "@claude-flow/aidefence": "^3.0.3",
     "agentic-flow": "^2.1.0",
-    "docx": "^9.7.1"
+    "docx": "^9.7.1",
+    "ecc-agentshield": "^1.4.0"
   },
   "devDependencies": {
     "@claude-flow/memory": "^3.0.0-alpha.21",
