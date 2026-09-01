@@ -313,16 +313,9 @@ function initEvents() {
     });
   }
 
-  // Reset & Print
+  // Reset
   const btnReset = document.getElementById("btnReset");
   if (btnReset) btnReset.addEventListener("click", resetState);
-
-  const btnPrint = document.getElementById("btnPrint");
-  if (btnPrint) {
-    btnPrint.addEventListener("click", () => {
-      window.print();
-    });
-  }
 
   // Modal Export Handlers
   const modal = document.getElementById("exportModal");
