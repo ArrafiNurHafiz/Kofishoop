@@ -269,6 +269,50 @@ function initEvents() {
     });
   }
 
+  // Auth & Login Modal Handlers
+  const btnAuth = document.getElementById("btnAuth");
+  const loginModal = document.getElementById("loginModal");
+  const btnCloseLoginModal = document.getElementById("btnCloseLoginModal");
+  const btnCancelLogin = document.getElementById("btnCancelLogin");
+  const btnSubmitLogin = document.getElementById("btnSubmitLogin");
+  const adminPassInput = document.getElementById("adminPass");
+
+  const closeLoginModalFn = () => {
+    if (loginModal) loginModal.classList.remove("show");
+    if (adminPassInput) adminPassInput.value = "";
+  };
+
+  if (btnAuth) {
+    btnAuth.addEventListener("click", () => {
+      if (isLoggedIn) {
+        logout();
+      } else {
+        if (loginModal) loginModal.classList.add("show");
+        if (adminPassInput) setTimeout(() => adminPassInput.focus(), 100);
+      }
+    });
+  }
+
+  if (btnCloseLoginModal)
+    btnCloseLoginModal.addEventListener("click", closeLoginModalFn);
+  if (btnCancelLogin)
+    btnCancelLogin.addEventListener("click", closeLoginModalFn);
+
+  const handleLoginSubmit = () => {
+    const pass = adminPassInput?.value || "";
+    if (login(pass)) {
+      closeLoginModalFn();
+    }
+  };
+
+  if (btnSubmitLogin)
+    btnSubmitLogin.addEventListener("click", handleLoginSubmit);
+  if (adminPassInput) {
+    adminPassInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") handleLoginSubmit();
+    });
+  }
+
   // Reset & Print
   const btnReset = document.getElementById("btnReset");
   if (btnReset) btnReset.addEventListener("click", resetState);
@@ -421,4 +465,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   initEvents();
   renderAll();
   injectIcons();
+  if (typeof checkAuth === "function") checkAuth();
 });
