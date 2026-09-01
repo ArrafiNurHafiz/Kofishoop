@@ -1,7 +1,7 @@
 // js/auth.js - Simple Password Auth & Permission Lock
 
 const AUTH_KEY = "rihlah_admin_auth";
-const ADMIN_PASS = "admin123";
+const ADMIN_PASS = "arrafi123";
 
 let isLoggedIn = false;
 
