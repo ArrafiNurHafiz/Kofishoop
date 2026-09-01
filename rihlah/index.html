@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <title>Kalkulator Estimasi Biaya Rihlah</title>
+    <!-- External CSS & Libraries -->
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-brand">
+        <div class="topbar-icon" data-icon="money" data-icon-size="20"></div>
+        <div class="topbar-title">
+          <h1>Kalkulator Estimasi Biaya Rihlah</h1>
+          <p>RAB Kegiatan, Simulasi Peserta & Rekap Iuran</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <div
+          id="syncStatus"
+          style="
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+          "
+        >
+          <span
+            style="
+              display: inline-block;
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background: #10b981;
+              margin-right: 4px;
+            "
+          ></span>
+          Tersimpan di DB
+        </div>
+        <button id="btnReset" data-icon="reset" title="Reset Data">
+          Reset
+        </button>
+        <button id="btnPrint" data-icon="file" title="Cetak / Save PDF Browser">
+          Cetak
+        </button>
+        <button id="btnOpenExportModal" class="primary" data-icon="download">
+          Download PDF
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN APP -->
+    <main class="app-container">
+      <section class="editor-pane">
+        <!-- TABS NAV -->
+        <nav class="tabs-nav">
+          <div class="tab active" data-tab="tab-biaya">1. Rincian Biaya</div>
+          <div class="tab" data-tab="tab-peserta">
+            2. Daftar Peserta & Iuran
+          </div>
+          <div class="tab" data-tab="tab-preview">
+            3. Preview Dokumen (Laporan)
+          </div>
+        </nav>
+
+        <!-- TAB 1: RINCIAN BIAYA -->
+        <div id="tab-biaya" class="tab-panel active">
+          <!-- INFO DASAR -->
+          <div class="card">
+            <div class="card-head">
+              <div class="icon teal" data-icon="settings"></div>
+              <h3>Parameter Acara</h3>
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="judul">Nama Acara / Kegiatan</label>
+                <input
+                  type="text"
+                  id="judul"
+                  placeholder="Contoh: Rihlah Santri 2026"
+                />
+              </div>
+              <div class="field">
+                <label for="tujuan">Lokasi / Destinasi</label>
+                <input
+                  type="text"
+                  id="tujuan"
+                  placeholder="Contoh: Pantai Indrayanti"
+                />
+              </div>
+            </div>
+            <div class="grid-3">
+              <div class="field">
+                <label for="tanggal">Tanggal Acara</label>
+                <input type="date" id="tanggal" />
+              </div>
+              <div class="field">
+                <label for="peserta">Jml Peserta (Target)</label>
+                <div class="field-with-stepper">
+                  <input
+                    type="number"
+                    id="peserta"
+                    min="1"
+                    step="1"
+                    value="40"
+                  />
+                  <div class="stepper-btns">
+                    <button type="button" data-target="peserta" data-step="1">
+                      ▲
+                    </button>
+                    <button type="button" data-target="peserta" data-step="-1">
+                      ▼
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label for="hari">Durasi (Hari)</label>
+                <div class="field-with-stepper">
+                  <input type="number" id="hari" min="1" step="1" value="1" />
+                  <div class="stepper-btns">
+                    <button type="button" data-target="hari" data-step="1">
+                      ▲
+                    </button>
+                    <button type="button" data-target="hari" data-step="-1">
+                      ▼
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KONSUMSI & SAFETY MARGIN -->
+          <div class="card">
+            <div class="card-head">
+              <div class="icon blue" data-icon="utensils"></div>
+              <h3>Konsumsi & Dana Darurat</h3>
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="sesiMakan">Sesi Makan per Hari</label>
+                <div class="field-with-stepper">
+                  <input
+                    type="number"
+                    id="sesiMakan"
+                    min="0"
+                    max="20"
+                    step="1"
+                    value="2"
+                  />
+                  <div class="stepper-btns">
+                    <button type="button" data-target="sesiMakan" data-step="1">
+                      ▲
+                    </button>
+                    <button
+                      type="button"
+                      data-target="sesiMakan"
+                      data-step="-1"
+                    >
+                      ▼
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label for="hargaMakan">Harga per Sesi / Orang</label>
+                <input
+                  type="number"
+                  id="hargaMakan"
+                  min="0"
+                  step="1000"
+                  value="25000"
+                />
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="margin"
+                  >Dana Darurat / Margin:
+                  <strong id="marginVal">10%</strong></label
+                >
+                <input
+                  type="range"
+                  id="margin"
+                  min="0"
+                  max="30"
+                  step="1"
+                  value="10"
+                />
+              </div>
+              <div class="field">
+                <label for="round">Pembulatan Tarif Iuran</label>
+                <select id="round">
+                  <option value="1">Tanpa Pembulatan</option>
+                  <option value="500">Ke Rp 500 terdekat</option>
+                  <option value="1000">Ke Rp 1.000 terdekat</option>
+                  <option value="5000" selected>
+                    Ke Rp 5.000 terdekat (Disarankan)
+                  </option>
+                  <option value="10000">Ke Rp 10.000 terdekat</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- TABEL ITEM PENGELUARAN -->
+          <div class="card">
+            <div class="card-head" style="justify-content: space-between">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div class="icon amber" data-icon="money"></div>
+                <h3>Komponen Biaya Pengeluaran</h3>
+              </div>
+              <button id="btnAddItem" class="accent" data-icon="plus">
+                Tambah Item
+              </button>
+            </div>
+            <div class="items-wrap">
+              <table id="itemsTable">
+                <thead>
+                  <tr>
+                    <th style="width: 24px"></th>
+                    <th style="width: 30px">No</th>
+                    <th>Nama Item Pengeluaran</th>
+                    <th style="width: 90px">Sifat Biaya</th>
+                    <th style="width: 100px; text-align: right">Qty / Unit</th>
+                    <th style="width: 110px; text-align: right">
+                      Harga Satuan
+                    </th>
+                    <th style="width: 110px; text-align: right">Total</th>
+                    <th style="width: 40px"></th>
+                  </tr>
+                </thead>
+                <tbody id="itemsBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUMMARY KOTAK STATS -->
+          <div class="grid-3" style="margin-top: 12px">
+            <div
+              class="card"
+              style="background: var(--primary-soft); border-color: #bfdbfe"
+            >
+              <div
+                style="font-size: 11px; font-weight: 700; color: var(--primary)"
+              >
+                BIAYA TETAP (FIXED)
+              </div>
+              <div
+                id="statFixed"
+                style="
+                  font-size: 16px;
+                  font-weight: 800;
+                  color: var(--fixed);
+                  margin-top: 4px;
+                "
+              >
+                Rp 0
+              </div>
+            </div>
+            <div
+              class="card"
+              style="background: #e0f2fe; border-color: #bae6fd"
+            >
+              <div style="font-size: 11px; font-weight: 700; color: #0284c7">
+                BIAYA VARIABEL (PER ORG)
+              </div>
+              <div
+                id="statVar"
+                style="
+                  font-size: 16px;
+                  font-weight: 800;
+                  color: #0369a1;
+                  margin-top: 4px;
+                "
+              >
+                Rp 0
+              </div>
+            </div>
+            <div
+              class="card"
+              style="background: var(--good-soft); border-color: #a7f3d0"
+            >
+              <div
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  color: var(--good-ink);
+                "
+              >
+                REKOMENDASI TARIF IURAN
+              </div>
+              <div
+                id="statTarif"
+                style="
+                  font-size: 18px;
+                  font-weight: 800;
+                  color: var(--good-ink);
+                  margin-top: 4px;
+                "
+              >
+                Rp 0
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: DAFTAR PESERTA -->
+        <div id="tab-peserta" class="tab-panel">
+          <div class="card">
+            <div class="card-head" style="justify-content: space-between">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div class="icon green" data-icon="users"></div>
+                <h3>Pencatatan Pembayaran Peserta</h3>
+              </div>
+              <div style="display: flex; gap: 6px">
+                <button
+                  id="btnSyncPeserta"
+                  data-tip="Sesuaikan jumlah baris dengan target peserta"
+                >
+                  Sinkron Target
+                </button>
+                <button id="btnAddPeserta" class="accent" data-icon="plus">
+                  + Baris
+                </button>
+              </div>
+            </div>
+            <div class="grid-3" style="margin-bottom: 12px">
+              <div
+                style="
+                  background: var(--bg-2);
+                  padding: 8px 12px;
+                  border-radius: 8px;
+                "
+              >
+                <div
+                  style="font-size: 10px; color: var(--muted); font-weight: 700"
+                >
+                  TARIF PER PESERTA
+                </div>
+                <div
+                  id="tarifView"
+                  style="
+                    font-size: 14px;
+                    font-weight: 800;
+                    color: var(--primary);
+                  "
+                >
+                  Rp 0
+                </div>
+              </div>
+              <div
+                style="
+                  background: var(--good-soft);
+                  padding: 8px 12px;
+                  border-radius: 8px;
+                "
+              >
+                <div
+                  style="
+                    font-size: 10px;
+                    color: var(--good-ink);
+                    font-weight: 700;
+                  "
+                >
+                  TOTAL TERKUMPUL
+                </div>
+                <div
+                  id="pesertaTotal"
+                  style="
+                    font-size: 14px;
+                    font-weight: 800;
+                    color: var(--good-ink);
+                  "
+                >
+                  Rp 0
+                </div>
+              </div>
+              <div
+                style="
+                  background: var(--warn-soft);
+                  padding: 8px 12px;
+                  border-radius: 8px;
+                "
+              >
+                <div
+                  style="
+                    font-size: 10px;
+                    color: var(--warn-ink);
+                    font-weight: 700;
+                  "
+                >
+                  SISA BELUM BAYAR
+                </div>
+                <div
+                  id="pesertaSisa"
+                  style="
+                    font-size: 14px;
+                    font-weight: 800;
+                    color: var(--warn-ink);
+                  "
+                >
+                  Rp 0
+                </div>
+              </div>
+            </div>
+            <div class="peserta-wrap">
+              <table id="pesertaTable">
+                <thead>
+                  <tr>
+                    <th style="width: 30px">No</th>
+                    <th>Nama Peserta</th>
+                    <th style="width: 100px">Status</th>
+                    <th style="width: 110px">Tgl Bayar</th>
+                    <th style="width: 120px; text-align: right">
+                      Nominal (Rp)
+                    </th>
+                    <th>Keterangan</th>
+                  </tr>
+                </thead>
+                <tbody id="pesertaBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: PREVIEW DOKUMEN -->
+        <div id="tab-preview" class="tab-panel">
+          <div class="preview-scroll">
+            <div class="doc" id="docPreview">
+              <!-- HALAMAN 1: IKHTISAR OPERASIONAL -->
+              <div class="doc-page-1 doc-section" data-section="operasional">
+                <h1 id="docTitle">RANCANGAN ANGGARAN BIAYA (RAB) RIHLAH</h1>
+                <div class="sub-info" id="subInfo"></div>
+
+                <h2>1. Rincian Estimasi Biaya Keseluruhan (Operasional)</h2>
+                <div class="doc-table-wrap">
+                  <table class="doc-table" id="previewTable">
+                    <thead>
+                      <tr>
+                        <th style="width: 25px">No</th>
+                        <th>Komponen Pengeluaran</th>
+                        <th style="width: 140px">Dasar Perhitungan</th>
+                        <th style="width: 100px; text-align: right">
+                          Total (Rp)
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="previewBody"></tbody>
+                    <tfoot id="previewFoot"></tfoot>
+                  </table>
+                </div>
+              </div>
+
+              <!-- HALAMAN 2: RINCIAN PER ORANG -->
+              <div
+                class="doc-page-2 doc-section doc-page-break"
+                data-section="perpeserta"
+              >
+                <h1
+                  style="
+                    font-size: 16px;
+                    margin-bottom: 4px;
+                    text-align: center;
+                  "
+                >
+                  RINCIAN ALOKASI BIAYA PER PESERTA
+                </h1>
+                <div class="sub-info" id="subInfoPerOrang"></div>
+
+                <h2>Rincian Beban Biaya Tiap Peserta</h2>
+                <div class="doc-table-wrap">
+                  <table class="doc-table" id="perOrangTable">
+                    <thead>
+                      <tr>
+                        <th style="width: 30px; text-align: center">No</th>
+                        <th>Komponen Pengeluaran</th>
+                        <th style="width: 170px">
+                          Dasar Perhitungan / Alokasi
+                        </th>
+                        <th style="width: 110px; text-align: right">
+                          Beban per Org
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="perOrangBody"></tbody>
+                    <tfoot id="perOrangFoot"></tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL PILIH DOWNLOAD PDF -->
+    <div id="exportModal" class="modal-backdrop">
+      <div class="modal-card">
+        <div class="modal-head">
+          <h3>Pilih Bagian yang Ingin Di-Download (PDF)</h3>
+          <button
+            id="btnCloseExportModal"
+            style="
+              border: none;
+              background: none;
+              font-size: 18px;
+              cursor: pointer;
+            "
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 12px; color: var(--muted)">
+            Centang bagian/halaman yang ingin dimasukkan ke dalam file PDF:
+          </p>
+          <div class="modal-options">
+            <label class="option-item">
+              <input type="checkbox" id="chkHal1" checked />
+              <div>
+                <div class="option-title">
+                  Halaman 1: Ikhtisar Anggaran Operasional
+                </div>
+                <div class="option-desc">
+                  Memuat total rincian pengeluaran operasional keseluruhan dan
+                  rekomendasi tarif iuran.
+                </div>
+              </div>
+            </label>
+            <label class="option-item">
+              <input type="checkbox" id="chkHal2" checked />
+              <div>
+                <div class="option-title">
+                  Halaman 2: Rincian Beban Biaya Per Peserta
+                </div>
+                <div class="option-desc">
+                  Memuat rincian alokasi beban biaya per orang (riil dan tarif
+                  iuran).
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button id="btnCancelExport">Batal</button>
+          <button id="btnStartExport" class="primary" data-icon="download">
+            Download PDF Terpilih
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast"></div>
+
+    <!-- OVERLAY SPINNER -->
+    <div id="overlay" class="overlay">
+      <div class="spinner">Sedang memproses PDF...</div>
+    </div>
+
+    <!-- Application Modules -->
+    <script src="js/icons.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/calc.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
